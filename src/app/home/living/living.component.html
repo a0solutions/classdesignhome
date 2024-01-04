@@ -1,0 +1,48 @@
+<div>
+  <div class="image-showroom">
+    <div class="image-showroom-content p-lg-5 p-md-3 p-sm-1 w-75">
+      <h2 class="text-white">Living</h2>
+      <!-- <p class="text-white">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu
+        bibendum nulla, nec semper magna. Sed a suscipit quam, at tempor sapien.
+        Nulla rhoncus lacus in dui lobortis sollicitudin nec a libero. Etiam
+        vulputate ligula in dolor pharetra lobortis. Aenean condimentum lacus
+        quam, quis tincidunt massa tincidunt ac.
+      </p> -->
+      <div class="image-showroom-buttons">
+        <button class="btn btn-dark rounded-0 px-4 ms-2 ms-2">
+          Show rooms
+        </button>
+        <a
+          routerLink="products/living"
+          class="btn btn-light rounded-0 ms-4 px-4"
+          >Products</a
+        >
+      </div>
+    </div>
+    <popup
+      [data]="{
+        top: '20%',
+        left: '25%',
+        name: 'Cupboard',
+        description:
+          'This prodcut is made with the strongest materials in the world.',
+        price: 1200,
+        category: 'living'
+      }"
+    ></popup>
+    <popup
+      [data]="{
+        top: '45%',
+        left: '60%',
+        name: 'Table + 6 chairs',
+        description:
+          'This prodcut is made with the strongest materials in the world.',
+        price: 6300,
+        category: 'living'
+      }"
+    ></popup>
+
+    <div class="image-showroom-overlay"></div>
+  </div>
+</div>

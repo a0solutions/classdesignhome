@@ -1,0 +1,42 @@
+/*********************** ACCORDION *********************/
+.accordion-button:not(.collapsed) {
+  background-color: var(--bs-light);
+}
+.accordion-button:focus {
+  box-shadow: none;
+}
+select:focus {
+  box-shadow: none;
+}
+select option {
+  border-radius: 0px;
+}
+.form-check-input:checked {
+  background-color: black;
+  border-color: black;
+}
+.form-check-input:focus {
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.3);
+  border: 1px solid black;
+}
+.select option:nth-child(3):hover {
+  background-color: black !important;
+}
+option:hover {
+  background-color: black !important;
+}
+.filter {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 200px);
+}
+/****************** range ***********/
+.form-range::-webkit-slider-thumb {
+  background: black;
+}
+.form-range::-moz-range-thumb {
+  background: black;
+}
+.form-range::-moz-range-thumb:focus {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.289);
+}

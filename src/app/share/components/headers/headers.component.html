@@ -1,0 +1,32 @@
+<div
+  class="header"
+  #header
+  (mousedown)="scrollChange($event)"
+  id="header"
+  (mousemove)="moveMouse($event)"
+>
+  <div class="header-image">
+    <img
+      [src]="
+        '../../../assets/images/' +
+        headerName +
+        '/showroom/showroom-' +
+        headerName +
+        '-1.png'
+      "
+    />
+    <div class="header-allhostsports">
+      <popup
+        *ngFor="let popup of popups.getPopups(headerName)"
+        [data]="popup"
+      ></popup>
+    </div>
+    <div class="header-overlay"></div>
+  </div>
+
+  <h1
+    class="header-name text-capitalize popup animate__animated animate__fadeInUp"
+  >
+    {{ headerName }}
+  </h1>
+</div>

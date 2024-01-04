@@ -1,0 +1,58 @@
+<div>
+  <div class="image-showroom">
+    <div class="image-showroom-content p-lg-5 p-md-3 p-sm-1 w-75">
+      <h2 class="text-white">Bedroom</h2>
+      <!-- <p class="text-white">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu
+        bibendum nulla, nec semper magna. Sed a suscipit quam, at tempor sapien.
+        Nulla rhoncus lacus in dui lobortis sollicitudin nec a libero. Etiam
+        vulputate ligula in dolor pharetra lobortis. Aenean condimentum lacus
+        quam, quis tincidunt massa tincidunt ac.
+      </p> -->
+      <div class="image-showroom-buttons">
+        <button class="btn btn-dark rounded-0 px-4 ms-2">Show room</button>
+        <a
+          routerLink="products/bedroom"
+          class="btn btn-light rounded-0 ms-4 px-4"
+          >Products</a
+        >
+      </div>
+    </div>
+
+    <popup
+      [data]="{
+        top: '45%',
+        left: '50%',
+        name: 'Master Bed',
+        description:
+          'This prodcut is made with the strongest materials in the world.',
+        price: 4300,
+        category: 'bed'
+      }"
+    ></popup>
+    <popup
+      [data]="{
+        top: '20%',
+        left: '70%',
+        name: 'Master Bed',
+        description:
+          'This prodcut is made with the strongest materials in the world.',
+        price: 4300,
+        category: 'bed'
+      }"
+    ></popup>
+    <popup
+      [data]="{
+        top: '35%',
+        left: '20%',
+        name: 'Master Bed',
+        description:
+          'This prodcut is made with the strongest materials in the world.',
+        price: 4300,
+        category: 'bed'
+      }"
+    ></popup>
+
+    <div class="image-showroom-overlay"></div>
+  </div>
+</div>

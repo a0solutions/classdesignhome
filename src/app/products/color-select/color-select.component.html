@@ -1,0 +1,7 @@
+<div
+  [ngClass]="{ selected: selected }"
+  (click)="selectColor(background)"
+  class="color-select rounded-pill"
+  [style]="'background:' + background"
+  [title]="background | uppercase"
+></div>

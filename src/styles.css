@@ -1,0 +1,132 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("../node_modules/bootstrap-icons/font/bootstrap-icons.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  font-family: "Roboto";
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-default {
+  cursor: default !important;
+}
+.w-5 {
+  width: 20%;
+}
+.w-30 {
+  width: 30%;
+}
+.bg-none {
+  background: transparent !important;
+}
+/* ===== Scrollbar CSS ===== */
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  margin: 50px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.518);
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(136, 136, 136, 0.518);
+}
+p {
+  font-weight: 300;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 900;
+}
+.blocks-categories {
+  width: 33.33333%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  transition: all 0.8s;
+  border-right: 3px solid white;
+  border-left: 3px solid white;
+  z-index: 0;
+  position: relative;
+}
+.blocks-categories .image-showroom-overlay {
+  width: 100vw;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+  opacity: 0;
+  mix-blend-mode: multiply;
+  height: 100vh;
+  transition: all 0.8s;
+  position: absolute;
+}
+.blocks-categories .image-showroom-content {
+  margin-top: 70%;
+  transition: all 0.8s;
+  opacity: 0;
+  position: absolute;
+  z-index: 9;
+}
+.image-showroom {
+  background-size: 100% auto;
+  width: 100vh;
+  height: 100vh;
+}
+.blocks-categories .image-showroom-content h2 {
+  font-size: 150px;
+  opacity: 0.3;
+}
+.blocks-categories .image-showroom {
+  filter: grayscale(0.9);
+  transition: all 0.8s;
+  position: relative;
+  left: -25%;
+}
+
+.image-showroom-buttons {
+  margin-top: -210px;
+  position: relative;
+  z-index: 9;
+}
+.all-hotspots {
+  opacity: 0;
+  transition: all 0.3s;
+}
+popup {
+  opacity: 0;
+  transition: all 0.8s;
+  z-index: 999;
+}
+.header popup {
+  opacity: 1;
+}
+/************** HOVER ****************/
+.blocks-categories:hover {
+  width: 1175px;
+}
+.blocks-categories:hover .image-showroom {
+  filter: grayscale(0);
+  left: 0px;
+}
+
+.blocks-categories:hover .image-showroom-overlay,
+.blocks-categories:hover .all-hotspots,
+.blocks-categories:hover popup {
+  opacity: 1;
+}
+.blocks-categories:hover .image-showroom-content {
+  margin-top: 73%;
+  opacity: 1;
+}

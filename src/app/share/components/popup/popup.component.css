@@ -1,0 +1,41 @@
+.popup {
+  width: 200px;
+  z-index: 9;
+  min-height: 280px;
+}
+.popup--name {
+  font-size: 18px;
+}
+.popup--description {
+  font-size: 12px;
+}
+.popup-container {
+  position: absolute;
+  z-index: 9;
+  min-height: 280px;
+  width: 210px;
+  transition: all 0.8s;
+}
+.image-showroom-hotspot:hover {
+  outline: 20px solid rgba(255, 255, 255, 0.5);
+}
+
+.image-showroom-hotspot {
+  padding: 10px;
+  background-color: white;
+  outline: 8px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 9;
+  cursor: pointer;
+  transition: all 0.3s;
+  top: 42%;
+  left: -30%;
+}
+.card-button {
+  transition: all 0.5s;
+  overflow: hidden;
+}
+.card-button:hover {
+  width: 200% !important;
+}

@@ -1,0 +1,6 @@
+.bg-gradient-nav {
+  background: linear-gradient(var(--bs-dark), rgba(0, 0, 0, 0));
+}
+.navbar li {
+  text-transform: uppercase;
+}

@@ -1,0 +1,20 @@
+<app-nav></app-nav>
+
+<app-headers [headerName]="category"></app-headers>
+<div class="container my-5">
+  <div class="row mt-5">
+    <div class="col-lg-3 col-md-3 col-sm-12">
+      <div class="sticky-top filter-container">
+        <products-filter
+          [categorySelected]="category"
+          [subcategorySelected]="subcategory"
+        ></products-filter>
+      </div>
+    </div>
+
+    <div class="col-lg-9 col-md-9 col-sm-12">
+      <productList [category]="category"></productList>
+    </div>
+  </div>
+</div>
+<app-footer class="mt-5"></app-footer>

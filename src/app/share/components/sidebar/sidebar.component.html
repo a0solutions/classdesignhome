@@ -1,0 +1,70 @@
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+      BROWSE CATEGORIES
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="accordion rounded-0" id="accordionExample">
+      <div
+        class="accordion-item border-0 rounded-0"
+        *ngFor="let category of allCategories; index as i"
+      >
+        <h2 class="accordion-header border-top rounded-0">
+          <button
+            class="accordion-button rouned-0 collapsed"
+            type="button"
+            [id]="i"
+            (click)="expandAccordion($event)"
+          >
+            {{ category.category | uppercase }}
+          </button>
+        </h2>
+        <div [id]="i + 'subcategories'" class="accordion-collapse collapse">
+          <div class="subcategories_list">
+            <div class="subcategories_list_item">
+              <a [href]="'products/' + category.category" class="nav-link w-100"
+                >See All</a
+              >
+            </div>
+            <div
+              class="subcategories_list_item"
+              *ngFor="let subcategory of category.subcategories"
+            >
+              <a
+                [href]="'products/' + category.category + '/' + subcategory"
+                class="nav-link w-100"
+              >
+                {{ subcategory }}</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div *ngFor="let category of allCategories">
+      <div class="categories">
+        {{ category.CATEGORY }}
+      </div>
+      <div class="subcategories_list">
+        <div
+          class="subcategories_list_item"
+          *ngFor="let subcategory of category.SUBCATEGORIES"
+        >
+          {{ subcategory }}
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
