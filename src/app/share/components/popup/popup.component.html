@@ -22,7 +22,7 @@
         class="mb-3"
       />
       <h3 class="popup--name">
-        {{ data.name }} | {{ data.price | currency : "USD" }}
+        {{ product.name }} | {{ product.price | currency : "USD" }}
       </h3>
       <p class="card-text mb-2 popup--description">VC 67CM X 60CM X 80CM</p>
       <p class="card-text mb-2 popup--description">REF. 33722</p>
@@ -35,7 +35,7 @@
         ></a> -->
         <a
           class="btn btn-outline-dark w-100 rounded-0 btn-sm card-button"
-          [routerLink]="'product/' + data.category + '/' + data.name"
+          [routerLink]="'product/' + product.category + '/' + product.name"
           >Details</a
         >
       </div>

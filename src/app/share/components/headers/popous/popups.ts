@@ -8,96 +8,56 @@ export class headerManage {
       {
         top: '13%',
         left: '27%',
-        name: 'Sink',
-        description:
-          'This prodcut is made with the strongest mirror in the world.',
-        price: 250,
-        category: 'bath',
+        id: '34',
       },
       {
         top: '35%',
         left: '53%',
-        name: 'Sink',
-        description:
-          'This prodcut is made with the strongest mirror in the world.',
-        price: 250,
-        category: 'bath',
+        id: '35',
       },
       {
         top: '27%',
         left: '37%',
-        name: 'Sink',
-        description:
-          'This prodcut is made with the strongest mirror in the world.',
-        price: 250,
-        category: 'bath',
+        id: '36',
       },
     ],
     bedroom: [
       {
         top: '23%',
         left: '25%',
-        name: 'Sink',
-        description:
-          'This prodcut is made with the strongest mirror in the world.',
-        price: 250,
-        category: 'bath',
+        id: '36',
       },
       {
         top: '5%',
         left: '65%',
-        name: 'Sink',
-        description:
-          'This prodcut is made with the strongest mirror in the world.',
-        price: 250,
-        category: 'bath',
+        id: '38',
       },
       {
         top: '50%',
         left: '85%',
-        name: 'Sink',
-        description:
-          'This prodcut is made with the strongest mirror in the world.',
-        price: 250,
-        category: 'bath',
+        id: '36',
       },
       {
         top: '35%',
         left: '45%',
-        name: 'Sink',
-        description:
-          'This prodcut is made with the strongest mirror in the world.',
-        price: 250,
-        category: 'bath',
+        id: '37',
       },
     ],
     living: [
       {
         top: '5%',
         left: '20%',
-        name: 'Sink',
-        description:
-          'This prodcut is made with the strongest mirror in the world.',
-        price: 250,
-        category: 'bath',
+        id: '40',
       },
       {
         top: '40%',
         left: '45%',
-        name: 'Sink',
-        description:
-          'This prodcut is made with the strongest mirror in the world.',
-        price: 250,
-        category: 'bath',
+        id: '41',
       },
       {
         top: '40%',
         left: '75%',
-        name: 'Sink',
-        description:
-          'This prodcut is made with the strongest mirror in the world.',
-        price: 250,
-        category: 'bath',
+        id: '40',
       },
     ],
   };
@@ -118,8 +78,5 @@ export class headerManage {
 export type popup = {
   top: string;
   left: string;
-  name: string;
-  description: string;
-  price: number;
-  category: string;
+  id: string;
 };

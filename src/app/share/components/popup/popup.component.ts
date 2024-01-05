@@ -1,3 +1,7 @@
+import {
+  ProductManage,
+  product,
+} from 'src/app/products/services/product-manage.service';
 import { popup } from '../headers/popous/popups';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -11,14 +15,16 @@ export class PopupComponent implements OnInit {
   @Input() data: popup = {
     top: '',
     left: '',
-    name: '',
-    description: '',
-    price: 0,
-    category: '',
+    id: '',
   };
-  constructor() {}
+  product: product;
+  constructor(private products: ProductManage) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.product = <product>(
+      this.products.allProducts.find((x) => x.id == this.data.id)
+    );
+  }
   hoverproducts(nth: boolean) {
     this.popup_active = !this.popup_active;
   }
