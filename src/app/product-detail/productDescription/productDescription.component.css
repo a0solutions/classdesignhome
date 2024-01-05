@@ -1,0 +1,11 @@
+.form-control:focus {
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.3);
+
+  border: 1px solid #212529;
+}
+.form-control {
+  border: 1px solid #212529;
+}
+.bold {
+  font-weight: 800;
+}

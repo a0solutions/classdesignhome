@@ -24,6 +24,14 @@ import { CategoriesService } from './share/services/categories.service';
 import { ProductListComponent } from './products/productList/productList.component';
 import { ProductManage } from './products/services/product-manage.service';
 import { FilterManage } from './products/services/filterManage.service';
+import { ProductGalery } from './product-detail/productGalery/productGalery.component';
+import { ProductDescriptionComponent } from './product-detail/productDescription/productDescription.component';
+import { StockPipe } from './share/pipes/stock.pipe';
+import { CapitalizePipe } from './share/pipes/capitalize.pipe';
+import { CatalogPageComponent } from './catalog-page/catalog-page.component';
+import { CatalogCardComponent } from './catalog-page/catalog-card/catalog-card.component';
+import { OffersComponent } from './products/offers/offers.component';
+import { OfferCardComponent } from './products/offers/offer-card/offer-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +52,14 @@ import { FilterManage } from './products/services/filterManage.service';
     ColorSelectComponent,
     SidebarComponent,
     ProductListComponent,
+    ProductGalery,
+    ProductDescriptionComponent,
+    StockPipe,
+    CapitalizePipe,
+    CatalogPageComponent,
+    CatalogCardComponent,
+    OffersComponent,
+    OfferCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CategoriesService, ProductManage, FilterManage],

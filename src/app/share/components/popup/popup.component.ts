@@ -4,6 +4,7 @@ import {
 } from 'src/app/products/services/product-manage.service';
 import { popup } from '../headers/popous/popups';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'popup',
@@ -13,19 +14,20 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PopupComponent implements OnInit {
   popup_active: boolean = false;
   @Input() data: popup = {
-    top: '',
-    left: '',
-    id: '',
+    top: '27',
+    left: '50',
+    id: '34',
   };
   product: product;
-  constructor(private products: ProductManage) {}
+  constructor(private products: ProductManage, private http: Router) {}
 
   ngOnInit() {
     this.product = <product>(
       this.products.allProducts.find((x) => x.id == this.data.id)
     );
   }
-  hoverproducts(nth: boolean) {
-    this.popup_active = !this.popup_active;
+
+  navigate(id: string, name: string) {
+    this.http.navigate(['product/' + id + '/' + name]);
   }
 }

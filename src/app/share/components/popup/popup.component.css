@@ -3,6 +3,10 @@
   z-index: 9;
   min-height: 280px;
 }
+.dataShow {
+  transition: all 0.5s;
+  opacity: 0;
+}
 .popup--name {
   font-size: 18px;
 }

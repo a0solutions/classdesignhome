@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'product-detail',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
+  headerName: string = '';
+  constructor(private http: ActivatedRoute) {}
+  ngOnInit() {
+    this.http.paramMap.subscribe((x) => {
+      this.headerName = <string>x.get('name');
+    });
+  }
 }

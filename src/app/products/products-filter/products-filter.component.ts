@@ -37,7 +37,7 @@ export class ProductsFilterComponent implements OnInit {
     //subscribing to filter changes and updating the data
     this.filter.allFilters.subscribe((x) => {
       this.colors = [];
-      this.product.getProductColors(x.category).forEach((y) => {
+      this.product.getProductByCategory(x.category).forEach((y) => {
         this.colors.includes(y.color) ? null : this.colors.push(y.color);
       });
     });

@@ -5,40 +5,42 @@
         <h5>Section</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a href="#" class="nav-link p-0 text-body-secondary">Home</a>
+            <a routerLink="/" class="nav-link p-0 text-body-secondary">Home</a>
           </li>
           <li class="nav-item mb-2">
-            <a href="#" class="nav-link p-0 text-body-secondary">Features</a>
+            <a routerLink="/aboutus" class="nav-link p-0 text-body-secondary"
+              >Us</a
+            >
           </li>
           <li class="nav-item mb-2">
-            <a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
+            <a routerLink="/catalog" class="nav-link p-0 text-body-secondary"
+              >Catalog</a
+            >
           </li>
           <li class="nav-item mb-2">
-            <a href="#" class="nav-link p-0 text-body-secondary">FAQs</a>
+            <a
+              routerLink="/products/products"
+              class="nav-link p-0 text-body-secondary"
+              >Shop</a
+            >
           </li>
           <li class="nav-item mb-2">
-            <a href="#" class="nav-link p-0 text-body-secondary">About</a>
+            <a routerLink="/contact" class="nav-link p-0 text-body-secondary"
+              >Contact</a
+            >
           </li>
         </ul>
       </div>
 
       <div class="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
+        <h5>Products</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2">
-            <a href="#" class="nav-link p-0 text-body-secondary">Home</a>
-          </li>
-          <li class="nav-item mb-2">
-            <a href="#" class="nav-link p-0 text-body-secondary">Features</a>
-          </li>
-          <li class="nav-item mb-2">
-            <a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-          </li>
-          <li class="nav-item mb-2">
-            <a href="#" class="nav-link p-0 text-body-secondary">FAQs</a>
-          </li>
-          <li class="nav-item mb-2">
-            <a href="#" class="nav-link p-0 text-body-secondary">About</a>
+          <li class="nav-item mb-2" *ngFor="let category of allcategories">
+            <a
+              (click)="setRoute(category.category)"
+              class="nav-link p-0 text-body-secondary"
+              >{{ category.category | capitalize }}</a
+            >
           </li>
         </ul>
       </div>

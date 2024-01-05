@@ -1,0 +1,9 @@
+.image {
+  transition: all 0.5s;
+  cursor: pointer;
+  border: 6px solid white;
+  outline: 2px solid white;
+}
+.imageActive {
+  outline: 2px solid black;
+}

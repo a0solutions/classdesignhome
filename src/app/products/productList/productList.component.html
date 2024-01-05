@@ -1,7 +1,9 @@
 <div class="row">
-  <p *ngIf="products.length == 0" class="py-4 text-center w-100">
-    No product was found
-  </p>
+  <div *ngIf="products.length == 0" class="col-lg-6 col-md-6 col-sm-12 m-auto">
+    <img src="../../../assets/images/app/productnon.png" class="w-100" />
+    <p class="py-4 text-center w-100">No product was found</p>
+  </div>
+
   <div class="col-lg-4 col-md-4 col-sm-12" *ngFor="let product of products">
     <product-card [product]="product"></product-card>
   </div>

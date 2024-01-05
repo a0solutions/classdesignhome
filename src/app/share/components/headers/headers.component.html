@@ -16,10 +16,7 @@
       "
     />
     <div class="header-allhostsports">
-      <popup
-        *ngFor="let popup of popups.getPopups(headerName)"
-        [data]="popup"
-      ></popup>
+      <popup *ngFor="let popup of popups" [data]="popup"></popup>
     </div>
     <div class="header-overlay"></div>
   </div>

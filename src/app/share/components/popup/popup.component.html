@@ -2,18 +2,27 @@
   class="popup-container popup animate__animated animate__fadeIn"
   [ngStyle]="{ top: data.top, left: data.left }"
 >
-  <div class="image-showroom-hotspot" (click)="hoverproducts(true)">
-    <button
+  <div
+    class="image-showroom-hotspot"
+    (click)="popup_active = !popup_active"
+    [ngStyle]="{
+      top: popup_active ? '38%' : '42%'
+    }"
+  >
+    <!-- <button
       *ngIf="popup_active"
       class="btn-close btn-sm rounded-pill p-2"
-    ></button>
+    ></button> -->
   </div>
   <div
-    class="shadow bg-white rounded-0 p-3 popup animate__animated animate__fadeIn"
+    class="shadow dataShow bg-white rounded-0 p-3"
     data-wow-duration="2s"
     data-wow-delay="5s"
     data-wow-delay="0.5s"
-    *ngIf="popup_active"
+    [ngStyle]="{
+      opacity: popup_active ? 1 : 0,
+      top: popup_active ? '43%' : -10
+    }"
   >
     <div>
       <img
@@ -26,16 +35,12 @@
       </h3>
       <p class="card-text mb-2 popup--description">VC 67CM X 60CM X 80CM</p>
       <p class="card-text mb-2 popup--description">REF. 33722</p>
-      <!-- <p class="popup--description">{{ data.description }}</p> -->
       <div class="d-flex">
-        <!-- <a
-          class="btn btn-outline-dark w-100 rounded-0 me-1 btn-sm card-button"
-          [routerLink]="'product/' + data.category + '/' + data.name"
-          ><i class="bi bi-bag-heart"></i
-        ></a> -->
         <a
+          *ngIf="popup_active"
           class="btn btn-outline-dark w-100 rounded-0 btn-sm card-button"
-          [routerLink]="'product/' + product.category + '/' + product.name"
+          target="_blank"
+          (click)="navigate(product.id, product.name)"
           >Details</a
         >
       </div>
