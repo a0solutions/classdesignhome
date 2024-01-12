@@ -9,13 +9,13 @@
     </div>
     <div class="col-md-8 p-0">
       <div class="card-body p-0 p-2">
-        <h6 class="card-title">Product name</h6>
-        <h6 class="card-title">$1200</h6>
+        <h6 class="card-title">{{ product.name }}</h6>
+        <h6 class="card-title">{{ product.price | currency : "USD" }}</h6>
         <p class="card-text"></p>
       </div>
     </div>
     <div class="col-md-1 bg-dark">
-      <p class="card-delete mt-4">
+      <p class="card-delete mt-4" (click)="deleteProductEmit(product.id)">
         <i class="bi bi-trash3 text-white cursor-pointer"></i>
       </p>
     </div>

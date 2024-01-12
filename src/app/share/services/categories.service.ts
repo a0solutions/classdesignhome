@@ -7,7 +7,7 @@ import { urls } from './apiurl';
 })
 export class CategoriesService {
   constructor(private http: HttpClient) {}
-  url = urls.urlctagories;
+  url: string = urls.urlctagories;
   getCategories() {
     return this.http.get(this.url);
   }

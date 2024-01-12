@@ -142,3 +142,10 @@ popup {
   border-bottom: 1px solid white !important;
   color: white !important;
 }
+.separador10 {
+  margin: 10%;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #212529 !important;
+}

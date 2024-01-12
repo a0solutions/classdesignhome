@@ -1,0 +1,30 @@
+<div class="card rounded-0" (click)="navigate(product.id, product.name)">
+  <div class="row g-0 rounded-0">
+    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 position-relative">
+      <p
+        class="bg-dark p-1 px-3 h4 text-white rounded-0 position-absolute cursor-default"
+        title="New product"
+        style="left: 0px"
+      >
+        -40%
+      </p>
+      <img
+        [src]="'./assets/images/' + product.category + '/products/productx.png'"
+        class="img-fluid"
+        [alt]="product.name"
+      />
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
+      <div class="card-body p-3">
+        <h6 class="card-title mb-0">{{ product.name }}</h6>
+        <p class="card-title small">{{ product.reference }}</p>
+        <p class="card-title small mb-0 text-decoration-line-through">
+          {{ product.price | currency : "USD" }}
+        </p>
+        <p class="card-title h6 mb-0">
+          {{ product.price | currency : "USD" }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="chatbox-form bg-white" [ngClass]="{ 'hide-form': hideForm }">
+  <div class="bg-dark text-bg-dark p-3 d-flex position-relative">
+    <h6 class="mb-0"><i class="bi bi-send-fill"></i> Send us a message</h6>
+    <button
+      class="btn-close btn-close-white ms-auto"
+      (click)="hideForm = true"
+    ></button>
+  </div>
+  <contact-form (closeForm)="closeChat($event)"></contact-form>
+</div>
+<button
+  class="btn btn-chatbox btn-dark p-sm-3 p-md-3 p-lg-4 h3 rounded-0 animate__animated animate__fadeInUp"
+  (click)="hideForm = !hideForm"
+>
+  <i class="bi bi-send-fill"></i>
+</button>

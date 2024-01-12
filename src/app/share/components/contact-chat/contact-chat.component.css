@@ -1,0 +1,19 @@
+.btn-chatbox {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  z-index: 11;
+}
+.chatbox-form {
+  width: 350px;
+  position: relative;
+  transition: all 0.5s;
+  right: 0px;
+  position: fixed;
+  bottom: 120px;
+  right: 40px;
+  z-index: 11;
+}
+.hide-form {
+  right: -390px;
+}

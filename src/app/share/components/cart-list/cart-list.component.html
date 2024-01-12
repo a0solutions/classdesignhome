@@ -17,15 +17,18 @@
   </div>
   <div class="offcanvas-body">
     <div class="cart-items p-3">
-      <cart-item class="animate__animated animate__fadeInUp"></cart-item>
-      <cart-item class="animate__animated animate__fadeInUp"></cart-item>
-      <cart-item class="animate__animated animate__fadeInUp"></cart-item>
-      <cart-item class="animate__animated animate__fadeInUp"></cart-item>
+      <div *ngFor="let product of list">
+        <cart-item
+          (deleteProduct)="deleteProduct($event)"
+          [product]="product"
+          class="animate__animated animate__fadeInUp"
+        ></cart-item>
+      </div>
     </div>
     <div class="cart-checkout px-3">
       <div class="d-flex border-top border-bottom py-4 mb-3">
         <div class="me-auto">Subtotal</div>
-        <div class="ms-auto">$4800</div>
+        <div class="ms-auto">{{ subtotal | currency : "USD" }}</div>
       </div>
       <button class="btn btn-outline-dark rounded-0 w-100 py-3">
         Cart checkout

@@ -1,11 +1,11 @@
 <app-nav></app-nav>
-
+<app-loader [loader]="loader"></app-loader>
 <app-headers [headerName]="category"></app-headers>
-<app-offers [category]="category"></app-offers>
+<app-offers class="my-3 mx-5" [category]="category"></app-offers>
 <div class="my-5"></div>
 <div class="container mt-5">
   <div class="row mt-5">
-    <div class="col-lg-3 col-md-3 col-sm-12">
+    <div class="col-lg-3 col-md-5 col-sm-12">
       <div class="sticky-top filter-container">
         <products-filter
           [categorySelected]="category"
@@ -14,9 +14,10 @@
       </div>
     </div>
 
-    <div class="col-lg-9 col-md-9 col-sm-12">
+    <div class="col-lg-9 col-md-7 col-sm-12">
       <productList [category]="category"></productList>
     </div>
   </div>
 </div>
 <app-footer class="mt-5"></app-footer>
+<app-contact-chat></app-contact-chat>

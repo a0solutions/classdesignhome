@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { product } from 'src/app/products/services/product-manage.service';
 
 @Component({
   selector: 'cart-item',
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.css'],
 })
-export class CartItemComponent implements OnInit {
+export class CartItemComponent {
+  @Input() product: product;
+  @Output() deleteProduct = new EventEmitter<string>();
   constructor() {}
-
-  ngOnInit() {}
+  deleteProductEmit(id: string) {
+    this.deleteProduct.emit(id);
+  }
 }

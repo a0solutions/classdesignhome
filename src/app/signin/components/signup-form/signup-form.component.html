@@ -1,0 +1,120 @@
+<form ngForm #signupform="ngForm" (ngSubmit)="submit(signupform)">
+  <div class="row">
+    <div class="mb-3 col-lg-6 col-md-12 col-12">
+      <label for="" class="form-label">Name*</label>
+      <input
+        ngModel
+        #name="ngModel"
+        type="text"
+        name="name"
+        class="form-control rounded-0"
+        placeholder="Jhone"
+        required
+      />
+      <small *ngIf="name.touched && name.invalid" class="text-muted p-3"
+        >This field is required</small
+      >
+    </div>
+    <div class="mb-3 col-lg-6 col-md-12 col-12">
+      <label for="" class="form-label">Surname*</label>
+      <input
+        ngModel
+        #surname="ngModel"
+        type="text"
+        name="surname"
+        class="form-control rounded-0"
+        placeholder="Doe Smith"
+        required
+      />
+      <small *ngIf="surname.touched && surname.invalid" class="text-muted p-3"
+        >This field is required</small
+      >
+    </div>
+    <div class="mb-3 col-lg-6 col-12">
+      <label for="" class="form-label">Email*</label>
+      <input
+        ngModel
+        #email="ngModel"
+        type="email"
+        email="true"
+        name="email"
+        class="form-control rounded-0"
+        placeholder="jhonedoe@classdesignhome.com"
+        required
+      />
+      <small *ngIf="email.touched && email.invalid" class="text-muted p-3"
+        >This field is required</small
+      >
+    </div>
+    <div class="mb-3 col-lg-6 col-12">
+      <label for="" class="form-label">Email*</label>
+      <input
+        ngModel
+        #phone="ngModel"
+        type="tel"
+        name="phone"
+        class="form-control rounded-0"
+        placeholder="+15555555555"
+        required
+      />
+      <small *ngIf="phone.touched && phone.invalid" class="text-muted p-3"
+        >This field is required</small
+      >
+    </div>
+    <div class="mb-3 col-lg-6 col-12">
+      <label for="" class="form-label">Company*</label>
+      <input
+        ngModel
+        #company="ngModel"
+        type="text"
+        name="company"
+        class="form-control rounded-0"
+        placeholder="Class Design Home"
+        required
+      />
+      <small *ngIf="company.touched && company.invalid" class="text-muted p-3"
+        >This field is required</small
+      >
+    </div>
+    <div class="mb-3 col-lg-6 col-12">
+      <label for="" class="form-label">Profession*</label>
+      <input
+        ngModel
+        #profession="ngModel"
+        type="text"
+        name="profession"
+        class="form-control rounded-0"
+        placeholder="Interior Designer"
+        required
+      />
+      <small
+        *ngIf="profession.touched && profession.invalid"
+        class="text-muted p-3"
+        >This field is required</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Password*</label>
+      <input
+        ngModel
+        #password="ngModel"
+        type="password"
+        name="password"
+        class="form-control rounded-0"
+        placeholder="********sd"
+        required
+      />
+      <small *ngIf="password.touched && password.invalid" class="text-muted p-3"
+        >This field is required</small
+      >
+    </div>
+    <div class="mt-3">
+      <button
+        class="btn btn-outline-dark w-100 rounded-0"
+        [disabled]="signupform.invalid"
+      >
+        Sign Up
+      </button>
+    </div>
+  </div>
+</form>
