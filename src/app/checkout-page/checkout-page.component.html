@@ -1,3 +1,20 @@
-<p>
-  checkout-page works!
-</p>
+<app-nav [dark]="true"></app-nav>
+<div class="bg"></div>
+<div class="separador7"></div>
+<div class="container position-relative z-2">
+  <div class="d-flex p-sm-2 p-lg-3 h3">
+    <div class="me-auto">
+      <a routerLink="/"><i class="bi bi-arrow-left text-dark"></i></a>
+    </div>
+  </div>
+  <div class="row animate__animated animate__fadeInUp">
+    <div class="col-7 p-sm-2 p-lg-3">
+      <checkout-form></checkout-form>
+    </div>
+    <div class="col-5 p-sm-2 p-lg-3">
+      <product-checkout></product-checkout>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+<app-contact-chat></app-contact-chat>

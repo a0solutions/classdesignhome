@@ -10,7 +10,7 @@
   </button>
   <p
     *ngIf="product.new"
-    class="bg-dark p-1 px-3 text-white rounded-0 btn-sm position-absolute cursor-default"
+    class="bg-dark p-1 px-3 ms-3 text-white rounded-0 btn-sm position-absolute cursor-default"
     title="New product"
     style="left: 40px"
   >
@@ -19,7 +19,7 @@
   <img
     [src]="'./assets/images/' + product.category + '/products/productx.png'"
     class="card-img-top rounded-0"
-    alt="..."
+    [alt]="product.name"
   />
 
   <div class="card-body">

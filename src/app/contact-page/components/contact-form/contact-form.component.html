@@ -5,14 +5,13 @@
   class="p-3 text-start"
 >
   <div class="mb-3">
-    <label class="form-label">Fullname*</label>
     <input
       ngModel
       #fullname="ngModel"
       type="text"
       name="fullname"
       class="form-control rounded-0"
-      placeholder="Jhon Doe"
+      placeholder="Fullname*"
       required
     />
     <small *ngIf="fullname.invalid && fullname.touched" class="text-muted mt-2"
@@ -20,17 +19,15 @@
     >
   </div>
   <div class="mb-3">
-    <label class="form-label">Subject*</label>
     <select
       ngModel
       #subject="ngModel"
       type="text"
       name="subject"
       class="form-select rounded-0"
-      placeholder="Partner interest"
       required
     >
-      <option value="Product Interest" selected>Product interest</option>
+      <option value="" selected>Subject*</option>
       <option value="Product Interest">Delivery problem</option>
       <option value="Product Interest">Product information</option>
       <option value="Product Interest">Product Interest</option>
@@ -42,7 +39,6 @@
     >
   </div>
   <div class="mb-3">
-    <label class="form-label">Email*</label>
     <input
       ngModel
       #email="ngModel"
@@ -50,7 +46,7 @@
       email="true"
       name="email"
       class="form-control rounded-0"
-      placeholder="example@classdesignhome.com"
+      placeholder="Email*"
       required
     />
     <small *ngIf="email.invalid && email.touched" class="text-muted mt-2"
@@ -58,13 +54,13 @@
     >
   </div>
   <div class="mb-3">
-    <label class="form-label">Text Message*</label>
     <textarea
       ngModel
       #textMessage="ngModel"
       name="textmessage"
       class="form-control rounded-0"
       maxlength="500"
+      placeholder="Text Message*"
       required
     ></textarea>
     <div class="d-flex">

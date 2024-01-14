@@ -1,103 +1,80 @@
+<div class="bg"></div>
+<app-nav [dark]="true"></app-nav>
 <div class="box-signin d-flex justify-content-center align-items-center">
   <div
-    class="box-signin-forms col-lg-9 col-md-10 col-sm-12 p-5 m-5 animate__animated animate__fadeInUp"
+    class="box-signin-forms col-lg-7 col-md-10 col-sm-12 animate__animated animate__fadeInUp"
   >
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button
-          class="nav-link active w-100 rounded-0"
-          id="pills-home-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#pills-home"
-          type="button"
-          role="tab"
-          aria-controls="pills-home"
-          aria-selected="true"
+    <div class="d-flex px-5">
+      <div class="me-auto w-100">
+        <a routerLink="/"
+          ><i class="bi h3 bi-arrow-left text-dark"></i>
+          <span class="text-decoration-underline ms-3 mb-3 text-black"
+            >Return to Home</span
+          ></a
         >
-          Sign In
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button
-          class="nav-link w-100 rounded-0"
-          id="pills-profile-tab"
-          data-bs-toggle="pill"
-          data-bs-target="#pills-profile"
-          type="button"
-          role="tab"
-          aria-controls="pills-profile"
-          aria-selected="false"
+      </div>
+    </div>
+    <div class="bg-white m-5">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item border-bottom border-top" role="presentation">
+          <button
+            class="nav-link active w-100 rounded-0 p-3"
+            id="pills-home-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-home"
+            type="button"
+            role="tab"
+            aria-controls="pills-home"
+            aria-selected="true"
+          >
+            <i class="bi bi-box-arrow-in-right me-2"></i> Sign In
+          </button>
+        </li>
+        <li class="nav-item border-bottom border-top" role="presentation">
+          <button
+            class="nav-link w-100 rounded-0 p-3"
+            id="pills-profile-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-profile"
+            type="button"
+            role="tab"
+            aria-controls="pills-profile"
+            aria-selected="false"
+          >
+            <i class="bi bi-person-lines-fill me-2"></i> Create new account
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div
+          class="tab-pane fade show active p-5"
+          id="pills-home"
+          role="tabpanel"
+          aria-labelledby="pills-home-tab"
+          tabindex="0"
         >
-          Create new account
-        </button>
-      </li>
-    </ul>
-    <div class="tab-content" id="pills-tabContent">
-      <div
-        class="tab-pane fade show active p-3"
-        id="pills-home"
-        role="tabpanel"
-        aria-labelledby="pills-home-tab"
-        tabindex="0"
-      >
-        <div class="row mt-5">
-          <signin-form
-            class="col-12 col-lg-6 mt-5 p-3"
-            (message)="messageAlert($event)"
-          ></signin-form>
-          <div class="col-12 col-lg-6 p-3">
-            <div class="box-signin-logo mb-4">
-              <a routerLink="/">
-                <img src="../../assets/images/logo-black.png" width="40%"
-              /></a>
-            </div>
-            <p>
-              Etiam nec dolor volutpat, ultrices tellus id, aliquam eros. Sed
-              ornare, diam eget scelerisque lobortis, tortor ante ornare sapien,
-              eget blandit odio mi eget nisl. Aliquam mattis, risus nec auctor
-              efficitur, augue justo gravida dolor, vel finibus mauris mi in
-              massa. Proin tempus lacus ac feugiat mollis. Vestibulum ante ipsum
-              primis in faucibus orci luctus et ultrices posuere cubilia curae;
-              Curabitur eleifend mauris in felis tincidunt, et eleifend quam
-              maximus. Praesent eget accumsan eros.
-            </p>
+          <div class="row">
+            <signin-form
+              class="col-12 col-lg-12 mt-3 p-3"
+              (message)="messageAlert($event)"
+            ></signin-form>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade p-5"
+          id="pills-profile"
+          role="tabpanel"
+          aria-labelledby="pills-profile-tab"
+          tabindex="0"
+        >
+          <div class="row">
+            <signup-form
+              class="col-12 col-lg-12 p-3"
+              (message)="messageAlert($event)"
+            ></signup-form>
           </div>
         </div>
       </div>
-      <div
-        class="tab-pane fade p-3"
-        id="pills-profile"
-        role="tabpanel"
-        aria-labelledby="pills-profile-tab"
-        tabindex="0"
-      >
-        <div class="row mt-5">
-          <signup-form
-            class="col-12 col-lg-6 p-3"
-            (message)="messageAlert($event)"
-          ></signup-form>
-          <div class="col-12 col-lg-6 p-3">
-            <div class="box-signin-logo mb-4">
-              <a routerLink="/">
-                <img src="../../assets/images/logo-black.png" width="40%"
-              /></a>
-            </div>
-            <p>
-              Etiam nec dolor volutpat, ultrices tellus id, aliquam eros. Sed
-              ornare, diam eget scelerisque lobortis, tortor ante ornare sapien,
-              eget blandit odio mi eget nisl. Aliquam mattis, risus nec auctor
-              efficitur, augue justo gravida dolor, vel finibus mauris mi in
-              massa. Proin tempus lacus ac feugiat mollis. Vestibulum ante ipsum
-              primis in faucibus orci luctus et ultrices posuere cubilia curae;
-              Curabitur eleifend mauris in felis tincidunt, et eleifend quam
-              maximus. Praesent eget accumsan eros.
-            </p>
-          </div>
-        </div>
-      </div>
-      <p class="text-center mt-5">
-        <a class="text-dark" routerLink="/">Return to Home</a>
-      </p>
     </div>
   </div>
   <app-alerts
@@ -107,3 +84,4 @@
   ></app-alerts>
   <app-contact-chat></app-contact-chat>
 </div>
+<app-footer></app-footer>

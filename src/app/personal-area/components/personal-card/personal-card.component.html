@@ -1,0 +1,27 @@
+<div class="card mb-3" style="max-width: 540px">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img
+        [src]="'./assets/images/' + product.category + '/products/productx.png'"
+        class="img-fluid rounded-start"
+        alt="..."
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body ps-3 p-2">
+        <h6 class="card-title mb-0">{{ product.name }}</h6>
+        <p class="card-text mb-0">
+          <small class="text-body-secondary">{{ product.reference }}</small>
+        </p>
+        <p class="card-text mb-0">
+          <small class="text-body-secondary">{{ product.dimentions }}</small>
+        </p>
+        <p class="card-text mb-0">
+          <small class="text-body-secondary">{{
+            product.price | currency : "USD"
+          }}</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

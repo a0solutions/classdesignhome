@@ -1,122 +1,103 @@
 <nav
-  class="navbar navbar-expand-lg navbar-dark bg-gradient-nav position-fixed w-100 py-4 animate__animated animate__fadeInDown"
-  style="z-index: 99"
+  [ngClass]="{ 'bg-gradient-light': dark, 'bg-gradient-dark': !dark }"
+  class="navbar navbar-flex d-flex"
 >
-  <div class="container d-blck d-sm-flex d-md-flex">
-    <button
-      class="navbar-toggler d-lg-none rounded-0"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#collapsibleNavId"
-      aria-controls="collapsibleNavId"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+  <div class="menu d-flex">
+    <a
+      [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+      class="nav-link active ms-5 cursor-pointer"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasExample"
+      aria-controls="offcanvasExample"
+      aria-current="page"
+      ><i class="bi bi-list h3"></i
+    ></a>
+    <ul
+      [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+      class="navbar-ul"
     >
-      <span class="navbar-toggler-icon"></span>
+      <li class="nav-item">
+        <a class="nav-link active mt-1" routerLink="/" aria-current="page"
+          >Home <span class="visually-hidden">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link active mt-1"
+          routerLink="/aboutus"
+          aria-current="page"
+          >Us<span class="visually-hidden">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link active mt-1"
+          routerLink="/collections"
+          aria-current="page"
+          >COLLECTIONS<span class="visually-hidden">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link active mt-1"
+          routerLink="/products/products"
+          aria-current="page"
+          >SHOP<span class="visually-hidden">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link active mt-1"
+          routerLink="/contact"
+          aria-current="page"
+          >Contact<span class="visually-hidden">(current)</span></a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="logo mx-auto">
+    <a *ngIf="!dark" class="navbar-brand text-center w-50 logo-pc" href="./"
+      ><img src="../../../assets/images/logo.png" height="50px"
+    /></a>
+    <a *ngIf="dark" class="navbar-brand text-center w-50 logo-pc" href="./"
+      ><img src="../../../assets/images/logo-black.png" height="50px"
+    /></a>
+  </div>
+  <div class="icons me-3 mt-0 d-flex">
+    <button
+      [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+      class="btn mt-1 border-0 mx-lg-3 mx-md-2 mx-sm-2 rounded-0"
+      type="submit"
+    >
+      <i class="bi bi-search h-5"></i>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-      <ul class="navbar-nav w-30 me-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <a
-            class="nav-link active me-5 cursor-pointer"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasExample"
-            aria-controls="offcanvasExample"
-            aria-current="page"
-            ><i class="bi bi-list h3"></i
-          ></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active mt-1" routerLink="/" aria-current="page"
-            >Home <span class="visually-hidden">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link active mt-1"
-            routerLink="/aboutus"
-            aria-current="page"
-            >Us<span class="visually-hidden">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link active mt-1"
-            routerLink="/collections"
-            aria-current="page"
-            >COLLECTIONS<span class="visually-hidden">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link active mt-1"
-            routerLink="/products/products"
-            aria-current="page"
-            >SHOP<span class="visually-hidden">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link active mt-1"
-            routerLink="/contact"
-            aria-current="page"
-            >Contact<span class="visually-hidden">(current)</span></a
-          >
-        </li>
-      </ul>
-      <a class="navbar-brand text-center w-50 logo-pc" href="./"
-        ><img src="../../../assets/images/logo.png" height="60px"
-      /></a>
-      <form class="d-flex my-2 my-lg-0">
-        <input class="form-control rounded-0 search-form" type="text" />
-        <button
-          class="btn btn-dark bg-none border-0 my-2 my-sm-0 rounded-0"
-          type="submit"
-        >
-          <i class="bi bi-search"></i>
-        </button>
-      </form>
-      <a routerLink="/signin" class="mx-3"
-        ><i class="bi bi-person text-white h5 cursor-pointer"></i
+    <div class="mx-lg-3 mx-md-2 mx-sm-2 mt-2">
+      <a routerLink="/personal"
+        ><i
+          [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+          class="bi bi-person h5 cursor-pointer"
+        ></i
       ></a>
-      <button
-        type="button"
-        class="btn position-relative"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight"
-      >
-        <i class="bi bi-bag-heart text-white h5 cursor-pointer"></i>
-        <span
-          [ngStyle]="{ opacity: items != 0 ? 1 : 0 }"
-          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-dark"
-        >
-          {{ items }}
-        </span>
-      </button>
     </div>
-    <div class="menu-movil d-lg-none d-xl-none">
-      <a class="navbar-brand text-center w-30 logo-movil" href="./"
-        ><img src="../../../assets/images/logo.png" height="60px"
-      /></a>
-      <a routerLink="" class="mx-3"
-        ><i class="bi bi-person text-white h5 cursor-pointer"></i
-      ></a>
-      <button
-        type="button"
-        class="btn position-relative"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight"
+    <button
+      type="button"
+      class="btn position-relative mx-lg-3 mx-md-2 mx-sm-2"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight"
+    >
+      <i
+        [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+        class="bi bi-bag-heart h5 cursor-pointer"
+      ></i>
+      <span
+        [ngStyle]="{ opacity: items != 0 ? 1 : 0 }"
+        [ngClass]="{ 'bg-dark text-white': dark, 'bg-light text-dark': !dark }"
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-dark"
       >
-        <i class="bi bi-bag-heart text-white h5 cursor-pointer"></i>
-        <span
-          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-dark"
-        >
-          {{ items }}
-        </span>
-      </button>
-    </div>
+        {{ items }}
+      </span>
+    </button>
   </div>
 </nav>
 <cart-list></cart-list>

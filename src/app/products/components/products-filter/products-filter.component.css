@@ -15,17 +15,7 @@ select:focus {
 select option {
   border-radius: 0px;
 }
-.form-check-input:checked {
-  background-color: #212529;
-  border-color: #212529;
-}
-.form-check-input:focus {
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.3);
-  border: 1px solid #212529;
-}
-.select option:nth-child(3):hover {
-  background-color: #212529 !important;
-}
+
 option:hover {
   background-color: #212529 !important;
 }
@@ -33,14 +23,4 @@ option:hover {
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(100vh - 200px);
-}
-/****************** range ***********/
-.form-range::-webkit-slider-thumb {
-  background: #212529;
-}
-.form-range::-moz-range-thumb {
-  background: #212529;
-}
-.form-range::-moz-range-thumb:focus {
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.289);
 }

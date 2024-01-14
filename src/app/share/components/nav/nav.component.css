@@ -1,6 +1,19 @@
-.bg-gradient-nav {
+.bg-gradient-dark {
   background: linear-gradient(var(--bs-dark), rgba(0, 0, 0, 0));
+}
+.bg-gradient-light {
+  background: linear-gradient(var(--bs-light), rgba(255, 255, 255, 0));
 }
 .navbar li {
   text-transform: uppercase;
+}
+.navbar {
+  z-index: 99;
+  top: 0px;
+  position: fixed;
+  width: 100vw;
+  height: 120px;
+}
+.nav-item {
+  font-size: 13px;
 }

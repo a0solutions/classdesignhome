@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Form } from '@angular/forms';
+import { Form, NgForm } from '@angular/forms';
 import { urls } from 'src/app/share/services/apiurl';
 
 @Injectable({
@@ -15,7 +15,14 @@ export class UserManage {
   verifyUser(data: any) {
     return this.cnt.post(this.url, data, { responseType: 'text' });
   }
+  getAllUserInfo(id: string) {
+    return this.cnt.get(this.url + '?id=' + id);
+  }
+  updateData(form: NgForm, id: string, table: string) {
+    return this.cnt.put(this.url + '?id=' + id + '&table=' + table, form.value);
+  }
 }
+
 export type response = {
   message: any;
 };

@@ -6,6 +6,8 @@ import { ProductsComponent } from './products/products.component';
 import { CatalogPageComponent } from './catalog-page/catalog-page.component';
 import { SigninComponent } from './signin/signin.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
+import { PersonalAreaComponent } from './personal-area/personal-area.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +17,8 @@ const routes: Routes = [
   { path: 'collections', component: CatalogPageComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'contact', component: ContactPageComponent },
-  { path: 'checkout', component: ContactPageComponent },
+  { path: 'checkout', component: CheckoutPageComponent },
+  { path: 'personal', component: PersonalAreaComponent },
   { path: '**', component: HomeComponent },
 ];
 

@@ -50,10 +50,8 @@ export class ProductDescriptionComponent implements OnInit {
       this.colors.includes(y.color) ? null : this.colors.push(y.color);
     });
   }
-  updateFilterColor(color: any) {
-    console.log(color);
-  }
+  updateFilterColor(color: any) {}
   addCart(product: product, count: string) {
-    this.checkout.postLocalStorage(product, parseInt(count));
+    this.checkout.postLocalStorage(product.id, parseInt(count));
   }
 }

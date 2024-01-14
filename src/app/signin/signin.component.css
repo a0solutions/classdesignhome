@@ -5,8 +5,11 @@
   background-position: center center;
 }
 
-.nav-item {
+.nav-item,
+button {
   width: 50%;
+  font-size: 1.3rem;
+  text-transform: uppercase !important;
 }
 .nav-link {
   color: var(--bg-light);

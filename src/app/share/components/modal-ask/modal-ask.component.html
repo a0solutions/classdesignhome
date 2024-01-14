@@ -1,0 +1,43 @@
+<div class="modal-backdrop" [ngClass]="{ 'd-none': !show }"></div>
+<div
+  class="modal fade show d-block"
+  [ngClass]="{ 'show d-block': show }"
+  id="modalAsk"
+  tabindex="-1"
+  aria-labelledby="modalAskLabel"
+  aria-hidden="false"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-0">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalAskLabel">{{ title }}</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ text }}</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          (click)="answer(false)"
+          type="button"
+          class="btn btn-outline-dark rounded-0"
+          data-bs-dismiss="modal"
+        >
+          No
+        </button>
+        <button
+          (click)="answer(true)"
+          type="button"
+          class="btn btn-dark rounded-0"
+        >
+          Kepp shopping
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

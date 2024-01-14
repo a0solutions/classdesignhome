@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserManage } from '../../services/user-manage.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'signin-form',
@@ -8,8 +9,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   styleUrls: ['./signin-form.component.css'],
 })
 export class SigninFormComponent implements OnInit {
+  verify = new JwtHelperService();
   @Output() message: any = new EventEmitter<object>();
-  constructor(private users: UserManage) {}
+  constructor(private users: UserManage, private route: Router) {}
 
   ngOnInit() {}
   submit(form: any) {
@@ -18,14 +20,17 @@ export class SigninFormComponent implements OnInit {
         if (x == '400') {
           this.message.emit('user-pass');
         } else {
-          let verify = new JwtHelperService();
-          localStorage.setItem('token', <string>x);
-          let token = localStorage.getItem('token');
+          let token = <string>x;
+          this.actionLoggin(token);
         }
       },
       (err) => {
         this.message.emit('unknown');
       }
     );
+  }
+  actionLoggin(token: string) {
+    localStorage.setItem('CDHtoken', token);
+    this.route.navigate(['/personal']);
   }
 }

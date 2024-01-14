@@ -1,13 +1,26 @@
 <div class="row">
-  <div *ngIf="products.length == 0" class="col-lg-6 col-md-6 col-sm-12 m-auto">
+  <div
+    *ngIf="products.length == 0; else productlist"
+    class="col-lg-6 col-md-6 col-sm-12 m-auto"
+  >
     <img src="../../../assets/images/app/productnon.png" class="w-100" />
     <p class="py-4 text-center w-100">No product was found</p>
   </div>
 
-  <div
-    class="col-xl-3 col-lg-4 col-md-6 col-sm-12"
-    *ngFor="let product of products"
-  >
-    <product-card [product]="product"></product-card>
+  <ng-template #productlist>
+    <div
+      class="col-xl-3 col-lg-4 col-md-6 col-sm-12"
+      *ngFor="let product of printProduct"
+    >
+      <product-card [product]="product"></product-card>
+    </div>
+  </ng-template>
+  <div class="col-12 my-4" *ngIf="more && products.length != 0">
+    <p
+      class="text-center text-decoration-underline cursor-pointer"
+      (click)="paginateMore()"
+    >
+      More products
+    </p>
   </div>
 </div>

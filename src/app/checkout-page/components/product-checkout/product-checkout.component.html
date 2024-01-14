@@ -1,0 +1,18 @@
+<div class="product-checkout">
+  <div>
+    <div class="p-lg-3 p-sm-1 d-flex">
+      <div>
+        <h3 class="text-uppercase">Checkout cart List</h3>
+        <p class="text-decoration-underline cursor-pointer">
+          <i class="bi bi-shield-check"></i> Check our policy
+        </p>
+      </div>
+      <h3 class="ms-auto">
+        <span class="badge text-dark rounded-0"
+          ><i class="bi bi-bag-check"></i> {{ list.length }}</span
+        >
+      </h3>
+    </div>
+  </div>
+  <app-listed [size]="true"></app-listed>
+</div>

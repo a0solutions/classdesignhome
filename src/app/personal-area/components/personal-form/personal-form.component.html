@@ -1,0 +1,443 @@
+<div class="accordion rounded-0" id="accordionExample">
+  <div class="accordion-item rounded-0">
+    <h2 class="accordion-header rounded-0">
+      <button
+        class="accordion-button h3 p-4 rounded-0"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne"
+      >
+        <i class="bi bi-1-square-fill rounded-0 me-3"></i> Personal Information
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse show"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <form class="p-3" ngForm #personalform="ngForm">
+          <div class="billing">
+            <div class="row">
+              <div class="mb-3 col-lg-6 col-md-12 col-12">
+                <input
+                  [(ngModel)]="personal.name"
+                  #name="ngModel"
+                  type="text"
+                  name="name"
+                  class="form-control rounded-0"
+                  placeholder="Name*"
+                  required
+                />
+                <small
+                  *ngIf="name.touched && name.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-lg-6 col-md-12 col-12">
+                <input
+                  [(ngModel)]="personal.surname"
+                  #surname="ngModel"
+                  type="text"
+                  name="surname"
+                  class="form-control rounded-0"
+                  placeholder="Surname*"
+                  required
+                />
+                <small
+                  *ngIf="surname.touched && surname.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-lg-6 col-12">
+                <input
+                  [(ngModel)]="personal.email"
+                  #email="ngModel"
+                  type="email"
+                  email="true"
+                  name="email"
+                  class="form-control rounded-0"
+                  placeholder="Email*"
+                  required
+                />
+                <small
+                  *ngIf="email.touched && email.invalid"
+                  class="text-muted p-3"
+                  >This field is required or Invalid email</small
+                >
+              </div>
+              <div class="mb-3 col-lg-6 col-12">
+                <input
+                  [(ngModel)]="personal.phone"
+                  #phone="ngModel"
+                  type="tel"
+                  name="phone"
+                  class="form-control rounded-0"
+                  placeholder="Phone*"
+                  required
+                />
+                <small
+                  *ngIf="phone.touched && phone.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-lg-6 col-12">
+                <input
+                  [(ngModel)]="personal.company"
+                  #company="ngModel"
+                  type="text"
+                  name="company"
+                  class="form-control rounded-0"
+                  placeholder="Company"
+                  required
+                />
+                <small
+                  *ngIf="company.touched && company.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-lg-6 col-12">
+                <input
+                  [(ngModel)]="personal.profession"
+                  #profession="ngModel"
+                  type="text"
+                  name="profession"
+                  class="form-control rounded-0"
+                  placeholder="Profession*"
+                  rquiered
+                />
+                <small
+                  *ngIf="profession.touched && profession.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+            </div>
+          </div>
+          <button
+            class="btn btn-dark p-3 mt-3 rounded-0"
+            (click)="submit(personalform, 'personal')"
+          >
+            Update Information
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item rounded-0">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button p-4 rounded-0 collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseTwo"
+        aria-expanded="false"
+        aria-controls="collapseTwo"
+      >
+        <i class="bi bi-2-square-fill me-3"></i> Shipping address
+      </button>
+    </h2>
+    <div
+      id="collapseTwo"
+      class="accordion-collapse collapse"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body rounded-0">
+        <form ngForm #shippingform="ngForm" class="p-3">
+          <div class="billing">
+            <div class="d-flex p-2 mb-3"></div>
+            <div class="row">
+              <div class="mb-3 col-lg-6 col-md-12 col-12">
+                <input
+                  [(ngModel)]="personal.shippingname"
+                  #nameShipping="ngModel"
+                  type="text"
+                  name="shipname"
+                  class="form-control rounded-0"
+                  placeholder="Name*"
+                  required
+                />
+                <small
+                  *ngIf="nameShipping.touched && nameShipping.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-lg-6 col-md-12 col-12">
+                <input
+                  [(ngModel)]="personal.shippingsurname"
+                  #surnameShipping="ngModel"
+                  type="text"
+                  name="shipsurname"
+                  class="form-control rounded-0"
+                  placeholder="Surname*"
+                  required
+                />
+                <small
+                  *ngIf="surnameShipping.touched && surnameShipping.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-12">
+                <input
+                  [(ngModel)]="personal.shippingaddress"
+                  #shipaddressShipping="ngModel"
+                  type="text"
+                  name="shipaddress"
+                  class="form-control rounded-0"
+                  placeholder="Address*"
+                  required
+                />
+                <small
+                  *ngIf="
+                    shipaddressShipping.touched && shipaddressShipping.invalid
+                  "
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-12">
+                <input
+                  [(ngModel)]="personal.shippingaddress2"
+                  #address2="ngModel"
+                  type="text"
+                  name="shipaddress2"
+                  class="form-control rounded-0"
+                  placeholder="Address (Optional)"
+                />
+              </div>
+              <div class="mb-3 col-lg-6 col-12">
+                <input
+                  [(ngModel)]="personal.shippingcity"
+                  #cityShipping="ngModel"
+                  type="text"
+                  name="shipcity"
+                  class="form-control rounded-0"
+                  placeholder="Phone*"
+                  required
+                />
+                <small
+                  *ngIf="cityShipping.touched && cityShipping.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-lg-6 col-12">
+                <input
+                  [(ngModel)]="personal.shippingzip"
+                  #zipShipping="ngModel"
+                  type="text"
+                  name="shipzip"
+                  class="form-control rounded-0"
+                  placeholder="Zip code*"
+                  required
+                />
+                <small
+                  *ngIf="zipShipping.touched && zipShipping.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+
+              <div class="mb-3 col-lg-6 col-12">
+                <input
+                  [(ngModel)]="personal.shippingcountry"
+                  #countryShipping="ngModel"
+                  type="tel"
+                  name="shipcountry"
+                  class="form-control rounded-0"
+                  placeholder="Country*"
+                  required
+                />
+                <small
+                  *ngIf="countryShipping.touched && countryShipping.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-lg-6 col-12">
+                <input
+                  [(ngModel)]="personal.shippingphone"
+                  #phoneShipping="ngModel"
+                  type="tel"
+                  name="shipphone"
+                  class="form-control rounded-0"
+                  placeholder="Contact phone*"
+                  required
+                />
+                <small
+                  *ngIf="phoneShipping.touched && phoneShipping.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+            </div>
+          </div>
+          <button
+            class="btn btn-dark p-3 mt-3 rounded-0"
+            (click)="submit(shippingform, 'shipping')"
+          >
+            Update Information
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item rounded-0">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button p-4 rounded-0 collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseThree"
+        aria-expanded="false"
+        aria-controls="collapseThree"
+      >
+        <i class="bi bi-3-square-fill me-3"></i> Billing Information
+      </button>
+    </h2>
+    <div
+      id="collapseThree"
+      class="accordion-collapse collapse"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body rounded-0">
+        <form ngForm #billingform="ngForm" class="p-3">
+          <div class="billing">
+            <div class="d-flex p-2 mb-3"></div>
+            <div class="row">
+              <div class="mb-3 col-lg-6 col-md-12 col-12">
+                <input
+                  [(ngModel)]="personal.billingname"
+                  #nameBilling="ngModel"
+                  type="text"
+                  name="billname"
+                  class="form-control rounded-0"
+                  placeholder="Name*"
+                  required
+                />
+                <small
+                  *ngIf="nameBilling.touched && nameBilling.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-lg-6 col-md-12 col-12">
+                <input
+                  [(ngModel)]="personal.billingsurname"
+                  #surnameBilling="ngModel"
+                  type="text"
+                  name="billsurname"
+                  class="form-control rounded-0"
+                  placeholder="Surname*"
+                  required
+                />
+                <small
+                  *ngIf="surnameBilling.touched && surnameBilling.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-12">
+                <input
+                  [(ngModel)]="personal.billingaddress"
+                  #shipaddressBilling="ngModel"
+                  type="text"
+                  name="billaddress"
+                  class="form-control rounded-0"
+                  placeholder="Address*"
+                  required
+                />
+                <small
+                  *ngIf="
+                    shipaddressBilling.touched && shipaddressBilling.invalid
+                  "
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-12">
+                <input
+                  [(ngModel)]="personal.billingaddress2"
+                  #billingaddress2="ngModel"
+                  type="text"
+                  name="billaddress2"
+                  class="form-control rounded-0"
+                  placeholder="Address (Optional)"
+                />
+              </div>
+              <div class="mb-3 col-lg-6 col-12">
+                <input
+                  [(ngModel)]="personal.billingcity"
+                  #cityBilling="ngModel"
+                  type="text"
+                  name="billcity"
+                  class="form-control rounded-0"
+                  placeholder="Phone*"
+                  required
+                />
+                <small
+                  *ngIf="cityBilling.touched && cityBilling.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+              <div class="mb-3 col-lg-6 col-12">
+                <input
+                  [(ngModel)]="personal.billingzip"
+                  #zipBilling="ngModel"
+                  type="text"
+                  name="billzip"
+                  class="form-control rounded-0"
+                  placeholder="Zip code*"
+                  required
+                />
+                <small
+                  *ngIf="zipBilling.touched && zipBilling.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+
+              <div class="mb-3 col-lg-6 col-12">
+                <input
+                  [(ngModel)]="personal.billingcountry"
+                  #countryBilling="ngModel"
+                  type="tel"
+                  name="billcountry"
+                  class="form-control rounded-0"
+                  placeholder="Country*"
+                  required
+                />
+                <small
+                  *ngIf="countryBilling.touched && countryBilling.invalid"
+                  class="text-muted p-3"
+                  >This field is required</small
+                >
+              </div>
+            </div>
+          </div>
+          <button
+            class="btn btn-dark p-3 mt-3 rounded-0"
+            (click)="submit(billingform, 'billing')"
+          >
+            Update Information
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader [loader]="loader"></app-loader>
+<app-alerts
+  [message]="message"
+  [show]="show"
+  (offshow)="offAlert($event)"
+></app-alerts>

@@ -45,6 +45,15 @@ import { Contactform } from './share/services/contactform.service';
 import { LoaderComponent } from './share/components/loader/loader.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { Checkout } from './checkout-page/services/checkout.service';
+import { ModalAskComponent } from './share/components/modal-ask/modal-ask.component';
+import { ProductCheckoutComponent } from './checkout-page/components/product-checkout/product-checkout.component';
+import { CheckoutFormComponent } from './checkout-page/components/checkout-form/checkout-form.component';
+import { ListedComponent } from './share/components/cart-list/listed/listed.component';
+import { PersonalAreaComponent } from './personal-area/personal-area.component';
+import { PersonalInfoComponent } from './personal-area/components/personal-info/personal-info.component';
+import { PersonalFormComponent } from './personal-area/components/personal-form/personal-form.component';
+import { TokenManage } from './personal-area/services/token-manage.service';
+import { PersonalCardComponent } from './personal-area/components/personal-card/personal-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +91,14 @@ import { Checkout } from './checkout-page/services/checkout.service';
     ContactChatComponent,
     LoaderComponent,
     CheckoutPageComponent,
+    ModalAskComponent,
+    ProductCheckoutComponent,
+    CheckoutFormComponent,
+    ListedComponent,
+    PersonalAreaComponent,
+    PersonalInfoComponent,
+    PersonalFormComponent,
+    PersonalCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [
@@ -92,6 +109,7 @@ import { Checkout } from './checkout-page/services/checkout.service';
     alertList,
     Contactform,
     Checkout,
+    TokenManage,
   ],
   bootstrap: [AppComponent],
 })

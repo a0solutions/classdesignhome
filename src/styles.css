@@ -16,6 +16,9 @@
 .w-30 {
   width: 40%;
 }
+.h-70 {
+  height: 70vh;
+}
 .bg-none {
   background: transparent !important;
 }
@@ -35,7 +38,7 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgba(136, 136, 136, 0.518);
-  border-radius: 4px;
+  /* border-radius: 4px; */
 }
 
 /* Handle on hover */
@@ -145,7 +148,166 @@ popup {
 .separador10 {
   margin: 10%;
 }
+.separador7 {
+  margin: 7%;
+}
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   background-color: #212529 !important;
+}
+input:focus,
+select:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid var(--bs-dark) !important;
+}
+input[type="range"]:focus {
+  box-shadow: none !important;
+  border: none !important;
+}
+/* input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid #212529 !important;
+} */
+
+/****************** range ***********/
+.form-range::-webkit-slider-thumb {
+  background: #212529 !important;
+}
+.form-range::-moz-range-thumb {
+  background: #212529 !important;
+}
+.form-range::-moz-range-thumb:focus {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.289) !important;
+}
+.form-check-input:checked {
+  background-color: #212529 !important;
+  border-color: #212529 !important;
+}
+
+.select option:nth-child(3):hover {
+  background-color: #212529 !important;
+}
+
+.bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent
+    url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+  background-repeat: repeat;
+  animation: bg-animation 0.5s infinite;
+  opacity: 1;
+  visibility: visible;
+  z-index: -1;
+}
+
+@keyframes bg-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    transform: translate(-10%, 5%);
+  }
+  30% {
+    transform: translate(5%, -10%);
+  }
+  40% {
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+  60% {
+    transform: translate(15%, 0);
+  }
+  70% {
+    transform: translate(0, 10%);
+  }
+  80% {
+    transform: translate(-15%, 0);
+  }
+  90% {
+    transform: translate(10%, 5%);
+  }
+  100% {
+    transform: translate(5%, 0);
+  }
+}
+/*************************responsive***************************/
+@media (min-width: 320px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  .navbar-ul {
+    display: none;
+  }
+  .side-nav {
+    display: block;
+  }
+}
+@media (min-width: 480px) {
+  /* smartphones, Android phones, landscape iPhone */
+  .navbar-ul {
+    display: none;
+  }
+  .side-nav {
+    display: block;
+  }
+}
+@media (min-width: 600px) {
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+  .navbar-ul {
+    display: none;
+  }
+  .side-nav {
+    display: block;
+  }
+}
+@media (min-width: 801px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  .navbar-ul {
+    display: none;
+  }
+  .side-nav {
+    display: block;
+  }
+}
+@media (min-width: 1025px) {
+  /* big landscape tablets, laptops, and desktops */
+  .side-nav {
+    display: none;
+  }
+  .navbar-ul {
+    display: inline-block;
+  }
+  nav .nav-item {
+    display: inline-block;
+    margin: 0px 5px;
+    transition: all 0.5s;
+  }
+}
+@media (min-width: 1281px) {
+  /* hi-res laptops and desktops */
+}
+nav .nav-item:hover {
+  opacity: 0.5;
+}
+.icons i:hover,
+.icons div:hover {
+  opacity: 0.5s;
+}
+i {
+  vertical-align: middle !important;
 }

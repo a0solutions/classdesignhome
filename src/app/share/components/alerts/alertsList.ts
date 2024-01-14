@@ -11,6 +11,8 @@ export class alertList {
       return 'There is another account using this email.';
     } else if (code == 'registered') {
       return 'Congratulations your sign up was succesfully.';
+    } else if (code == 'personalUpdate') {
+      return 'Congratulations your update has been set succesfully.';
     } else if (code == 'contact') {
       return (
         'Thnak you for writing us ' +

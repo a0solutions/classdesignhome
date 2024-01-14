@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Checkout } from 'src/app/checkout-page/services/checkout.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { Checkout } from 'src/app/checkout-page/services/checkout.service';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
+  @Input() dark: boolean = false;
   items: number = 0;
   constructor(private checkout: Checkout) {}
   ngOnInit(): void {

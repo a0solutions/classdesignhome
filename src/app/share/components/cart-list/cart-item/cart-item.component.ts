@@ -8,6 +8,7 @@ import { product } from 'src/app/products/services/product-manage.service';
 })
 export class CartItemComponent {
   @Input() product: product;
+  @Input() size: boolean;
   @Output() deleteProduct = new EventEmitter<string>();
   constructor() {}
   deleteProductEmit(id: string) {

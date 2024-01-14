@@ -1,0 +1,98 @@
+<div class="d-flex align-items-start">
+  <div
+    class="nav flex-column w-25 nav-pills me-3 text-start"
+    id="v-pills-tab"
+    role="tablist"
+    aria-orientation="vertical"
+  >
+    <button
+      class="nav-link p-3 active"
+      id="v-pills-home-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-home"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-home"
+      aria-selected="true"
+    >
+      <i class="bi bi-file-person"></i>
+      <span class="title-pc"> Personal Information</span>
+    </button>
+    <button
+      class="nav-link p-3"
+      id="v-pills-profile-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-profile"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-profile"
+      aria-selected="false"
+    >
+      <i class="bi bi-collection"></i> Products
+    </button>
+    <button
+      class="nav-link p-3"
+      id="v-pills-profile-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-profile"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-profile"
+      aria-selected="false"
+    >
+      <i class="bi bi-box-seam"></i> Buying History
+    </button>
+    <button
+      class="nav-link p-3"
+      id="v-pills-profile-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-profile"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-profile"
+      aria-selected="false"
+    >
+      <i class="bi bi-sliders"></i> Settings
+    </button>
+  </div>
+  <div class="tab-content w-75" id="v-pills-tabContent">
+    <div
+      class="tab-pane fade show active px-lg-5"
+      id="v-pills-home"
+      role="tabpanel"
+      aria-labelledby="v-pills-home-tab"
+      tabindex="0"
+    >
+      <personal-form></personal-form>
+    </div>
+    <div
+      class="tab-pane fade px-lg-5"
+      id="v-pills-profile"
+      role="tabpanel"
+      aria-labelledby="v-pills-profile-tab"
+      tabindex="0"
+    >
+      <div class="tab-personal-item border bg-white">
+        <div class="tab-personal-item-header d-flex p-4 border-bottom">
+          <div><i class="bi bi-1-square-fill me-3"></i> New & Members</div>
+          <div class="ms-auto h-6 mt-1" style="font-size: 1rem">
+            (Quick view)
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="overflow-y-auto overflow-x-hidden h-70 p-1">
+            <div class="row">
+              <div
+                class="col-lg-4 col-md-6 col-sm-12"
+                *ngFor="let product of printProducts"
+              >
+                <product-card [product]="product"></product-card>
+                <!-- <personal-card [product]="product"></personal-card> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
