@@ -1,9 +1,9 @@
 <div class="cart-items p-3">
-  <div *ngFor="let product of list">
+  <div *ngFor="let product of printList">
     <cart-item
-      (deleteProduct)="deleteProduct($event)"
       [product]="product"
       [size]="size"
+      [itemCount]="itemCount(product.id)"
       class="animate__animated animate__fadeInUp"
     ></cart-item>
   </div>
@@ -32,6 +32,6 @@
     Cart checkout
   </a>
   <ng-template #gopay>
-    <a class="btn btn-outline-dark rounded-0 w-100 py-3"> Go to pay </a>
+    <a class="btn btn-dark rounded-0 w-100 py-3"> Go to pay </a>
   </ng-template>
 </div>

@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Form, FormGroup, NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'checkout-form',
   templateUrl: './checkout-form.component.html',
   styleUrls: ['./checkout-form.component.css'],
 })
-export class CheckoutFormComponent implements OnInit {
+export class CheckoutFormComponent {
   sameAddressFlag: boolean = false;
   shipping: shipping = <shipping>{};
   constructor() {}
 
-  ngOnInit() {}
-  submit(form: any) {}
   sameAddress(billing: NgForm) {
     !this.sameAddressFlag
       ? this.isSameAddress(billing)

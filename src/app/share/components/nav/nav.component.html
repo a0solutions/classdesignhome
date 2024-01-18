@@ -81,7 +81,8 @@
     </div>
     <button
       type="button"
-      class="btn position-relative mx-lg-3 mx-md-2 mx-sm-2"
+      [ngClass]="{ animate__shakeX: cheick }"
+      class="btn position-relative mx-lg-3 mx-md-2 mx-sm-2 animate__animated"
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasRight"
       aria-controls="offcanvasRight"
@@ -102,3 +103,5 @@
 </nav>
 <cart-list></cart-list>
 <sidebar></sidebar>
+<app-alerts></app-alerts>
+<app-modal-ask [show]="show" (answerCheck)="answerChek($event)"></app-modal-ask>

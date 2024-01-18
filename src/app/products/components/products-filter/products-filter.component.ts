@@ -4,7 +4,7 @@ import {
   CategoriesService,
   categories,
 } from 'src/app/share/services/categories.service';
-import { FilterManage } from '../../services/filterManage.service';
+import { FilterManage, filter } from '../../services/filterManage.service';
 import { ProductManage } from '../../services/product-manage.service';
 @Component({
   selector: 'products-filter',
@@ -27,20 +27,30 @@ export class ProductsFilterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.categories.getCategories().subscribe((x) => {
-      this.allCategories = <categories[]>x;
+    this.categories.getCategories().subscribe({
+      next: this.getCategories.bind(this),
+      error: console.log.bind(this),
     });
     //getting subcategory filter
     this.subcategoriesFilter = [this.subcategorySelected];
     this.filter.allFilters.value.subcategory = this.subcategoriesFilter;
     this.updateAllFilter();
     //subscribing to filter changes and updating the data
-    this.filter.allFilters.subscribe((x) => {
-      this.colors = [];
-      this.product.getProductByCategory(x.category).forEach((y) => {
-        this.colors.includes(y.color) ? null : this.colors.push(y.color);
-      });
+    this.filter.allFilters.subscribe({
+      next: this.getFiltersByCategories.bind(this),
+      error: console.log.bind(this),
     });
+  }
+
+  getFiltersByCategories(filters: filter) {
+    this.colors = [];
+    this.product.getProductByCategory(filters.category).forEach((y) => {
+      this.colors.includes(y.color) ? null : this.colors.push(y.color);
+    });
+  }
+  //Getting categories
+  getCategories(categories: object) {
+    this.allCategories = <categories[]>categories;
   }
   //Listening main category changes
   ngOnChanges(changes: { [key: string]: SimpleChange }) {

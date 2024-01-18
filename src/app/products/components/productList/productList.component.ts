@@ -6,7 +6,7 @@ import {
   SimpleChange,
 } from '@angular/core';
 import { ProductManage, product } from '../../services/product-manage.service';
-import { FilterManage } from '../../services/filterManage.service';
+import { FilterManage, filter } from '../../services/filterManage.service';
 
 @Component({
   selector: 'productList',
@@ -26,16 +26,19 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.filters.allFilters.subscribe((x) => {
-      this.itemNumber = 4;
-      this.products = [];
-      this.allProducts.getFilterProducts(x).map((x) => {
-        this.products.push(x);
-        this.paginate();
-      });
+    this.filters.allFilters.subscribe({
+      next: this.filterProducts.bind(this),
+      error: console.log.bind(this),
     });
   }
-
+  filterProducts(filters: filter) {
+    this.itemNumber = 4;
+    this.products = [];
+    this.allProducts.getFilterProducts(filters).map((x) => {
+      this.products.push(x);
+      this.paginate();
+    });
+  }
   paginate() {
     this.printProduct = this.products.slice(0, this.itemNumber);
     this.itemNumber < this.products.length

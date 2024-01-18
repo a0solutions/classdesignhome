@@ -1,5 +1,4 @@
-import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
 import { ProductManage, product } from '../../services/product-manage.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { ProductManage, product } from '../../services/product-manage.service';
 })
 export class ProductCardComponent {
   @Input() product: product;
-  constructor(private http: Router, private products: ProductManage) {}
+  constructor() {}
   navigate(id: string, name: string) {
     window.open('product/' + id + '/' + name, '_blank');
   }

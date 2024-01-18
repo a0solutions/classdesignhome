@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Checkout } from 'src/app/checkout-page/services/checkout.service';
+import { product } from 'src/app/products/services/product-manage.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,12 +8,31 @@ import { Checkout } from 'src/app/checkout-page/services/checkout.service';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
+  show: boolean = false;
   @Input() dark: boolean = false;
   items: number = 0;
+  cheick: boolean = false;
   constructor(private checkout: Checkout) {}
   ngOnInit(): void {
-    this.checkout.items.subscribe((x) => {
-      this.items = x.length;
+    this.show = this.checkout.checkCartList();
+    this.checkout.items.subscribe({
+      next: this.bascketUpdate.bind(this),
+      error: console.log.bind(this),
     });
+  }
+  bascketUpdate(products: string[]) {
+    this.items = products.length;
+    this.items != 0 ? this.cheickAction() : (this.cheick = false);
+  }
+
+  cheickAction() {
+    this.cheick = true;
+    setTimeout(() => {
+      this.cheick = false;
+    }, 1000);
+  }
+  answerChek(event: boolean) {
+    !event ? this.checkout.deleteAll() : this.checkout.setNewTime();
+    this.show = false;
   }
 }

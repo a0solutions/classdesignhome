@@ -1,41 +1,42 @@
 .header {
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-x: auto;
+  overflow-y: auto;
   width: 100vw;
-  height: 700px;
+  height: 100vh;
   cursor: url("../../../../assets/images/cursor/left.png") !important;
   position: relative;
   transition: all 0.8s;
 }
 .header-image {
-  width: 1920px;
-  height: 700px;
+  width: 100vw;
+  height: calc(100vw * 9 / 16);
   position: absolute;
   top: 0px;
 }
 .header-image img {
-  width: 1920px;
-  height: 700px;
+  width: 100vw;
+  height: calc(100vw * 9 / 16);
   position: absolute;
   top: 0px;
 }
 .header-overlay {
   position: absolute;
-  width: 1920px;
-  height: 700px;
+  width: 100vw;
+  height: calc(100vw * 9 / 16);
   top: 0px;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
 }
 .header-allhostsports {
-  width: 1920px;
-  height: 700px;
+  width: 100vw;
+  height: calc(100vw * 9 / 16);
   position: absolute;
   top: 0px;
 }
 .header-name {
   position: absolute;
-  top: 500px;
-  font-size: 150px;
+  top: 75vh;
+  font-size: calc(100vh / 4.5);
+  line-height: 9lvw;
   color: rgba(255, 255, 255, 0.322);
   transition: all 0.8s;
 }

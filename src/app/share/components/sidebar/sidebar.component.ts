@@ -14,9 +14,13 @@ export class SidebarComponent implements OnInit {
   constructor(private categories: CategoriesService) {}
 
   ngOnInit() {
-    this.categories.getCategories().subscribe((x) => {
-      this.allCategories = <categories[]>x;
+    this.categories.getCategories().subscribe({
+      next: this.setCategories.bind(this),
+      error: console.log.bind(this),
     });
+  }
+  setCategories(categories: any) {
+    this.allCategories = <categories[]>categories;
   }
   expandAccordion(accordion: any) {
     let id = accordion.target.id;

@@ -17,15 +17,14 @@ export class PersonalFormComponent implements OnInit {
 
   ngOnInit() {
     let id = this.token.getUserId();
-    this.users.getAllUserInfo(id).subscribe(
-      (x: any) => {
-        this.personal = <string>x;
-        this.loader = false;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.users.getAllUserInfo(id).subscribe({
+      next: this.getDataForm.bind(this),
+      error: console.log.bind(this),
+    });
+  }
+  getDataForm(data: string) {
+    this.personal = <string>data;
+    this.loader = false;
   }
   submit(form: NgForm, flag: string) {
     this.loader = true;

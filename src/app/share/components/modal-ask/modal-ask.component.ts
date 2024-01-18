@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal-ask',
   templateUrl: './modal-ask.component.html',
   styleUrls: ['./modal-ask.component.css'],
 })
-export class ModalAskComponent implements OnInit {
+export class ModalAskComponent {
   title: string = 'We remember you';
   text: string =
     "Hi there, It's been a while. Would you like to retake your last cart list?";
@@ -13,7 +13,6 @@ export class ModalAskComponent implements OnInit {
   @Input() show: boolean = false;
   constructor() {}
 
-  ngOnInit() {}
   answer(answer: boolean) {
     this.answerCheck.emit(answer);
   }

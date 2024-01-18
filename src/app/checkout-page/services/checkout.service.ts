@@ -22,41 +22,57 @@ export class Checkout {
     }
   }
   getLocalStorage() {
-    let local = JSON.parse(<string>localStorage.getItem('cartlist'));
-    this.localList = local;
+    this.localList = JSON.parse(<string>localStorage.getItem('cartlist'));
     this.items.next(this.localList);
     return this.localList;
   }
 
   postLocalStorage(products: string, count: number) {
-    if (this.items.value.length) {
-      this.localList = this.getLocalStorage();
-    }
+    this.items.value.length ? (this.localList = this.getLocalStorage()) : null;
     for (var i = 0; i < count; i++) {
       this.localList.push(products);
     }
     this.setLocalStorage();
   }
 
+  setNewTime() {
+    let time = Date.now();
+    localStorage.setItem('timeCartList', JSON.stringify(time));
+  }
+
+  updateCart(event: number, id: string) {
+    let count = 0;
+    this.localList.forEach((x) => {
+      x == id ? count++ : null;
+    });
+    count >= event
+      ? this.deleteProductLocalStorage(id)
+      : this.postLocalStorage(id, 1);
+  }
+
   deleteProductLocalStorage(id: string) {
-    this.localList = this.getLocalStorage();
     this.localList.splice(this.localList.indexOf(id), 1);
     this.localList.length == 0 ? this.deleteAll() : this.setLocalStorage();
   }
+
   setLocalStorage() {
     this.items.next(this.localList);
     localStorage.setItem('cartlist', JSON.stringify(this.localList));
-    let time = Date.now();
-    localStorage.setItem('timeCartList', JSON.stringify(time));
+    this.setNewTime();
+  }
+
+  deleteAllProductsId(id: string) {
+    let count = 0;
+    this.localList.forEach((x) => {
+      x == id ? count++ : null;
+    });
+    for (var i = 0; i <= count; i++) {
+      this.deleteProductLocalStorage(id);
+    }
   }
   deleteAll() {
     localStorage.removeItem('cartlist');
     localStorage.removeItem('timeCartList');
-    this.items.next([]);
-    this.localList = [];
-  }
-  setNewTime() {
-    let time = Date.now();
-    localStorage.setItem('timeCartList', JSON.stringify(time));
+    this.items.next(<string[]>[]);
   }
 }

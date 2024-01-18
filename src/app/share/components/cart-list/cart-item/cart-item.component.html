@@ -11,21 +11,31 @@
       />
     </div>
     <div class="col-md-8 p-0">
-      <div class="card-body p-0 p-2">
-        <div *ngIf="!size; else sizeData">
-          <h6 class="card-title mb-0">
-            {{ product.name }}
-          </h6>
-          <h6 class="card-title">{{ product.price | currency : "USD" }}</h6>
+      <div class="card-body d-flex p-0 p-2">
+        <div class="w-100" *ngIf="!size; else sizeData">
+          <p class="card-title mb-0">
+            <strong>{{ product.name }}</strong>
+          </p>
+          <p class="card-secondary mb-0">{{ product.reference }}</p>
+          <p class="card-secondary mb-0">
+            {{ product.price | currency : "USD" }}
+          </p>
         </div>
 
-        <ng-template #sizeData>
-          <h5 class="card-title mb-0">{{ product.name }}</h5>
-          <p class="card-title mb-2">{{ product.reference }}</p>
-          <p class="card-title mb-0">{{ product.dimentions }}</p>
-          <h6 class="card-title">{{ product.price | currency : "USD" }}</h6>
+        <ng-template class="w-100" #sizeData>
+          <div>
+            <h5 class="mb-0">{{ product.name }}</h5>
+            <p class="card-secondary mb-2">{{ product.reference }}</p>
+            <p class="card-secondary mb-0">{{ product.dimentions }}</p>
+            <h6 class="card-title">{{ product.price | currency : "USD" }}</h6>
+          </div>
         </ng-template>
-        <p class="card-text"></p>
+        <app-counter
+          class="mt-2"
+          [card]="true"
+          [number]="itemCount"
+          (numberCount)="numberCount($event)"
+        ></app-counter>
       </div>
     </div>
     <div

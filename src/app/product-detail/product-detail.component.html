@@ -1,9 +1,17 @@
-<app-nav [dark]="false"></app-nav>
-<app-headers [headerName]="headerName"></app-headers>
+<app-nav [dark]="true"></app-nav>
+<div class="separador7"></div>
+<div class="bg"></div>
 <div class="container mt-5">
+  <div class="d-flex p-sm-2 p-lg-3 h3">
+    <div class="me-auto">
+      <a routerLink="/"><i class="bi bi-arrow-left text-dark"></i></a>
+    </div>
+  </div>
   <div class="row">
-    <div class="col-6"><productGalery></productGalery></div>
-    <div class="col-6"><productDescription></productDescription></div>
+    <div class="col-md-6 col-12"><productGalery [id]="id"></productGalery></div>
+    <div class="col-md-6 col-12">
+      <productDescription [id]="id"></productDescription>
+    </div>
   </div>
   <div class="separador10"></div>
   <app-offers [category]="category"></app-offers>

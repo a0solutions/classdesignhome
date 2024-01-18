@@ -54,6 +54,7 @@ import { PersonalInfoComponent } from './personal-area/components/personal-info/
 import { PersonalFormComponent } from './personal-area/components/personal-form/personal-form.component';
 import { TokenManage } from './personal-area/services/token-manage.service';
 import { PersonalCardComponent } from './personal-area/components/personal-card/personal-card.component';
+import { CounterComponent } from './share/components/counter/counter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,6 +100,7 @@ import { PersonalCardComponent } from './personal-area/components/personal-card/
     PersonalInfoComponent,
     PersonalFormComponent,
     PersonalCardComponent,
+    CounterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

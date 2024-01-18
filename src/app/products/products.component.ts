@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -13,10 +13,14 @@ export class ProductsComponent implements OnInit {
   constructor(private url: ActivatedRoute) {}
 
   ngOnInit() {
-    this.url.paramMap.subscribe((x) => {
-      this.category = <string>x.get('category');
-      this.subcategory = <string>x.get('subcategory');
-      this.loader = false;
+    this.url.paramMap.subscribe({
+      next: this.getCategory.bind(this),
+      error: console.log.bind(this),
     });
+  }
+  getCategory(param: ParamMap) {
+    this.category = <string>param.get('category');
+    this.subcategory = <string>param.get('subcategory');
+    this.loader = false;
   }
 }

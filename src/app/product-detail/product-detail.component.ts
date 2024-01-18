@@ -8,15 +8,12 @@ import { ProductManage } from '../products/services/product-manage.service';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  headerName: string = '';
+  id: string = '';
   category: string = '';
   constructor(private http: ActivatedRoute, private products: ProductManage) {}
   ngOnInit() {
     this.http.paramMap.subscribe((x) => {
-      this.headerName = <string>x.get('name');
+      this.id = <string>x.get('id');
     });
-    this.category = <string>(
-      this.products.getCategory(this.headerName)?.category
-    );
   }
 }

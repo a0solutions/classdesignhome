@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Route } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { Checkout } from 'src/app/checkout-page/services/checkout.service';
 import {
   ProductManage,
@@ -12,6 +11,7 @@ import {
   styleUrls: ['./listed.component.css'],
 })
 export class ListedComponent implements OnInit {
+  printList: product[] = [];
   list: product[] = [];
   subtotal: number = 0;
   show: boolean = false;
@@ -22,17 +22,46 @@ export class ListedComponent implements OnInit {
 
   ngOnInit() {
     this.checkout.checkCartList() ? (this.show = true) : null;
-    this.checkout.items.subscribe((x) => {
-      this.subtotal = 0;
-      this.list = [];
-      x.forEach((y) => {
-        let product = <product>this.products.getProduct(y);
-        this.list.push(product);
-        this.subtotal = this.subtotal + product.price;
-      });
+    this.checkout.items.subscribe({
+      next: this.resetProperties.bind(this),
+      error: console.log.bind(this),
     });
   }
+  resetProperties(allItems: string[]) {
+    this.subtotal = 0;
+    this.list = [];
+    allItems.length != 0
+      ? this.printAllProducts(allItems)
+      : (this.printList = []);
+  }
+  printAllProducts(products: string[]) {
+    products.forEach((y) => {
+      let product = <product>this.products.getProduct(y);
+      this.list.push(product);
+      this.subtotal = this.subtotal + product.price;
+      this.printList = this.getItems(this.list);
+    });
+  }
+
   deleteProduct(id: string) {
     this.checkout.deleteProductLocalStorage(id);
+  }
+  getItems(list: product[]) {
+    let duplicate_elements = [];
+    for (let num in list) {
+      for (let num2 in list) {
+        if (list[num] === list[num2]) {
+          duplicate_elements.push(list[num]);
+        }
+      }
+    }
+    return [...new Set(duplicate_elements)];
+  }
+  itemCount(id: string): number {
+    let count: number = 0;
+    this.list.forEach((x) => {
+      x.id == id ? count++ : null;
+    });
+    return count;
   }
 }

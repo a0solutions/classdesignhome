@@ -22,7 +22,7 @@ export class FilterManage {
     });
   }
 }
-type filter = {
+export type filter = {
   category: string;
   color: string[];
   subcategory: string[];

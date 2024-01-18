@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
-import { Action } from 'rxjs/internal/scheduler/Action';
 import { Checkout } from 'src/app/checkout-page/services/checkout.service';
-import { FilterManage } from 'src/app/products/services/filterManage.service';
 import {
   ProductManage,
   product,
@@ -15,6 +12,8 @@ import {
   styleUrls: ['./productDescription.component.css'],
 })
 export class ProductDescriptionComponent implements OnInit {
+  @Input() id: string = '';
+  count: number = 1;
   colors: string[] = ['green'];
   product: product = {
     id: '40',
@@ -34,24 +33,19 @@ export class ProductDescriptionComponent implements OnInit {
     offer: false,
     membersOnly: true,
   };
-  constructor(
-    private products: ProductManage,
-    private http: ActivatedRoute,
-    private checkout: Checkout
-  ) {}
+  constructor(private products: ProductManage, private checkout: Checkout) {}
 
   ngOnInit() {
-    this.http.paramMap.subscribe((x) => {
-      let id = x.get('id');
-      this.product = <product>this.products.getProduct(<string>id);
-    });
-
+    this.product = <product>this.products.getProduct(this.id);
     this.products.getProductByCategory(this.product.category).forEach((y) => {
       this.colors.includes(y.color) ? null : this.colors.push(y.color);
     });
   }
   updateFilterColor(color: any) {}
-  addCart(product: product, count: string) {
-    this.checkout.postLocalStorage(product.id, parseInt(count));
+  addCart(product: product) {
+    this.checkout.postLocalStorage(product.id, this.count);
+  }
+  setNumber(event: number) {
+    this.count = event;
   }
 }
