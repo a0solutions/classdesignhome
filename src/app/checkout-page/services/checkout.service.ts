@@ -35,12 +35,12 @@ export class Checkout {
     this.setLocalStorage();
   }
 
-  setNewTime() {
+  setNewTime(): void {
     let time = Date.now();
     localStorage.setItem('timeCartList', JSON.stringify(time));
   }
 
-  updateCart(event: number, id: string) {
+  updateCart(event: number, id: string): void {
     let count = 0;
     this.localList.forEach((x) => {
       x == id ? count++ : null;
@@ -50,18 +50,18 @@ export class Checkout {
       : this.postLocalStorage(id, 1);
   }
 
-  deleteProductLocalStorage(id: string) {
+  deleteProductLocalStorage(id: string): void {
     this.localList.splice(this.localList.indexOf(id), 1);
     this.localList.length == 0 ? this.deleteAll() : this.setLocalStorage();
   }
 
-  setLocalStorage() {
+  setLocalStorage(): void {
     this.items.next(this.localList);
     localStorage.setItem('cartlist', JSON.stringify(this.localList));
     this.setNewTime();
   }
 
-  deleteAllProductsId(id: string) {
+  deleteAllProductsId(id: string): void {
     let count = 0;
     this.localList.forEach((x) => {
       x == id ? count++ : null;
@@ -70,7 +70,7 @@ export class Checkout {
       this.deleteProductLocalStorage(id);
     }
   }
-  deleteAll() {
+  deleteAll(): void {
     localStorage.removeItem('cartlist');
     localStorage.removeItem('timeCartList');
     this.items.next(<string[]>[]);

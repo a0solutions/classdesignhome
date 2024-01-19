@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { product } from '../../../services/product-manage.service';
 
 @Component({
@@ -6,12 +6,10 @@ import { product } from '../../../services/product-manage.service';
   templateUrl: './offer-card.component.html',
   styleUrls: ['./offer-card.component.css'],
 })
-export class OfferCardComponent implements OnInit {
+export class OfferCardComponent {
   @Input() product: product;
   constructor() {}
-
-  ngOnInit() {}
-  navigate(id: string, name: string) {
+  navigate(id: string, name: string): void {
     window.open('product/' + id + '/' + name, '_blank');
   }
 }

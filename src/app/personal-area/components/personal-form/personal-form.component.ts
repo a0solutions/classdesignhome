@@ -20,31 +20,32 @@ export class PersonalFormComponent implements OnInit {
     private alert: AlertManage
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     let id = this.token.getUserId();
     this.users.getAllUserInfo(id).subscribe({
       next: this.getDataForm.bind(this),
       error: this.setAlert.bind(''),
     });
   }
-  getDataForm(data: string) {
+  getDataForm(data: string): void {
+    console.log(data);
     this.personal = <string>data;
     this.loader = false;
   }
-  submit(form: NgForm, flag: string) {
+  submit(form: NgForm, flag: string): void {
     this.loader = true;
     this.users.updateData(form, this.personal.userid, flag).subscribe({
       next: this.updateUser.bind(this),
       error: this.setAlert.bind(''),
     });
   }
-  updateUser(personalData: object) {
+  updateUser(personalData: object): void {
     this.personal = personalData;
     this.loader = false;
     this.setAlert('personalUpdate');
   }
-  setAlert(code: string, data?: string) {
-    this.alert.setAlertMessage(code, data);
+  setAlert(code: string): void {
+    this.alert.setAlertMessage(code);
     this.alert.show.next(true);
   }
 }

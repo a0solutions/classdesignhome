@@ -9,7 +9,7 @@ import { product } from '../../services/product-manage.service';
 export class ProductCardComponent {
   @Input() product: product;
   constructor() {}
-  navigate(id: string, name: string) {
+  navigate(id: string, name: string): void {
     window.open('product/' + id + '/' + name, '_blank');
   }
 }

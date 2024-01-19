@@ -13,14 +13,14 @@ export class ProductsComponent implements OnInit {
   loader: boolean = true;
   constructor(private url: ActivatedRoute, private nav: NavManage) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.url.paramMap.subscribe({
       next: this.getCategory.bind(this),
       error: console.log.bind(this),
     });
     this.nav.dark.next(false);
   }
-  getCategory(param: ParamMap) {
+  getCategory(param: ParamMap): void {
     this.category = <string>param.get('category');
     this.subcategory = <string>param.get('subcategory');
     this.loader = false;

@@ -19,13 +19,13 @@ export class ProductListComponent implements OnInit {
     private filters: FilterManage
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.filters.allFilters.subscribe({
       next: this.filterProducts.bind(this),
       error: console.log.bind(this),
     });
   }
-  filterProducts(filters: filter) {
+  filterProducts(filters: filter): void {
     this.itemNumber = 4;
     this.products = [];
     this.allProducts.getFilterProducts(filters).map((x) => {
@@ -33,13 +33,13 @@ export class ProductListComponent implements OnInit {
       this.paginate();
     });
   }
-  paginate() {
+  paginate(): void {
     this.printProduct = this.products.slice(0, this.itemNumber);
     this.itemNumber < this.products.length
       ? (this.more = true)
       : (this.more = false);
   }
-  paginateMore() {
+  paginateMore(): void {
     this.itemNumber = this.itemNumber + this.paginateNumber;
     this.paginate();
   }

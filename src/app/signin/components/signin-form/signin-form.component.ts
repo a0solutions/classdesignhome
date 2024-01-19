@@ -17,25 +17,27 @@ export class SigninFormComponent {
     private alert: AlertManage
   ) {}
 
-  submit(form: any) {
+  submit(form: any): void {
     this.users.verifyUser(form.value).subscribe({
       next: this.manageResponse.bind(this),
       error: this.setAlert.bind(this),
     });
   }
-  manageResponse(response: string) {
-    response == '400' ? this.setAlert('user-pass') : this.openSession(response);
+  manageResponse(response: string): void {
+    console.log(response);
+    localStorage.setItem('CDHtoken', response);
+    // response == '400' ? this.setAlert('user-pass') : this.openSession(response);
   }
-  openSession(response: string) {
+  openSession(response: string): void {
     let token = <string>response;
     this.actionLoggin(token);
   }
-  actionLoggin(token: string) {
+  actionLoggin(token: string): void {
     localStorage.setItem('CDHtoken', token);
     this.route.navigate(['/personal']);
   }
-  setAlert(code: string, data?: string) {
-    this.alert.setAlertMessage(code, data);
+  setAlert(code: string): void {
+    this.alert.setAlertMessage(code);
     this.alert.show.next(true);
   }
 }

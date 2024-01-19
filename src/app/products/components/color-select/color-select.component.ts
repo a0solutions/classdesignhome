@@ -18,13 +18,13 @@ export class ColorSelectComponent implements OnChanges {
   @Output() selectedColor = new EventEmitter<Object>();
   selected: boolean = false;
   constructor() {}
-  ngOnChanges(changes: { [key: string]: SimpleChange }) {
+  ngOnChanges(changes: { [key: string]: SimpleChange }): void {
     if (changes.hasOwnProperty('activeColor')) {
       this.selected = this.activeColor;
     }
   }
 
-  selectColor(color: string) {
+  selectColor(color: string): void {
     this.selected = !this.selected;
     this.selectedColor.emit({ color: color, create: this.selected });
   }

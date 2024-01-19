@@ -173,7 +173,7 @@ export class ProductManage {
   products: BehaviorSubject<product[]> = new BehaviorSubject(this.allProducts);
   constructor(private filter: FilterManage) {}
 
-  getFilterProducts(filters: any) {
+  getFilterProducts(filters: any): product[] {
     this.products = new BehaviorSubject(this.allProducts);
     for (let prop in filters) {
       if (filters[prop] == 0 || filters[prop] == '') {
@@ -203,13 +203,13 @@ export class ProductManage {
 
     return this.products.value;
   }
-  getProductByCategory(category: any) {
+  getProductByCategory(category: any): product[] {
     this.products = new BehaviorSubject(this.allProducts);
     if (category != 'products')
       return this.products.value.filter((x) => x.category == category);
     return this.products.value;
   }
-  getOfferProduct(category: any) {
+  getOfferProduct(category: any): product[] {
     this.products = new BehaviorSubject(this.allProducts);
     if (category != 'products')
       return this.products.value.filter(
@@ -217,13 +217,13 @@ export class ProductManage {
       );
     return this.products.value.filter((x) => x.offer);
   }
-  getProduct(id: string) {
-    return this.allProducts.find((x) => x.id == id);
+  getProduct(id: string): product {
+    return <product>this.allProducts.find((x) => x.id == id);
   }
-  getCategory(name: string) {
+  getCategory(name: string): product | undefined {
     return this.allProducts.find((x: product) => {
-      if (x.name == name) return x.category;
-      return '';
+      if (x.name == name) return <string>x.category;
+      return <string>'';
     });
   }
 }

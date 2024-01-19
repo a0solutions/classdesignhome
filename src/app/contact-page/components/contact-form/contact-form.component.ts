@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import { Contactform } from 'src/app/share/services/contactform.service';
 
 @Component({
@@ -9,22 +10,19 @@ import { Contactform } from 'src/app/share/services/contactform.service';
 export class ContactFormComponent {
   message: any = '';
   show: boolean = false;
-  @Output() closeForm = new EventEmitter<boolean>();
-  constructor(private contact: Contactform) {}
+  constructor(private contact: Contactform, private alert: AlertManage) {}
 
-  submit(data: any) {
-    this.contact.postContact(data.value).subscribe(
-      (x: any) => {
-        this.message = { message: 'contact', data: x.fullname };
-        this.closeForm.emit(true);
-        data.reset();
-      },
-      (err) => {
-        this.message = this.message = { message: 'err', data: '' };
-      }
-    );
+  submit(data: any): void {
+    this.contact.postContact(data.value).subscribe({
+      next: this.responseManage.bind(this),
+      error: this.setAlert.bind(this),
+    });
   }
-  offalert(event: boolean) {
-    this.show = event;
+  responseManage(): void {
+    this.setAlert('caontact');
+  }
+  setAlert(code: string): void {
+    this.alert.setAlertMessage(code);
+    this.alert.show.next(true);
   }
 }

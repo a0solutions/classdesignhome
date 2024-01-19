@@ -12,10 +12,10 @@ export class CartItemComponent {
   @Input() product: product;
   @Input() size: boolean;
   constructor(private chechout: Checkout) {}
-  deleteProductEmit(id: string) {
+  deleteProductEmit(id: string): void {
     this.chechout.deleteAllProductsId(id);
   }
-  numberCount(event: number) {
+  numberCount(event: number): void {
     this.chechout.updateCart(event, this.product.id);
   }
 }

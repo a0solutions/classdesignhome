@@ -21,20 +21,20 @@ export class NavComponent implements OnInit {
     });
     this.nav.dark.subscribe({ next: this.darkChange.bind(this) });
   }
-  bascketUpdate(products: string[]) {
+  bascketUpdate(products: string[]): void {
     this.items = products.length;
     this.items != 0 ? this.cheickAction() : (this.cheick = false);
   }
-  darkChange(dark: boolean) {
+  darkChange(dark: boolean): void {
     this.dark = dark;
   }
-  cheickAction() {
+  cheickAction(): void {
     this.cheick = true;
     setTimeout(() => {
       this.cheick = false;
     }, 1000);
   }
-  answerChek(event: boolean) {
+  answerChek(event: boolean): void {
     !event ? this.checkout.deleteAll() : this.checkout.setNewTime();
     this.show = false;
   }

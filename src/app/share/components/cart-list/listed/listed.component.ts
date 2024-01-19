@@ -20,21 +20,21 @@ export class ListedComponent implements OnInit {
   @Input() size: boolean = false;
   constructor(private checkout: Checkout, private products: ProductManage) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.checkout.checkCartList() ? (this.show = true) : null;
     this.checkout.items.subscribe({
       next: this.resetProperties.bind(this),
       error: console.log.bind(this),
     });
   }
-  resetProperties(allItems: string[]) {
+  resetProperties(allItems: string[]): void {
     this.subtotal = 0;
     this.list = [];
     allItems.length != 0
       ? this.printAllProducts(allItems)
       : (this.printList = []);
   }
-  printAllProducts(products: string[]) {
+  printAllProducts(products: string[]): void {
     products.forEach((y) => {
       let product = <product>this.products.getProduct(y);
       this.list.push(product);
@@ -43,10 +43,10 @@ export class ListedComponent implements OnInit {
     });
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id: string): void {
     this.checkout.deleteProductLocalStorage(id);
   }
-  getItems(list: product[]) {
+  getItems(list: product[]): product[] {
     let duplicate_elements = [];
     for (let num in list) {
       for (let num2 in list) {

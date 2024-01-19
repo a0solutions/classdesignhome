@@ -21,13 +21,13 @@ export class PopupComponent implements OnInit {
   product: product;
   constructor(private products: ProductManage, private http: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.product = <product>(
       this.products.allProducts.find((x) => x.id == this.data.id)
     );
   }
 
-  navigate(id: string, name: string) {
+  navigate(id: string, name: string): void {
     this.http.navigate(['product/' + id + '/' + name]);
   }
 }

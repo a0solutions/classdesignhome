@@ -15,13 +15,13 @@ export class AlertsComponent implements OnInit {
     this.alert.show.subscribe({ next: this.showAlert.bind(this) });
     this.alert.message.subscribe({ next: this.setMessage.bind(this) });
   }
-  showAlert(show: boolean) {
+  showAlert(show: boolean): void {
     this.show = show;
   }
-  setMessage(message: string) {
+  setMessage(message: string): void {
     this.message = message;
   }
-  closeAlert() {
+  closeAlert(): void {
     this.alert.show.next(false);
     this.alert.message.next('');
   }

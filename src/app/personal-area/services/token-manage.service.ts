@@ -11,16 +11,16 @@ export class TokenManage {
     this.token = <string>localStorage.getItem('CDHtoken');
   }
 
-  getUserId() {
+  getUserId(): string {
     this.getToken();
     if (!this.verify.isTokenExpired(this.token)) {
       let info = this.verify.decodeToken(this.token);
       return info.iss;
     } else {
-      return null;
+      return '';
     }
   }
-  private getToken() {
+  private getToken(): string {
     this.token = <string>localStorage.getItem('CDHtoken');
     return this.token;
   }

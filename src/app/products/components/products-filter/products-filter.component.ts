@@ -26,7 +26,7 @@ export class ProductsFilterComponent implements OnInit {
     private product: ProductManage
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.categories.getCategories().subscribe({
       next: this.getCategories.bind(this),
       error: console.log.bind(this),
@@ -42,18 +42,18 @@ export class ProductsFilterComponent implements OnInit {
     });
   }
 
-  getFiltersByCategories(filters: filter) {
+  getFiltersByCategories(filters: filter): void {
     this.colors = [];
     this.product.getProductByCategory(filters.category).forEach((y) => {
       this.colors.includes(y.color) ? null : this.colors.push(y.color);
     });
   }
   //Getting categories
-  getCategories(categories: object) {
+  getCategories(categories: object): void {
     this.allCategories = <categories[]>categories;
   }
   //Listening main category changes
-  ngOnChanges(changes: { [key: string]: SimpleChange }) {
+  ngOnChanges(changes: { [key: string]: SimpleChange }): void {
     if (changes.hasOwnProperty('categorySelected')) {
       this.filter.resetFilters();
       this.filter.allFilters.value.category = this.categorySelected;
@@ -61,11 +61,11 @@ export class ProductsFilterComponent implements OnInit {
     }
   }
 
-  setUrl(category: string) {
+  setUrl(category: string): void {
     this.http.navigateByUrl('products/' + category);
   }
   //updating filter object[subcategory]
-  updateFilterSub(sub: any) {
+  updateFilterSub(sub: any): void {
     let values = sub.target.value;
     sub.target.checked
       ? this.subcategoriesFilter.push(values)
@@ -77,7 +77,7 @@ export class ProductsFilterComponent implements OnInit {
     this.updateAllFilter();
   }
   //updating filter object[color]
-  updateFilterColor(color: any) {
+  updateFilterColor(color: any): void {
     color.create
       ? this.allColorFilters.push(color.color)
       : this.allColorFilters.splice(
@@ -88,12 +88,12 @@ export class ProductsFilterComponent implements OnInit {
     this.updateAllFilter();
   }
   //updating filter object[price]
-  updateFilterPrice(price: string) {
+  updateFilterPrice(price: string): void {
     this.filter.allFilters.value.price = parseInt(price);
     this.updateAllFilter();
   }
   //updating filter observable in FilterServices
-  updateAllFilter() {
+  updateAllFilter(): void {
     this.filter.allFilters.next(this.filter.allFilters.value);
   }
 }

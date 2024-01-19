@@ -14,16 +14,16 @@ export class FooterComponent implements OnInit {
   allcategories: categories[] = [];
   constructor(private categories: CategoriesService, private route: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.categories.getCategories().subscribe({
       next: this.setCategories.bind(this),
       error: console.log.bind(this),
     });
   }
-  setCategories(arrCategories: object) {
+  setCategories(arrCategories: object): void {
     this.allcategories = <categories[]>arrCategories;
   }
-  setRoute(category: string) {
+  setRoute(category: string): void {
     this.route.navigate(['products/' + category]);
   }
 }

@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
   setCategories(categories: any) {
     this.allCategories = <categories[]>categories;
   }
-  expandAccordion(accordion: any) {
+  expandAccordion(accordion: any): void {
     let id = accordion.target.id;
     if (document.getElementById(id)?.classList.contains('collapsed')) {
       document.getElementById(id + 'subcategories')?.classList.add('show');

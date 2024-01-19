@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'bed',
   templateUrl: './bed.component.html',
   styleUrls: ['./bed.component.css'],
 })
-export class BedComponent implements OnInit {
+export class BedComponent {
   constructor() {}
-
-  ngOnInit() {}
 }

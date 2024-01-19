@@ -13,7 +13,7 @@ export class CartListComponent {
   show: boolean = false;
   constructor(private checkout: Checkout) {}
 
-  answerCart(event: boolean) {
+  answerCart(event: boolean): void {
     event ? this.checkout.setNewTime() : this.checkout.deleteAll();
     this.show = false;
   }

@@ -11,19 +11,19 @@ import { NgForm } from '@angular/forms';
 export class SignupFormComponent {
   constructor(private users: UserManage, private alert: AlertManage) {}
 
-  submit(form: NgForm) {
+  submit(form: NgForm): void {
     this.users.postUser(form.value).subscribe({
       next: this.manageResponse.bind(this),
       error: this.setAlert.bind(''),
     });
   }
-  manageResponse(response: object) {
+  manageResponse(response: string): void {
     parseInt(<string>(<unknown>response)) == 400
       ? this.setAlert('email-exist')
       : this.setAlert('registered');
   }
-  setAlert(code: string, data?: string) {
-    this.alert.setAlertMessage(code, data);
+  setAlert(code: string): void {
+    this.alert.setAlertMessage(code);
     this.alert.show.next(true);
   }
 }

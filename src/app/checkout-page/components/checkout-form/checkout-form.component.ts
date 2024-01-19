@@ -11,13 +11,13 @@ export class CheckoutFormComponent {
   shipping: shipping = <shipping>{};
   constructor() {}
 
-  sameAddress(billing: NgForm) {
+  sameAddress(billing: NgForm): void {
     !this.sameAddressFlag
       ? this.isSameAddress(billing)
       : this.isNotSameAddress();
     this.sameAddressFlag = !this.sameAddressFlag;
   }
-  isSameAddress(billing: NgForm) {
+  isSameAddress(billing: NgForm): void {
     this.shipping = {
       name: billing.value.name,
       surname: billing.value.surname,
@@ -28,16 +28,8 @@ export class CheckoutFormComponent {
       country: billing.value.country,
     };
   }
-  isNotSameAddress() {
-    this.shipping = {
-      name: '',
-      surname: '',
-      address: '',
-      address2: '',
-      city: '',
-      zip: '',
-      country: '',
-    };
+  isNotSameAddress(): void {
+    this.shipping = <shipping>{};
   }
 }
 

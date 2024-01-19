@@ -11,7 +11,7 @@ export class ProductDetailComponent implements OnInit {
   id: string = '';
   category: string = '';
   constructor(private http: ActivatedRoute, private nav: NavManage) {}
-  ngOnInit() {
+  ngOnInit(): void {
     this.http.paramMap.subscribe((x) => {
       this.id = <string>x.get('id');
     });

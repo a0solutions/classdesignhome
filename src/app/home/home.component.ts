@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavManage } from '../share/components/nav/services/navManage.service';
 
 @Component({
   selector: 'home',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   loader: boolean = true;
+  constructor(private nav: NavManage) {}
   ngOnInit(): void {
-    this.loader = false;
+    this.nav.dark.next(false);
   }
 }

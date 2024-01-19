@@ -15,13 +15,13 @@ export class ProductCheckoutComponent implements OnInit {
   subtotal: number = 0;
   constructor(private checkout: Checkout, private products: ProductManage) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.checkout.items.subscribe({
       next: this.getCartListItems.bind(this),
       error: console.log.bind(this),
     });
   }
-  getCartListItems(items: string[]) {
+  getCartListItems(items: string[]): void {
     this.subtotal = 0;
     this.list = [];
     items.forEach((y) => {

@@ -21,7 +21,7 @@ export class HeadersComponent implements OnChanges {
     }
   }
 
-  scrollChange(mouse: any) {
+  scrollChange(mouse: any): void {
     if (mouse.clientX < 150) {
       document.getElementById('header')!.scrollLeft -= 300;
     } else if (
@@ -31,7 +31,7 @@ export class HeadersComponent implements OnChanges {
       document.getElementById('header')!.scrollLeft += 300;
     }
   }
-  moveMouse(mouse: any) {
+  moveMouse(mouse: any): void {
     if (mouse.clientX < 150) {
       document.getElementById('header')!.style.cursor = 'e-resize';
     } else if (

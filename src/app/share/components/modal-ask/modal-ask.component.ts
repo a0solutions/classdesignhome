@@ -13,7 +13,7 @@ export class ModalAskComponent {
   @Input() show: boolean = false;
   constructor() {}
 
-  answer(answer: boolean) {
+  answer(answer: boolean): void {
     this.answerCheck.emit(answer);
   }
 }

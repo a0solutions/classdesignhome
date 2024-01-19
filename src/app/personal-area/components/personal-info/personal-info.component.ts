@@ -14,7 +14,7 @@ export class PersonalInfoComponent implements OnInit {
   product: product[] = <product[]>[];
   constructor(private allProduct: ProductManage) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.printProducts = this.allProduct.allProducts.filter(
       (x) => x.new || x.membersOnly
     );
