@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChange,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductManage, product } from '../../services/product-manage.service';
 import { FilterManage, filter } from '../../services/filterManage.service';
 

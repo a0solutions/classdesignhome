@@ -1,38 +1,28 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChange,
-} from '@angular/core';
-import { alertList } from './alertsList';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AlertManage } from './services/alertManage.service';
 @Component({
   selector: 'app-alerts',
   templateUrl: './alerts.component.html',
   styleUrls: ['./alerts.component.css'],
 })
-export class AlertsComponent implements OnChanges {
+export class AlertsComponent implements OnInit {
   @Input() message: any = { message: '', data: '' };
-  @Input() show: boolean = false;
+  show: boolean = false;
   @Output() offshow = new EventEmitter<boolean>(false);
-  printMessage: string;
-  constructor(private alertList: alertList) {}
-  ngOnChanges(changes: { [key: string]: SimpleChange }) {
-    if (changes.hasOwnProperty('message')) {
-      this.message != '' ? this.setMessage() : null;
-    }
+  constructor(private alert: AlertManage) {}
+
+  ngOnInit(): void {
+    this.alert.show.subscribe({ next: this.showAlert.bind(this) });
+    this.alert.message.subscribe({ next: this.setMessage.bind(this) });
   }
-  setMessage() {
-    this.show = true;
-    this.printMessage = this.alertList.getMessage(
-      this.message.message,
-      this.message.data
-    );
-    this.message = '';
+  showAlert(show: boolean) {
+    this.show = show;
+  }
+  setMessage(message: string) {
+    this.message = message;
   }
   closeAlert() {
-    this.show = false;
-    this.offshow.emit(this.show);
+    this.alert.show.next(false);
+    this.alert.message.next('');
   }
 }

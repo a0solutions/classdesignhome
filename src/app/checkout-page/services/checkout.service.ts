@@ -66,7 +66,7 @@ export class Checkout {
     this.localList.forEach((x) => {
       x == id ? count++ : null;
     });
-    for (var i = 0; i <= count; i++) {
+    for (var i = 0; i < count; i++) {
       this.deleteProductLocalStorage(id);
     }
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductManage } from '../products/services/product-manage.service';
+import { NavManage } from '../share/components/nav/services/navManage.service';
 
 @Component({
   selector: 'product-detail',
@@ -10,10 +10,11 @@ import { ProductManage } from '../products/services/product-manage.service';
 export class ProductDetailComponent implements OnInit {
   id: string = '';
   category: string = '';
-  constructor(private http: ActivatedRoute, private products: ProductManage) {}
+  constructor(private http: ActivatedRoute, private nav: NavManage) {}
   ngOnInit() {
     this.http.paramMap.subscribe((x) => {
       this.id = <string>x.get('id');
     });
+    this.nav.dark.next(true);
   }
 }

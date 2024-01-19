@@ -37,7 +37,6 @@ import { SigninFormComponent } from './signin/components/signin-form/signin-form
 import { SignupFormComponent } from './signin/components/signup-form/signup-form.component';
 import { UserManage } from './signin/services/user-manage.service';
 import { AlertsComponent } from './share/components/alerts/alerts.component';
-import { alertList } from './share/components/alerts/alertsList';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { ContactFormComponent } from './contact-page/components/contact-form/contact-form.component';
 import { ContactChatComponent } from './share/components/contact-chat/contact-chat.component';
@@ -55,6 +54,9 @@ import { PersonalFormComponent } from './personal-area/components/personal-form/
 import { TokenManage } from './personal-area/services/token-manage.service';
 import { PersonalCardComponent } from './personal-area/components/personal-card/personal-card.component';
 import { CounterComponent } from './share/components/counter/counter.component';
+import { MainTemplateComponent } from './main-template/main-template.component';
+import { AlertManage } from './share/components/alerts/services/alertManage.service';
+import { NavManage } from './share/components/nav/services/navManage.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,6 +103,7 @@ import { CounterComponent } from './share/components/counter/counter.component';
     PersonalFormComponent,
     PersonalCardComponent,
     CounterComponent,
+    MainTemplateComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [
@@ -108,10 +111,11 @@ import { CounterComponent } from './share/components/counter/counter.component';
     ProductManage,
     FilterManage,
     UserManage,
-    alertList,
     Contactform,
     Checkout,
     TokenManage,
+    AlertManage,
+    NavManage,
   ],
   bootstrap: [AppComponent],
 })

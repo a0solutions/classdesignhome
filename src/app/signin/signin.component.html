@@ -1,6 +1,6 @@
 <div class="bg"></div>
-<app-nav [dark]="true"></app-nav>
-<div class="box-signin d-flex justify-content-center align-items-center">
+
+<article class="box-signin d-flex justify-content-center align-items-center">
   <div
     class="box-signin-forms col-lg-7 col-md-10 col-sm-12 animate__animated animate__fadeInUp"
   >
@@ -54,10 +54,7 @@
           tabindex="0"
         >
           <div class="row">
-            <signin-form
-              class="col-12 col-lg-12 mt-3 p-3"
-              (message)="messageAlert($event)"
-            ></signin-form>
+            <signin-form class="col-12 col-lg-12 mt-3 p-3"></signin-form>
           </div>
         </div>
         <div
@@ -68,20 +65,10 @@
           tabindex="0"
         >
           <div class="row">
-            <signup-form
-              class="col-12 col-lg-12 p-3"
-              (message)="messageAlert($event)"
-            ></signup-form>
+            <signup-form class="col-12 col-lg-12 p-3"></signup-form>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <app-alerts
-    [message]="message"
-    [show]="show"
-    (offshow)="offAlert($event)"
-  ></app-alerts>
-  <app-contact-chat></app-contact-chat>
-</div>
-<app-footer></app-footer>
+</article>

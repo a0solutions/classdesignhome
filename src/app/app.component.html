@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<header>
+  <app-nav></app-nav>
+</header>
+<section id="main-content" #mainContent>
+  <router-outlet></router-outlet>
+</section>
+<app-footer class="mt-5"></app-footer>
+<app-loader [loader]="loader"></app-loader>
+<app-contact-chat></app-contact-chat>
+<app-alerts></app-alerts>

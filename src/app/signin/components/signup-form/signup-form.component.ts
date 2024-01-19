@@ -1,29 +1,29 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserManage } from '../../services/user-manage.service';
+import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'signup-form',
   templateUrl: './signup-form.component.html',
   styleUrls: ['./signup-form.component.css'],
 })
-export class SignupFormComponent implements OnInit {
-  @Output() message: any = new EventEmitter<object>();
-  constructor(private users: UserManage) {}
+export class SignupFormComponent {
+  constructor(private users: UserManage, private alert: AlertManage) {}
 
-  ngOnInit() {}
-  submit(form: any) {
-    this.users.postUser(form.value).subscribe(
-      (x) => {
-        if (x == 400) {
-          this.message.emit('email-exist');
-        } else {
-          this.message.emit('registered');
-          form.reset();
-        }
-      },
-      (err) => {
-        this.message.emit('unknown');
-      }
-    );
+  submit(form: NgForm) {
+    this.users.postUser(form.value).subscribe({
+      next: this.manageResponse.bind(this),
+      error: this.setAlert.bind(''),
+    });
+  }
+  manageResponse(response: object) {
+    parseInt(<string>(<unknown>response)) == 400
+      ? this.setAlert('email-exist')
+      : this.setAlert('registered');
+  }
+  setAlert(code: string, data?: string) {
+    this.alert.setAlertMessage(code, data);
+    this.alert.show.next(true);
   }
 }

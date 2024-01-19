@@ -1,10 +1,19 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class alertList {
-  getMessage(code: string, data?: string) {
+export class AlertManage {
+  show: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  message: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  constructor() {}
+
+  setAlertMessage(code: string, data?: string) {
+    this.message.next(this.selectMessage(code, data));
+  }
+
+  private selectMessage(code: string, data?: string) {
     if (code == 'user-pass') {
       return 'Sorry user and password dose not match, try again or change your password.';
     } else if (code == 'email-exist') {
