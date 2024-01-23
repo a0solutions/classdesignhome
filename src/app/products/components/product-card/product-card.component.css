@@ -1,18 +1,15 @@
-.card-footer .card-button {
-  transition: all 0.5s;
-  overflow: hidden;
-}
-
 .card-footer .card-button:hover {
   width: 180% !important;
 }
-.card-title {
-  font-size: 18px;
-}
+
 .card-text {
   font-size: 12px;
 }
 .btn-social {
   top: 20px;
   right: 20px;
+}
+
+.share {
+  font-size: 0.7rem;
 }

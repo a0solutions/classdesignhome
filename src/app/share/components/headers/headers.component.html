@@ -1,26 +1,21 @@
-<div
-  class="header"
-  #header
-  (mousedown)="scrollChange($event)"
-  id="header"
-  (mousemove)="moveMouse($event)"
->
-  <div class="header-image">
-    <img
-      [src]="
-        '../../../assets/images/' +
-        headerNameUrl +
-        '/showroom/showroom-' +
-        headerNameUrl +
-        '-1.png'
-      "
-    />
-    <div class="header-allhostsports">
-      <popup *ngFor="let popup of popups" [data]="popup"></popup>
+<div class="main-container">
+  <div class="header" #header (mousedown)="draggableSet()" id="header">
+    <div class="item header-image">
+      <img
+        [src]="
+          '../../../assets/images/' +
+          headerNameUrl +
+          '/showroom/showroom-' +
+          headerNameUrl +
+          '-1.png'
+        "
+      />
+      <div class="header-allhostsports">
+        <popup *ngFor="let popup of popups" [data]="popup"></popup>
+      </div>
+      <div class="header-overlay"></div>
     </div>
-    <div class="header-overlay"></div>
   </div>
-
   <h1
     class="header-name text-capitalize popup animate__animated animate__fadeInUp"
   >

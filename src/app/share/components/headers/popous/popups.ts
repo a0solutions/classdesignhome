@@ -60,6 +60,23 @@ export class headerManage {
         id: '40',
       },
     ],
+    products: [
+      {
+        top: '5%',
+        left: '20%',
+        id: '40',
+      },
+      {
+        top: '40%',
+        left: '45%',
+        id: '41',
+      },
+      {
+        top: '40%',
+        left: '75%',
+        id: '40',
+      },
+    ],
   };
 
   getPopups(headerName: string) {
@@ -69,6 +86,8 @@ export class headerManage {
       return this.headers.bedroom;
     } else if (headerName == 'living') {
       return this.headers.living;
+    } else if (headerName == 'products') {
+      return this.headers.products;
     } else {
       return [{}];
     }

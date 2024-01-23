@@ -1,4 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { headerManage } from './popous/popups';
 
 @Component({
@@ -8,6 +15,7 @@ import { headerManage } from './popous/popups';
 })
 export class HeadersComponent implements OnChanges {
   @Input() headerName: string = '';
+  @ViewChild('header') myDiv: ElementRef;
   backgroundImage: string = '';
   popups: any = [];
   headerNameUrl: string;
@@ -21,26 +29,38 @@ export class HeadersComponent implements OnChanges {
     }
   }
 
-  scrollChange(mouse: any): void {
-    if (mouse.clientX < 150) {
-      document.getElementById('header')!.scrollLeft -= 300;
-    } else if (
-      mouse.clientX >
-      document.getElementById('header')!.offsetWidth - 150
-    ) {
-      document.getElementById('header')!.scrollLeft += 300;
-    }
-  }
-  moveMouse(mouse: any): void {
-    if (mouse.clientX < 150) {
-      document.getElementById('header')!.style.cursor = 'e-resize';
-    } else if (
-      mouse.clientX >
-      document.getElementById('header')!.offsetWidth - 150
-    ) {
-      document.getElementById('header')!.style.cursor = 'w-resize';
-    } else {
-      document.getElementById('header')!.style.cursor = 'default';
-    }
+  draggableSet(): void {
+    const ele = this.myDiv.nativeElement;
+    ele.style.cursor = 'grab';
+    let pos = { top: 0, left: 0, x: 0, y: 0 };
+    const mouseDownHandler = function (e: any): void {
+      ele.style.cursor = 'grabbing';
+      ele.style.userSelect = 'none';
+      pos = {
+        left: ele.scrollLeft,
+        top: ele.scrollTop,
+        // Get the current mouse position
+        x: e.clientX,
+        y: e.clientY,
+      };
+      document.addEventListener('mousemove', mouseMoveHandler);
+      document.addEventListener('mouseup', mouseUpHandler);
+    };
+    const mouseMoveHandler = function (e: any): void {
+      // How far the mouse has been moved
+      const dx = e.clientX - pos.x;
+      const dy = e.clientY - pos.y;
+      // Scroll the element
+      ele.scrollTop = pos.top - dy;
+      ele.scrollLeft = pos.left - dx;
+    };
+    const mouseUpHandler = function (): void {
+      ele.style.cursor = 'grab';
+      ele.style.removeProperty('user-select');
+      document.removeEventListener('mousemove', mouseMoveHandler);
+      document.removeEventListener('mouseup', mouseUpHandler);
+    };
+    // Attach the handler
+    ele.addEventListener('mousedown', mouseDownHandler);
   }
 }

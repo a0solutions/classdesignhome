@@ -5,45 +5,15 @@
   <div
     class="image-showroom-hotspot"
     (click)="popup_active = !popup_active"
-    [ngStyle]="{
-      top: popup_active ? '38%' : '42%'
-    }"
-  >
-    <!-- <button
-      *ngIf="popup_active"
-      class="btn-close btn-sm rounded-pill p-2"
-    ></button> -->
-  </div>
+  ></div>
   <div
-    class="shadow dataShow bg-white rounded-0 p-3"
+    class="card shadow-sm dataShow popup rounded-0 border-0"
     data-wow-duration="2s"
     data-wow-delay="5s"
     data-wow-delay="0.5s"
-    [ngStyle]="{
-      opacity: popup_active ? 1 : 0,
-      top: popup_active ? '43%' : -10
-    }"
   >
-    <div>
-      <img
-        src="./assets/images/bathroom/products/productx.png"
-        width="100%"
-        class="mb-3"
-      />
-      <h3 class="popup--name">
-        {{ product.name }} | {{ product.price | currency : "USD" }}
-      </h3>
-      <p class="card-text mb-2 popup--description">VC 67CM X 60CM X 80CM</p>
-      <p class="card-text mb-2 popup--description">REF. 33722</p>
-      <div class="d-flex">
-        <a
-          *ngIf="popup_active"
-          class="btn btn-outline-dark w-100 rounded-0 btn-sm card-button"
-          target="_blank"
-          (click)="navigate(product.id, product.name)"
-          >Details</a
-        >
-      </div>
+    <div *ngIf="popup_active">
+      <product-card [product]="product"></product-card>
     </div>
   </div>
 </div>

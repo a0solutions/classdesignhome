@@ -1,6 +1,6 @@
 .carousel-control-next,
 .carousel-control-prev {
-  width: 5%;
+  width: 3%;
 }
 .cards-wrapper {
   display: flex;
@@ -12,9 +12,23 @@
 }
 .carousel-control-next,
 .carousel-control-prev {
-  background: black;
   z-index: 10;
+  opacity: 1 !important;
+  transition: all 0.5s;
 }
 .carousel {
   transition: all 0.5s;
+}
+.carousel-inner {
+  position: relative;
+  width: 94%;
+  overflow: hidden;
+  left: 3%;
+}
+.offer-arrow {
+  font-size: 1.4rem;
+}
+.carousel-control-next:hover i,
+.carousel-control-prev:hover i {
+  color: #cba135 !important;
 }

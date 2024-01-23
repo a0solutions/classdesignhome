@@ -4,14 +4,15 @@
   id="offcanvasExample"
   aria-labelledby="offcanvasExampleLabel"
 >
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">BROWSE</h5>
+  <div class="offcanvas-header text-end">
     <button
       type="button"
-      class="btn-close"
       data-bs-dismiss="offcanvas"
       aria-label="Close"
-    ></button>
+      class="btn rounded-0 border-0 btn-light ms-auto"
+    >
+      <i class="bi bi-arrow-right-short"></i>
+    </button>
   </div>
   <div class="offcanvas-body">
     <div class="side-nav mb-3">
@@ -26,7 +27,7 @@
       >
       <a routerLink="/contact" class="nav-link p-3 side-nav-link">Contact</a>
     </div>
-    <h4 class="py-3">CATEGORIES</h4>
+    <h4 class="py-2 mb-0">CATEGORIES</h4>
     <div class="accordion rounded-0" id="accordionExample">
       <div
         class="accordion-item border-0 rounded-0"
@@ -46,19 +47,22 @@
           <div class="subcategories_list">
             <div class="subcategories_list_item">
               <a [href]="'products/' + category.category" class="nav-link w-100"
-                >See All</a
-              >
+                >See All
+              </a>
             </div>
             <div
-              class="subcategories_list_item"
+              class="subcategories_list_item d-flex"
               *ngFor="let subcategory of category.subcategories"
             >
-              <a
-                [href]="'products/' + category.category + '/' + subcategory"
-                class="nav-link w-100"
-              >
-                {{ subcategory }}</a
-              >
+              <p>
+                <a
+                  [href]="'products/' + category.category + '/' + subcategory"
+                  class="nav-link w-100"
+                >
+                  {{ subcategory }}</a
+                >
+              </p>
+              <p class="ms-auto mb-0">{{ getAllProductsBySub(subcategory) }}</p>
             </div>
           </div>
         </div>

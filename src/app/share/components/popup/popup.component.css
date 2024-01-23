@@ -1,11 +1,12 @@
 .popup {
-  width: 200px;
+  min-width: 250px;
+  height: 325px;
   z-index: 9;
-  min-height: 280px;
+  background: transparent !important;
 }
+
 .dataShow {
   transition: all 0.5s;
-  opacity: 0;
 }
 .popup--name {
   font-size: 18px;
@@ -33,13 +34,10 @@
   z-index: 9;
   cursor: pointer;
   transition: all 0.3s;
-  top: 42%;
-  left: -30%;
+  top: 50%;
+  left: -20%;
 }
 .card-button {
   transition: all 0.5s;
   overflow: hidden;
-}
-.card-button:hover {
-  width: 200% !important;
 }

@@ -11,6 +11,7 @@
   padding: 10px 20px;
   border-top: 1px solid lightgray;
   cursor: pointer;
+  height: 45px;
 }
 .categories:hover,
 .subcategories_list_item:hover {
@@ -19,7 +20,7 @@
 /*********************** ACCORDION *********************/
 .accordion-button:not(.collapsed) {
   background-color: var(--bs-light);
-  color: black;
+  color: #cba135;
 }
 .accordion-button:focus {
   box-shadow: none;
@@ -32,9 +33,10 @@ select option {
 }
 .accordion-header button {
   font-weight: 700;
+  transition: all 0.5s;
 }
-.accordion-header {
-  border-top: 1px solid black !important;
+.accordion-header button:hover {
+  color: #cba135;
 }
 /******************** NAV **************/
 .side-nav-link {
@@ -42,4 +44,7 @@ select option {
   font-weight: 700;
   font-size: 1rem;
   text-transform: uppercase;
+}
+h4 {
+  font-size: 1.1rem;
 }

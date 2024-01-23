@@ -1,8 +1,5 @@
 /*********************** ACCORDION *********************/
-.accordion-button:not(.collapsed) {
-  background-color: var(--bs-light);
-  color: black;
-}
+
 .accordion-button:not(.collapsed)::after {
   background-image: var(--bs-accordion-btn-icon);
 }
@@ -22,5 +19,6 @@ option:hover {
 .filter {
   overflow-y: auto;
   overflow-x: hidden;
-  height: calc(100vh - 200px);
+  max-height: calc(100vh - 200px);
+  margin-bottom: 50px;
 }

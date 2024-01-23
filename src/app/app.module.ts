@@ -57,6 +57,7 @@ import { CounterComponent } from './share/components/counter/counter.component';
 import { MainTemplateComponent } from './main-template/main-template.component';
 import { AlertManage } from './share/components/alerts/services/alertManage.service';
 import { NavManage } from './share/components/nav/services/navManage.service';
+import { ModalAskManage } from './share/components/modal-ask/services/modalAskManage.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +117,7 @@ import { NavManage } from './share/components/nav/services/navManage.service';
     TokenManage,
     AlertManage,
     NavManage,
+    ModalAskManage,
   ],
   bootstrap: [AppComponent],
 })

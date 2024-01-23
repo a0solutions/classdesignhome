@@ -1,0 +1,6 @@
+.more {
+  transition: all 0.5s;
+}
+.more:hover {
+  color: #cba135;
+}

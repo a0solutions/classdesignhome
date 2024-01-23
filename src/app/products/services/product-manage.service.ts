@@ -226,6 +226,14 @@ export class ProductManage {
       return <string>'';
     });
   }
+  getCategoryById(id: string): product | undefined {
+    return this.allProducts.find((x: product) => x.id == id);
+  }
+  getNumberBySub(sub: string): number {
+    let productsNo = [this.allProducts.find((x) => x.subcategory == sub)];
+    if (productsNo[0] != undefined) return productsNo.length;
+    return 0;
+  }
 }
 export type product = {
   id: string;

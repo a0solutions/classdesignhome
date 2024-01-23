@@ -1,15 +1,18 @@
-<div class="bg"></div>
-<div class="separador7"></div>
-<article class="container position-relative z-2">
-  <div class="d-flex p-sm-2 p-lg-3">
-    <div class="me-auto">
-      <a routerLink="/"
-        ><i class="bi h3 bi-arrow-left text-dark" title="Go home"></i>
-      </a>
+<div class="separador10 bg-light"></div>
+<article class="bg-light">
+  <div class="container position-relative z-2 pb-5">
+    <div class="d-flex p-sm-2 p-lg-3">
+      <div class="me-auto">
+        <a routerLink="/"
+          ><i class="bi h3 bi-arrow-left text-dark" title="Go home"></i>
+        </a>
+      </div>
+    </div>
+    <div class="container p-lg-3">
+      <personal-info></personal-info>
     </div>
   </div>
-  <div class="container p-lg-3">
-    <personal-info></personal-info>
-  </div>
-  <app-footer></app-footer>
 </article>
+<div class="mt-5">
+  <app-offers [category]="'products'"></app-offers>
+</div>

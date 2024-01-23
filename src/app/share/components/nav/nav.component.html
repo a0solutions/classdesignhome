@@ -1,5 +1,8 @@
 <nav
-  [ngClass]="{ 'bg-gradient-light': dark, 'bg-gradient-dark': !dark }"
+  [ngClass]="{
+    'bg-gradient-light border-bottom': dark,
+    'bg-gradient-dark': !dark
+  }"
   class="navbar navbar-flex d-flex"
 >
   <div class="menu d-flex">
@@ -104,4 +107,3 @@
 <cart-list></cart-list>
 <sidebar></sidebar>
 <app-alerts></app-alerts>
-<app-modal-ask [show]="show" (answerCheck)="answerChek($event)"></app-modal-ask>

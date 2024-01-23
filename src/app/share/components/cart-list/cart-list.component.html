@@ -4,19 +4,23 @@
   id="offcanvasRight"
   aria-labelledby="offcanvasRightLabel"
 >
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title ms-3" id="offcanvasRightLabel">
-      <i class="bi bi-bag-heart h4"></i> HAVE A NICE SHOPPING
-    </h5>
+  <div class="offcanvas-header p-4">
     <button
       type="button"
-      class="btn-close"
       data-bs-dismiss="offcanvas"
       aria-label="Close"
-    ></button>
+      class="btn rounded-0 border-0 btn-light"
+    >
+      <i class="bi bi-arrow-left-short"></i>
+    </button>
+    <button
+      type="button"
+      class="btn rounded-0 color-gold ms-auto border-0 btn-light"
+    >
+      <i class="bi bi-trash3"></i>
+    </button>
   </div>
-  <div class="offcanvas-body">
+  <div class="offcanvas-body p-4">
     <app-listed></app-listed>
   </div>
 </div>
-<app-modal-ask [show]="show" (answerCheck)="answerCart($event)"></app-modal-ask>

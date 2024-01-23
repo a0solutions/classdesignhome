@@ -1,4 +1,4 @@
-<div id="carouselExample" class="carousel slide mx-4">
+<div id="carouselExample" class="carousel carousel-dark slide mx-4">
   <div class="carousel-inner">
     <div
       class="carousel-item"
@@ -7,8 +7,15 @@
     >
       <div class="row">
         <div
-          class="col-xl-3 col-lg-3 col-md-6 col-sm-6"
-          *ngFor="let product of allProducts.slice(i * 4, i * 4 + 4)"
+          [ngClass]="
+            cardsNum == 4 ? 'col-3' : cardsNum == 2 ? 'col-6' : 'col-12'
+          "
+          *ngFor="
+            let product of allProducts.slice(
+              i * cardsNum,
+              i * cardsNum + cardsNum
+            )
+          "
         >
           <offer-card [product]="product"></offer-card>
         </div>
@@ -21,8 +28,9 @@
     data-bs-target="#carouselExample"
     data-bs-slide="prev"
   >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+    <span class="text-dark offer-arrow"
+      ><i class="bi bi-arrow-left-short"></i
+    ></span>
   </button>
   <button
     class="carousel-control-next"
@@ -30,7 +38,8 @@
     data-bs-target="#carouselExample"
     data-bs-slide="next"
   >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+    <span class="text-dark offer-arrow"
+      ><i class="bi bi-arrow-right-short"></i
+    ></span>
   </button>
 </div>

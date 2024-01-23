@@ -2,7 +2,7 @@
   background: linear-gradient(var(--bs-dark), rgba(0, 0, 0, 0));
 }
 .bg-gradient-light {
-  background: linear-gradient(var(--bs-light), rgba(255, 255, 255, 0));
+  background: white;
 }
 .navbar li {
   text-transform: uppercase;
@@ -15,5 +15,8 @@
   height: 120px;
 }
 .nav-item {
-  font-size: 13px;
+  font-size: 14px;
+}
+.subcategories_list_item:hover {
+  color: #cba135;
 }

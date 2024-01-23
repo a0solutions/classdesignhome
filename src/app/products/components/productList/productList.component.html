@@ -9,18 +9,15 @@
 
   <ng-template #productlist>
     <div
-      class="col-xl-3 col-lg-4 col-md-6 col-sm-12"
+      class="col-xl-3 col-lg-4 col-md-6 col-6 mb-4"
       *ngFor="let product of printProduct"
     >
       <product-card [product]="product"></product-card>
     </div>
   </ng-template>
   <div class="col-12 my-4" *ngIf="more && products.length != 0">
-    <p
-      class="text-center text-decoration-underline cursor-pointer"
-      (click)="paginateMore()"
-    >
-      More products
+    <p class="more text-center cursor-pointer" (click)="paginateMore()">
+      More products<br /><i class="bi bi-arrow-down-short"></i>
     </p>
   </div>
 </div>

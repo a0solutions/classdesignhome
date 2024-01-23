@@ -1,17 +1,26 @@
 <div class="separador7"></div>
-<div class="bg"></div>
-<article class="container mt-5">
-  <div class="d-flex p-sm-2 p-lg-3 h3">
-    <div class="me-auto">
-      <a routerLink="/"><i class="bi bi-arrow-left text-dark"></i></a>
+<article class="mt-5 pt-4 bg-light">
+  <div class="container">
+    <div class="d-flex p-sm-2 p-lg-3 h3 mb-0">
+      <div class="me-auto">
+        <a routerLink="/"><i class="bi bi-arrow-left-short text-dark"></i></a>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6 col-12"><productGalery [id]="id"></productGalery></div>
-    <div class="col-md-6 col-12">
-      <productDescription [id]="id"></productDescription>
+</article>
+<article class="bg-light pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-12">
+        <productGalery [id]="id"></productGalery>
+      </div>
+      <div class="col-md-6 col-12">
+        <productDescription [id]="id"></productDescription>
+      </div>
     </div>
   </div>
-  <div class="separador10"></div>
+</article>
+<div class="separador7 bg-light"></div>
+<article class="mt-5">
   <app-offers [category]="category"></app-offers>
 </article>

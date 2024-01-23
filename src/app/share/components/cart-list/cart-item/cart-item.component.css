@@ -15,3 +15,8 @@ app-counter {
 .card-secondary {
   font-size: 13px;
 }
+.card {
+  transition: all 0.5s;
+  background: linear-gradient(90deg, white, var(--bs-light));
+  border: 1px solid transparent;
+}

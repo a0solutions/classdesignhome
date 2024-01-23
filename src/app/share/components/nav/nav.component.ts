@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Checkout } from 'src/app/checkout-page/services/checkout.service';
 import { NavManage } from './services/navManage.service';
+import { ModalAskManage } from '../modal-ask/services/modalAskManage.service';
+import { Subscribable, Subscriber, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav',
@@ -8,13 +10,17 @@ import { NavManage } from './services/navManage.service';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
-  show: boolean = false;
   @Input() dark: boolean = false;
   items: number = 0;
   cheick: boolean = false;
-  constructor(private checkout: Checkout, private nav: NavManage) {}
+  answer: Subscription;
+  constructor(
+    private checkout: Checkout,
+    private nav: NavManage,
+    private modal: ModalAskManage
+  ) {}
   ngOnInit(): void {
-    this.show = this.checkout.checkCartList();
+    this.checkout.checkCartList() ? this.messageObserve() : null;
     this.checkout.items.subscribe({
       next: this.bascketUpdate.bind(this),
       error: console.log.bind(this),
@@ -25,6 +31,20 @@ export class NavComponent implements OnInit {
     this.items = products.length;
     this.items != 0 ? this.cheickAction() : (this.cheick = false);
   }
+  messageObserve(): void {
+    this.modal.showModalMessage('cartExist');
+    this.answer = this.modal.answer.subscribe({
+      next: this.answerChek.bind(this),
+    });
+  }
+  answerChek(response: number): void {
+    if (response != 0) {
+      response == 1 ? this.checkout.deleteAll() : this.checkout.setNewTime();
+      this.modal.answer.next(0);
+      this.modal.show.next(false);
+      this.answer.unsubscribe();
+    }
+  }
   darkChange(dark: boolean): void {
     this.dark = dark;
   }
@@ -33,9 +53,5 @@ export class NavComponent implements OnInit {
     setTimeout(() => {
       this.cheick = false;
     }, 1000);
-  }
-  answerChek(event: boolean): void {
-    !event ? this.checkout.deleteAll() : this.checkout.setNewTime();
-    this.show = false;
   }
 }

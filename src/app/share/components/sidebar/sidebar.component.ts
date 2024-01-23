@@ -3,6 +3,7 @@ import {
   CategoriesService,
   categories,
 } from '../../services/categories.service';
+import { ProductManage } from 'src/app/products/services/product-manage.service';
 
 @Component({
   selector: 'sidebar',
@@ -11,16 +12,22 @@ import {
 })
 export class SidebarComponent implements OnInit {
   allCategories: categories[];
-  constructor(private categories: CategoriesService) {}
+  constructor(
+    private categories: CategoriesService,
+    private products: ProductManage
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.categories.getCategories().subscribe({
       next: this.setCategories.bind(this),
       error: console.log.bind(this),
     });
   }
-  setCategories(categories: any) {
+  setCategories(categories: any): void {
     this.allCategories = <categories[]>categories;
+  }
+  getAllProductsBySub(sub: string): number {
+    return this.products.getNumberBySub(sub);
   }
   expandAccordion(accordion: any): void {
     let id = accordion.target.id;

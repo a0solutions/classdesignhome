@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Checkout } from 'src/app/checkout-page/services/checkout.service';
 import { product } from 'src/app/products/services/product-manage.service';
 
 @Component({
@@ -10,11 +9,5 @@ import { product } from 'src/app/products/services/product-manage.service';
 export class CartListComponent {
   list: product[] = [];
   subtotal: number = 0;
-  show: boolean = false;
-  constructor(private checkout: Checkout) {}
-
-  answerCart(event: boolean): void {
-    event ? this.checkout.setNewTime() : this.checkout.deleteAll();
-    this.show = false;
-  }
+  constructor() {}
 }

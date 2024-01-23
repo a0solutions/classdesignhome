@@ -1,54 +1,54 @@
 <div
-  class="card px-2 position-relative rounded-0 mb-4 border-0 mx-auto animate__animated animate__fadeIn"
+  class="card p-3 position-relative rounded-0 border-0 mx-auto animate__animated animate__fadeIn shadow-sm"
   style="width: 100%"
 >
-  <button
-    class="btn btn-dark rounded-0 btn-sm position-absolute"
-    title="Share with friends"
-  >
-    <i class="bi bi-share"></i>
-  </button>
-  <p
-    *ngIf="product.new"
-    class="bg-dark p-1 px-3 ms-3 text-white rounded-0 btn-sm position-absolute cursor-default"
-    title="New product"
-    style="left: 40px"
-  >
-    New
-  </p>
+  <div class="position-absolute d-flex">
+    <button class="btn btn-dark rounded-pill btn-sm" title="Share with friends">
+      <i class="bi bi-share"></i>
+    </button>
+    <p
+      *ngIf="product.new"
+      class="bg-dark small p-1 px-2 text-white rounded-pill btn-sm cursor-default mb-0 ms-3"
+      title="New product"
+    >
+      New
+    </p>
+  </div>
   <img
     [src]="'./assets/images/' + product.category + '/products/productx.png'"
     class="card-img-top rounded-0"
     [alt]="product.name"
   />
 
-  <div class="card-body">
-    <h5 class="card-title mb-0">
-      {{ product.name }}
-    </h5>
-    <p class="card-text small mb-3">{{ product.reference }}</p>
+  <div class="card-body p-0 mt-4">
+    <div class="d-lg-flex d-md-flex d-sm-block">
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="ms-auto mb-0">{{ product.price | currency : "USD" }}</p>
+    </div>
+    <div class="d-flex">
+      <p class="card-text small mb-0 w-100">{{ product.reference }}</p>
 
-    <p class="card-text small mb-0">{{ product.dimentions }}</p>
-    <p class="card-text small mb-0">{{ product.price | currency : "USD" }}</p>
+      <div class="ms-auto h-100 w-100 text-end">
+        <a
+          *ngIf="product.stock && !product.membersOnly"
+          (click)="navigate(product.id, product.name)"
+          class="rounded-0 w-100 ms-1 card-button cursor-pointer"
+          >Details <i class="bi bi-arrow-right-short"></i
+        ></a>
+        <a
+          *ngIf="!product.stock"
+          (click)="navigate(product.id, product.name)"
+          class="rounded-0 w-100 ms-1 card-button text-decoration-line-through cursor-pointer"
+          >Stock <i class="bi bi-arrow-right-short"></i
+        ></a>
+        <a
+          *ngIf="product.stock && product.membersOnly"
+          (click)="navigate(product.id, product.name)"
+          class="rounded-0 w-100 ms-1 card-button cursor-pointer"
+          >Members <i class="bi bi-arrow-right-short"></i
+        ></a>
+      </div>
+    </div>
   </div>
-  <div class="card-footer d-flex border-top-0 bg-none p-0">
-    <a
-      *ngIf="product.stock && !product.membersOnly"
-      (click)="navigate(product.id, product.name)"
-      class="btn btn-sm btn-outline-dark rounded-0 w-100 ms-1 card-button"
-      >Details</a
-    >
-    <a
-      *ngIf="!product.stock"
-      (click)="navigate(product.id, product.name)"
-      class="btn btn-sm btn-outline-dark rounded-0 w-100 ms-1 card-button"
-      >Out of Stock</a
-    >
-    <a
-      *ngIf="product.stock && product.membersOnly"
-      (click)="navigate(product.id, product.name)"
-      class="btn btn-sm btn-outline-dark rounded-0 w-100 ms-1 card-button"
-      >Members Only</a
-    >
-  </div>
+  <div class="card-footer d-flex border-top-0 bg-none p-0"></div>
 </div>
