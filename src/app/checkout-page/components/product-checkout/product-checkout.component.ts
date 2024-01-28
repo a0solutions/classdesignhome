@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Checkout } from '../../services/checkout.service';
+import { Checkout, cartProduct } from '../../services/checkout.service';
 import {
   ProductManage,
   product,
@@ -21,13 +21,15 @@ export class ProductCheckoutComponent implements OnInit {
       error: console.log.bind(this),
     });
   }
-  getCartListItems(items: string[]): void {
+  getCartListItems(allItems: cartProduct[]): void {
     this.subtotal = 0;
     this.list = [];
-    items.forEach((y) => {
-      let product = <product>this.products.getProduct(y);
-      this.list.push(product);
-      this.subtotal = this.subtotal + product.price;
+    allItems.forEach((y) => {
+      this.products.getProduct(y.product.id).forEach((x) => {
+        let product = x;
+        this.list.push(product);
+        this.subtotal = this.subtotal + product.price;
+      });
     });
   }
 }

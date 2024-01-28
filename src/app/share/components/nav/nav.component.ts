@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Checkout } from 'src/app/checkout-page/services/checkout.service';
+import {
+  Checkout,
+  cartProduct,
+} from 'src/app/checkout-page/services/checkout.service';
 import { NavManage } from './services/navManage.service';
 import { ModalAskManage } from '../modal-ask/services/modalAskManage.service';
 import { Subscribable, Subscriber, Subscription } from 'rxjs';
@@ -27,8 +30,11 @@ export class NavComponent implements OnInit {
     });
     this.nav.dark.subscribe({ next: this.darkChange.bind(this) });
   }
-  bascketUpdate(products: string[]): void {
-    this.items = products.length;
+  bascketUpdate(products: cartProduct[]): void {
+    this.items = 0;
+    products.forEach((x) => {
+      this.items = x.count + this.items;
+    });
     this.items != 0 ? this.cheickAction() : (this.cheick = false);
   }
   messageObserve(): void {

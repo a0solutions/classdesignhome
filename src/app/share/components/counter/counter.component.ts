@@ -12,11 +12,11 @@ export class CounterComponent {
   constructor() {}
 
   add(): void {
-    this.number == 10 ? '' : this.number++;
+    this.number++;
     this.numberCount.emit(this.number);
   }
   less(): void {
-    this.number == 1 ? '' : this.number--;
+    this.number--;
     this.numberCount.emit(this.number);
   }
 }

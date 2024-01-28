@@ -56,7 +56,7 @@
                     (change)="updateFilterSub($event)"
                   />
                   <label class="form-check-label" [for]="subcategory">
-                    {{ subcategory }}
+                    {{ subcategory | capitalize }}
                   </label>
                 </div>
               </div>
@@ -76,7 +76,7 @@
                   (change)="updateFilterSub($event)"
                 />
                 <label class="form-check-label" [for]="subcategory">
-                  {{ subcategory }}
+                  {{ subcategory | capitalize }}
                 </label>
               </div>
             </ng-template>

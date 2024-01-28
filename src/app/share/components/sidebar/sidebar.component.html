@@ -59,7 +59,7 @@
                   [href]="'products/' + category.category + '/' + subcategory"
                   class="nav-link w-100"
                 >
-                  {{ subcategory }}</a
+                  {{ subcategory | capitalize }}</a
                 >
               </p>
               <p class="ms-auto mb-0">{{ getAllProductsBySub(subcategory) }}</p>

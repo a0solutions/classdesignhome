@@ -2,7 +2,11 @@
   <div class="row g-0 rounded-0">
     <div class="col-5 position-relative">
       <img
-        [src]="'./assets/images/' + product.category + '/products/productx.png'"
+        [src]="
+          './assets/images/' +
+          (product.category | spaces) +
+          '/products/productx.png'
+        "
         class="img-fluid"
         [alt]="product.name"
       />

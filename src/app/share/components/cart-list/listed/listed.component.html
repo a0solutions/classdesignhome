@@ -1,10 +1,9 @@
 <div class="cart-items py-3">
   <div *ngFor="let product of printList">
     <cart-item
-      [product]="product"
+      [product]="product.product"
       [size]="size"
-      [itemCount]="itemCount(product.id)"
-      class="animate__animated animate__fadeInUp"
+      [itemCount]="product.count"
     ></cart-item>
   </div>
 </div>

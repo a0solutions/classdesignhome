@@ -7,7 +7,7 @@
       <i class="bi bi-share"></i>
     </button>
     <p
-      *ngIf="product.new"
+      *ngIf="product.new == 1"
       class="bg-dark small p-1 px-2 text-white rounded-pill btn-sm cursor-default mb-0 ms-3"
       title="New product"
     >
@@ -15,7 +15,11 @@
     </p>
   </div>
   <img
-    [src]="'./assets/images/' + product.category + '/products/productx.png'"
+    [src]="
+      './assets/images/' +
+      (product.category | spaces) +
+      '/products/productx.png'
+    "
     class="card-img-top rounded-0"
     [alt]="product.name"
   />

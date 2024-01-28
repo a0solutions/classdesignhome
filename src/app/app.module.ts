@@ -58,6 +58,7 @@ import { MainTemplateComponent } from './main-template/main-template.component';
 import { AlertManage } from './share/components/alerts/services/alertManage.service';
 import { NavManage } from './share/components/nav/services/navManage.service';
 import { ModalAskManage } from './share/components/modal-ask/services/modalAskManage.service';
+import { SpacesPipe } from './share/pipes/spaces.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,6 +106,7 @@ import { ModalAskManage } from './share/components/modal-ask/services/modalAskMa
     PersonalCardComponent,
     CounterComponent,
     MainTemplateComponent,
+    SpacesPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

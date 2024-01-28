@@ -12,10 +12,8 @@ export class CartItemComponent {
   @Input() product: product;
   @Input() size: boolean;
   constructor(private chechout: Checkout) {}
-  deleteProductEmit(id: string): void {
-    this.chechout.deleteAllProductsId(id);
-  }
-  numberCount(event: number): void {
-    this.chechout.updateCart(event, this.product.id);
+  numberCount(count: number): void {
+    let product: product = this.product;
+    this.chechout.upadateProductCart({ product, count });
   }
 }

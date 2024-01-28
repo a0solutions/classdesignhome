@@ -9,7 +9,7 @@ import { ModalAskManage } from './services/modalAskManage.service';
 export class ModalAskComponent implements OnInit {
   title: string = '';
   text: string = '';
-  @Input() show: boolean = false;
+  show: boolean = false;
   constructor(private modal: ModalAskManage) {}
   ngOnInit(): void {
     this.modal.show.subscribe({ next: this.showModalManage.bind(this) });

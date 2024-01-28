@@ -15,8 +15,6 @@ export class AppComponent {
   show: boolean;
   constructor(private readonly route: Router) {}
   onActivate(_event: any): void {
-    // Scrolling back to the top
-    // Reference: https://stackoverflow.com/questions/48048299/angular-5-scroll-to-top-on-every-route-click/48048822
     if (this.mainContentDiv) {
       (this.mainContentDiv.nativeElement as HTMLElement).scrollTop = 0;
     }

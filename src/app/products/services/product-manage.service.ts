@@ -1,178 +1,27 @@
 import { Injectable } from '@angular/core';
 import { FilterManage } from './filterManage.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { urls } from 'src/app/share/services/apiurl';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductManage {
-  allProducts: product[] = [
-    {
-      id: '34',
-      name: 'Mirror',
-      dimentions: 'VC 67CM X 60CM X 80CM',
-      reference: 'REF. 33722',
-      category: 'bathroom',
-      subcategory: 'Bathroom Vanity',
-      price: 350,
-      color: 'yellow',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien. Sed in congue quam. Curabitur nec commodo odio, eu egestas augue. Cras sit amet nisl sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget mi purus. Phasellus sit amet tristique augue. Aenean quis ipsum libero. Nulla tristique ligula id tempor consectetur. Curabitur facilisis maximus ipsum. Proin a tincidunt dolor, non eleifend justo. Duis lectus justo, consequat in lectus quis, fringilla gravida massa.',
-      metadescription:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien.',
-      stock: true,
-      new: true,
-      offer: true,
-      membersOnly: false,
-    },
-    {
-      id: '35',
-      name: 'Sink',
-      dimentions: 'VC 67CM X 60CM X 80CM',
-      reference: 'REF. 33722',
-      category: 'bathroom',
-      subcategory: 'Sinks',
-      price: 1350,
-      color: 'red',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien. Sed in congue quam. Curabitur nec commodo odio, eu egestas augue. Cras sit amet nisl sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget mi purus. Phasellus sit amet tristique augue. Aenean quis ipsum libero. Nulla tristique ligula id tempor consectetur. Curabitur facilisis maximus ipsum. Proin a tincidunt dolor, non eleifend justo. Duis lectus justo, consequat in lectus quis, fringilla gravida massa.',
-      metadescription:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien.',
-      stock: false,
-      new: false,
-      offer: true,
-      membersOnly: false,
-    },
-    {
-      id: '36',
-      name: 'Nightstands',
-      dimentions: 'VC 67CM X 60CM X 80CM',
-      reference: 'REF. 33722',
-      category: 'bedroom',
-      subcategory: 'Bedroom Sets',
-      price: 850,
-      color: 'black',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien. Sed in congue quam. Curabitur nec commodo odio, eu egestas augue. Cras sit amet nisl sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget mi purus. Phasellus sit amet tristique augue. Aenean quis ipsum libero. Nulla tristique ligula id tempor consectetur. Curabitur facilisis maximus ipsum. Proin a tincidunt dolor, non eleifend justo. Duis lectus justo, consequat in lectus quis, fringilla gravida massa.',
-      metadescription:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien.',
-      stock: true,
-      new: true,
-      offer: false,
-      membersOnly: true,
-    },
-    {
-      id: '37',
-      name: 'Master Bed',
-      dimentions: 'VC 67CM X 60CM X 80CM',
-      reference: 'REF. 33722',
-      category: 'bedroom',
-      subcategory: 'Nightstands',
-      price: 9250,
-      color: 'silver',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien. Sed in congue quam. Curabitur nec commodo odio, eu egestas augue. Cras sit amet nisl sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget mi purus. Phasellus sit amet tristique augue. Aenean quis ipsum libero. Nulla tristique ligula id tempor consectetur. Curabitur facilisis maximus ipsum. Proin a tincidunt dolor, non eleifend justo. Duis lectus justo, consequat in lectus quis, fringilla gravida massa.',
-      metadescription:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien.',
-      stock: true,
-      new: false,
-      offer: true,
-      membersOnly: false,
-    },
-    {
-      id: '38',
-      name: 'Bed Holder',
-      dimentions: 'VC 67CM X 60CM X 80CM ',
-      reference: 'REF. 33722',
-      category: 'living',
-      subcategory: 'Dinig Table',
-      price: 1350,
-      color: 'white',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien. Sed in congue quam. Curabitur nec commodo odio, eu egestas augue. Cras sit amet nisl sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget mi purus. Phasellus sit amet tristique augue. Aenean quis ipsum libero. Nulla tristique ligula id tempor consectetur. Curabitur facilisis maximus ipsum. Proin a tincidunt dolor, non eleifend justo. Duis lectus justo, consequat in lectus quis, fringilla gravida massa.',
-      metadescription:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien.',
-      stock: true,
-      new: true,
-      offer: true,
-      membersOnly: true,
-    },
-    {
-      id: '39',
-      name: 'Table + 6 chairs',
-      dimentions: 'VC 67CM X 60CM X 80CM ',
-      reference: 'REF. 33722',
-      category: 'living',
-      subcategory: 'Love Seats',
-      price: 1350,
-      color: 'white',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien. Sed in congue quam. Curabitur nec commodo odio, eu egestas augue. Cras sit amet nisl sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget mi purus. Phasellus sit amet tristique augue. Aenean quis ipsum libero. Nulla tristique ligula id tempor consectetur. Curabitur facilisis maximus ipsum. Proin a tincidunt dolor, non eleifend justo. Duis lectus justo, consequat in lectus quis, fringilla gravida massa.',
-      metadescription:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien.',
-      stock: true,
-      new: true,
-      offer: false,
-      membersOnly: false,
-    },
-    {
-      id: '40',
-      name: 'Cup Cabinets',
-      dimentions: 'VC 67CM X 60CM X 80CM ',
-      reference: 'REF. 33722',
-      category: 'living',
-      subcategory: 'Console Table',
-      price: 1350,
-      color: 'green',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien. Sed in congue quam. Curabitur nec commodo odio, eu egestas augue. Cras sit amet nisl sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget mi purus. Phasellus sit amet tristique augue. Aenean quis ipsum libero. Nulla tristique ligula id tempor consectetur. Curabitur facilisis maximus ipsum. Proin a tincidunt dolor, non eleifend justo. Duis lectus justo, consequat in lectus quis, fringilla gravida massa.',
-      metadescription:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien.',
-      stock: true,
-      new: false,
-      offer: true,
-      membersOnly: true,
-    },
-    {
-      id: '41',
-      name: 'Table + 6 chairs',
-      dimentions: 'VC 67CM X 60CM X 80CM ',
-      reference: 'REF. 33722',
-      category: 'living',
-      subcategory: 'Coffe Tables',
-      price: 1350,
-      color: 'blue',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien. Sed in congue quam. Curabitur nec commodo odio, eu egestas augue. Cras sit amet nisl sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget mi purus. Phasellus sit amet tristique augue. Aenean quis ipsum libero. Nulla tristique ligula id tempor consectetur. Curabitur facilisis maximus ipsum. Proin a tincidunt dolor, non eleifend justo. Duis lectus justo, consequat in lectus quis, fringilla gravida massa.',
-      metadescription:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien.',
-      stock: true,
-      new: false,
-      offer: false,
-      membersOnly: false,
-    },
-    {
-      id: '42',
-      name: '6 Chairs',
-      dimentions: 'VC 67CM X 60CM X 80CM ',
-      reference: 'REF. 33722',
-      category: 'living',
-      subcategory: 'Love Seats',
-      price: 1350,
-      color: 'blue',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien. Sed in congue quam. Curabitur nec commodo odio, eu egestas augue. Cras sit amet nisl sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget mi purus. Phasellus sit amet tristique augue. Aenean quis ipsum libero. Nulla tristique ligula id tempor consectetur. Curabitur facilisis maximus ipsum. Proin a tincidunt dolor, non eleifend justo. Duis lectus justo, consequat in lectus quis, fringilla gravida massa.',
-      metadescription:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam sed dui semper pharetra vitae eu sapien.',
-      stock: true,
-      new: true,
-      offer: true,
-      membersOnly: false,
-    },
-  ];
+  url: string = urls.urlProducts;
+  allProducts: product[] = [];
   products: BehaviorSubject<product[]> = new BehaviorSubject(this.allProducts);
-  constructor(private filter: FilterManage) {}
-
+  constructor(private http: HttpClient) {
+    this.setAllProducts();
+  }
+  setAllProducts() {
+    return this.getAllProducts().forEach((x) => {
+      this.allProducts = x;
+    });
+  }
+  getAllProducts() {
+    return this.http.get<product[]>(this.url);
+  }
   getFilterProducts(filters: any): product[] {
     this.products = new BehaviorSubject(this.allProducts);
     for (let prop in filters) {
@@ -210,15 +59,15 @@ export class ProductManage {
     return this.products.value;
   }
   getOfferProduct(category: any): product[] {
-    this.products = new BehaviorSubject(this.allProducts);
     if (category != 'products')
-      return this.products.value.filter(
-        (x) => x.category == category && x.offer
-      );
-    return this.products.value.filter((x) => x.offer);
+      return this.allProducts.filter((x) => x.category == category && x.offer);
+    return this.allProducts.filter((x) => x.offer);
   }
-  getProduct(id: string): product {
-    return <product>this.allProducts.find((x) => x.id == id);
+  getProduct(id: string): Observable<product> {
+    return this.http.get<product>(this.url + '?id=' + id);
+  }
+  findProduct(id: string): product {
+    return <product>this.products.value.find((x) => x.id == id);
   }
   getCategory(name: string): product | undefined {
     return this.allProducts.find((x: product) => {
@@ -247,7 +96,7 @@ export type product = {
   description: string;
   metadescription: string;
   stock: boolean;
-  new: boolean;
+  new: number;
   offer: boolean;
   membersOnly: boolean;
 };

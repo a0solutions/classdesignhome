@@ -24,7 +24,11 @@ export class ProductDetailComponent implements OnInit {
     this.nav.dark.next(true);
     this.http.paramMap.subscribe((x) => {
       this.id = <string>x.get('id');
-      this.category = <string>this.products.getCategoryById(this.id)?.category;
+      this.products.setAllProducts().then((x) => {
+        this.category = <string>(
+          this.products.getCategoryById(this.id)?.category
+        );
+      });
     });
   }
 }

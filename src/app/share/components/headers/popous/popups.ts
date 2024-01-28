@@ -8,73 +8,73 @@ export class headerManage {
       {
         top: '13%',
         left: '27%',
-        id: '34',
+        id: '12',
       },
       {
         top: '35%',
         left: '53%',
-        id: '35',
+        id: '10',
       },
       {
         top: '27%',
         left: '37%',
-        id: '36',
+        id: '2',
       },
     ],
     bedroom: [
       {
         top: '23%',
         left: '25%',
-        id: '36',
+        id: '27',
       },
       {
         top: '5%',
         left: '65%',
-        id: '38',
+        id: '26',
       },
       {
         top: '50%',
         left: '85%',
-        id: '36',
+        id: '25',
       },
       {
         top: '35%',
         left: '45%',
-        id: '37',
+        id: '24',
       },
     ],
     living: [
       {
         top: '5%',
         left: '20%',
-        id: '40',
+        id: '23',
       },
       {
         top: '40%',
         left: '45%',
-        id: '41',
+        id: '22',
       },
       {
         top: '40%',
         left: '75%',
-        id: '40',
+        id: '20',
       },
     ],
     products: [
       {
         top: '5%',
         left: '20%',
-        id: '40',
+        id: '9',
       },
       {
         top: '40%',
         left: '45%',
-        id: '41',
+        id: '1',
       },
       {
         top: '40%',
         left: '75%',
-        id: '40',
+        id: '2',
       },
     ],
   };
