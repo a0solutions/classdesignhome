@@ -4,6 +4,9 @@
   border: 6px solid transparent;
   outline: 2px solid transparent;
 }
+.image:hover {
+  outline: 2px solid #cba135;
+}
 .imageActive {
   outline: 2px solid black;
 }

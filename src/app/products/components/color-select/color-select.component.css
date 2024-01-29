@@ -6,10 +6,11 @@
   transition: all 0.8s;
 }
 .color-select:hover {
-  box-shadow: var(--bs-box-shadow) !important;
+  box-shadow: 0 0 0 3px rgba(203, 161, 53, 0.289) !important;
 }
 .selected {
   background-image: url("../../../../assets/images/app/check.png") !important;
   background-size: cover !important;
-  box-shadow: var(--bs-box-shadow) !important;
+  box-shadow: 0 0 0 3px rgba(203, 161, 53, 0.289) !important;
+  outline: 1px solid #cba135;
 }

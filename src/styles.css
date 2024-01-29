@@ -248,6 +248,9 @@ input[type="checkbox"] {
   color: #cba135 !important;
   background-color: var(--bs-light) !important;
 }
+.accordion-button:focus {
+  box-shadow: 0 0 0 3px rgba(203, 161, 53, 0.289) !important;
+}
 .bg {
   position: fixed;
   top: -50%;
@@ -352,6 +355,9 @@ input[type="checkbox"] {
   }
 }
 @media (min-width: 1281px) {
+  .container {
+    max-width: 1294px;
+  }
   /* hi-res laptops and desktops */
 }
 nav .nav-item:hover {

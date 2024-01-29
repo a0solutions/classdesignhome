@@ -30,11 +30,8 @@ export class ListedComponent implements OnInit {
     });
   }
   resetProperties(allItems: cartProduct[]): void {
-    allItems.length == 0
-      ? (this.printList = [])
-      : (this.printList = allItems)
-      ? this.countPrices()
-      : null;
+    allItems.length == 0 ? (this.printList = []) : (this.printList = allItems);
+    this.countPrices();
   }
   countPrices() {
     this.subtotal = 0;

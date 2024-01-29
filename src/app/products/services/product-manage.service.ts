@@ -58,6 +58,11 @@ export class ProductManage {
       return this.products.value.filter((x) => x.category == category);
     return this.products.value;
   }
+  getProductByParent(parent: any): product[] {
+    this.products = new BehaviorSubject(this.allProducts);
+    return this.products.value.filter((x) => x.parentRef == parent);
+  }
+
   getOfferProduct(category: any): product[] {
     if (category != 'products')
       return this.allProducts.filter((x) => x.category == category && x.offer);
@@ -88,13 +93,35 @@ export type product = {
   id: string;
   name: string;
   dimentions: string;
+  parentRef: string;
   reference: string;
   category: string;
   subcategory: string;
   color: string;
   price: number;
+  oldprice: number;
+  minimunOrder: number;
   description: string;
+  featureBullet: string;
+  countryManufacture: string;
+  shipType: string;
+  displaySets: number;
+  overallWidth: number;
+  overallHeight: number;
+  overallLenght: number;
+  overallWeight: number;
+  levelAssembly: string;
+  timeAssembly: number;
+  comfortLevel: string;
+  aditionalTools: string;
+  numberBoxes: number;
+  installationRequired: string;
+  commercialWarranty: string;
+  productWarranty: string;
+  warrantyLength: string;
+  fullOrLimitedWarranty: string;
   metadescription: string;
+  warrantyDetails: string;
   stock: boolean;
   new: number;
   offer: boolean;

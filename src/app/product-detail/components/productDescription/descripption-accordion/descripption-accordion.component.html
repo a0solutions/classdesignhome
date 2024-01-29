@@ -1,0 +1,151 @@
+<div class="accordion accordion-flush" id="accordionDescriptions">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseOne"
+        aria-expanded="false"
+        aria-controls="flush-collapseOne"
+      >
+        Description
+      </button>
+    </h2>
+    <div
+      id="flush-collapseOne"
+      class="accordion-collapse collapse"
+      data-bs-parent="#accordionDescriptions"
+    >
+      <div class="accordion-body">
+        <h6>Description</h6>
+        <p>{{ product.description }}</p>
+        <p class="mb-2">
+          <strong class="h6">Manufactured Country:</strong>
+          {{ product.countryManufacture }}
+        </p>
+        <div class="d-flex align-content-center">
+          <p class="mb-2">
+            <strong class="h6">Color:</strong> {{ product.color }}
+          </p>
+        </div>
+        <h6>Features</h6>
+        <ul class="descriptions-text">
+          <li *ngFor="let bullet of getBullets(product.featureBullet)">
+            {{ bullet }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseTwo"
+        aria-expanded="false"
+        aria-controls="flush-collapseTwo"
+      >
+        Weights & Dimentions
+      </button>
+    </h2>
+    <div
+      id="flush-collapseTwo"
+      class="accordion-collapse collapse"
+      data-bs-parent="#accordionDescriptions"
+    >
+      <div class="accordion-body">
+        <table class="table table-striped-columns">
+          <tbody>
+            <tr>
+              <td class="w-50">Overall Width</td>
+              <td class="w-50">{{ product.overallWidth }}</td>
+            </tr>
+            <tr>
+              <td class="w-50">Overall Height</td>
+              <td class="w-50">{{ product.overallHeight }}</td>
+            </tr>
+            <tr>
+              <td class="w-50">Overall Lenght</td>
+              <td class="w-50">{{ product.overallLenght }}</td>
+            </tr>
+            <tr>
+              <td class="w-50">Overall Weight</td>
+              <td class="w-50">{{ product.overallWeight }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#flush-collapseThree"
+        aria-expanded="false"
+        aria-controls="flush-collapseThree"
+      >
+        Specifications
+      </button>
+    </h2>
+    <div
+      id="flush-collapseThree"
+      class="accordion-collapse collapse"
+      data-bs-parent="#accordionDescriptions"
+    >
+      <div class="accordion-body">
+        <table class="table table-striped-columns">
+          <tbody>
+            <h6>Assembly</h6>
+            <tr>
+              <td class="w-50">Level Assembly</td>
+              <td class="w-50">{{ product.levelAssembly }}</td>
+            </tr>
+            <tr>
+              <td class="w-50">Time Assembly</td>
+              <td class="w-50">{{ product.timeAssembly }}</td>
+            </tr>
+            <tr>
+              <td class="w-50">Aditional Tools</td>
+              <td class="w-50">{{ product.aditionalTools }}</td>
+            </tr>
+            <tr>
+              <td class="w-50">Number of Boxes</td>
+              <td class="w-50">{{ product.numberBoxes }}</td>
+            </tr>
+            <tr>
+              <td class="w-50">Instalation Required</td>
+              <td class="w-50">{{ product.installationRequired }}</td>
+            </tr>
+            <h6 class="mt-4">Warranty</h6>
+            <tr>
+              <td class="w-50">Commercial Warranty</td>
+              <td class="w-50">{{ product.commercialWarranty }}</td>
+            </tr>
+            <tr>
+              <td class="w-50">Product Warranty</td>
+              <td class="w-50">{{ product.productWarranty }}</td>
+            </tr>
+            <tr>
+              <td class="w-50">Warranty Lenght</td>
+              <td class="w-50">{{ product.warrantyLength }}</td>
+            </tr>
+            <tr>
+              <td class="w-50">Full or Limited Warranty</td>
+              <td class="w-50">{{ product.fullOrLimitedWarranty }}</td>
+            </tr>
+            <tr *ngIf="product.warrantyDetails">
+              <td class="w-50">Warranty Detail</td>
+              <td class="w-50">{{ product.warrantyDetails }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

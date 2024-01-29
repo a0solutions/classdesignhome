@@ -1,7 +1,7 @@
 <div
   [ngClass]="{ selected: selected }"
-  (click)="selectColor(background)"
+  (click)="selectColor(colorName)"
   class="color-select rounded-pill shadow-sm"
   [style]="'background:' + background"
-  [title]="background | uppercase"
+  [title]="colorName | uppercase"
 ></div>

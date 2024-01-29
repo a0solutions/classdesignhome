@@ -1,5 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
+import { LoaderService } from './share/components/loader/services/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,14 @@ export class AppComponent {
   title = 'classdesign';
   @ViewChild('mainContent')
   private mainContentDiv!: ElementRef<HTMLElement>;
-  loader: boolean;
-  message: any;
-  show: boolean;
-  constructor(private readonly route: Router) {}
+  constructor(router: Router, private loader: LoaderService) {
+    router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        this.loader.show.next(true);
+      }
+    });
+  }
+
   onActivate(_event: any): void {
     if (this.mainContentDiv) {
       (this.mainContentDiv.nativeElement as HTMLElement).scrollTop = 0;

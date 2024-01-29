@@ -1,11 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { LoaderService } from './services/loader.service';
 
 @Component({
   selector: 'app-loader',
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.css'],
 })
-export class LoaderComponent {
-  @Input() loader: boolean = true;
-  constructor() {}
+export class LoaderComponent implements OnInit {
+  @Input() show: boolean = true;
+  constructor(private loader: LoaderService) {}
+  ngOnInit(): void {
+    this.loader.show.subscribe((x) => {
+      this.show = x;
+    });
+  }
 }

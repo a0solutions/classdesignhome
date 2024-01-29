@@ -5,7 +5,7 @@ import {
 } from 'src/app/checkout-page/services/checkout.service';
 import { NavManage } from './services/navManage.service';
 import { ModalAskManage } from '../modal-ask/services/modalAskManage.service';
-import { Subscribable, Subscriber, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav',

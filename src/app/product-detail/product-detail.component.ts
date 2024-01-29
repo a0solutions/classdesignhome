@@ -6,6 +6,7 @@ import {
   categories,
 } from '../share/services/categories.service';
 import { ProductManage } from '../products/services/product-manage.service';
+import { LoaderService } from '../share/components/loader/services/loader.service';
 
 @Component({
   selector: 'product-detail',
@@ -18,7 +19,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private http: ActivatedRoute,
     private nav: NavManage,
-    private products: ProductManage
+    private products: ProductManage,
+    private loader: LoaderService
   ) {}
   ngOnInit(): void {
     this.nav.dark.next(true);
@@ -28,6 +30,7 @@ export class ProductDetailComponent implements OnInit {
         this.category = <string>(
           this.products.getCategoryById(this.id)?.category
         );
+        this.loader.show.next(false);
       });
     });
   }

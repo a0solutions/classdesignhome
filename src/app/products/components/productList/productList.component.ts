@@ -12,7 +12,7 @@ export class ProductListComponent implements OnInit {
   products: product[] = [];
   printProduct: product[] = [];
   itemNumber: number;
-  paginateNumber: number = 4;
+  paginateNumber: number = 20;
   more: boolean = false;
   constructor(
     private allProducts: ProductManage,
@@ -26,7 +26,7 @@ export class ProductListComponent implements OnInit {
     });
   }
   filterProducts(filters: filter): void {
-    this.itemNumber = 4;
+    this.itemNumber = this.paginateNumber;
     this.products = [];
     this.allProducts.getFilterProducts(filters).map((x) => {
       this.products.push(x);

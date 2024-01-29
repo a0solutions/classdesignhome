@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavManage } from '../share/components/nav/services/navManage.service';
+import { LoaderService } from '../share/components/loader/services/loader.service';
 
 @Component({
   selector: 'catalog-page',
@@ -7,8 +8,9 @@ import { NavManage } from '../share/components/nav/services/navManage.service';
   styleUrls: ['./catalog-page.component.css'],
 })
 export class CatalogPageComponent implements OnInit {
-  constructor(private nav: NavManage) {}
+  constructor(private nav: NavManage, private loader: LoaderService) {}
   ngOnInit(): void {
     this.nav.dark.next(false);
+    this.loader.show.next(false);
   }
 }

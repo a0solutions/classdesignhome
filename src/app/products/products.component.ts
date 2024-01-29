@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NavManage } from '../share/components/nav/services/navManage.service';
 import { ProductManage } from './services/product-manage.service';
+import { LoaderService } from '../share/components/loader/services/loader.service';
 
 @Component({
   selector: 'app-products',
@@ -11,13 +12,12 @@ import { ProductManage } from './services/product-manage.service';
 export class ProductsComponent implements OnInit {
   category: string = '';
   subcategory: string = '';
-  loader: boolean = true;
   constructor(
     private url: ActivatedRoute,
     private nav: NavManage,
-    private allProducts: ProductManage
+    private allProducts: ProductManage,
+    private loader: LoaderService
   ) {}
-
   ngOnInit(): void {
     this.url.paramMap.subscribe({
       next: this.getCategory.bind(this),
@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
     this.allProducts.setAllProducts().then((res) => {
       this.category = <string>param.get('category');
       this.subcategory = <string>param.get('subcategory');
-      this.loader = false;
+      this.loader.show.next(false);
     });
   }
 }

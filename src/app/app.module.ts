@@ -59,6 +59,7 @@ import { AlertManage } from './share/components/alerts/services/alertManage.serv
 import { NavManage } from './share/components/nav/services/navManage.service';
 import { ModalAskManage } from './share/components/modal-ask/services/modalAskManage.service';
 import { SpacesPipe } from './share/pipes/spaces.pipe';
+import { DescripptionAccordionComponent } from './product-detail/components/productDescription/descripption-accordion/descripption-accordion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,6 +106,7 @@ import { SpacesPipe } from './share/pipes/spaces.pipe';
     PersonalFormComponent,
     PersonalCardComponent,
     CounterComponent,
+    DescripptionAccordionComponent,
     MainTemplateComponent,
     SpacesPipe,
   ],
@@ -120,6 +122,7 @@ import { SpacesPipe } from './share/pipes/spaces.pipe';
     AlertManage,
     NavManage,
     ModalAskManage,
+    LoaderComponent,
   ],
   bootstrap: [AppComponent],
 })
