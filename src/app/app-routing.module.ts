@@ -8,17 +8,25 @@ import { SigninComponent } from './signin/signin.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { PersonalAreaComponent } from './personal-area/personal-area.component';
+import { AuthGuard } from './share/services/auth/auth-guard.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'products/:category/:subcategory', component: ProductsComponent },
   { path: 'products/:category', component: ProductsComponent },
-  { path: 'product/:id/:name', component: ProductDetailComponent },
+  {
+    path: 'product/:id/:name',
+    component: ProductDetailComponent,
+  },
   { path: 'collections', component: CatalogPageComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'contact', component: ContactPageComponent },
   { path: 'checkout', component: CheckoutPageComponent },
-  { path: 'personal', component: PersonalAreaComponent },
+  {
+    path: 'personal',
+    component: PersonalAreaComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '**', component: HomeComponent },
 ];
 

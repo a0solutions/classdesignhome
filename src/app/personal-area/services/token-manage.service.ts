@@ -1,16 +1,26 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenManage {
   token: string = '';
+  isLogged: BehaviorSubject<boolean> = new BehaviorSubject(true);
   verify = new JwtHelperService();
   constructor() {
     this.token = <string>localStorage.getItem('CDHtoken');
   }
-
+  isUserLogged(): void {
+    this.getUserId() != ''
+      ? this.isLogged.next(true)
+      : this.isLogged.next(false);
+  }
+  logOut(): void {
+    localStorage.removeItem('CDHtoken');
+    this.isLogged.next(false);
+  }
   getUserId(): string {
     this.getToken();
     if (!this.verify.isTokenExpired(this.token)) {
@@ -23,5 +33,17 @@ export class TokenManage {
   private getToken(): string {
     this.token = <string>localStorage.getItem('CDHtoken');
     return this.token;
+  }
+  tokenExpired(): boolean {
+    return this.verify.isTokenExpired(this.token);
+  }
+  setToken(token: string): void {
+    localStorage.setItem('CDHtoken', token);
+    this.isLogged.next(true);
+  }
+  getValidateToken(): string {
+    let validateCode: string = '';
+    validateCode = this.token.split('.')[2];
+    return validateCode;
   }
 }

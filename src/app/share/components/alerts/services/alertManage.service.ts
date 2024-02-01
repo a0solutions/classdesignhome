@@ -11,6 +11,7 @@ export class AlertManage {
 
   setAlertMessage(code: string): void {
     this.message.next(this.selectMessage(code));
+    this.show.next(true);
   }
 
   private selectMessage(code: string): string {
@@ -24,6 +25,8 @@ export class AlertManage {
       return 'Congratulations your update has been set succesfully.';
     } else if (code == 'contact') {
       return 'Thnak you for writing us, we will get in touch with you as soon as possible.';
+    } else if (code == 'dataCartList') {
+      return 'You must fill all fields or add some products to your cart list.';
     } else {
       return 'Somthing went wrong tray again later.';
     }

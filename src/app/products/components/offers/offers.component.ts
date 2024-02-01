@@ -39,10 +39,12 @@ export class OffersComponent implements OnChanges, OnInit {
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.allProducts = [];
-    this.allProducts = this.products.getOfferProduct(this.category);
-    this.items = [];
-    for (var i = 1; i <= Math.ceil(this.allProducts.length / 4); i++) {
-      this.items.push(i);
-    }
+    this.products.getOfferProduct(this.category).then((x) => {
+      this.allProducts = x;
+      this.items = [];
+      for (var i = 1; i <= Math.ceil(this.allProducts.length / 4); i++) {
+        this.items.push(i);
+      }
+    });
   }
 }

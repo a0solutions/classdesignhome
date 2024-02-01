@@ -69,23 +69,36 @@
   <div class="icons me-3 mt-0 d-flex">
     <button
       [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
-      class="btn mt-1 border-0 mx-lg-3 mx-md-2 mx-sm-2 rounded-0"
+      class="btn mt-1 border-0 mx-lg-2 mx-md-2 mx-sm-2 rounded-0"
       type="submit"
     >
       <i class="bi bi-search h-5"></i>
     </button>
-    <div class="mx-lg-3 mx-md-2 mx-sm-2 mt-2">
-      <a routerLink="/personal"
-        ><i
-          [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
-          class="bi bi-person h5 cursor-pointer"
-        ></i
-      ></a>
-    </div>
+
+    <button
+      routerLink="personal"
+      class="btn mt-1 border-0 mx-lg-2 mx-md-2 mx-sm-2 rounded-0"
+    >
+      <i
+        [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+        class="bi bi-person h5 cursor-pointer"
+      ></i>
+    </button>
+
+    <button
+      [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+      class="btn mt-1 border-0 mx-lg-2 mx-md-2 mx-sm-2 rounded-0"
+      type="button"
+      (click)="logOut()"
+      *ngIf="isLogged"
+    >
+      <i class="bi bi-power h5 cursor-pointer"></i>
+    </button>
+
     <button
       type="button"
       [ngClass]="{ animate__shakeX: cheick }"
-      class="btn position-relative mx-lg-3 mx-md-2 mx-sm-2 animate__animated"
+      class="btn position-relative mx-lg-2 mx-md-2 mx-sm-2 animate__animated"
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasRight"
       aria-controls="offcanvasRight"

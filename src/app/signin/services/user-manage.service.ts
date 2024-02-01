@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
 import { urls } from 'src/app/share/services/apiurl';
 
 @Injectable({
@@ -9,9 +11,16 @@ import { urls } from 'src/app/share/services/apiurl';
 })
 export class UserManage {
   url: string = urls.urlusers;
-  constructor(private cnt: HttpClient) {}
+  constructor(
+    private cnt: HttpClient,
+    private tokenManage: TokenManage,
+    private router: Router
+  ) {}
   postUser(data: Form): Observable<string> {
-    return this.cnt.post<string>(this.url, data);
+    return this.cnt.post<string>(
+      this.url + '?validate=' + this.tokenManage.getValidateToken(),
+      data
+    );
   }
   verifyUser(data: any): Observable<string> {
     return this.cnt.post(this.url, data, { responseType: 'text' });
@@ -20,7 +29,24 @@ export class UserManage {
     return this.cnt.get<string>(this.url + '?id=' + id);
   }
   updateData(form: NgForm, id: string, table: string): Observable<object> {
-    return this.cnt.put(this.url + '?id=' + id + '&table=' + table, form.value);
+    return this.cnt.put(
+      this.url +
+        '?validate=' +
+        this.tokenManage.getValidateToken() +
+        '&id=' +
+        id +
+        '&table=' +
+        table,
+      form.value
+    );
+  }
+  isLogged(): boolean {
+    return this.tokenManage.tokenExpired();
+  }
+  signOut(param?: string): void {
+    this.tokenManage.logOut();
+    console.log('si');
+    this.router.navigate(['/signin'], { queryParams: { returnTo: param } });
   }
 }
 

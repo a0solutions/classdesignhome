@@ -28,7 +28,6 @@ export class PersonalFormComponent implements OnInit {
     });
   }
   getDataForm(data: string): void {
-    console.log(data);
     this.personal = <string>data;
     this.loader = false;
   }
@@ -46,6 +45,5 @@ export class PersonalFormComponent implements OnInit {
   }
   setAlert(code: string): void {
     this.alert.setAlertMessage(code);
-    this.alert.show.next(true);
   }
 }

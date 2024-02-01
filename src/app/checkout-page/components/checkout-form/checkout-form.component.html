@@ -18,15 +18,20 @@
       data-bs-parent="#accordionExample"
     >
       <div class="accordion-body">
-        <form class="p-3" ngForm #billingform="ngForm">
+        <form
+          class="p-3"
+          ngForm
+          #billingform="ngForm"
+          (change)="listenForm(billingform, 'billing')"
+        >
           <div class="billing">
             <div class="row">
               <div class="mb-3 col-lg-6 col-md-12 col-12">
                 <input
-                  ngModel
+                  [(ngModel)]="billing.billingName"
                   #name="ngModel"
                   type="text"
-                  name="name"
+                  name="billingName"
                   class="form-control rounded-0"
                   placeholder="Name*"
                   required
@@ -39,10 +44,10 @@
               </div>
               <div class="mb-3 col-lg-6 col-md-12 col-12">
                 <input
-                  ngModel
+                  [(ngModel)]="billing.billingSurname"
                   #surname="ngModel"
                   type="text"
-                  name="surname"
+                  name="billingSurname"
                   class="form-control rounded-0"
                   placeholder="Surname*"
                   required
@@ -55,11 +60,11 @@
               </div>
               <div class="mb-3 col-lg-6 col-12">
                 <input
-                  ngModel
+                  [(ngModel)]="billing.billingEmail"
                   #email="ngModel"
                   type="email"
                   email="true"
-                  name="email"
+                  name="billingEmail"
                   class="form-control rounded-0"
                   placeholder="Email*"
                   required
@@ -72,10 +77,10 @@
               </div>
               <div class="mb-3 col-lg-6 col-12">
                 <input
-                  ngModel
+                  [(ngModel)]="billing.billingPhone"
                   #phone="ngModel"
                   type="tel"
-                  name="phone"
+                  name="billingPhone"
                   class="form-control rounded-0"
                   placeholder="Phone*"
                   required
@@ -88,10 +93,10 @@
               </div>
               <div class="mb-3 col-12">
                 <input
-                  ngModel
+                  [(ngModel)]="billing.billingAddress"
                   #address="ngModel"
                   type="text"
-                  name="address"
+                  name="billingAddress"
                   class="form-control rounded-0"
                   placeholder="Address*"
                   required
@@ -104,20 +109,20 @@
               </div>
               <div class="mb-3 col-12">
                 <input
-                  ngModel
+                  [(ngModel)]="billing.billingAddress2"
                   #address2="ngModel"
                   type="text"
-                  name="address2"
+                  name="billingAddress2"
                   class="form-control rounded-0"
                   placeholder="Address (Optional)"
                 />
               </div>
               <div class="mb-3 col-lg-6 col-12">
                 <input
-                  ngModel
+                  [(ngModel)]="billing.billingCity"
                   #city="ngModel"
                   type="text"
-                  name="city"
+                  name="billingCity"
                   class="form-control rounded-0"
                   placeholder="City*"
                   required
@@ -130,10 +135,10 @@
               </div>
               <div class="mb-3 col-lg-6 col-12">
                 <input
-                  ngModel
+                  [(ngModel)]="billing.billingZip"
                   #zip="ngModel"
                   type="text"
-                  name="zip"
+                  name="billingZip"
                   class="form-control rounded-0"
                   placeholder="Zip code*"
                   required
@@ -145,10 +150,10 @@
 
               <div class="mb-3 col-lg-6 col-12">
                 <input
-                  ngModel
+                  [(ngModel)]="billing.billingCountry"
                   #country="ngModel"
-                  type="tel"
-                  name="country"
+                  type="text"
+                  name="billingCountry"
                   class="form-control rounded-0"
                   placeholder="Country*"
                   required
@@ -184,31 +189,36 @@
       data-bs-parent="#accordionExample"
     >
       <div class="accordion-body rounded-0">
-        <form ngForm #shippingform="ngForm" class="p-3">
+        <div class="d-flex p-2 mb-3">
+          <div class="form-check ms-auto mt-4">
+            <input
+              [(ngModel)]="sameAddressFlag"
+              #same="ngModel"
+              class="form-check-input"
+              type="checkbox"
+              id="sameAddress"
+              name="sameaddress"
+              (click)="sameAddress(billingform)"
+            />
+            <label class="form-check-label" for="sameAddress">
+              Use billing information
+            </label>
+          </div>
+        </div>
+        <form
+          ngForm
+          #shippingform="ngForm"
+          class="p-3"
+          (change)="listenForm(shippingform, 'shipping')"
+        >
           <div class="billing">
-            <div class="d-flex p-2 mb-3">
-              <div class="form-check ms-auto mt-4">
-                <input
-                  [(ngModel)]="sameAddressFlag"
-                  #same="ngModel"
-                  class="form-check-input"
-                  type="checkbox"
-                  id="sameAddress"
-                  name="sameaddress"
-                  (click)="sameAddress(billingform)"
-                />
-                <label class="form-check-label" for="sameAddress">
-                  Use billing address
-                </label>
-              </div>
-            </div>
             <div class="row">
               <div class="mb-3 col-lg-6 col-md-12 col-12">
                 <input
-                  [(ngModel)]="shipping.name"
+                  [(ngModel)]="shipping.shippingName"
                   #name="ngModel"
                   type="text"
-                  name="name"
+                  name="shippingName"
                   class="form-control rounded-0"
                   placeholder="Name*"
                   required
@@ -222,10 +232,10 @@
               </div>
               <div class="mb-3 col-lg-6 col-md-12 col-12">
                 <input
-                  [(ngModel)]="shipping.surname"
+                  [(ngModel)]="shipping.shippingSurname"
                   #surname="ngModel"
                   type="text"
-                  name="surname"
+                  name="shippingSurname"
                   class="form-control rounded-0"
                   placeholder="Surname*"
                   required
@@ -239,10 +249,10 @@
               </div>
               <div class="mb-3 col-12">
                 <input
-                  [(ngModel)]="shipping.address"
+                  [(ngModel)]="shipping.shippingAddress"
                   #shipaddress="ngModel"
                   type="text"
-                  name="shipaddress"
+                  name="shippingAddress"
                   class="form-control rounded-0"
                   placeholder="Address*"
                   required
@@ -256,10 +266,10 @@
               </div>
               <div class="mb-3 col-12">
                 <input
-                  [(ngModel)]="shipping.address2"
+                  [(ngModel)]="shipping.shippingAddress2"
                   #address2="ngModel"
                   type="text"
-                  name="address2"
+                  name="shippingAddress2"
                   class="form-control rounded-0"
                   placeholder="Address (Optional)"
                   [disabled]="sameAddressFlag"
@@ -267,10 +277,10 @@
               </div>
               <div class="mb-3 col-lg-6 col-12">
                 <input
-                  [(ngModel)]="shipping.city"
+                  [(ngModel)]="shipping.shippingCity"
                   #city="ngModel"
                   type="text"
-                  name="city"
+                  name="shippingCity"
                   class="form-control rounded-0"
                   placeholder="Phone*"
                   required
@@ -284,10 +294,10 @@
               </div>
               <div class="mb-3 col-lg-6 col-12">
                 <input
-                  [(ngModel)]="shipping.zip"
+                  [(ngModel)]="shipping.shippingZip"
                   #zip="ngModel"
                   type="text"
-                  name="zip"
+                  name="shippingZip"
                   class="form-control rounded-0"
                   placeholder="Zip code*"
                   required
@@ -300,10 +310,10 @@
 
               <div class="mb-3 col-lg-6 col-12">
                 <input
-                  [(ngModel)]="shipping.country"
+                  [(ngModel)]="shipping.shippingCountry"
                   #country="ngModel"
                   type="tel"
-                  name="country"
+                  name="shippingCountry"
                   class="form-control rounded-0"
                   placeholder="Country*"
                   required

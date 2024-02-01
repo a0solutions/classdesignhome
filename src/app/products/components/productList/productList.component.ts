@@ -14,6 +14,7 @@ export class ProductListComponent implements OnInit {
   itemNumber: number;
   paginateNumber: number = 20;
   more: boolean = false;
+  parents: string[] = [];
   constructor(
     private allProducts: ProductManage,
     private filters: FilterManage
@@ -28,9 +29,13 @@ export class ProductListComponent implements OnInit {
   filterProducts(filters: filter): void {
     this.itemNumber = this.paginateNumber;
     this.products = [];
+    this.parents = [];
     this.allProducts.getFilterProducts(filters).map((x) => {
-      this.products.push(x);
-      this.paginate();
+      if (!this.parents.includes(x.parentRef)) {
+        this.parents.push(x.parentRef);
+        this.products.push(x);
+        this.paginate();
+      }
     });
   }
   paginate(): void {

@@ -1,8 +1,9 @@
-<article class="box-signin d-flex justify-content-center align-items-center">
+<article class="bg-light pb-5">
+  <div class="separador10"></div>
   <div
-    class="box-signin-forms col-lg-7 col-md-10 col-sm-12 animate__animated animate__fadeInUp"
+    class="mx-auto col-xl-6 col-lg-7 col-md-10 col-sm-12 animate__animated animate__fadeInUp"
   >
-    <div class="d-flex px-5">
+    <div class="d-flex px-5 mx-auto">
       <div class="me-auto w-100">
         <a routerLink="/"
           ><i class="bi h3 bi-arrow-left-short text-dark"></i>
@@ -10,11 +11,11 @@
         ></a>
       </div>
     </div>
-    <div class="bg-white m-5">
+    <div class="bg-white m-5 p-4">
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item border-bottom border-top" role="presentation">
           <button
-            class="nav-link active w-100 rounded-0 p-3"
+            class="nav-link btn-sm active w-100 rounded-0"
             id="pills-home-tab"
             data-bs-toggle="pill"
             data-bs-target="#pills-home"
@@ -28,7 +29,7 @@
         </li>
         <li class="nav-item border-bottom border-top" role="presentation">
           <button
-            class="nav-link w-100 rounded-0 p-3"
+            class="nav-link btn-sm w-100 rounded-0"
             id="pills-profile-tab"
             data-bs-toggle="pill"
             data-bs-target="#pills-profile"
@@ -68,3 +69,4 @@
     </div>
   </div>
 </article>
+<app-offers [category]="'products'"></app-offers>

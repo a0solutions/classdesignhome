@@ -24,7 +24,7 @@
   </div>
 
   <a
-    *ngIf="!size; else gopay"
+    *ngIf="!size"
     data-bs-dismiss="offcanvas"
     aria-label="Close"
     routerLink="/checkout"
@@ -32,7 +32,4 @@
   >
     Cart checkout
   </a>
-  <ng-template #gopay>
-    <a class="btn btn-dark rounded-0 w-100 py-3"> Go to pay </a>
-  </ng-template>
 </div>

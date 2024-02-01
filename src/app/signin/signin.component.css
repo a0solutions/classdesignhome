@@ -1,15 +1,6 @@
-.box-signin {
-  height: 100vh;
-  width: 100%;
-  background-size: cover;
-  background-position: center center;
-}
-
 .nav-item,
 button {
   width: 50%;
-  font-size: 1.3rem;
-  text-transform: uppercase !important;
 }
 .nav-link {
   color: var(--bg-light);

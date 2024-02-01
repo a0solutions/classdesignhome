@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { FilterManage } from './filterManage.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { urls } from 'src/app/share/services/apiurl';
 import { HttpClient } from '@angular/common/http';
@@ -14,14 +13,17 @@ export class ProductManage {
   constructor(private http: HttpClient) {
     this.setAllProducts();
   }
-  setAllProducts() {
+
+  setAllProducts(): Promise<void> {
     return this.getAllProducts().forEach((x) => {
       this.allProducts = x;
     });
   }
-  getAllProducts() {
+
+  getAllProducts(): Observable<product[]> {
     return this.http.get<product[]>(this.url);
   }
+
   getFilterProducts(filters: any): product[] {
     this.products = new BehaviorSubject(this.allProducts);
     for (let prop in filters) {
@@ -49,40 +51,50 @@ export class ProductManage {
         }
       }
     }
-
     return this.products.value;
   }
-  getProductByCategory(category: any): product[] {
+
+  getProductByCategory(category: string): product[] {
     this.products = new BehaviorSubject(this.allProducts);
     if (category != 'products')
       return this.products.value.filter((x) => x.category == category);
     return this.products.value;
   }
-  getProductByParent(parent: any): product[] {
+
+  getProductByParent(parent: string): product[] {
     this.products = new BehaviorSubject(this.allProducts);
     return this.products.value.filter((x) => x.parentRef == parent);
   }
 
-  getOfferProduct(category: any): product[] {
-    if (category != 'products')
-      return this.allProducts.filter((x) => x.category == category && x.offer);
-    return this.allProducts.filter((x) => x.offer);
+  getOfferProduct(category: string): Promise<product[]> {
+    return this.setAllProducts().then((x) => {
+      if (category != 'products')
+        return this.allProducts.filter(
+          (x) => x.category == category && x.offer
+        );
+      return this.allProducts.filter((x) => x.offer);
+    });
   }
+
   getProduct(id: string): Observable<product> {
     return this.http.get<product>(this.url + '?id=' + id);
   }
+
   findProduct(id: string): product {
     return <product>this.products.value.find((x) => x.id == id);
   }
+
   getCategory(name: string): product | undefined {
     return this.allProducts.find((x: product) => {
       if (x.name == name) return <string>x.category;
       return <string>'';
     });
   }
+
   getCategoryById(id: string): product | undefined {
     return this.allProducts.find((x: product) => x.id == id);
   }
+
   getNumberBySub(sub: string): number {
     let productsNo = [this.allProducts.find((x) => x.subcategory == sub)];
     if (productsNo[0] != undefined) return productsNo.length;
@@ -122,8 +134,8 @@ export type product = {
   fullOrLimitedWarranty: string;
   metadescription: string;
   warrantyDetails: string;
-  stock: boolean;
+  stock: number;
   new: number;
-  offer: boolean;
-  membersOnly: boolean;
+  offer: number;
+  membersOnly: number;
 };

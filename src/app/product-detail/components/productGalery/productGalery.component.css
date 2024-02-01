@@ -5,8 +5,8 @@
   outline: 2px solid transparent;
 }
 .image:hover {
-  outline: 2px solid #cba135;
+  outline: 3px solid #cba135;
 }
 .imageActive {
-  outline: 2px solid black;
+  outline: 3px solid black;
 }

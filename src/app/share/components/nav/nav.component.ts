@@ -6,6 +6,9 @@ import {
 import { NavManage } from './services/navManage.service';
 import { ModalAskManage } from '../modal-ask/services/modalAskManage.service';
 import { Subscription } from 'rxjs';
+import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
+import { UserManage } from 'src/app/signin/services/user-manage.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -14,15 +17,22 @@ import { Subscription } from 'rxjs';
 })
 export class NavComponent implements OnInit {
   @Input() dark: boolean = false;
+  isLogged: boolean = false;
   items: number = 0;
   cheick: boolean = false;
   answer: Subscription;
   constructor(
     private checkout: Checkout,
     private nav: NavManage,
-    private modal: ModalAskManage
+    private modal: ModalAskManage,
+    private token: TokenManage,
+    private auth: UserManage,
+    private route: Router
   ) {}
   ngOnInit(): void {
+    this.token.isLogged.subscribe((x) => {
+      this.isLogged = x;
+    });
     this.checkout.checkCartList() ? this.messageObserve() : null;
     this.checkout.items.subscribe({
       next: this.bascketUpdate.bind(this),
@@ -59,5 +69,8 @@ export class NavComponent implements OnInit {
     setTimeout(() => {
       this.cheick = false;
     }, 1000);
+  }
+  logOut(): void {
+    this.auth.signOut(this.route.url);
   }
 }

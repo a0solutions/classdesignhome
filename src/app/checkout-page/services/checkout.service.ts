@@ -24,7 +24,7 @@ export class Checkout {
       return false;
     }
   }
-  getLocalStorage() {
+  getLocalStorage(): cartProduct[] {
     this.localList = JSON.parse(<string>localStorage.getItem('cartlist'));
     this.items.next(this.localList);
     return this.localList;
@@ -83,4 +83,29 @@ export class Checkout {
 export type cartProduct = {
   product: product;
   count: number;
+};
+export type order = {
+  billing: billing;
+  shipping: shipping;
+  carProducts: cartProduct[];
+};
+export type billing = {
+  billingName: string;
+  billingSurname: string;
+  billingEmail: string;
+  billingPhone: string;
+  billingAddress: string;
+  billingAddress2: string;
+  billingCity: string;
+  billingZip: string;
+  billingCountry: string;
+};
+export type shipping = {
+  shippingName: string;
+  shippingSurname: string;
+  shippingAddress: string;
+  shippingAddress2: string;
+  shippingCity: string;
+  shippingZip: string;
+  shippingCountry: string;
 };

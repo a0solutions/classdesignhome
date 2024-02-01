@@ -60,6 +60,7 @@ import { NavManage } from './share/components/nav/services/navManage.service';
 import { ModalAskManage } from './share/components/modal-ask/services/modalAskManage.service';
 import { SpacesPipe } from './share/pipes/spaces.pipe';
 import { DescripptionAccordionComponent } from './product-detail/components/productDescription/descripption-accordion/descripption-accordion.component';
+import { AuthGuard } from './share/services/auth/auth-guard.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,6 +124,7 @@ import { DescripptionAccordionComponent } from './product-detail/components/prod
     NavManage,
     ModalAskManage,
     LoaderComponent,
+    AuthGuard,
   ],
   bootstrap: [AppComponent],
 })

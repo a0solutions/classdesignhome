@@ -1,16 +1,31 @@
-<div class="separador10"></div>
-<article class="container position-relative z-2">
-  <div class="d-flex p-sm-2 p-lg-3 h3">
-    <div class="me-auto">
-      <a routerLink="/"><i class="bi bi-arrow-left text-dark"></i></a>
+<article class="bg-light pb-5">
+  <div class="separador10"></div>
+  <div class="container position-relative z-2">
+    <div class="d-flex p-sm-2 p-lg-3 h3">
+      <div class="me-auto">
+        <a routerLink="/"><i class="bi bi-arrow-left text-dark"></i></a>
+      </div>
+    </div>
+    <div class="row animate__animated animate__fadeInUp">
+      <div class="col-7 p-sm-2 p-lg-3">
+        <checkout-form (formData)="insertForm($event)"></checkout-form>
+      </div>
+      <div class="col-5 p-sm-2 p-lg-3">
+        <div class="sticky-lg-top top-nav">
+          <product-checkout
+            (cartItems)="insertItems($event)"
+          ></product-checkout>
+          <button
+            (click)="sendOrder()"
+            class="btn btn-dark rounded-0 w-100 py-3"
+          >
+            Go to pay
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row animate__animated animate__fadeInUp">
-    <div class="col-7 p-sm-2 p-lg-3">
-      <checkout-form></checkout-form>
-    </div>
-    <div class="col-5 p-sm-2 p-lg-3">
-      <product-checkout></product-checkout>
-    </div>
-  </div>
+</article>
+<article class="my-5">
+  <app-offers [category]="'products'"></app-offers>
 </article>

@@ -24,6 +24,5 @@ export class SignupFormComponent {
   }
   setAlert(code: string): void {
     this.alert.setAlertMessage(code);
-    this.alert.show.next(true);
   }
 }

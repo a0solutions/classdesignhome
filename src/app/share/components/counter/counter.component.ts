@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./counter.component.css'],
 })
 export class CounterComponent {
-  @Input() card: boolean = false;
+  @Input() min: number = 1;
   @Input() number: number = 1;
   @Output() numberCount = new EventEmitter<number>();
   constructor() {}

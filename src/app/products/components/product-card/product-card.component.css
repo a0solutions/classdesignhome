@@ -1,7 +1,6 @@
 .card-footer .card-button:hover {
   width: 180% !important;
 }
-
 .card-text {
   font-size: 12px;
 }
@@ -9,7 +8,13 @@
   top: 20px;
   right: 20px;
 }
-
 .share {
   font-size: 0.7rem;
+}
+.card {
+  min-height: auto;
+  background: linear-gradient(white, var(--bs-light));
+}
+.card img {
+  mix-blend-mode: multiply;
 }
