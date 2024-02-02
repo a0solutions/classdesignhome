@@ -62,9 +62,12 @@ h6 {
 .color-gold {
   color: #cba135 !important;
 }
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
 
 .card-title {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 800;
 }
 .card-button {

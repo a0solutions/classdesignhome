@@ -1,7 +1,35 @@
-<p
+<div class="modal-backdrop" [ngClass]="{ 'd-none': !show }"></div>
+
+<div
+  class="modal fade animate__animated animate__fadeInUp"
+  [ngClass]="{ 'show d-block': show }"
+  id="modalAsk"
+  tabindex="-1"
+  aria-labelledby="modalAskLabel"
+  aria-hidden="false"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-0">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalAskLabel">Alert!</h1>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="closeAlert()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ message }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <p
   class="alert text-start shadow bg-white p-4 rounded-0 d-flex animate__animated animate__fadeInUp"
   *ngIf="show"
 >
   {{ message }}
   <button class="btn-close ms-3" (click)="closeAlert()"></button>
-</p>
+</p> -->

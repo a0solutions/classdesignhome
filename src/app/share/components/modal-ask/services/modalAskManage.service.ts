@@ -21,7 +21,7 @@ export class ModalAskManage implements OnChanges {
     } else if (code == 'useDataCheckout') {
       this.title = 'Personal information';
       this.text =
-        'We see that your are logged in, would you like to use your personal information for this checkout?';
+        'We see that your are logged in, Would you like to use your personal information to make this payment?';
     } else if (code == 'shopSuccess') {
       this.title = 'Congratulations!';
       this.text =

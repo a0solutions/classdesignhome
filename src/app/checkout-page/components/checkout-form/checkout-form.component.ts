@@ -20,11 +20,7 @@ export class CheckoutFormComponent implements OnInit {
   billing: billing = <billing>{};
   fillOrder: order = <order>{};
   @Output() formData = new EventEmitter<order>();
-  constructor(
-    private checkout: Checkout,
-    private modal: ModalAskManage,
-    private user: UserManage
-  ) {}
+  constructor(private modal: ModalAskManage, private user: UserManage) {}
   ngOnInit(): void {
     this.user.isLogged() ? this.showModal() : null;
   }

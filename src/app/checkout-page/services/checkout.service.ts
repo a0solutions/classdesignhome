@@ -16,9 +16,7 @@ export class Checkout {
   constructor(
     private http: HttpClient,
     private stripeScriptTag: StripeScriptTag
-  ) {
-    this.stripeScriptTag.setPublishableKey('');
-  }
+  ) {}
 
   checkCartList(): boolean {
     let time = JSON.parse(<string>localStorage.getItem('timeCartList'));

@@ -75,7 +75,7 @@ export class ProductManage {
       return this.allProducts.filter((x) => x.offer);
     });
   }
-
+  getNewAndMembers(): void {}
   getProduct(id: string): Observable<product> {
     return this.http.get<product>(this.url + '?id=' + id);
   }
