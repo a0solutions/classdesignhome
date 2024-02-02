@@ -20,7 +20,7 @@ export class AuthGuard {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let activo: boolean = this.auth.isLogged();
-    if (!activo) return true;
+    if (activo) return true;
     this.auth.signOut();
     this.router.navigate(['/signin'], {
       queryParams: { returnTo: state.url },

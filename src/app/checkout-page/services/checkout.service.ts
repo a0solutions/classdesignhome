@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { product } from 'src/app/products/services/product-manage.service';
-
+import { urls } from 'src/app/share/services/apiurl';
+import { StripeScriptTag } from 'stripe-angular';
 @Injectable({
   providedIn: 'root',
 })
@@ -9,8 +11,14 @@ export class Checkout {
   items: BehaviorSubject<cartProduct[]> = new BehaviorSubject(
     <cartProduct[]>[]
   );
+  url: string = urls.urlOrders;
   localList: cartProduct[] = [];
-  constructor() {}
+  constructor(
+    private http: HttpClient,
+    private stripeScriptTag: StripeScriptTag
+  ) {
+    this.stripeScriptTag.setPublishableKey('');
+  }
 
   checkCartList(): boolean {
     let time = JSON.parse(<string>localStorage.getItem('timeCartList'));
@@ -79,6 +87,9 @@ export class Checkout {
     localStorage.removeItem('cartlist');
     localStorage.removeItem('timeCartList');
   }
+  sendOrder(data: order): Observable<object> {
+    return this.http.post(this.url, data);
+  }
 }
 export type cartProduct = {
   product: product;
@@ -87,7 +98,10 @@ export type cartProduct = {
 export type order = {
   billing: billing;
   shipping: shipping;
-  carProducts: cartProduct[];
+  cartProducts: cartProduct[];
+  amount: number;
+  member: string;
+  items: number;
 };
 export type billing = {
   billingName: string;

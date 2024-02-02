@@ -61,6 +61,7 @@ import { ModalAskManage } from './share/components/modal-ask/services/modalAskMa
 import { SpacesPipe } from './share/pipes/spaces.pipe';
 import { DescripptionAccordionComponent } from './product-detail/components/productDescription/descripption-accordion/descripption-accordion.component';
 import { AuthGuard } from './share/services/auth/auth-guard.service';
+import { StripeModule } from 'stripe-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,7 +112,13 @@ import { AuthGuard } from './share/services/auth/auth-guard.service';
     MainTemplateComponent,
     SpacesPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    StripeModule.forRoot('...YOUR-STRIPE-KEY-HERE...'),
+  ],
   providers: [
     CategoriesService,
     ProductManage,

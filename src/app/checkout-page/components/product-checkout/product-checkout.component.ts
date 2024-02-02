@@ -1,9 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Checkout, cartProduct } from '../../services/checkout.service';
-import {
-  ProductManage,
-  product,
-} from 'src/app/products/services/product-manage.service';
+import { ProductManage } from 'src/app/products/services/product-manage.service';
 
 @Component({
   selector: 'product-checkout',
@@ -14,6 +11,8 @@ export class ProductCheckoutComponent implements OnInit {
   list: number = 0;
   subtotal: number = 0;
   @Output() cartItems = new EventEmitter<cartProduct[]>();
+  @Output() amount = new EventEmitter<number>();
+  @Output() items = new EventEmitter<number>();
   constructor(private checkout: Checkout, private products: ProductManage) {}
 
   ngOnInit(): void {
@@ -25,13 +24,12 @@ export class ProductCheckoutComponent implements OnInit {
   getCartListItems(allItems: cartProduct[]): void {
     this.subtotal = 0;
     this.list = 0;
+    this.cartItems.emit(allItems);
     allItems.forEach((y) => {
       this.list = this.list + y.count;
-      this.products.getProduct(y.product.id).forEach((x) => {
-        let product = x;
-        this.subtotal = this.subtotal + product.price;
-      });
+      this.subtotal = this.subtotal + y.product.price * y.count;
+      this.amount.emit(this.subtotal);
+      this.items.emit(this.list);
     });
-    this.cartItems.emit(allItems);
   }
 }

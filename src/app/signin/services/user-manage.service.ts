@@ -17,16 +17,22 @@ export class UserManage {
     private router: Router
   ) {}
   postUser(data: Form): Observable<string> {
-    return this.cnt.post<string>(
-      this.url + '?validate=' + this.tokenManage.getValidateToken(),
-      data
-    );
+    return this.cnt.post<string>(this.url, data);
   }
   verifyUser(data: any): Observable<string> {
     return this.cnt.post(this.url, data, { responseType: 'text' });
   }
   getAllUserInfo(id: string): Observable<string> {
-    return this.cnt.get<string>(this.url + '?id=' + id);
+    return this.cnt.get<string>(
+      this.url +
+        '?validate=' +
+        this.tokenManage.getValidateToken() +
+        '&id=' +
+        id
+    );
+  }
+  getUserId(): string {
+    return this.tokenManage.getUserId();
   }
   updateData(form: NgForm, id: string, table: string): Observable<object> {
     return this.cnt.put(
@@ -41,11 +47,10 @@ export class UserManage {
     );
   }
   isLogged(): boolean {
-    return this.tokenManage.tokenExpired();
+    return !this.tokenManage.tokenExpired();
   }
   signOut(param?: string): void {
     this.tokenManage.logOut();
-    console.log('si');
     this.router.navigate(['/signin'], { queryParams: { returnTo: param } });
   }
 }

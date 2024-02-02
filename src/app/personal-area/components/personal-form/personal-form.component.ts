@@ -43,7 +43,7 @@ export class PersonalFormComponent implements OnInit {
     this.loader = false;
     this.setAlert('personalUpdate');
   }
-  setAlert(code: string): void {
+  setAlert(code: any): void {
     this.alert.setAlertMessage(code);
   }
 }

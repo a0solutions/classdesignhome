@@ -42,8 +42,6 @@ export class TokenManage {
     this.isLogged.next(true);
   }
   getValidateToken(): string {
-    let validateCode: string = '';
-    validateCode = this.token.split('.')[2];
-    return validateCode;
+    return this.getToken();
   }
 }
