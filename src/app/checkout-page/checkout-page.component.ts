@@ -9,7 +9,6 @@ import {
   shipping,
 } from './services/checkout.service';
 import { AlertManage } from '../share/components/alerts/services/alertManage.service';
-import { UserManage } from '../signin/services/user-manage.service';
 import { ModalAskManage } from '../share/components/modal-ask/services/modalAskManage.service';
 import { Router } from '@angular/router';
 

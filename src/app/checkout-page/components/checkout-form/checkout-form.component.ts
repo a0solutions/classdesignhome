@@ -1,11 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {
-  Checkout,
-  billing,
-  order,
-  shipping,
-} from '../../services/checkout.service';
+import { billing, order, shipping } from '../../services/checkout.service';
 import { ModalAskManage } from 'src/app/share/components/modal-ask/services/modalAskManage.service';
 import { UserManage } from 'src/app/signin/services/user-manage.service';
 
