@@ -4,12 +4,12 @@ import { SigninFormComponent } from './components/signin-form/signin-form.compon
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ShareModule } from '../share/coreModules/core/share.module';
+import { ShareModule } from '../share/Modules/share.module';
+import { UserManage } from './services/user-manage.service';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ShareModule],
   declarations: [SigninComponent, SigninFormComponent, SignupFormComponent],
-  providers: [],
-  exports: [SigninComponent, SigninFormComponent, SignupFormComponent],
+  providers: [UserManage],
 })
 export class SignUserModule {}

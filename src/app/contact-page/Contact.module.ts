@@ -5,7 +5,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { Contactform } from '../share/services/contactform.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ShareModule } from '../share/coreModules/core/share.module';
+import { ShareModule } from '../share/Modules/share.module';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ShareModule],
@@ -15,6 +15,6 @@ import { ShareModule } from '../share/coreModules/core/share.module';
     ContactFormComponent,
   ],
   providers: [Contactform],
-  exports: [ContactChatComponent, ContactPageComponent, ContactFormComponent],
+  exports: [ContactChatComponent],
 })
 export class ContactModule {}

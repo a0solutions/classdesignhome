@@ -3,10 +3,10 @@ import { ProductDetailComponent } from './product-detail.component';
 import { ProductGalery } from './components/productGalery/productGalery.component';
 import { ProductDescriptionComponent } from './components/productDescription/productDescription.component';
 import { CommonModule } from '@angular/common';
-import { ShareModule } from '../share/coreModules/core/share.module';
+import { ShareModule } from '../share/Modules/share.module';
 import { ProductManage } from '../products/services/product-manage.service';
 import { DescripptionAccordionComponent } from './components/productDescription/descripption-accordion/descripption-accordion.component';
-import { PipesModule } from '../share/coreModules/core/pipes.module';
+import { PipesModule } from '../share/Modules/pipes.module';
 
 @NgModule({
   imports: [CommonModule, ShareModule, PipesModule],
@@ -17,11 +17,5 @@ import { PipesModule } from '../share/coreModules/core/pipes.module';
     DescripptionAccordionComponent,
   ],
   providers: [ProductManage],
-  exports: [
-    ProductDetailComponent,
-    ProductGalery,
-    ProductDescriptionComponent,
-    DescripptionAccordionComponent,
-  ],
 })
 export class ProductDetailModule {}
