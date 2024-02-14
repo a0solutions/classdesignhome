@@ -1,6 +1,6 @@
 <div
   id="carouselExample"
-  class="carousel carousel-dark slide mx-4"
+  class="carousel carousel-dark slide my-4"
   data-bs-ride="true"
 >
   <div class="carousel-inner">
@@ -21,7 +21,7 @@
             )
           "
         >
-          <offer-card [product]="product"></offer-card>
+          <product-card [product]="product"></product-card>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
     data-bs-target="#carouselExample"
     data-bs-slide="prev"
   >
-    <span class="text-dark offer-arrow"
+    <span class="text-dark offer-arrow bg-white p-2 wh-40 shadow rounded-pill"
       ><i class="bi bi-arrow-left-short"></i
     ></span>
   </button>
@@ -42,7 +42,7 @@
     data-bs-target="#carouselExample"
     data-bs-slide="next"
   >
-    <span class="text-dark offer-arrow"
+    <span class="text-dark offer-arrow bg-white p-2 wh-40 shadow rounded-pill"
       ><i class="bi bi-arrow-right-short"></i
     ></span>
   </button>

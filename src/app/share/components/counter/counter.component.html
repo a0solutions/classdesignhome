@@ -1,5 +1,8 @@
 <div class="d-flex">
-  <button class="btn btn-dark rounded-pill text-center btn-sm" (click)="less()">
+  <button
+    class="btn btn-outline-dark border rounded-0 text-center"
+    (click)="less()"
+  >
     -
   </button>
   <input
@@ -7,11 +10,14 @@
     #counter="ngModel"
     type="number"
     name="counter"
-    class="form-control rounded-pill mx-2 text-center p-0 input-sm"
+    class="form-control text-center text-center border-0 border-bottom border-top rounded-0 p-0 input-sm"
     placeholder="Counter"
     [min]="min"
   />
-  <button class="btn btn-dark rounded-pill text-center btn-sm" (click)="add()">
+  <button
+    class="btn btn-outline-dark border rounded-0 text-center"
+    (click)="add()"
+  >
     +
   </button>
 </div>

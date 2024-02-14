@@ -12,11 +12,13 @@ import { ProductsModule } from './products/products.module';
 import { SignUserModule } from './signin/signin.module';
 import { ShareModule } from './share/Modules/share.module';
 import { PipesModule } from './share/Modules/pipes.module';
-import { TemplateModule } from './share/components/nav/Template.module';
+import { TemplateModule } from './share/Modules/Template.module';
 import { ContactModule } from './contact-page/Contact.module';
 import { HomeModule } from './home/home.module';
 import { PersonalModule } from './personal-area/personal.module';
 import { ProductDetailModule } from './product-detail/product-detail.module';
+import { UsModule } from './us/us.module';
+
 @NgModule({
   declarations: [AppComponent, CatalogPageComponent, CatalogCardComponent],
   imports: [
@@ -32,8 +34,8 @@ import { ProductDetailModule } from './product-detail/product-detail.module';
     ContactModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
+    UsModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

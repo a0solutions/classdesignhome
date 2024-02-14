@@ -16,9 +16,45 @@
       <div class="header-overlay"></div>
     </div>
   </div>
-  <h1
-    class="header-name text-capitalize popup animate__animated animate__fadeInUp"
-  >
-    {{ headerName }}
-  </h1>
+  <div class="header-tool">
+    <button class="btn btn-white shadow rounded-pill mx-4 mt-4 mb-2">
+      <i class="bi bi-fullscreen p-2 m-0"></i>
+    </button>
+  </div>
+  <div class="header-carrousel">
+    <div class="header-carrousel-item">
+      <img
+        [src]="
+          '../../../assets/images/' +
+          headerNameUrl +
+          '/showroom/showroom-' +
+          headerNameUrl +
+          '-1.png'
+        "
+      />
+    </div>
+    <div class="header-carrousel-item">
+      <img
+        [src]="
+          '../../../assets/images/' +
+          headerNameUrl +
+          '/showroom/showroom-' +
+          headerNameUrl +
+          '-1.png'
+        "
+      />
+    </div>
+    <div class="header-carrousel-item">
+      <img
+        [src]="
+          '../../../assets/images/' +
+          headerNameUrl +
+          '/showroom/showroom-' +
+          headerNameUrl +
+          '-1.png'
+        "
+      />
+    </div>
+  </div>
+  <h5 class="show-rooms-title">Showrooms</h5>
 </div>

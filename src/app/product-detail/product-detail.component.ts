@@ -5,7 +5,10 @@ import {
   CategoriesService,
   categories,
 } from '../share/services/categories.service';
-import { ProductManage } from '../products/services/product-manage.service';
+import {
+  ProductManage,
+  product,
+} from '../products/services/product-manage.service';
 import { LoaderService } from '../share/components/loader/services/loader.service';
 
 @Component({
@@ -15,6 +18,7 @@ import { LoaderService } from '../share/components/loader/services/loader.servic
 })
 export class ProductDetailComponent implements OnInit {
   id: string = '';
+  product: product = <product>{};
   category: string = '';
   constructor(
     private http: ActivatedRoute,
@@ -26,6 +30,9 @@ export class ProductDetailComponent implements OnInit {
     this.nav.dark.next(true);
     this.http.paramMap.subscribe((x) => {
       this.id = <string>x.get('id');
+      this.products.getProduct(this.id).subscribe((x) => {
+        this.product = x;
+      });
       this.products.setAllProducts().then((x) => {
         this.category = <string>(
           this.products.getCategoryById(this.id)?.category

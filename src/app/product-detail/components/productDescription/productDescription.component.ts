@@ -10,6 +10,7 @@ import { Checkout } from 'src/app/checkout-page/services/checkout.service';
 import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
 import {
   ProductManage,
+  colorId,
   product,
 } from 'src/app/products/services/product-manage.service';
 @Component({
@@ -18,11 +19,13 @@ import {
   styleUrls: ['./productDescription.component.css'],
 })
 export class ProductDescriptionComponent implements OnChanges, OnInit {
-  @Input() id: string = '';
+  @Input() product: product = <product>{};
   isLogged: boolean = false;
   count: number = 1;
   colors: colorId[] = <colorId[]>[];
-  product: product = <product>{};
+
+  sizes: string[] = [];
+  sets: string[] = [];
   constructor(
     private products: ProductManage,
     private checkout: Checkout,
@@ -35,27 +38,55 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     });
   }
   ngOnChanges(changes: SimpleChanges): void {
-    this.count = 1;
     this.colors = <colorId[]>[];
-    this.product = <product>{};
     this.setAllParameters();
   }
 
   setAllParameters(): void {
-    this.products.getProduct(this.id).forEach((x) => {
-      this.product = x;
-      this.products.getProductByParent(this.product.parentRef).forEach((y) => {
-        let tempColor: colorId = <colorId>{};
-        tempColor.color = y.color;
-        tempColor.id = y.id;
-        tempColor.name = y.name;
-        this.colors.some((x) => x.color === y.color)
-          ? null
-          : this.colors.push(tempColor);
-      });
+    this.count = 1;
+    this.products.products.subscribe((y) => {
+      this.processData(
+        this.product,
+        this.products.getProductByParent(this.product.parentRef)
+      );
     });
   }
 
+  processData(x: product, products: product[]): void {
+    this.sizes = [];
+    this.sets = [];
+    products.forEach((y) => {
+      this.filterSizeAndSets(x, y);
+      let tempColor: colorId = <colorId>{};
+      tempColor.color = y.color;
+      tempColor.id = y.id;
+      tempColor.name = y.name;
+      this.colors.some((x) => x.color === y.color)
+        ? null
+        : this.colors.push(tempColor);
+    });
+  }
+
+  filterSizeAndSets(product: product, y: product) {
+    product.reference.substr(0, 6) == y.reference.substr(0, 6) &&
+    product.color == y.color &&
+    product.sets == y.sets
+      ? this.sizes.some((x) => {
+          x === y.size;
+        })
+        ? null
+        : this.sizes.push(y.size)
+      : null;
+    product.reference.substr(0, 6) == y.reference.substr(0, 6) &&
+    product.color == y.color &&
+    product.size == y.size
+      ? this.sets.some((x) => {
+          x === y.sets;
+        })
+        ? null
+        : this.sets.push(y.sets)
+      : null;
+  }
   addCart(product: product): void {
     this.checkout.postLocalStorage(product, this.count);
   }
@@ -77,5 +108,22 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
       },
     });
   }
+  selectSize(size: string) {
+    let product: product = this.products.getDetailFilter(
+      this.product.color,
+      size,
+      this.product.sets,
+      this.product.parentRef
+    );
+    this.router.navigate(['/product', product.id, product.name]);
+  }
+  selectSets(sets: string) {
+    let product: product = this.products.getDetailFilter(
+      this.product.color,
+      this.product.size,
+      sets,
+      this.product.parentRef
+    );
+    this.router.navigate(['/product', product.id, product.name]);
+  }
 }
-type colorId = { color: string; id: string; name: string };

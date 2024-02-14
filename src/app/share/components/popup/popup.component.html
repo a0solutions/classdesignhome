@@ -1,19 +1,13 @@
 <div
-  class="popup-container popup animate__animated animate__fadeIn"
+  [ngClass]="{ 'backdrop-filter-blur': popup_active }"
+  class="popup-container popup"
   [ngStyle]="{ top: data.top, left: data.left }"
 >
   <div
     class="image-showroom-hotspot"
     (click)="popup_active = !popup_active"
   ></div>
-  <div
-    class="card shadow-sm dataShow popup rounded-0 border-0"
-    data-wow-duration="2s"
-    data-wow-delay="5s"
-    data-wow-delay="0.5s"
-  >
-    <div *ngIf="popup_active">
-      <product-card [product]="product"></product-card>
-    </div>
+  <div *ngIf="popup_active" class="showroom-container">
+    <showroom-card [product]="product"></showroom-card>
   </div>
 </div>

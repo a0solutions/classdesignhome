@@ -1,6 +1,3 @@
-.card-footer .card-button:hover {
-  width: 180% !important;
-}
 .card-text {
   font-size: 12px;
 }
@@ -13,8 +10,23 @@
 }
 .card {
   min-height: auto;
-  background: linear-gradient(white, var(--bs-light));
+  background: var(--bg-gray);
 }
 .card img {
   mix-blend-mode: multiply;
+}
+
+.card-footer a {
+  color: var(--bs-dark) !important;
+}
+.card-footer a:hover {
+  color: white !important;
+}
+.card-background {
+  height: 20em;
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  mix-blend-mode: multiply;
+  transition: all 0.5s !important;
 }

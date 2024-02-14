@@ -17,6 +17,7 @@ export class ProductManage {
   setAllProducts(): Promise<void> {
     return this.getAllProducts().forEach((x) => {
       this.allProducts = x;
+      this.products.next(this.allProducts);
     });
   }
 
@@ -62,7 +63,6 @@ export class ProductManage {
   }
 
   getProductByParent(parent: string): product[] {
-    this.products = new BehaviorSubject(this.allProducts);
     return this.products.value.filter((x) => x.parentRef == parent);
   }
 
@@ -75,8 +75,8 @@ export class ProductManage {
       return this.allProducts.filter((x) => x.offer);
     });
   }
-  getNewAndMembers(): void {}
   getProduct(id: string): Observable<product> {
+    this.setAllProducts();
     return this.http.get<product>(this.url + '?id=' + id);
   }
 
@@ -96,11 +96,36 @@ export class ProductManage {
   }
 
   getNumberBySub(sub: string): number {
-    let productsNo = [this.allProducts.find((x) => x.subcategory == sub)];
+    let productsNo: string[] = [];
+    this.allProducts
+      .filter((x) => x.subcategory == sub)
+      .forEach((y) => {
+        !productsNo.some((z) => z === y.parentRef)
+          ? productsNo.push(y.parentRef)
+          : null;
+      });
+
     if (productsNo[0] != undefined) return productsNo.length;
     return 0;
   }
+  getDetailFilter(
+    color: string,
+    size: string,
+    sets: string,
+    parentRef: string
+  ): product {
+    return <product>(
+      this.allProducts.find(
+        (x) =>
+          x.color == color &&
+          x.size == size &&
+          x.sets == sets &&
+          x.parentRef == parentRef
+      )
+    );
+  }
 }
+export type colorId = { color: string; id: string; name: string };
 export type product = {
   id: string;
   name: string;
@@ -110,9 +135,15 @@ export type product = {
   category: string;
   subcategory: string;
   color: string;
+  detailColor: string;
+  frameMaterial: string;
+  materialDetail: string;
+  upholstered: number;
   price: number;
   oldprice: number;
   minimunOrder: number;
+  size: string;
+  sets: string;
   description: string;
   featureBullet: string;
   countryManufacture: string;
@@ -134,6 +165,7 @@ export type product = {
   fullOrLimitedWarranty: string;
   metadescription: string;
   warrantyDetails: string;
+  headboardHeight: string;
   stock: number;
   new: number;
   offer: number;

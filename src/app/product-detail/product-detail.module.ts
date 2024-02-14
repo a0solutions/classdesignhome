@@ -7,9 +7,10 @@ import { ShareModule } from '../share/Modules/share.module';
 import { ProductManage } from '../products/services/product-manage.service';
 import { DescripptionAccordionComponent } from './components/productDescription/descripption-accordion/descripption-accordion.component';
 import { PipesModule } from '../share/Modules/pipes.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [CommonModule, ShareModule, PipesModule],
+  imports: [CommonModule, ShareModule, PipesModule, RouterModule],
   declarations: [
     ProductDetailComponent,
     ProductGalery,

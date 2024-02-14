@@ -19,7 +19,7 @@ export class ContactFormComponent {
     });
   }
   responseManage(): void {
-    this.setAlert('caontact');
+    this.setAlert('contact');
   }
   setAlert(code: string): void {
     this.alert.setAlertMessage(code);

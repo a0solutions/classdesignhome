@@ -3,13 +3,10 @@
   style="border-left: 3px solid var(--bs-dark)"
 >
   <div class="row g-0">
-    <div class="col-md-3 p-2">
-      <img
-        src="./assets/images/bathroom/products/productx.png"
-        class="img-fluid w-100"
-        alt="product"
-      />
-    </div>
+    <div
+      class="col-md-3 p-2 card-background"
+      [style]="'background-image:url(' + background + ')'"
+    ></div>
     <div class="col-md-9 p-0">
       <div class="card-body d-flex p-0 p-2">
         <div class="w-100" *ngIf="!size; else sizeData">

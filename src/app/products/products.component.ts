@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
       next: this.getCategory.bind(this),
       error: console.log.bind(this),
     });
-    this.nav.dark.next(false);
+    this.nav.dark.next(true);
   }
   getCategory(param: ParamMap): void {
     this.allProducts.setAllProducts().then((res) => {

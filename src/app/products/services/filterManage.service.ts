@@ -5,21 +5,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class FilterManage {
-  allFilters: BehaviorSubject<filter> = new BehaviorSubject({
-    category: '',
-    color: [''],
-    subcategory: [''],
-    price: 0,
-  });
-
+  allFilters: BehaviorSubject<filter> = new BehaviorSubject(<filter>{});
+  cardSize: BehaviorSubject<string> = new BehaviorSubject('col-lg-3');
   constructor() {}
   resetFilters() {
-    this.allFilters.next({
-      category: '',
-      color: [''],
-      subcategory: [''],
-      price: 0,
-    });
+    this.allFilters.next(<filter>{});
   }
 }
 export type filter = {
@@ -27,4 +17,5 @@ export type filter = {
   color: string[];
   subcategory: string[];
   price: number;
+  size: string;
 };

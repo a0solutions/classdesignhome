@@ -1,31 +1,42 @@
 <div class="descriptions p-lg-4">
+  <p>
+    <a class="text-dark" routerLink="/">Home </a> /
+    <a class="text-dark" [routerLink]="'/products/' + product.category"
+      >{{ product.category | capitalize }}
+    </a>
+    /
+    <a
+      class="text-dark"
+      [routerLink]="'/products/' + product.category + '/' + product.subcategory"
+      >{{ product.subcategory | capitalize }}
+    </a>
+    / {{ product.name }}
+  </p>
   <div class="d-flex">
-    <div>
-      <h2 class="bold mb-0 h1">{{ product.name | uppercase }} <br /></h2>
-      <p class="mb-3">REF:{{ product.reference }}</p>
-    </div>
-    <div class="ms-auto mt-2">
-      <p>
-        <span
-          class="badge p-2 rounded-0"
-          [ngClass]="product.stock ? 'bg-success' : 'bg-danger'"
-          >{{ product.stock | stock }}</span
-        >
-      </p>
-    </div>
+    <h1 class="bold mb-0 h5">{{ product.name }}</h1>
+    <p class="ms-3">
+      <span
+        class="badge p-1 px-2 rounded-pill rounded-0"
+        [ngClass]="product.stock ? 'bg-success' : 'bg-danger'"
+        >{{ product.stock | stock }}</span
+      >
+    </p>
   </div>
-  <h2 class="mt-3 mb-0 color-gold">
-    {{ product.price | currency : "USD" }}<br />
-  </h2>
-  <p class="mb-0">Overall Dimentions: {{ product.dimentions }}</p>
 
-  <div class="d-flex my-4">
-    <app-counter
-      class="w-50"
-      [min]="product.minimunOrder"
-      (numberCount)="setNumber($event)"
-    ></app-counter>
-    <div class="row ms-auto w-100 mt-2">
+  <h3 class="mt-2 mb-0 h3 color-gold">
+    {{ product.price | currency : "USD" }}<br />
+  </h3>
+  <p class="mb-0">Overall Dimentions: {{ product.dimentions }}</p>
+  <p class="mb-0">Frame Material: {{ product.frameMaterial }}</p>
+  <p class="mb-0">Material Detail: {{ product.materialDetail }}</p>
+  <div class="my-4">
+    <p class="mb-2">
+      Color: <strong>{{ product.color }}</strong>
+      <span *ngIf="product.detailColor != ''">
+        & Color Detail: {{ product.detailColor }}</span
+      >
+    </p>
+    <div class="row w-50 mt-2">
       <div class="col-2" *ngFor="let color of colors">
         <color-select
           (click)="navigateParent(color.id, color.name)"
@@ -35,20 +46,89 @@
       </div>
     </div>
   </div>
-  <div class="mb-4">
+  <div class="row my-3">
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <p class="mb-2">
+        Sizes: <strong>{{ product.size }}</strong>
+      </p>
+      <div class="d-flex">
+        <button
+          *ngFor="let size of sizes; index as i"
+          [ngClass]="{
+            'mx-2': i != 0,
+            'ms-0 me-2': i == 0,
+            'bg-gold border-gold text-white': size == product.size,
+            'bg-light': size != product.size
+          }"
+          [title]="size"
+          class="btn rounded-0 p-0 size-icon"
+          (click)="selectSize(size)"
+        >
+          <img
+            width="60px"
+            class="p-0"
+            [src]="
+              '../../../../assets/images/app/custom-icons/' + size + '.png'
+            "
+          />
+        </button>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <p class="mb-2">
+        Sets: <strong>{{ product.sets }}</strong>
+      </p>
+      <div class="d-flex">
+        <button
+          *ngFor="let set of sets; index as i"
+          [ngClass]="{
+            'mx-2': i != 0,
+            'ms-0 me-2': i == 0,
+            'border-gold text-white': set == product.sets,
+            'bg-light': set != product.sets
+          }"
+          [title]="set"
+          class="btn rounded-0 p-0 size-icon"
+          (click)="selectSets(set)"
+        >
+          <img
+            width="60px"
+            class="p-0"
+            [src]="
+              '../../../../assets/images/app/custom-icons/' +
+              (set | spaces) +
+              '.png'
+            "
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-3 d-flex border-top border-bottom py-3">
+    <app-counter
+      class="w-25"
+      [min]="product.minimunOrder"
+      (numberCount)="setNumber($event)"
+    ></app-counter>
     <button
       *ngIf="validToAdd(); else needMember"
       (click)="addCart(product)"
-      class="btn btn-dark w-100 rounded-0"
+      class="btn btn-dark w-50 rounded-0"
       [disabled]="!product.stock"
     >
-      <i class="bi bi-bag-heart cursor-pointer"></i> ADD TO CART
+      ADD TO CART
     </button>
     <ng-template #needMember>
-      <button (click)="goSignIn()" class="btn btn-dark w-100 rounded-0">
-        <i class="bi bi-bag-heart cursor-pointer"></i> SING IN FOR THIS PRODUCT
+      <button (click)="goSignIn()" class="btn btn-dark w-50 rounded-0">
+        SING IN FOR THIS PRODUCT
       </button>
     </ng-template>
   </div>
+  <p class="py-2 border-bottom mb-0">
+    SKU: {{ product.reference }} &nbsp;&nbsp;&nbsp;&nbsp; Categories:
+    {{ product.category | capitalize }} / {{ product.subcategory | capitalize }}
+  </p>
   <descripption-accordion [product]="product"></descripption-accordion>
 </div>

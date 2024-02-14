@@ -10,13 +10,20 @@ app-counter {
 }
 .card-title {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
 }
 .card-secondary {
   font-size: 13px;
 }
 .card {
   transition: all 0.5s;
-  background: linear-gradient(90deg, white, var(--bs-light));
+  background: var(--bg-gray);
   border: 1px solid transparent;
+}
+.card-background {
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  mix-blend-mode: multiply;
+  transition: all 0.5s !important;
 }

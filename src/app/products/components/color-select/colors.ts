@@ -4,7 +4,7 @@ export const pantone = [
   { color: 'Gray', hex: 'gray' },
   { color: 'Beige', hex: 'beige' },
   { color: 'Light Oak', hex: '#C7AA80' },
-  { color: 'Walnut', hex: '#74675E' },
+  { color: 'Walnut', hex: '#773F1A' },
   { color: 'White', hex: '#fff' },
   { color: 'Off White', hex: '#F2EEE3' },
   { color: 'Teal', hex: '#005553' },

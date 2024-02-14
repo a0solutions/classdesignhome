@@ -9,6 +9,7 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { PersonalAreaComponent } from './personal-area/personal-area.component';
 import { AuthGuard } from './share/services/auth/auth-guard.service';
+import { UsComponent } from './us/us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,10 @@ const routes: Routes = [
     path: 'personal',
     component: PersonalAreaComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'aboutus',
+    component: UsComponent,
   },
   { path: '**', component: HomeComponent },
 ];

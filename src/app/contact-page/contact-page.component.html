@@ -1,40 +1,43 @@
-<app-headers [headerName]="'get in touch'"></app-headers>
 <article class="container">
-  <div class="row mt-5">
-    <div class="col-12 col-lg-6 p-4 p-lg-5">
-      <div class="card bg-white text-bg-light mb-3 rounded-0">
-        <div class="card-body">
-          <h5 class="card-title">Phone number</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-      <div class="card bg-white text-bg-light mb-3 rounded-0">
-        <div class="card-body">
-          <h5 class="card-title">Email</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-      <div class="card bg-white text-bg-light mb-3 rounded-0">
-        <div class="card-body">
-          <h5 class="card-title">Address</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
+  <div class="title text-center my-5">
+    <p class="mb-0">Don't be a stranger</p>
+    <h1 class="fw-bolder">Contact Us</h1>
+    <div class="separador-centrado mb-5 mt-3"></div>
+  </div>
+
+  <div class="row mt-5 text-center">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="shadow-sm rounded-5 contact-card p-4">
+        <div class="p-3"><i class="bi bi-telephone-outbound-fill h1"></i></div>
+        <h3>Phone Number</h3>
+        <p>929-242-6868</p>
       </div>
     </div>
-    <div class="col-12 col-lg-6 p-2 p-lg-5">
-      <contact-form></contact-form>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="shadow-sm rounded-5 contact-card p-4">
+        <div class="p-3"><i class="bi bi-envelope-at h1"></i></div>
+        <h3>Email</h3>
+        <p>contact@info.com</p>
+      </div>
     </div>
-    <div class="col-12">
-      <div id="map"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="shadow-sm rounded-5 contact-card p-4">
+        <div class="p-3"><i class="bi bi-pin-map-fill h1"></i></div>
+        <h3>Address</h3>
+        <p>123 Fifth Avenue, New York, NY 10160</p>
+      </div>
+    </div>
+  </div>
+</article>
+<article class="container">
+  <div class="row mt-5 text-center">
+    <div class="col-lg-6 col-md-6 col-sm-12 mx-auto">
+      <div class="p-lg-5 p-md-4 p-sm-3">
+        <p class="mb-0">Message us</p>
+        <h2 class="fw-bolder">Get in touch</h2>
+        <div class="separador-centrado mb-5 mt-3"></div>
+        <contact-form></contact-form>
+      </div>
     </div>
   </div>
 </article>

@@ -1,0 +1,26 @@
+.card-text {
+  font-size: 12px;
+}
+.btn-social {
+  top: 20px;
+  right: 20px;
+}
+.share {
+  font-size: 0.7rem;
+}
+.card {
+  min-height: auto;
+  background: rgba(200, 200, 200, 0.5);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+}
+.card img {
+  mix-blend-mode: multiply;
+}
+
+.card-footer a {
+  color: var(--bs-dark) !important;
+}
+.card-footer a:hover {
+  color: white !important;
+}

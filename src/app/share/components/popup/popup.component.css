@@ -1,10 +1,13 @@
 .popup {
-  min-width: 250px;
-  height: 325px;
+  min-width: 300px;
+  height: 153px;
   z-index: 9;
   background: transparent !important;
+  border-radius: 15px;
 }
-
+.backdrop-filter-blur {
+  backdrop-filter: blur(10px) !important;
+}
 .dataShow {
   transition: all 0.5s;
 }
@@ -17,25 +20,39 @@
 .popup-container {
   position: absolute;
   z-index: 9;
-  min-height: 280px;
+  min-height: 150px;
   width: 210px;
-  transition: all 0.8s;
 }
 .image-showroom-hotspot:hover {
   outline: 20px solid rgba(255, 255, 255, 0.5);
 }
 
 .image-showroom-hotspot {
-  padding: 10px;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+  padding: 3px;
   background-color: white;
-  outline: 8px solid rgba(255, 255, 255, 0.5);
+  outline: 2px solid white;
   border-radius: 50%;
   position: absolute;
   z-index: 9;
   cursor: pointer;
-  transition: all 0.3s;
-  top: 50%;
-  left: -20%;
+  transition: all 0.5s;
+  top: 45%;
+  left: -13%;
+  outline-offset: 17px;
+  animation: mymove 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes mymove {
+  from {
+    outline: 2px solid white;
+    outline-offset: 0px;
+  }
+  to {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 17px;
+  }
 }
 .card-button {
   transition: all 0.5s;

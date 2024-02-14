@@ -15,6 +15,7 @@ export class ProductListComponent implements OnInit {
   paginateNumber: number = 20;
   more: boolean = false;
   parents: string[] = [];
+  cardSize: string = 'col-lg-3';
   constructor(
     private allProducts: ProductManage,
     private filters: FilterManage
@@ -24,6 +25,9 @@ export class ProductListComponent implements OnInit {
     this.filters.allFilters.subscribe({
       next: this.filterProducts.bind(this),
       error: console.log.bind(this),
+    });
+    this.filters.cardSize.subscribe((x) => {
+      this.cardSize = x;
     });
   }
   filterProducts(filters: filter): void {

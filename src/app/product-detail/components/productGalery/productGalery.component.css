@@ -1,12 +1,20 @@
-.image {
+.carrousel-image-datail:hover {
+  outline: 1px solid var(--secondary-color);
+}
+.imageActive {
+  outline: 1px solid var(--secondary-color);
+}
+.lightbox {
+  width: 100%;
+  height: 62vh;
+  overflow: hidden;
+}
+.carrousel-image-datail {
+  height: 18vh;
+  overflow: hidden;
   transition: all 0.5s;
   cursor: pointer;
   border: 6px solid transparent;
-  outline: 2px solid transparent;
-}
-.image:hover {
-  outline: 3px solid #cba135;
-}
-.imageActive {
-  outline: 3px solid black;
+  padding: 8px;
+  margin: 0px;
 }

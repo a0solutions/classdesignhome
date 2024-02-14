@@ -13,9 +13,11 @@ import { PopupComponent } from '../components/popup/popup.component';
 import { ProductCardComponent } from 'src/app/products/components/product-card/product-card.component';
 import { PipesModule } from './pipes.module';
 import { ColorSelectComponent } from 'src/app/products/components/color-select/color-select.component';
+import { RouterModule } from '@angular/router';
+import { ShowroomCardComponent } from '../components/popup/showroomCard/showroom-card.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, PipesModule],
+  imports: [CommonModule, FormsModule, PipesModule, RouterModule],
   declarations: [
     CartItemComponent,
     ListedComponent,
@@ -24,6 +26,7 @@ import { ColorSelectComponent } from 'src/app/products/components/color-select/c
     OfferCardComponent,
     HeadersComponent,
     PopupComponent,
+    ShowroomCardComponent,
     ProductCardComponent,
     ColorSelectComponent,
   ],

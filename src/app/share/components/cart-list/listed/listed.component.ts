@@ -3,10 +3,6 @@ import {
   Checkout,
   cartProduct,
 } from 'src/app/checkout-page/services/checkout.service';
-import {
-  ProductManage,
-  product,
-} from 'src/app/products/services/product-manage.service';
 
 @Component({
   selector: 'app-listed',
@@ -20,7 +16,7 @@ export class ListedComponent implements OnInit {
   shipping: number = 0;
   total: number = this.shipping + this.subtotal;
   @Input() size: boolean = false;
-  constructor(private checkout: Checkout, private products: ProductManage) {}
+  constructor(private checkout: Checkout) {}
 
   ngOnInit(): void {
     this.checkout.checkCartList() ? (this.show = true) : null;

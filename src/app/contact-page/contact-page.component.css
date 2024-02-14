@@ -1,0 +1,9 @@
+.contact-card i {
+  color: var(--secondary-color);
+}
+.contact-card {
+  background: var(--bg-gray) !important;
+}
+h2 {
+  font-size: 45px;
+}

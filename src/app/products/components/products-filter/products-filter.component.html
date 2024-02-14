@@ -1,7 +1,38 @@
-<div class="filter px-3">
-  <div class="d-flex border-top sticky-top bg-white">
-    <h4 class="py-3 mb-0 w-50"><i class="bi bi-sliders2"></i> Filters</h4>
-    <div class="w-50">
+<div class="bg-white">
+  <div class="row">
+    <div class="col-lg-2 col-6 p-3">
+      <h4
+        class="mb-0 cursor-pointer hover-gold"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasFilters"
+        aria-controls="offcanvasFilters"
+      >
+        <i class="bi bi-sliders2 mb-2"></i>
+        Filters
+      </h4>
+    </div>
+    <div class="col-lg-8 d-flex justify-content-center">
+      <p class="p-3">Showing 20 of {{ products.length }} results</p>
+      <span
+        (click)="changeFilter('col-lg-6')"
+        class="mb-0 mx-3 mt-3 cursor-pointer dimentions-cards"
+      >
+        <img src="../../../../assets/images/app/card-2.png" />
+      </span>
+      <span
+        (click)="changeFilter('col-lg-4')"
+        class="mb-0 mx-3 mt-3 cursor-pointer dimentions-cards"
+      >
+        <img src="../../../../assets/images/app/card-3.png" />
+      </span>
+      <span
+        (click)="changeFilter('col-lg-3')"
+        class="mb-0 mx-3 mt-3 cursor-pointer dimentions-cards"
+      >
+        <img src="../../../../assets/images/app/card-4.png" />
+      </span>
+    </div>
+    <div class="col-lg-2 col-6">
       <select
         [(ngModel)]="categorySelected"
         #categories
@@ -20,160 +51,201 @@
       </select>
     </div>
   </div>
-  <div class="accordion rounded-0" id="accordionExample">
-    <div class="accordion-item border-0 rounded-0">
-      <h2 class="accordion-header border-top rounded-0">
-        <button
-          class="accordion-button rouned-0 py-3"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseCero"
-          aria-expanded="true"
-          aria-controls="collapseCero"
-        >
-          Subcategories
-        </button>
-      </h2>
-      <div
-        id="collapseCero"
-        class="accordion-collapse collapse show"
-        data-bs-parent="#accordionExample"
-      >
-        <div class="accordion-body row">
-          <div *ngFor="let category of allCategories">
-            <div *ngIf="categorySelected != 'products'; else allcategories">
-              <div *ngIf="categorySelected == category.category">
+</div>
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasFilters"
+  aria-labelledby="offcanvasFiltersLabel"
+>
+  <div class="offcanvas-header">
+    <button
+      type="button"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+      class="btn rounded-0 border-0 btn-light me-auto"
+    >
+      <i class="bi bi-arrow-left-short"></i>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="filter">
+      <div class="accordion rounded-0" id="accordionExample">
+        <div class="accordion-item border-0 rounded-0">
+          <h3 class="accordion-header border-top rounded-0">
+            <button
+              class="accordion-button rouned-0 py-3"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseCero"
+              aria-expanded="true"
+              aria-controls="collapseCero"
+            >
+              Subcategories
+            </button>
+          </h3>
+          <div
+            id="collapseCero"
+            class="accordion-collapse collapse show"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body row">
+              <div *ngFor="let category of allCategories">
+                <div *ngIf="categorySelected != 'products'; else allcategories">
+                  <div *ngIf="categorySelected == category.category">
+                    <div
+                      class="form-check"
+                      *ngFor="
+                        let subcategory of category.subcategories;
+                        index as i
+                      "
+                    >
+                      <input
+                        class="form-check-input checked focus-ring-dark"
+                        type="checkbox"
+                        [value]="subcategory"
+                        [id]="subcategory"
+                        [checked]="subcategorySelected == subcategory"
+                        (change)="updateFilterSub($event)"
+                      />
+                      <label class="form-check-label" [for]="subcategory">
+                        {{ subcategory | capitalize }}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <ng-template #allcategories>
+                  <p class="my-2">{{ category.category | uppercase }}</p>
+                  <div
+                    class="form-check"
+                    *ngFor="let subcategory of category.subcategories"
+                  >
+                    <input
+                      class="form-check-input checked focus-ring-dark"
+                      type="checkbox"
+                      [value]="subcategory"
+                      [id]="subcategory"
+                      [checked]="subcategorySelected == subcategory"
+                      (change)="updateFilterSub($event)"
+                    />
+                    <label class="form-check-label" [for]="subcategory">
+                      {{ subcategory | capitalize }}
+                    </label>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item border-0 rounded-0">
+          <h3 class="accordion-header border-top rounded-0">
+            <button
+              class="accordion-button rouned-0 collapsed py-3"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              Colors
+            </button>
+          </h3>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body row">
+              <div class="col-2 mb-3" *ngFor="let colors of colors">
+                <color-select
+                  [background]="colors"
+                  (selectedColor)="updateFilterColor($event)"
+                ></color-select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item border-0 rounded-0">
+          <h3 class="accordion-header rounded-0 border-top">
+            <button
+              class="accordion-button collapsed py-3"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              Price
+            </button>
+          </h3>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <label for="customRange3" class="form-label">{{
+                priceRange.value | currency : "USD"
+              }}</label>
+              <input
+                #priceRange
+                (ngModel)="(priceFilter)"
+                type="range"
+                class="form-range w-100"
+                min="50"
+                max="30000"
+                step="50"
+                value="30000"
+                (change)="updateFilterPrice(priceRange.value)"
+              />
+              <div class="d-flex" style="margin-top: -14px">
+                <small class="me-auto">$0</small>
+                <small class="ms-auto">$30,000</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item border-0 rounded-0">
+          <h3 class="accordion-header rounded-0 border-top">
+            <button
+              class="accordion-button collapsed py-3"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+              Size
+            </button>
+          </h3>
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <p>{{ categorySelected | capitalize }}</p>
+              <div class="row">
                 <div
-                  class="form-check"
-                  *ngFor="let subcategory of category.subcategories; index as i"
+                  class="col-3 cursor-pointer"
+                  *ngFor="let size of sizesFilter; index as i"
+                  (click)="updateFilterSize(size, i)"
                 >
-                  <input
-                    class="form-check-input checked focus-ring-dark"
-                    type="checkbox"
-                    [value]="subcategory"
-                    [id]="subcategory"
-                    [checked]="subcategorySelected == subcategory"
-                    (change)="updateFilterSub($event)"
+                  <img
+                    [src]="
+                      '../../../../assets/images/app/custom-icons/' +
+                      size +
+                      '.png'
+                    "
+                    [ngClass]="{ active: sizeSelected[i] }"
+                    class="p-0 m-0 border icon-filter-size"
+                    width="100%"
+                    [title]="size | capitalize"
                   />
-                  <label class="form-check-label" [for]="subcategory">
-                    {{ subcategory | capitalize }}
-                  </label>
                 </div>
               </div>
             </div>
-            <ng-template #allcategories>
-              <p class="my-2">{{ category.category | uppercase }}</p>
-              <div
-                class="form-check"
-                *ngFor="let subcategory of category.subcategories"
-              >
-                <input
-                  class="form-check-input checked focus-ring-dark"
-                  type="checkbox"
-                  [value]="subcategory"
-                  [id]="subcategory"
-                  [checked]="subcategorySelected == subcategory"
-                  (change)="updateFilterSub($event)"
-                />
-                <label class="form-check-label" [for]="subcategory">
-                  {{ subcategory | capitalize }}
-                </label>
-              </div>
-            </ng-template>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item border-0 rounded-0">
-      <h2 class="accordion-header border-top rounded-0">
-        <button
-          class="accordion-button rouned-0 collapsed py-3"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseOne"
-          aria-expanded="true"
-          aria-controls="collapseOne"
-        >
-          Colors
-        </button>
-      </h2>
-      <div
-        id="collapseOne"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-      >
-        <div class="accordion-body row">
-          <div class="col-2 mb-3" *ngFor="let colors of colors">
-            <color-select
-              [background]="colors"
-              (selectedColor)="updateFilterColor($event)"
-            ></color-select>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item border-0 rounded-0">
-      <h2 class="accordion-header rounded-0 border-top">
-        <button
-          class="accordion-button collapsed py-3"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseTwo"
-          aria-expanded="false"
-          aria-controls="collapseTwo"
-        >
-          Price
-        </button>
-      </h2>
-      <div
-        id="collapseTwo"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-      >
-        <div class="accordion-body">
-          <label for="customRange3" class="form-label">{{
-            priceRange.value | currency : "USD"
-          }}</label>
-          <input
-            #priceRange
-            (ngModel)="(priceFilter)"
-            type="range"
-            class="form-range w-100"
-            min="50"
-            max="30000"
-            step="50"
-            value="30000"
-            (change)="updateFilterPrice(priceRange.value)"
-          />
-          <div class="d-flex" style="margin-top: -14px">
-            <small class="me-auto">$0</small>
-            <small class="ms-auto">$30,000</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item border-0 rounded-0">
-      <h2 class="accordion-header rounded-0 border-top">
-        <button
-          class="accordion-button collapsed py-3"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseThree"
-          aria-expanded="false"
-          aria-controls="collapseThree"
-        >
-          Size
-        </button>
-      </h2>
-      <div
-        id="collapseThree"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-      >
-        <div class="accordion-body">
-          <strong>This is the third item's accordion body.</strong> It is hidden
-          by default, until the collapse plugin adds the appropriate classes
-          that we use to style each element.
         </div>
       </div>
     </div>

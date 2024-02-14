@@ -16,9 +16,13 @@ select option {
 option:hover {
   background-color: #212529 !important;
 }
-.filter {
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-height: calc(100vh - 200px);
-  margin-bottom: 50px;
+
+.dimentions-cards {
+  transition: all 0.5s;
+}
+.icon-filter-size:hover {
+  border: 1px solid var(--secondary-color) !important;
+}
+.icon-filter-size.active {
+  border: 1px solid var(--secondary-color) !important;
 }

@@ -10,7 +10,7 @@ import { LoaderService } from '../share/components/loader/services/loader.servic
 export class ContactPageComponent implements OnInit {
   constructor(private nav: NavManage, private loader: LoaderService) {}
   ngOnInit(): void {
-    this.nav.dark.next(false);
+    this.nav.dark.next(true);
     this.loader.show.next(false);
   }
 }

@@ -1,0 +1,33 @@
+<div
+  class="card p-2 border-0 mx-auto cursor-pointer"
+  style="width: 100%"
+  (click)="navigate(product.id, product.name)"
+>
+  <div class="position-absolute d-flex z-3">
+    <button
+      class="btn btn-white rounded-pill text-muted shadow-sm btn-sm"
+      title="Share with friends"
+    >
+      Share!
+    </button>
+    <p
+      *ngIf="product.new == 1"
+      class="bg-white p-1 px-2 text-white rounded-pill text-muted cursor-default mb-0 ms-3 shadow-sm"
+      title="New product"
+    >
+      New
+    </p>
+  </div>
+  <div class="card-body p-0 mt-4 text-center">
+    <h2 class="card-title h5 fw-bolder">{{ product.name }}</h2>
+
+    <p class="ms-auto my-2">{{ product.price | currency : "USD" }}</p>
+    <div class="d-flex w-100 my-3 justify-content-center">
+      <color-select
+        class="mx-1"
+        *ngFor="let color of colors"
+        [background]="color.color"
+      ></color-select>
+    </div>
+  </div>
+</div>

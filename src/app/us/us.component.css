@@ -1,0 +1,24 @@
+h2 {
+  font-size: 55px;
+}
+.us-banner {
+  margin: 50px 0px;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(158, 158, 158);
+  background-image: url("../../assets/images/aboutus/showroom/showroom-aboutus-1.png");
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: hidden;
+  background-blend-mode: multiply;
+}
+.us-banner h3 {
+  color: white;
+  font-size: 45px;
+  text-align: center;
+}
+.us-member {
+  margin-top: -200px;
+}

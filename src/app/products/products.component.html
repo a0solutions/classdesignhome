@@ -1,18 +1,34 @@
-<app-headers [headerName]="category"></app-headers>
-<app-offers class="my-3 mx-5" [category]="category"></app-offers>
-<article class="container mt-5">
-  <div class="row mt-5">
-    <div class="col-lg-3 col-md-5 col-sm-12">
-      <div class="sticky-top filter-container">
-        <products-filter
-          [categorySelected]="category"
-          [subcategorySelected]="subcategory"
-        ></products-filter>
+<!-- <app-headers [headerName]="category"></app-headers> -->
+<!--<app-offers class="my-3 mx-5" [category]="category"></app-offers>-->
+<div class="separador-menu"></div>
+<article>
+  <div class="row">
+    <div class="text-start col-3">
+      <div class="sticky-lg-top category-name px-5 pt-5">
+        <p class="mb-0">
+          <a routerLink="/" class="text-dark">Home</a> /
+          <a [routerLink]="'/products/' + category" class="text-dark">{{
+            category | capitalize
+          }}</a>
+          <a
+            *ngIf="subcategory"
+            [routerLink]="'/products/' + category + '/' + subcategory"
+            class="text-dark"
+            >{{ " / " + (subcategory | capitalize) }}</a
+          >
+        </p>
+        <h1 class="products-page-title mb-0">{{ category | capitalize }}</h1>
       </div>
     </div>
-
-    <div class="col-lg-9 col-md-7 col-sm-12">
-      <productList [category]="category"></productList>
-    </div>
+    <app-headers class="col-9 m-0" [headerName]="category"></app-headers>
   </div>
+</article>
+<div class="px-4 bg-white border-bottom filter-table sticky-top">
+  <products-filter
+    [categorySelected]="category"
+    [subcategorySelected]="subcategory"
+  ></products-filter>
+</div>
+<article class="container mt-5">
+  <productList [category]="category"></productList>
 </article>

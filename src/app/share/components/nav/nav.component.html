@@ -3,118 +3,127 @@
     'bg-gradient-light border-bottom': dark,
     'bg-gradient-dark': !dark
   }"
-  class="navbar navbar-flex d-flex"
+  class="navbar"
 >
-  <div class="menu d-flex">
-    <a
-      [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
-      class="nav-link active ms-5 cursor-pointer"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasExample"
-      aria-controls="offcanvasExample"
-      aria-current="page"
-      ><i class="bi bi-list h3"></i
-    ></a>
-    <ul
-      [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
-      class="navbar-ul"
-    >
-      <li class="nav-item">
-        <a class="nav-link active mt-1" routerLink="/" aria-current="page"
-          >Home <span class="visually-hidden">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
+  <div class="row w-100">
+    <div class="col-lg-3 col-sm-6 logo d-flex mx-auto">
+      <div>
         <a
-          class="nav-link active mt-1"
-          routerLink="/aboutus"
+          [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+          class="nav-link active m-4 cursor-pointer"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasExample"
+          aria-controls="offcanvasExample"
           aria-current="page"
-          >Us<span class="visually-hidden">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link active mt-1"
-          routerLink="/collections"
-          aria-current="page"
-          >COLLECTIONS<span class="visually-hidden">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link active mt-1"
-          routerLink="/products/products"
-          aria-current="page"
-          >SHOP<span class="visually-hidden">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link active mt-1"
-          routerLink="/contact"
-          aria-current="page"
-          >Contact<span class="visually-hidden">(current)</span></a
-        >
-      </li>
-    </ul>
-  </div>
-  <div class="logo mx-auto">
-    <a *ngIf="!dark" class="navbar-brand text-center w-50 logo-pc" href="./"
-      ><img src="../../../assets/images/logo.png" height="50px"
-    /></a>
-    <a *ngIf="dark" class="navbar-brand text-center w-50 logo-pc" href="./"
-      ><img src="../../../assets/images/logo-black.png" height="50px"
-    /></a>
-  </div>
-  <div class="icons me-3 mt-0 d-flex">
-    <button
-      [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
-      class="btn mt-1 border-0 mx-lg-2 mx-md-2 mx-sm-2 rounded-0"
-      type="submit"
-    >
-      <i class="bi bi-search h-5"></i>
-    </button>
-
-    <button
-      routerLink="personal"
-      class="btn mt-1 border-0 mx-lg-2 mx-md-2 mx-sm-2 rounded-0"
-    >
-      <i
+          ><i class="bi bi-list h3"></i
+        ></a>
+      </div>
+      <div class="me-5 mt-3">
+        <a *ngIf="!dark" class="navbar-brand text-center w-50 logo-pc" href="./"
+          ><img src="../../../assets/images/logo.png" height="50px"
+        /></a>
+        <a *ngIf="dark" class="navbar-brand text-center w-50 logo-pc" href="./"
+          ><img src="../../../assets/images/logo-black.png" height="50px"
+        /></a>
+      </div>
+    </div>
+    <div class="col-6 justify-content-center menu d-flex">
+      <ul
         [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
-        class="bi bi-person h5 cursor-pointer"
-      ></i>
-    </button>
-
-    <button
-      [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
-      class="btn mt-1 border-0 mx-lg-2 mx-md-2 mx-sm-2 rounded-0"
-      type="button"
-      (click)="logOut()"
-      *ngIf="isLogged"
-    >
-      <i class="bi bi-power h5 cursor-pointer"></i>
-    </button>
-
-    <button
-      type="button"
-      [ngClass]="{ animate__shakeX: cheick }"
-      class="btn position-relative mx-lg-2 mx-md-2 mx-sm-2 animate__animated"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasRight"
-      aria-controls="offcanvasRight"
-    >
-      <i
-        [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
-        class="bi bi-bag-heart h5 cursor-pointer"
-      ></i>
-      <span
-        [ngStyle]="{ opacity: items != 0 ? 1 : 0 }"
-        [ngClass]="{ 'bg-dark text-white': dark, 'bg-light text-dark': !dark }"
-        class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-dark"
+        class="navbar-ul mb-0 mt-4"
       >
-        {{ items }}
-      </span>
-    </button>
+        <li class="nav-item">
+          <a class="nav-link active mt-1" routerLink="/" aria-current="page"
+            >Home <span class="visually-hidden">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active mt-1"
+            routerLink="/aboutus"
+            aria-current="page"
+            >Us<span class="visually-hidden">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active mt-1"
+            routerLink="/collections"
+            aria-current="page"
+            >COLLECTIONS<span class="visually-hidden">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active mt-1"
+            routerLink="/products/products"
+            aria-current="page"
+            >SHOP<span class="visually-hidden">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active mt-1"
+            routerLink="/contact"
+            aria-current="page"
+            >Contact<span class="visually-hidden">(current)</span></a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-3 col-sm-6 icons mt-3 text-end">
+      <button
+        [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+        class="btn mt-1 border-0 mx-lg-2 mx-md-2 mx-sm-2 rounded-0"
+        type="submit"
+      >
+        <i class="bi bi-search h-5"></i>
+      </button>
+
+      <button
+        routerLink="personal"
+        class="btn mt-1 border-0 mx-lg-2 mx-md-2 mx-sm-2 rounded-0"
+      >
+        <i
+          [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+          class="bi bi-person h5 cursor-pointer"
+        ></i>
+      </button>
+
+      <button
+        [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+        class="btn mt-1 border-0 mx-lg-2 mx-md-2 mx-sm-2 rounded-0"
+        type="button"
+        (click)="logOut()"
+        *ngIf="isLogged"
+      >
+        <i class="bi bi-power h5 cursor-pointer"></i>
+      </button>
+
+      <button
+        type="button"
+        [ngClass]="{ animate__shakeX: cheick }"
+        class="btn position-relative mx-lg-2 mx-md-2 mx-sm-2 animate__animated"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"
+      >
+        <i
+          [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+          class="bi bi-bag-heart h5 cursor-pointer"
+        ></i>
+        <span
+          [ngStyle]="{ opacity: items != 0 ? 1 : 0 }"
+          [ngClass]="{
+            'bg-dark text-white': dark,
+            'bg-light text-dark': !dark
+          }"
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-dark"
+        >
+          {{ items }}
+        </span>
+      </button>
+    </div>
   </div>
 </nav>
 <cart-list></cart-list>

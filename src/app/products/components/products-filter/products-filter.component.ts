@@ -5,7 +5,7 @@ import {
   categories,
 } from 'src/app/share/services/categories.service';
 import { FilterManage, filter } from '../../services/filterManage.service';
-import { ProductManage } from '../../services/product-manage.service';
+import { ProductManage, product } from '../../services/product-manage.service';
 @Component({
   selector: 'products-filter',
   templateUrl: './products-filter.component.html',
@@ -18,7 +18,10 @@ export class ProductsFilterComponent implements OnInit {
   allColorFilters: string[] = [];
   subcategoriesFilter: string[] = [];
   priceFilter: number = 30000;
+  sizesFilter: string[] = [];
   colors: string[] = [];
+  products: product[] = [];
+  sizeSelected: boolean[] = [];
   constructor(
     private http: Router,
     private categories: CategoriesService,
@@ -46,6 +49,7 @@ export class ProductsFilterComponent implements OnInit {
     this.colors = [];
     this.product.getProductByCategory(filters.category).forEach((y) => {
       this.colors.includes(y.color) ? null : this.colors.push(y.color);
+      this.sizesFilter.includes(y.size) ? null : this.sizesFilter.push(y.size);
     });
   }
   //Getting categories
@@ -92,8 +96,17 @@ export class ProductsFilterComponent implements OnInit {
     this.filter.allFilters.value.price = parseInt(price);
     this.updateAllFilter();
   }
+  updateFilterSize(size: string, index: number): void {
+    this.sizeSelected = [];
+    this.sizeSelected[index] = true;
+    this.filter.allFilters.value.size = size;
+    this.updateAllFilter();
+  }
   //updating filter observable in FilterServices
   updateAllFilter(): void {
     this.filter.allFilters.next(this.filter.allFilters.value);
+  }
+  changeFilter(cardSize: string) {
+    this.filter.cardSize.next(cardSize);
   }
 }

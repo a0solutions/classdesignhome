@@ -3,56 +3,39 @@
   data-mdb-zoom-effect="true"
   data-mdb-auto-height="true"
 >
-  <div class="row py-3 shadow-5">
-    <div class="col-2">
-      <div class="col-12 mt-1">
-        <img
-          (click)="updatePicture($event, detailImg, 0)"
-          src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp"
-          data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp"
-          alt="Gallery image 1"
-          [ngClass]="{ imageActive: image[0] }"
-          class="image w-100"
-        />
-      </div>
-      <div class="col-12 mt-1">
-        <img
-          (click)="updatePicture($event, detailImg, 1)"
-          src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
-          data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
-          alt="Gallery image 2"
-          [ngClass]="{ imageActive: image[1] }"
-          class="image w-100"
-        />
-      </div>
-      <div class="col-12 mt-1">
-        <img
-          (click)="updatePicture($event, detailImg, 2)"
-          src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/13a.webp"
-          data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/13a.webp"
-          alt="Gallery image 3"
-          [ngClass]="{ imageActive: image[2] }"
-          class="image w-100"
-        />
-      </div>
-      <div class="col-12 mt-1">
-        <img
-          (click)="updatePicture($event, detailImg, 3)"
-          src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/15a.webp"
-          data-mdb-img="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/15a.webp"
-          alt="Gallery image 4"
-          [ngClass]="{ imageActive: image[3] }"
-          class="image w-100"
-        />
-      </div>
-    </div>
-    <div class="col-10 mb-1">
+  <div class="row shadow-5">
+    <div class="col-12 mb-1">
       <div class="lightbox">
         <img
           #detailImg
-          src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/14a.webp"
-          alt="Gallery image 1"
+          [src]="fullPicture"
+          [alt]="product.name"
           class="ecommerce-gallery-main-img active w-100"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div
+        class="col-4 carrousel-image-datail"
+        [ngClass]="{ imageActive: image[0] }"
+      >
+        <img
+          (click)="updatePicture($event, detailImg, 0)"
+          [src]="miniPicture1"
+          [alt]="product.name"
+          class="w-100"
+        />
+      </div>
+
+      <div
+        class="col-4 carrousel-image-datail"
+        [ngClass]="{ imageActive: image[1] }"
+      >
+        <img
+          (click)="updatePicture($event, detailImg, 1)"
+          [src]="miniPicture3"
+          [alt]="product.name"
+          class="w-100"
         />
       </div>
     </div>

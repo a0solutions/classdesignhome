@@ -1,8 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("../node_modules/bootstrap-icons/font/bootstrap-icons.css");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --secondary-color: #c19a83;
+  --bg-gray: #f1f2f2;
+}
 * {
-  font-family: "Roboto";
+  font-family: "Oswald", sans-serif;
 }
 .cursor-pointer {
   cursor: pointer;
@@ -10,6 +14,7 @@
 .cursor-default {
   cursor: default !important;
 }
+
 .w-5 {
   width: 20%;
 }
@@ -48,37 +53,43 @@
 p {
   font-weight: 300;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 900;
+a {
+  text-decoration: none !important;
+  transition: color 0.5s;
 }
+a:hover {
+  color: var(--secondary-color) !important;
+}
+.offcanvasFilters {
+  z-index: 9999;
+}
+h1,
+h2 {
+  font-family: "Playfair Display", serif;
+}
+
 .w-90 {
   width: 90%;
 }
 .color-gold {
-  color: #cba135 !important;
+  color: var(--secondary-color) !important;
+}
+.bg-gold {
+  background: var(--secondary-color) !important ;
+}
+.border-gold {
+  border: 1px solid var(--secondary-color) !important;
 }
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .card-title {
-  font-size: 0.9rem;
+  font-size: 22px;
   font-weight: 800;
 }
-.card-button {
-  transition: all 0.5s;
-  overflow: hidden;
-  font-size: 0.8rem;
-  text-decoration: none;
-  color: var(--bs-dark);
-}
-.card-button:hover {
-  color: #cba135;
+.title h1 {
+  font-size: 65px;
 }
 .blocks-categories {
   width: 33.33333%;
@@ -139,7 +150,24 @@ popup {
 .header popup {
   opacity: 1;
 }
+/********************************* Bootstrap *********************************/
+.bi-sliders2::before {
+  content: "\f789";
+  margin-bottom: 11px;
+}
+.btn-white {
+  background: white !important;
+}
 /************** HOVER ****************/
+
+.hover-gold:hover {
+  transition: all 0.5s;
+  color: var(--secondary-color);
+}
+.btn:hover {
+  background: var(--secondary-color) !important;
+  color: white !important;
+}
 .blocks-categories:hover {
   width: 1175px;
 }
@@ -157,8 +185,27 @@ popup {
   margin-top: 73%;
   opacity: 1;
 }
-.navbar-expand-lg .navbar-nav .nav-link {
-  font-size: 12px;
+.nav-link,
+.subcategories_list_item {
+  transition: all 0.5s !important;
+}
+.navbar .nav-link:hover {
+  color: var(--secondary-color) !important;
+  transform: scale(1.2);
+}
+footer .nav-link:hover {
+  padding-left: 8px !important;
+}
+footer i:hover {
+  color: var(--secondary-color);
+}
+.navbar .nav-link {
+  transition: all 0.5s !important;
+  font-size: 15px;
+}
+.subcategories_list .nav-link:hover .subcategories_list_item {
+  color: var(--secondary-color) !important;
+  padding-left: 35px;
 }
 .menu-movil {
   width: 80%;
@@ -175,6 +222,28 @@ popup {
 .separador7 {
   height: 7vh;
 }
+.separador-menu {
+  height: 4vh;
+}
+.separador-centrado {
+  width: 60px;
+  height: 1px;
+  background: var(--secondary-color);
+  margin: auto;
+}
+.separador-start {
+  width: 60px;
+  height: 1px;
+  background: var(--secondary-color);
+}
+.bi::before {
+  line-height: unset !important;
+  vertical-align: middle !important;
+}
+.wh-40 {
+  width: 40px;
+  height: 40px;
+}
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   background-color: #212529 !important;
@@ -183,7 +252,7 @@ input:focus,
 select:focus,
 .form-check-input:focus {
   box-shadow: 0 0 0 3px rgba(203, 161, 53, 0.289) !important;
-  border: 1px solid #cba135 !important;
+  border: 1px solid var(--secondary-color) !important;
 }
 .form-check-label {
   cursor: pointer;
@@ -196,7 +265,7 @@ input[type="range"]:focus {
   transition: all 0.5s;
 }
 .icons i:hover {
-  color: #cba135 !important;
+  color: var(--secondary-color) !important;
 }
 /* input[type="text"],
 input[type="tel"],
@@ -220,8 +289,8 @@ textarea {
   box-shadow: 0 0 0 3px rgba(203, 161, 53, 0.289) !important;
 }
 .form-check-input:checked {
-  background-color: rgb(203, 161, 53) !important;
-  border-color: #cba135 !important;
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
 }
 
 .select option:nth-child(3):hover {
@@ -234,21 +303,21 @@ textarea {
   transform: rotate(180deg);
 }
 .accordion-item .accordion-button:hover {
-  color: #cba135;
+  color: var(--secondary-color);
 }
 .btn-dark:hover {
-  background-color: #cba135 !important;
-  border: 1px solid#cba135 !important;
+  background-color: var(--secondary-color) !important;
+  border: 1px solid var(--secondary-color) !important;
 }
 .btn-outline-dark:hover {
-  background-color: #cba135 !important;
-  border: 1px solid#cba135 !important;
+  background-color: var(--secondary-color) !important;
+  border: 1px solid var(--secondary-color) !important;
 }
 input[type="checkbox"] {
   border-radius: 0px !important;
 }
 .accordion-button:not(.collapsed) {
-  color: #cba135 !important;
+  color: var(--secondary-color) !important;
   background-color: var(--bs-light) !important;
 }
 .accordion-button:focus {
@@ -353,7 +422,7 @@ input[type="checkbox"] {
   }
   nav .nav-item {
     display: inline-block;
-    margin: 0px 5px;
+    margin: 0px 15px;
     transition: all 0.5s;
   }
 }
@@ -364,7 +433,7 @@ input[type="checkbox"] {
   /* hi-res laptops and desktops */
 }
 nav .nav-item:hover {
-  opacity: 0.5;
+  color: var(--scondary-color) !important;
 }
 .icons i:hover,
 .icons div:hover {

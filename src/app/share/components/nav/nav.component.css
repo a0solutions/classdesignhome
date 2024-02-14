@@ -10,13 +10,15 @@
 .navbar {
   z-index: 99;
   top: 0px;
-  position: fixed;
   width: 100vw;
-  height: 120px;
+  height: 90px;
+}
+.navbar button:hover {
+  background: transparent !important;
 }
 .nav-item {
   font-size: 14px;
 }
 .subcategories_list_item:hover {
-  color: #cba135;
+  color: var(--secondary-color);
 }
