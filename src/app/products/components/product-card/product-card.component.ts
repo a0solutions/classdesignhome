@@ -26,7 +26,7 @@ export class ProductCardComponent implements OnInit {
       })
       .unsubscribe();
     this.background =
-      './assets/images/' +
+      'http://localhost/classapi/images/' +
       this.product.category.replaceAll(' ', '_') +
       '/products/' +
       this.product.reference.substr(0, 9).replaceAll(' ', '') +
@@ -37,7 +37,7 @@ export class ProductCardComponent implements OnInit {
   changeBackgound(InOut: number): void {
     InOut == 1
       ? (this.background =
-          './assets/images/' +
+          'http://localhost/classapi/images/' +
           this.product.category.replaceAll(' ', '_') +
           '/products/' +
           this.product.reference.substr(0, 9).replaceAll(' ', '') +
@@ -45,7 +45,7 @@ export class ProductCardComponent implements OnInit {
           this.product.reference.substr(0, 9).replaceAll(' ', '') +
           '-DETALLE.jpg')
       : (this.background =
-          './assets/images/' +
+          'http://localhost/classapi/images/' +
           this.product.category.replaceAll(' ', '_') +
           '/products/' +
           this.product.reference.substr(0, 9).replaceAll(' ', '') +

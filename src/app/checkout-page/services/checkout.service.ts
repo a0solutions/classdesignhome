@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { product } from 'src/app/products/services/product-manage.service';
 import { urls } from 'src/app/share/services/apiurl';
-import { StripeScriptTag } from 'stripe-angular';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,10 +12,7 @@ export class Checkout {
   );
   url: string = urls.urlOrders;
   localList: cartProduct[] = [];
-  constructor(
-    private http: HttpClient,
-    private stripeScriptTag: StripeScriptTag
-  ) {}
+  constructor(private http: HttpClient) {}
 
   checkCartList(): boolean {
     let time = JSON.parse(<string>localStorage.getItem('timeCartList'));
@@ -84,9 +80,17 @@ export class Checkout {
     this.items.next(this.localList);
     localStorage.removeItem('cartlist');
     localStorage.removeItem('timeCartList');
+    localStorage.removeItem('TempOrder');
   }
   sendOrder(data: order): Observable<object> {
     return this.http.post(this.url, data);
+  }
+  saveTempOrder(order: order): void {
+    localStorage.setItem('TempOrder', JSON.stringify(order));
+  }
+  getTempData(): order {
+    let order = localStorage.getItem('TempOrder');
+    return <order>JSON.parse(<string>order);
   }
 }
 export type cartProduct = {
@@ -100,6 +104,7 @@ export type order = {
   amount: number;
   member: string;
   items: number;
+  order?: string;
 };
 export type billing = {
   billingName: string;

@@ -25,7 +25,7 @@ export class ModalAskManage implements OnChanges {
     } else if (code == 'shopSuccess') {
       this.title = 'Congratulations!';
       this.text =
-        'Your purchase has been made correctly. Would you like to keep shopping?';
+        'Your purchase has been made correctly. You will receive an email with all the details. Would you like to keep shopping?';
     }
     this.show.next(true);
   }

@@ -1,0 +1,13 @@
+.catallog-image {
+  overflow: hidden;
+  height: 30vh;
+}
+.logo-collection {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border: 3px solid white;
+  bottom: 30px;
+  left: 30px;
+  overflow: hidden;
+}

@@ -5,15 +5,10 @@ import { CheckoutFormComponent } from './components/checkout-form/checkout-form.
 import { FormsModule } from '@angular/forms';
 import { ProductCheckoutComponent } from './components/product-checkout/product-checkout.component';
 import { ShareModule } from '../share/Modules/share.module';
-import { StripeModule } from 'stripe-angular';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ShareModule,
-    StripeModule.forRoot('gsdfgsdfg'),
-  ],
+  imports: [CommonModule, FormsModule, ShareModule, RouterModule],
   declarations: [
     CheckoutPageComponent,
     CheckoutFormComponent,

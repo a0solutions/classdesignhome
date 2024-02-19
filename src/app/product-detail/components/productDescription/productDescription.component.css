@@ -8,10 +8,3 @@
 .bold {
   font-weight: 800;
 }
-.size-icon:hover {
-  transition: all 0.5s;
-}
-
-.size-icon:hover {
-  transform: scale(1.3);
-}

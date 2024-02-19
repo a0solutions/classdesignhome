@@ -27,6 +27,8 @@ export class AlertManage {
       return 'Thnak you for writing us, we will get in touch with you as soon as possible.';
     } else if (code == 'dataCartList') {
       return 'You must fill all fields or add some products to your cart list.';
+    } else if (code == 'badPayment') {
+      return 'Sorry, somthing went wrong with the payment process, tray again.';
     } else {
       return 'Somthing went wrong tray again later.';
     }

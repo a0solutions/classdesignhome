@@ -26,7 +26,7 @@ export class ProductGalery implements OnChanges {
   }
   loadPictures(): void {
     this.url =
-      './assets/images/' +
+      'http://localhost/classapi/images/' +
       this.product.category.replaceAll(' ', '_') +
       '/products/' +
       this.product.reference.substr(0, 9).replaceAll(' ', '') +

@@ -9,7 +9,7 @@
         aria-expanded="true"
         aria-controls="collapseOne"
       >
-        <i class="bi bi-1-square-fill rounded-0 me-3"></i> Billing Information
+        Billing Information
       </button>
     </h2>
     <div
@@ -29,7 +29,7 @@
               <div class="mb-3 col-lg-6 col-md-12 col-12">
                 <input
                   [(ngModel)]="billing.billingName"
-                  #name="ngModel"
+                  #billingName="ngModel"
                   type="text"
                   name="billingName"
                   class="form-control rounded-0"
@@ -37,7 +37,7 @@
                   required
                 />
                 <small
-                  *ngIf="name.touched && name.invalid"
+                  *ngIf="billingName.touched && billingName.invalid"
                   class="text-muted p-3"
                   >This field is required</small
                 >
@@ -45,7 +45,7 @@
               <div class="mb-3 col-lg-6 col-md-12 col-12">
                 <input
                   [(ngModel)]="billing.billingSurname"
-                  #surname="ngModel"
+                  #billingSurname="ngModel"
                   type="text"
                   name="billingSurname"
                   class="form-control rounded-0"
@@ -53,7 +53,7 @@
                   required
                 />
                 <small
-                  *ngIf="surname.touched && surname.invalid"
+                  *ngIf="billingSurname.touched && billingSurname.invalid"
                   class="text-muted p-3"
                   >This field is required</small
                 >
@@ -61,7 +61,7 @@
               <div class="mb-3 col-lg-6 col-12">
                 <input
                   [(ngModel)]="billing.billingEmail"
-                  #email="ngModel"
+                  #billingEmail="ngModel"
                   type="email"
                   email="true"
                   name="billingEmail"
@@ -70,7 +70,7 @@
                   required
                 />
                 <small
-                  *ngIf="email.touched && email.invalid"
+                  *ngIf="billingEmail.touched && billingEmail.invalid"
                   class="text-muted p-3"
                   >This field is required or Invalid email</small
                 >
@@ -180,7 +180,7 @@
         aria-expanded="false"
         aria-controls="collapseTwo"
       >
-        <i class="bi bi-2-square-fill me-3"></i> Shipping address
+        Shipping address
       </button>
     </h2>
     <div
@@ -216,7 +216,7 @@
               <div class="mb-3 col-lg-6 col-md-12 col-12">
                 <input
                   [(ngModel)]="shipping.shippingName"
-                  #name="ngModel"
+                  #shipname="ngModel"
                   type="text"
                   name="shippingName"
                   class="form-control rounded-0"
@@ -225,7 +225,7 @@
                   [disabled]="sameAddressFlag"
                 />
                 <small
-                  *ngIf="name.touched && name.invalid"
+                  *ngIf="shipname.touched && shipname.invalid"
                   class="text-muted p-3"
                   >This field is required</small
                 >
@@ -233,7 +233,7 @@
               <div class="mb-3 col-lg-6 col-md-12 col-12">
                 <input
                   [(ngModel)]="shipping.shippingSurname"
-                  #surname="ngModel"
+                  #shipsurname="ngModel"
                   type="text"
                   name="shippingSurname"
                   class="form-control rounded-0"
@@ -242,7 +242,7 @@
                   [disabled]="sameAddressFlag"
                 />
                 <small
-                  *ngIf="surname.touched && surname.invalid"
+                  *ngIf="shipsurname.touched && shipsurname.invalid"
                   class="text-muted p-3"
                   >This field is required</small
                 >

@@ -1,9 +1,10 @@
 <div class="main-container">
-  <div class="header" #header (mousedown)="draggableSet()" id="header">
+  <div class="header" #header id="header">
+    <!-- (mousedown)="draggableSet()"-->
     <div class="item header-image">
       <img
         [src]="
-          '../../../assets/images/' +
+          'http://localhost/classapi/images/' +
           headerNameUrl +
           '/showroom/showroom-' +
           headerNameUrl +
@@ -25,7 +26,7 @@
     <div class="header-carrousel-item">
       <img
         [src]="
-          '../../../assets/images/' +
+          'http://localhost/classapi/images/' +
           headerNameUrl +
           '/showroom/showroom-' +
           headerNameUrl +
@@ -36,7 +37,7 @@
     <div class="header-carrousel-item">
       <img
         [src]="
-          '../../../assets/images/' +
+          'http://localhost/classapi/images/' +
           headerNameUrl +
           '/showroom/showroom-' +
           headerNameUrl +
@@ -47,7 +48,7 @@
     <div class="header-carrousel-item">
       <img
         [src]="
-          '../../../assets/images/' +
+          'http://localhost/classapi/images/' +
           headerNameUrl +
           '/showroom/showroom-' +
           headerNameUrl +
@@ -56,5 +57,4 @@
       />
     </div>
   </div>
-  <h5 class="show-rooms-title">Showrooms</h5>
 </div>

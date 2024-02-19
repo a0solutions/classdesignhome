@@ -1,11 +1,5 @@
-<article class="bg-light pb-5">
-  <div class="separador10"></div>
+<article class="pb-5">
   <div class="container position-relative z-2">
-    <div class="d-flex p-sm-2 p-lg-3 h3">
-      <div class="me-auto">
-        <a routerLink="/"><i class="bi bi-arrow-left text-dark"></i></a>
-      </div>
-    </div>
     <div class="row animate__animated animate__fadeInUp">
       <div class="col-7 p-sm-2 p-lg-3">
         <checkout-form (formData)="insertForm($event)"></checkout-form>
@@ -21,6 +15,11 @@
             (click)="sendOrder()"
             class="btn btn-dark rounded-0 w-100 py-3"
           >
+            <div
+              *ngIf="processingPayment"
+              class="spinner-border spinner-border-sm mx-3"
+              role="status"
+            ></div>
             Go to pay
           </button>
         </div>
@@ -28,6 +27,6 @@
     </div>
   </div>
 </article>
-<article class="my-5">
+<article class="container my-5">
   <app-offers [category]="'products'"></app-offers>
 </article>

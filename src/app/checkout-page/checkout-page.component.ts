@@ -10,7 +10,8 @@ import {
 } from './services/checkout.service';
 import { AlertManage } from '../share/components/alerts/services/alertManage.service';
 import { ModalAskManage } from '../share/components/modal-ask/services/modalAskManage.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-checkout-page',
@@ -22,18 +23,30 @@ export class CheckoutPageComponent implements OnInit {
     billing: <billing>{},
     shipping: <shipping>{},
   };
+  processingPayment: boolean = false;
+  show: boolean = false;
   member: string = '';
+  stripe: any;
   constructor(
     private nav: NavManage,
     private loader: LoaderService,
     private checkout: Checkout,
     private alert: AlertManage,
     private modal: ModalAskManage,
-    private route: Router
+    private route: Router,
+    private client: HttpClient,
+    private activeRoute: ActivatedRoute
   ) {}
-  ngOnInit(): void {
+  async ngOnInit() {
     this.nav.dark.next(true);
     this.loader.show.next(false);
+    this.activeRoute.queryParamMap.subscribe((x) => {
+      x.get('response') == 'ok'
+        ? this.completeOrder()
+        : x.get('response') == 'ko'
+        ? this.alert.setAlertMessage('badPayment')
+        : null;
+    });
   }
 
   insertItems(cart: cartProduct[]): void {
@@ -52,18 +65,33 @@ export class CheckoutPageComponent implements OnInit {
   sendOrder(): void {
     !this.validateData()
       ? this.alert.setAlertMessage('dataCartList')
-      : this.checkout.sendOrder(this.order).subscribe((x) => {
-          this.modal.showModalMessage('shopSuccess');
-          this.modal.answer.subscribe((answer) => {
-            answer == 1
-              ? this.route.navigate(['/'])
-              : answer == 2
-              ? this.route.navigate(['products/products'])
-              : null;
-            answer != 0 ? this.modal.show.next(false) : null;
-          });
-          this.checkout.deleteAll();
-        });
+      : this.createSession();
+  }
+
+  createSession(): void {
+    this.processingPayment = true;
+    this.client
+      .post('http://localhost/classapi/core/stripe.php', this.order)
+      .subscribe((x: any) => {
+        this.order.order = x.description;
+        this.checkout.saveTempOrder(this.order);
+        window.open(<string>x.url, '_self');
+      });
+  }
+  completeOrder(): void {
+    let order = this.checkout.getTempData();
+    this.checkout.sendOrder(order).subscribe((x) => {
+      this.modal.showModalMessage('shopSuccess');
+      this.modal.answer.subscribe((answer) => {
+        answer == 1
+          ? this.route.navigate(['/'])
+          : answer == 2
+          ? this.route.navigate(['products/products'])
+          : null;
+        answer != 0 ? this.modal.show.next(false) : null;
+      });
+      this.checkout.deleteAll();
+    });
   }
   validateData(): boolean {
     if (

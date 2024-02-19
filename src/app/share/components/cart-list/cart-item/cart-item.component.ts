@@ -15,7 +15,7 @@ export class CartItemComponent implements OnInit {
   constructor(private chechout: Checkout) {}
   ngOnInit(): void {
     this.background =
-      './assets/images/' +
+      'http://localhost/classapi/images/' +
       this.product.category.replaceAll(' ', '_') +
       '/products/' +
       this.product.reference.substr(0, 9).replaceAll(' ', '') +
