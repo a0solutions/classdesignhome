@@ -6,7 +6,7 @@
   class="navbar"
 >
   <div class="row w-100">
-    <div class="col-lg-3 col-sm-6 logo d-flex mx-auto">
+    <div class="col-lg-3 col-6 logo d-flex mx-auto">
       <div>
         <a
           [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
@@ -29,51 +29,53 @@
         /></a>
       </div>
     </div>
-    <div class="col-6 justify-content-center menu d-flex">
-      <ul
-        [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
-        class="navbar-ul mb-0 mt-4"
-      >
-        <li class="nav-item">
-          <a class="nav-link active mt-1" routerLink="/" aria-current="page"
-            >Home <span class="visually-hidden">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link active mt-1"
-            routerLink="/aboutus"
-            aria-current="page"
-            >Us<span class="visually-hidden">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link active mt-1"
-            routerLink="/collections"
-            aria-current="page"
-            >COLLECTIONS<span class="visually-hidden">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link active mt-1"
-            routerLink="/products/products"
-            aria-current="page"
-            >SHOP<span class="visually-hidden">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link active mt-1"
-            routerLink="/contact"
-            aria-current="page"
-            >Contact<span class="visually-hidden">(current)</span></a
-          >
-        </li>
-      </ul>
+    <div class="col-6 mobile-out">
+      <div class="justify-content-center menu d-flex">
+        <ul
+          [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+          class="navbar-ul mb-0 mt-4"
+        >
+          <li class="nav-item">
+            <a class="nav-link active mt-1" routerLink="/" aria-current="page"
+              >Home <span class="visually-hidden">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active mt-1"
+              routerLink="/aboutus"
+              aria-current="page"
+              >Us<span class="visually-hidden">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active mt-1"
+              routerLink="/collections"
+              aria-current="page"
+              >COLLECTIONS<span class="visually-hidden">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active mt-1"
+              routerLink="/products/products"
+              aria-current="page"
+              >SHOP<span class="visually-hidden">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active mt-1"
+              routerLink="/contact"
+              aria-current="page"
+              >Contact<span class="visually-hidden">(current)</span></a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="col-lg-3 col-sm-6 icons mt-3 text-end">
+    <div class="col-lg-3 col-6 icons mt-3 text-end">
       <button
         [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
         class="btn mt-1 border-0 mx-lg-2 mx-md-2 mx-sm-2 rounded-0"

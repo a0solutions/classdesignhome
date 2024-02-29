@@ -6,6 +6,11 @@ import {
 } from 'src/app/share/services/categories.service';
 import { FilterManage, filter } from '../../services/filterManage.service';
 import { ProductManage, product } from '../../services/product-manage.service';
+
+interface sizes {
+  category: string;
+  size: string;
+}
 @Component({
   selector: 'products-filter',
   templateUrl: './products-filter.component.html',
@@ -17,11 +22,13 @@ export class ProductsFilterComponent implements OnInit {
   allCategories: categories[] = [];
   allColorFilters: string[] = [];
   subcategoriesFilter: string[] = [];
+  filterProducts: number = 0;
   priceFilter: number = 30000;
-  sizesFilter: string[] = [];
+  sizesFilter: sizes[] = [];
   colors: string[] = [];
   products: product[] = [];
   sizeSelected: boolean[] = [];
+  showedProducts: number = 0;
   constructor(
     private http: Router,
     private categories: CategoriesService,
@@ -43,13 +50,33 @@ export class ProductsFilterComponent implements OnInit {
       next: this.getFiltersByCategories.bind(this),
       error: console.log.bind(this),
     });
+    this.product.showedProducts.subscribe((x) => {
+      this.showedProducts = x;
+    });
+    this.product.filterProducts.subscribe((x) => {
+      this.filterProducts = x;
+    });
   }
 
   getFiltersByCategories(filters: filter): void {
     this.colors = [];
+    this.sizesFilter = [];
     this.product.getProductByCategory(filters.category).forEach((y) => {
       this.colors.includes(y.color) ? null : this.colors.push(y.color);
-      this.sizesFilter.includes(y.size) ? null : this.sizesFilter.push(y.size);
+      if (
+        y.category == this.categorySelected ||
+        this.categorySelected == 'products'
+      ) {
+        let sizes: sizes = <sizes>{};
+        sizes.category = y.category;
+        sizes.size = y.size;
+
+        this.sizesFilter.find(
+          (x) => x.size === sizes.size && x.category === sizes.category
+        )
+          ? null
+          : this.sizesFilter.push(sizes);
+      }
     });
   }
   //Getting categories
@@ -106,6 +133,7 @@ export class ProductsFilterComponent implements OnInit {
   updateAllFilter(): void {
     this.filter.allFilters.next(this.filter.allFilters.value);
   }
+
   changeFilter(cardSize: string) {
     this.filter.cardSize.next(cardSize);
   }

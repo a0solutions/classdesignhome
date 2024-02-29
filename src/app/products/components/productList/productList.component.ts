@@ -38,12 +38,14 @@ export class ProductListComponent implements OnInit {
       if (!this.parents.includes(x.parentRef)) {
         this.parents.push(x.parentRef);
         this.products.push(x);
+        this.allProducts.filterProducts.next(this.products.length);
         this.paginate();
       }
     });
   }
   paginate(): void {
     this.printProduct = this.products.slice(0, this.itemNumber);
+    this.allProducts.showedProducts.next(this.printProduct.length);
     this.itemNumber < this.products.length
       ? (this.more = true)
       : (this.more = false);

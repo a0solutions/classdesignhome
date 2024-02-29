@@ -4,6 +4,8 @@ import {
   colorId,
   product,
 } from '../../services/product-manage.service';
+import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
+import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
 
 @Component({
   selector: 'product-card',
@@ -14,7 +16,11 @@ export class ProductCardComponent implements OnInit {
   @Input() product: product;
   colors: colorId[] = [];
   background: string = '';
-  constructor(private products: ProductManage) {}
+  constructor(
+    private products: ProductManage,
+    private substrPipe: CategorySubstrPipe,
+    private spacesPipe: SpacesDeletePipe
+  ) {}
   ngOnInit(): void {
     this.products.products
       .subscribe((x) => {
@@ -29,10 +35,10 @@ export class ProductCardComponent implements OnInit {
       'http://localhost/classapi/images/' +
       this.product.category.replaceAll(' ', '_') +
       '/products/' +
-      this.product.reference.substr(0, 9).replaceAll(' ', '') +
+      this.spaceDatele(this.product.parentRef) +
       '/' +
-      this.product.reference.substr(0, 9).replaceAll(' ', '') +
-      '.jpg';
+      this.substrByCategory(this.product) +
+      '/1.jpg';
   }
   changeBackgound(InOut: number): void {
     InOut == 1
@@ -40,18 +46,18 @@ export class ProductCardComponent implements OnInit {
           'http://localhost/classapi/images/' +
           this.product.category.replaceAll(' ', '_') +
           '/products/' +
-          this.product.reference.substr(0, 9).replaceAll(' ', '') +
+          this.spaceDatele(this.product.parentRef) +
           '/' +
-          this.product.reference.substr(0, 9).replaceAll(' ', '') +
-          '-DETALLE.jpg')
+          this.substrByCategory(this.product) +
+          '/2.jpg')
       : (this.background =
           'http://localhost/classapi/images/' +
           this.product.category.replaceAll(' ', '_') +
           '/products/' +
-          this.product.reference.substr(0, 9).replaceAll(' ', '') +
+          this.spaceDatele(this.product.parentRef) +
           '/' +
-          this.product.reference.substr(0, 9).replaceAll(' ', '') +
-          '.jpg');
+          this.substrByCategory(this.product) +
+          '/1.jpg');
   }
   dataProcess(products: product[]) {
     products.forEach((y) => {
@@ -66,5 +72,11 @@ export class ProductCardComponent implements OnInit {
   }
   navigate(id: string, name: string): void {
     window.open('product/' + id + '/' + name, '_blank');
+  }
+  substrByCategory(product: product): string {
+    return this.substrPipe.transform(product);
+  }
+  spaceDatele(text: string): string {
+    return this.spacesPipe.transform(text);
   }
 }

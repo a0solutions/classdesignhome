@@ -1,10 +1,10 @@
 <article class="pb-5">
   <div class="container position-relative z-2">
     <div class="row animate__animated animate__fadeInUp">
-      <div class="col-7 p-sm-2 p-lg-3">
+      <div class="col-lg-7 col-12 order-sm-first order-last mt-4 p-sm-2 p-lg-3">
         <checkout-form (formData)="insertForm($event)"></checkout-form>
       </div>
-      <div class="col-5 p-sm-2 p-lg-3">
+      <div class="col-lg-5 col-12 order-sm-last order-first mt-4 p-sm-2 p-lg-3">
         <div class="sticky-lg-top top-nav">
           <product-checkout
             (cartItems)="insertItems($event)"
@@ -27,6 +27,6 @@
     </div>
   </div>
 </article>
-<article class="container my-5">
+<article class="container mobile-out my-5">
   <app-offers [category]="'products'"></app-offers>
 </article>

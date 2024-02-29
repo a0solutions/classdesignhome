@@ -3,7 +3,7 @@
 <div class="separador-menu"></div>
 <article>
   <div class="row">
-    <div class="text-start col-4">
+    <div class="text-start col-sm-12 col-lg-4 col-md-4">
       <div class="sticky-lg-top category-name px-5 pt-5">
         <p class="mb-0">
           <a routerLink="/" class="text-dark">Home</a> /
@@ -20,10 +20,13 @@
         <h1 class="products-page-title mb-0">{{ category | capitalize }}</h1>
       </div>
     </div>
-    <app-headers class="col-8 m-0" [headerName]="category"></app-headers>
+    <app-headers
+      class="mobile-out col-8 m-0"
+      [headerName]="category"
+    ></app-headers>
   </div>
 </article>
-<div class="px-4 bg-white border-bottom filter-table sticky-top">
+<div class="px-4 bg-white border-bottom filter-table">
   <products-filter
     [categorySelected]="category"
     [subcategorySelected]="subcategory"

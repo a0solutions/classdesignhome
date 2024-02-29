@@ -10,6 +10,7 @@ import { CategoriesService } from '../share/services/categories.service';
 import { ShareModule } from '../share/Modules/share.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CategorySubstrPipe } from '../share/pipes/categorySubstr.pipe';
 
 @NgModule({
   imports: [CommonModule, PipesModule, ShareModule, FormsModule, RouterModule],
@@ -18,6 +19,11 @@ import { RouterModule } from '@angular/router';
     ProductListComponent,
     ProductsFilterComponent,
   ],
-  providers: [FilterManage, ProductManage, CategoriesService],
+  providers: [
+    FilterManage,
+    ProductManage,
+    CategoriesService,
+    CategorySubstrPipe,
+  ],
 })
 export class ProductsModule {}

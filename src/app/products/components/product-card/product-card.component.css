@@ -30,3 +30,7 @@
   mix-blend-mode: multiply;
   transition: all 0.5s !important;
 }
+.card-title-name {
+  font-size: 1.05rem;
+  height: 45px;
+}

@@ -26,8 +26,6 @@
   <h3 class="mt-2 mb-0 h3 color-gold">
     {{ product.price | currency : "USD" }}<br />
   </h3>
-  <p class="mb-0">Overall Dimentions: {{ product.dimentions }}</p>
-  <p class="mb-0">Frame Material: {{ product.frameMaterial }}</p>
   <p class="mb-0">Material Detail: {{ product.materialDetail }}</p>
   <div class="my-4">
     <p class="mb-2">
@@ -51,21 +49,19 @@
       <p class="mb-2">
         Sizes: <strong>{{ product.size }}</strong>
       </p>
-      <div class="d-flex">
+      <div class="row mx-1">
         <button
           *ngFor="let size of sizes; index as i"
           [ngClass]="{
-            'mx-2': i != 0,
-            'ms-0 me-2': i == 0,
             'bg-gold border-gold text-white': size == product.size,
             'bg-light': size != product.size
           }"
           [title]="size"
-          class="btn rounded-0 p-0 size-icon"
+          class="btn rounded-0 p-0 size-icon col-4"
           (click)="selectSize(size)"
         >
           <img
-            width="60px"
+            width="100%"
             class="p-0"
             [src]="
               'http://localhost/classapi/images/app/custom-icons/' +
@@ -81,21 +77,19 @@
       <p class="mb-2">
         Sets: <strong>{{ product.sets }}</strong>
       </p>
-      <div class="d-flex">
+      <div class="row mx-1">
         <button
           *ngFor="let set of sets; index as i"
           [ngClass]="{
-            'mx-2': i != 0,
-            'ms-0 me-2': i == 0,
             'border-gold text-white': set == product.sets,
             'bg-light': set != product.sets
           }"
           [title]="set"
-          class="btn rounded-0 p-0 size-icon"
+          class="btn rounded-0 p-0 size-icon col-4"
           (click)="selectSets(set)"
         >
           <img
-            width="60px"
+            width="100%"
             class="p-0"
             [src]="
               'http://localhost/classapi/images/app/custom-icons/' +

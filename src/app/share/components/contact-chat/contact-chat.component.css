@@ -1,23 +1,16 @@
 .btn-chatbox {
   position: fixed;
-  bottom: 15px;
   right: 15px;
   z-index: 11;
   width: 55px;
   height: 55px;
 }
-.btn-chatbox i::before {
-  position: relative;
-  bottom: 5px;
-}
+
 .chatbox-form {
   width: 350px;
   position: relative;
   transition: all 0.5s;
-  right: 0px;
   position: fixed;
-  bottom: 97px;
-  right: 7px;
   z-index: 11;
 }
 .hide-form {

@@ -1,19 +1,11 @@
-<article class="bg-light pb-5">
+<article class="pb-5">
   <div class="separador10"></div>
   <div
     class="mx-auto col-xl-6 col-lg-7 col-md-10 col-sm-12 animate__animated animate__fadeInUp"
   >
-    <div class="d-flex px-5 mx-auto">
-      <div class="me-auto w-100">
-        <a routerLink="/"
-          ><i class="bi h3 bi-arrow-left-short text-dark"></i>
-          <span class="text-decoration-underline ms-3 mb-3 text-black"></span
-        ></a>
-      </div>
-    </div>
-    <div class="bg-white m-5 p-4">
+    <div class="bg-white m-5 p-4 border">
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item border-bottom border-top" role="presentation">
+        <li class="nav-item" role="presentation">
           <button
             class="nav-link btn-sm active w-100 rounded-0"
             id="pills-home-tab"
@@ -24,10 +16,10 @@
             aria-controls="pills-home"
             aria-selected="true"
           >
-            <i class="bi bi-box-arrow-in-right me-2"></i> Sign In
+            Members only
           </button>
         </li>
-        <li class="nav-item border-bottom border-top" role="presentation">
+        <li class="nav-item" role="presentation">
           <button
             class="nav-link btn-sm w-100 rounded-0"
             id="pills-profile-tab"
@@ -38,30 +30,43 @@
             aria-controls="pills-profile"
             aria-selected="false"
           >
-            <i class="bi bi-person-lines-fill me-2"></i> Create new account
+            Be a member
           </button>
         </li>
       </ul>
+
       <div class="tab-content" id="pills-tabContent">
         <div
-          class="tab-pane fade show active p-5"
+          class="tab-pane fade show active"
           id="pills-home"
           role="tabpanel"
           aria-labelledby="pills-home-tab"
           tabindex="0"
         >
           <div class="row">
+            <div class="title col-12">
+              <h2 class="fw-bolder text-center">Sign in</h2>
+              <p class="text-center">Introduce your access information</p>
+              <div class="separador-centrado"></div>
+            </div>
             <signin-form class="col-12 col-lg-12 mt-3 p-3"></signin-form>
           </div>
         </div>
         <div
-          class="tab-pane fade p-5"
+          class="tab-pane fade"
           id="pills-profile"
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
           tabindex="0"
         >
           <div class="row">
+            <div class="title col-12">
+              <h2 class="fw-bolder text-center">Create new account</h2>
+              <p class="text-center">
+                Fill all fields requires with your personal information
+              </p>
+              <div class="separador-centrado"></div>
+            </div>
             <signup-form class="col-12 col-lg-12 p-3"></signup-form>
           </div>
         </div>
@@ -69,4 +74,6 @@
     </div>
   </div>
 </article>
-<app-offers [category]="'products'"></app-offers>
+<article class="container">
+  <app-offers [category]="'products'"></app-offers>
+</article>

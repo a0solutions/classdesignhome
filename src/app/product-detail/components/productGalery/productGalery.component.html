@@ -4,40 +4,20 @@
   data-mdb-auto-height="true"
 >
   <div class="row shadow-5">
-    <div class="col-12 mb-1">
-      <div class="lightbox">
-        <img
-          #detailImg
-          [src]="fullPicture"
-          [alt]="product.name"
-          class="ecommerce-gallery-main-img active w-100"
-        />
-      </div>
+    <div class="col-12 mb-3 px-0">
+      <div
+        class="lightbox"
+        [style]="'background-image:url(' + fullPicture + ')'"
+      ></div>
     </div>
     <div class="row">
       <div
-        class="col-4 carrousel-image-datail"
-        [ngClass]="{ imageActive: image[0] }"
-      >
-        <img
-          (click)="updatePicture($event, detailImg, 0)"
-          [src]="miniPicture1"
-          [alt]="product.name"
-          class="w-100"
-        />
-      </div>
-
-      <div
-        class="col-4 carrousel-image-datail"
-        [ngClass]="{ imageActive: image[1] }"
-      >
-        <img
-          (click)="updatePicture($event, detailImg, 1)"
-          [src]="miniPicture3"
-          [alt]="product.name"
-          class="w-100"
-        />
-      </div>
+        class="carrousel-image-datail"
+        *ngFor="let thisImage of allImages; index as i"
+        [ngClass]="{ imageActive: image[i] }"
+        [style]="'background-image:url(' + url + thisImage + ')'"
+        (click)="updatePicture($event, i)"
+      ></div>
     </div>
   </div>
 </div>

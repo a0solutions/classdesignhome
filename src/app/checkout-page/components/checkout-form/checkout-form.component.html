@@ -36,11 +36,9 @@
                   placeholder="Name*"
                   required
                 />
-                <small
-                  *ngIf="billingName.touched && billingName.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="billingName.touched && billingName.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
               <div class="mb-3 col-lg-6 col-md-12 col-12">
                 <input
@@ -52,11 +50,9 @@
                   placeholder="Surname*"
                   required
                 />
-                <small
-                  *ngIf="billingSurname.touched && billingSurname.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="billingSurname.touched && billingSurname.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
               <div class="mb-3 col-lg-6 col-12">
                 <input
@@ -69,11 +65,9 @@
                   placeholder="Email*"
                   required
                 />
-                <small
-                  *ngIf="billingEmail.touched && billingEmail.invalid"
-                  class="text-muted p-3"
-                  >This field is required or Invalid email</small
-                >
+                <p *ngIf="billingEmail.touched && billingEmail.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
               <div class="mb-3 col-lg-6 col-12">
                 <input
@@ -85,11 +79,9 @@
                   placeholder="Phone*"
                   required
                 />
-                <small
-                  *ngIf="phone.touched && phone.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="phone.touched && phone.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
               <div class="mb-3 col-12">
                 <input
@@ -101,11 +93,9 @@
                   placeholder="Address*"
                   required
                 />
-                <small
-                  *ngIf="address.touched && address.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="address.touched && address.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
               <div class="mb-3 col-12">
                 <input
@@ -127,11 +117,9 @@
                   placeholder="City*"
                   required
                 />
-                <small
-                  *ngIf="city.touched && city.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="city.touched && city.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
               <div class="mb-3 col-lg-6 col-12">
                 <input
@@ -143,9 +131,9 @@
                   placeholder="Zip code*"
                   required
                 />
-                <small *ngIf="zip.touched && zip.invalid" class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="zip.touched && zip.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
 
               <div class="mb-3 col-lg-6 col-12">
@@ -158,11 +146,9 @@
                   placeholder="Country*"
                   required
                 />
-                <small
-                  *ngIf="country.touched && country.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="country.touched && country.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
             </div>
           </div>
@@ -224,11 +210,9 @@
                   required
                   [disabled]="sameAddressFlag"
                 />
-                <small
-                  *ngIf="shipname.touched && shipname.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="shipname.touched && shipname.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
               <div class="mb-3 col-lg-6 col-md-12 col-12">
                 <input
@@ -241,11 +225,9 @@
                   required
                   [disabled]="sameAddressFlag"
                 />
-                <small
-                  *ngIf="shipsurname.touched && shipsurname.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="shipsurname.touched && shipsurname.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
               <div class="mb-3 col-12">
                 <input
@@ -258,11 +240,9 @@
                   required
                   [disabled]="sameAddressFlag"
                 />
-                <small
-                  *ngIf="shipaddress.touched && shipaddress.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="shipaddress.touched && shipaddress.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
               <div class="mb-3 col-12">
                 <input
@@ -278,24 +258,22 @@
               <div class="mb-3 col-lg-6 col-12">
                 <input
                   [(ngModel)]="shipping.shippingCity"
-                  #city="ngModel"
+                  #shipCity="ngModel"
                   type="text"
                   name="shippingCity"
                   class="form-control rounded-0"
-                  placeholder="Phone*"
+                  placeholder="City*"
                   required
                   [disabled]="sameAddressFlag"
                 />
-                <small
-                  *ngIf="city.touched && city.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="shipCity.touched && shipCity.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
               <div class="mb-3 col-lg-6 col-12">
                 <input
                   [(ngModel)]="shipping.shippingZip"
-                  #zip="ngModel"
+                  #shipZip="ngModel"
                   type="text"
                   name="shippingZip"
                   class="form-control rounded-0"
@@ -303,15 +281,15 @@
                   required
                   [disabled]="sameAddressFlag"
                 />
-                <small *ngIf="zip.touched && zip.invalid" class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="shipZip.touched && shipZip.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
 
               <div class="mb-3 col-lg-6 col-12">
                 <input
                   [(ngModel)]="shipping.shippingCountry"
-                  #country="ngModel"
+                  #shipCountry="ngModel"
                   type="tel"
                   name="shippingCountry"
                   class="form-control rounded-0"
@@ -319,11 +297,9 @@
                   required
                   [disabled]="sameAddressFlag"
                 />
-                <small
-                  *ngIf="country.touched && country.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
+                <p *ngIf="shipCountry.touched && shipCountry.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
             </div>
           </div>

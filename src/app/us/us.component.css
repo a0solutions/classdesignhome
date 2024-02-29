@@ -1,6 +1,3 @@
-h2 {
-  font-size: 55px;
-}
 .us-banner {
   margin: 50px 0px;
   height: 75vh;
@@ -18,7 +15,4 @@ h2 {
   color: white;
   font-size: 45px;
   text-align: center;
-}
-.us-member {
-  margin-top: -200px;
 }

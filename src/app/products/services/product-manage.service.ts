@@ -8,8 +8,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductManage {
   url: string = urls.urlProducts;
+  urlImage: string = urls.urlImages;
   allProducts: product[] = [];
   products: BehaviorSubject<product[]> = new BehaviorSubject(this.allProducts);
+  filterProducts: BehaviorSubject<number> = new BehaviorSubject(0);
+  showedProducts: BehaviorSubject<number> = new BehaviorSubject(0);
   constructor(private http: HttpClient) {
     this.setAllProducts();
   }
@@ -124,6 +127,22 @@ export class ProductManage {
       )
     );
   }
+  getProductImages(data: imagedata) {
+    return this.http.get(
+      this.urlImage +
+        '?category=' +
+        data.category +
+        '&folder=' +
+        data.folder +
+        '&parent=' +
+        data.parentRef
+    );
+  }
+}
+export interface imagedata {
+  category: string;
+  folder: string;
+  parentRef: string;
 }
 export type colorId = { color: string; id: string; name: string };
 export type product = {

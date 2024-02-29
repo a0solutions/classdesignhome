@@ -11,26 +11,30 @@
         Filters
       </h4>
     </div>
-    <div class="col-lg-8 d-flex justify-content-center">
-      <p class="p-3">Showing 20 of {{ products.length }} results</p>
-      <span
-        (click)="changeFilter('col-lg-6')"
-        class="mb-0 mx-3 mt-3 cursor-pointer dimentions-cards"
-      >
-        <img src="http://localhost/classapi/images/app/card-2.png" />
-      </span>
-      <span
-        (click)="changeFilter('col-lg-4')"
-        class="mb-0 mx-3 mt-3 cursor-pointer dimentions-cards"
-      >
-        <img src="http://localhost/classapi/images/app/card-3.png" />
-      </span>
-      <span
-        (click)="changeFilter('col-lg-3')"
-        class="mb-0 mx-3 mt-3 cursor-pointer dimentions-cards"
-      >
-        <img src="http://localhost/classapi/images/app/card-4.png" />
-      </span>
+    <div class="mobile-out col-lg-8">
+      <div class="d-flex justify-content-center">
+        <p class="p-3 mb-1 mt-2">
+          Showing {{ showedProducts }} of {{ filterProducts }} results
+        </p>
+        <span
+          (click)="changeFilter('col-lg-6')"
+          class="p-3 mt-2 cursor-pointer dimentions-cards"
+        >
+          <img src="http://localhost/classapi/images/app/card-2.png" />
+        </span>
+        <span
+          (click)="changeFilter('col-lg-4')"
+          class="p-3 mt-2 cursor-pointer dimentions-cards"
+        >
+          <img src="http://localhost/classapi/images/app/card-3.png" />
+        </span>
+        <span
+          (click)="changeFilter('col-lg-3')"
+          class="p-3 mt-2 cursor-pointer dimentions-cards"
+        >
+          <img src="http://localhost/classapi/images/app/card-4.png" />
+        </span>
+      </div>
     </div>
     <div class="col-lg-2 col-6">
       <select
@@ -224,26 +228,57 @@
             data-bs-parent="#accordionExample"
           >
             <div class="accordion-body">
-              <p>{{ categorySelected | capitalize }}</p>
-              <div class="row">
-                <div
-                  class="col-3 cursor-pointer"
-                  *ngFor="let size of sizesFilter; index as i"
-                  (click)="updateFilterSize(size, i)"
-                >
-                  <img
-                    [src]="
-                      'http://localhost/classapi/images/app/custom-icons/' +
-                      size +
-                      '.png'
-                    "
-                    [ngClass]="{ active: sizeSelected[i] }"
-                    class="p-0 m-0 border icon-filter-size"
-                    width="100%"
-                    [title]="size | capitalize"
-                  />
+              <div *ngIf="categorySelected != 'products'; else sizeFilter">
+                <p>
+                  {{ categorySelected | capitalize }}
+                </p>
+                <div class="row">
+                  <div
+                    class="col-3 cursor-pointer mb-3"
+                    *ngFor="let size of sizesFilter; index as i"
+                    (click)="updateFilterSize(size.size, i)"
+                  >
+                    <img
+                      [src]="
+                        'http://localhost/classapi/images/app/custom-icons/' +
+                        size.size +
+                        '.png'
+                      "
+                      [ngClass]="{ active: sizeSelected[i] }"
+                      class="p-0 m-0 border icon-filter-size"
+                      width="100%"
+                      [title]="size.size | capitalize"
+                    />
+                  </div>
                 </div>
               </div>
+
+              <ng-template #sizeFilter>
+                <div *ngFor="let category of allCategories">
+                  <p>
+                    {{ category.category | capitalize }}
+                  </p>
+                  <div class="row">
+                    <div
+                      class="col-3 cursor-pointer mb-3"
+                      *ngFor="let size of sizesFilter; index as i"
+                      (click)="updateFilterSize(size.size, i)"
+                    >
+                      <img
+                        [src]="
+                          'http://localhost/classapi/images/app/custom-icons/' +
+                          size.size +
+                          '.png'
+                        "
+                        [ngClass]="{ active: sizeSelected[i] }"
+                        class="p-0 m-0 border icon-filter-size"
+                        width="100%"
+                        [title]="size.size | capitalize"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
             </div>
           </div>
         </div>

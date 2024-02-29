@@ -15,6 +15,8 @@ import { PipesModule } from './pipes.module';
 import { ColorSelectComponent } from 'src/app/products/components/color-select/color-select.component';
 import { RouterModule } from '@angular/router';
 import { ShowroomCardComponent } from '../components/popup/showroomCard/showroom-card.component';
+import { CategorySubstrPipe } from '../pipes/categorySubstr.pipe';
+import { SpacesDeletePipe } from '../pipes/spacesDelete.pipe';
 
 @NgModule({
   imports: [CommonModule, FormsModule, PipesModule, RouterModule],
@@ -30,7 +32,7 @@ import { ShowroomCardComponent } from '../components/popup/showroomCard/showroom
     ProductCardComponent,
     ColorSelectComponent,
   ],
-  providers: [AlertManage, headerManage],
+  providers: [AlertManage, headerManage, CategorySubstrPipe, SpacesDeletePipe],
   exports: [
     CartItemComponent,
     ListedComponent,

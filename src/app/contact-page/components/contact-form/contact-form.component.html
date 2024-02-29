@@ -14,9 +14,9 @@
       placeholder="Fullname*"
       required
     />
-    <small *ngIf="fullname.invalid && fullname.touched" class="text-muted mt-2"
-      >This field is required</small
-    >
+    <p *ngIf="fullname.invalid && fullname.touched">
+      <i class="bi bi-exclamation-square"></i>
+    </p>
   </div>
   <div class="mb-3">
     <select
@@ -34,9 +34,9 @@
       <option value="Product Interest">Product Interest</option>
       <option value="Product Interest">Product Interest</option>
     </select>
-    <small *ngIf="subject.invalid && subject.touched" class="text-muted mt-2"
-      >This field is required</small
-    >
+    <p *ngIf="subject.invalid && subject.touched">
+      <i class="bi bi-exclamation-square"></i>
+    </p>
   </div>
   <div class="mb-3">
     <input
@@ -49,9 +49,9 @@
       placeholder="Email*"
       required
     />
-    <small *ngIf="email.invalid && email.touched" class="text-muted mt-2"
-      >This field is required</small
-    >
+    <p *ngIf="email.invalid && email.touched">
+      <i class="bi bi-exclamation-square"></i>
+    </p>
   </div>
   <div class="mb-3">
     <textarea
@@ -64,11 +64,9 @@
       required
     ></textarea>
     <div class="d-flex">
-      <small
-        *ngIf="textMessage.invalid && textMessage.touched"
-        class="text-muted mt-2"
-        >This field is required</small
-      >
+      <p *ngIf="textMessage.invalid && textMessage.touched">
+        <i class="bi bi-exclamation-square"></i>
+      </p>
       <small class="text-muted ms-auto mt-2"
         >{{ textMessage.value != null ? textMessage.value.length : 0 }} /
         500</small

@@ -13,6 +13,7 @@ import {
   colorId,
   product,
 } from 'src/app/products/services/product-manage.service';
+import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 @Component({
   selector: 'productDescription',
   templateUrl: './productDescription.component.html',
@@ -30,7 +31,8 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     private products: ProductManage,
     private checkout: Checkout,
     private router: Router,
-    private token: TokenManage
+    private token: TokenManage,
+    private substrPipe: CategorySubstrPipe
   ) {}
   ngOnInit(): void {
     this.token.isLogged.subscribe((x) => {
@@ -68,7 +70,8 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
   }
 
   filterSizeAndSets(product: product, y: product) {
-    product.reference.substr(0, 6) == y.reference.substr(0, 6) &&
+    this.product.parentRef == y.parentRef &&
+    this.substrByCategory(product) == this.substrByCategory(y) &&
     product.color == y.color &&
     product.sets == y.sets
       ? this.sizes.some((x) => {
@@ -77,7 +80,9 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
         ? null
         : this.sizes.push(y.size)
       : null;
-    product.reference.substr(0, 6) == y.reference.substr(0, 6) &&
+
+    this.product.parentRef == y.parentRef &&
+    this.substrByCategory(product) == this.substrByCategory(y) &&
     product.color == y.color &&
     product.size == y.size
       ? this.sets.some((x) => {
@@ -125,5 +130,8 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
       this.product.parentRef
     );
     this.router.navigate(['/product', product.id, product.name]);
+  }
+  substrByCategory(product: product): string {
+    return this.substrPipe.transform(product);
   }
 }

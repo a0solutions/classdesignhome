@@ -1,8 +1,11 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
   ProductManage,
+  imagedata,
   product,
 } from 'src/app/products/services/product-manage.service';
+import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
+import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
 
 @Component({
   selector: 'productGalery',
@@ -13,35 +16,52 @@ export class ProductGalery implements OnChanges {
   @Input() product: product = <product>{};
   image: boolean[] = [true, false, false, false];
   fullPicture: string = '';
-  miniPicture1: string = '';
-  miniPicture2: string = '';
-  miniPicture3: string = '';
-  miniPicture4: string = '';
-  miniPicture5: string = '';
+  allImages: any;
   url: string = '';
-  constructor(private products: ProductManage) {}
+  constructor(
+    private products: ProductManage,
+    private substrPipe: CategorySubstrPipe,
+    private spacesPipe: SpacesDeletePipe
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.loadPictures();
+    if (this.product.category != undefined) {
+      this.loadPictures();
+    }
   }
   loadPictures(): void {
+    let data: imagedata = <imagedata>{};
+    data.category = this.product.category;
+    data.folder = this.substrByCategory(this.product);
+    data.parentRef = this.spaceDelete(this.product.parentRef);
     this.url =
       'http://localhost/classapi/images/' +
-      this.product.category.replaceAll(' ', '_') +
+      data.category +
       '/products/' +
-      this.product.reference.substr(0, 9).replaceAll(' ', '') +
+      data.parentRef +
       '/' +
-      this.product.reference.substr(0, 9).replaceAll(' ', '');
-    this.fullPicture = this.url + '.jpg';
-    this.miniPicture1 = this.url + '.jpg';
-    this.miniPicture3 = this.url + '-DETALLE.jpg';
+      data.folder +
+      '/';
+    this.products.getProductImages(data).forEach((x: any) => {
+      this.fullPicture = this.url + x[0];
+      this.allImages = x;
+    });
   }
-  updatePicture(picture: any, detail: any, img: number): void {
-    let src = picture.target.src;
+  updatePicture(picture: any, img: number): void {
+    let src = picture.target.style.backgroundImage.substr(
+      5,
+      picture.target.style.backgroundImage.length - 7
+    );
     for (let img in this.image) {
       this.image[img] = false;
     }
     this.image[img] = true;
-    detail.src = src;
+    this.fullPicture = src;
+  }
+  substrByCategory(product: product): string {
+    return this.substrPipe.transform(product);
+  }
+  spaceDelete(text: string): string {
+    return this.spacesPipe.transform(text);
   }
 }

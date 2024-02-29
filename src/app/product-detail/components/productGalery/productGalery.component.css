@@ -8,13 +8,21 @@
   width: 100%;
   height: 62vh;
   overflow: hidden;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
+
 .carrousel-image-datail {
-  height: 18vh;
+  flex: 0 0 auto;
+  width: 100px;
+  height: 100px;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center center;
   overflow: hidden;
   transition: all 0.5s;
   cursor: pointer;
-  border: 6px solid transparent;
-  padding: 8px;
-  margin: 0px;
+  border: 9px solid white;
+  margin: 3px;
 }

@@ -4,4 +4,5 @@ export const urls = {
   urlContact: 'http://localhost/classapi/api/apiContact',
   urlProducts: 'http://localhost/classapi/api/apiProducts',
   urlOrders: 'http://localhost/classapi/api/apiOrders',
+  urlImages: 'http://localhost/classapi/api/apiImages',
 };
