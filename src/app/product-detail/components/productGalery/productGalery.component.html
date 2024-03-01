@@ -3,6 +3,35 @@
   data-mdb-zoom-effect="true"
   data-mdb-auto-height="true"
 >
+  <p class="pc-out">
+    <a class="text-dark" routerLink="/">Home </a> /
+    <a class="text-dark" [routerLink]="'/products/' + product.category"
+      >{{ product.category | capitalize }}
+    </a>
+    /
+    <a
+      class="text-dark"
+      [routerLink]="'/products/' + product.category + '/' + product.subcategory"
+      >{{ product.subcategory | capitalize }}
+    </a>
+    / {{ product.name }}
+  </p>
+  <div class="pc-out">
+    <div class="d-flex">
+      <h1 class="bold mb-0 h5">{{ product.name }}</h1>
+      <p class="ms-3">
+        <span
+          class="badge p-1 px-2 rounded-pill rounded-0"
+          [ngClass]="product.stock ? 'bg-success' : 'bg-danger'"
+          >{{ product.stock | stock }}</span
+        >
+      </p>
+    </div>
+  </div>
+  <h3 class="mt-2 mb-0 h3 color-gold pc-out">
+    {{ product.price | currency : "USD" }}<br />
+  </h3>
+  <p class="pc-out">Material Detail: {{ product.materialDetail }}</p>
   <div class="row shadow-5">
     <div class="col-12 mb-3 px-0">
       <div

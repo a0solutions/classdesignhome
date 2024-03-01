@@ -17,6 +17,7 @@ import { ModalAskManage } from '../components/modal-ask/services/modalAskManage.
 import { LoaderComponent } from '../components/loader/loader.component';
 import { LoaderService } from '../components/loader/services/loader.service';
 import { SidebarComponent } from '../components/nav/components/sidebar/sidebar.component';
+import { UserManage } from 'src/app/signin/services/user-manage.service';
 
 @NgModule({
   imports: [CommonModule, FormsModule, PipesModule, ShareModule, RouterModule],
@@ -35,6 +36,7 @@ import { SidebarComponent } from '../components/nav/components/sidebar/sidebar.c
     AlertManage,
     ModalAskManage,
     LoaderService,
+    UserManage,
   ],
   exports: [
     NavComponent,

@@ -61,23 +61,25 @@ export class ProductsFilterComponent implements OnInit {
   getFiltersByCategories(filters: filter): void {
     this.colors = [];
     this.sizesFilter = [];
+
     this.product.getProductByCategory(filters.category).forEach((y) => {
       this.colors.includes(y.color) ? null : this.colors.push(y.color);
-      if (
-        y.category == this.categorySelected ||
-        this.categorySelected == 'products'
-      ) {
-        let sizes: sizes = <sizes>{};
-        sizes.category = y.category;
-        sizes.size = y.size;
-
-        this.sizesFilter.find(
-          (x) => x.size === sizes.size && x.category === sizes.category
-        )
-          ? null
-          : this.sizesFilter.push(sizes);
-      }
+      let sizes: sizes = <sizes>{};
+      sizes.category = y.category;
+      sizes.size = y.size;
+      this.sizesFilter.find(
+        (x) => x.size === sizes.size && x.category === sizes.category
+      )
+        ? null
+        : this.sizesFilter.push(sizes);
     });
+  }
+  findSizesFilter(category: string): boolean {
+    if (this.sizesFilter.find((x) => x.category == category)) return true;
+    return false;
+  }
+  selectingFilterCategory(category: string): sizes[] {
+    return this.sizesFilter.filter((x) => x.category == category);
   }
   //Getting categories
   getCategories(categories: object): void {

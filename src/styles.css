@@ -199,6 +199,7 @@ footer i:hover {
 }
 input:focus,
 select:focus,
+textarea:focus,
 .form-check-input:focus {
   box-shadow: 0 0 0 3px rgba(203, 161, 53, 0.289) !important;
   border: 1px solid var(--secondary-color) !important;
@@ -375,6 +376,15 @@ input[type="checkbox"] {
   .mobile-out {
     display: none !important;
   }
+  .center-mobile {
+    text-align: center;
+  }
+  .pc-out {
+    display: block;
+  }
+  .lightbox {
+    height: 45vh;
+  }
   .products-page-title {
     font-size: 3rem;
     font-weight: bolder;
@@ -467,6 +477,13 @@ input[type="checkbox"] {
   .top-nav {
     top: 0px;
   }
+  .fullmobile-halfPc {
+    width: 100%;
+    text-align: center;
+  }
+  .fullmobile-halfPc div {
+    margin: auto;
+  }
 }
 @media (min-width: 480px) {
   .filter-table {
@@ -484,6 +501,15 @@ input[type="checkbox"] {
   }
   .mobile-out {
     display: block !important;
+  }
+  .center-mobile {
+    text-align: left;
+  }
+  .lightbox {
+    height: 62vh;
+  }
+  .pc-out {
+    display: none;
   }
 }
 @media (min-width: 600px) {
@@ -532,6 +558,9 @@ input[type="checkbox"] {
   }
   .tab-pane {
     padding: 3rem;
+  }
+  .fullmobile-halfPc {
+    width: 50%;
   }
 }
 @media (min-width: 801px) {

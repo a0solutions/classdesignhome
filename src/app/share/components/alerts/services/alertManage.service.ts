@@ -29,6 +29,10 @@ export class AlertManage {
       return 'You must fill all fields or add some products to your cart list.';
     } else if (code == 'badPayment') {
       return 'Sorry, somthing went wrong with the payment process, tray again.';
+    } else if (code == 'newsletterOk') {
+      return 'Your email has been  successfully added to our newsletter.';
+    } else if (code == 'newsletterExist') {
+      return 'Your email already exist';
     } else {
       return 'Somthing went wrong tray again later.';
     }

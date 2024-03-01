@@ -3,3 +3,10 @@ textarea:focus {
   box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.3);
   border: 1px solid var(--bs-dark);
 }
+.select-option-text {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  width: 100%;
+  display: inline-block;
+  white-space: pre-line;
+}

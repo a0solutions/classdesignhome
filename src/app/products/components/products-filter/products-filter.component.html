@@ -254,27 +254,34 @@
               </div>
 
               <ng-template #sizeFilter>
-                <div *ngFor="let category of allCategories">
-                  <p>
-                    {{ category.category | capitalize }}
-                  </p>
-                  <div class="row">
-                    <div
-                      class="col-3 cursor-pointer mb-3"
-                      *ngFor="let size of sizesFilter; index as i"
-                      (click)="updateFilterSize(size.size, i)"
-                    >
-                      <img
-                        [src]="
-                          'http://localhost/classapi/images/app/custom-icons/' +
-                          size.size +
-                          '.png'
+                <div *ngFor="let category of allCategories; index as i">
+                  <div *ngIf="findSizesFilter(category.category)">
+                    <p class="col-12">
+                      {{ category.category | capitalize }}
+                    </p>
+                    <div class="row">
+                      <div
+                        class="col-3 cursor-pointer mb-3"
+                        *ngFor="
+                          let size of selectingFilterCategory(
+                            category.category
+                          );
+                          index as i
                         "
-                        [ngClass]="{ active: sizeSelected[i] }"
-                        class="p-0 m-0 border icon-filter-size"
-                        width="100%"
-                        [title]="size.size | capitalize"
-                      />
+                        (click)="updateFilterSize(size.size, i)"
+                      >
+                        <img
+                          [src]="
+                            'http://localhost/classapi/images/app/custom-icons/' +
+                            size.size +
+                            '.png'
+                          "
+                          [ngClass]="{ active: sizeSelected[i] }"
+                          class="p-0 m-0 border icon-filter-size"
+                          width="100%"
+                          [title]="size.size | capitalize"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

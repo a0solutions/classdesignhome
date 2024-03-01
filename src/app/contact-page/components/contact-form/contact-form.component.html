@@ -26,15 +26,41 @@
       name="subject"
       class="form-select rounded-0"
       required
+      (change)="selectSubSubject(subject.value)"
     >
       <option value="" selected>Subject*</option>
-      <option value="Product Interest">Delivery problem</option>
-      <option value="Product Interest">Product information</option>
-      <option value="Product Interest">Product Interest</option>
-      <option value="Product Interest">Product Interest</option>
-      <option value="Product Interest">Product Interest</option>
+      <option value="Product Inquiries">Product Inquiries</option>
+      <option value="Order Management">Order Management</option>
+      <option value="Product Interest">Delivery and Shipping</option>
+      <option value="Payment and Pricing">Payment and Pricing</option>
+      <option value="Technical Support">Technical Support</option>
+      <option value="After-Sale Services">After-Sale Services</option>
+      <option value="Design Consultation">Design Consultation</option>
+      <option value="Corporate and Bulk Orders">
+        Corporate and Bulk Orders
+      </option>
+      <option value="General Inquiries">General Inquiries</option>
     </select>
     <p *ngIf="subject.invalid && subject.touched">
+      <i class="bi bi-exclamation-square"></i>
+    </p>
+  </div>
+  <div class="mb-3">
+    <select
+      ngModel
+      #topic="ngModel"
+      type="text"
+      name="topic"
+      class="form-select rounded-0 select-option-text"
+      data-mdb-option-height="100"
+      required
+    >
+      <option value="" selected>Topic*</option>
+      <option *ngFor="let topic of subSubjects" [value]="topic">
+        {{ topic }}
+      </option>
+    </select>
+    <p *ngIf="topic.invalid && topic.touched">
       <i class="bi bi-exclamation-square"></i>
     </p>
   </div>

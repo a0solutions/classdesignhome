@@ -144,8 +144,12 @@ export interface imagedata {
   folder: string;
   parentRef: string;
 }
-export type colorId = { color: string; id: string; name: string };
-export type product = {
+export interface colorId {
+  color: string;
+  id: string;
+  name: string;
+}
+export interface product {
   id: string;
   name: string;
   dimentions: string;
@@ -189,4 +193,8 @@ export type product = {
   new: number;
   offer: number;
   membersOnly: number;
-};
+  counterTopIncluded: string;
+  counterMaterial: string;
+  sinkIncluded: string;
+  sinkType: number;
+}

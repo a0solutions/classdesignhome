@@ -28,6 +28,22 @@
           <strong class="h6">Frame Material:</strong>
           {{ product.frameMaterial }}
         </p>
+        <p class="mb-2" *ngIf="product.counterTopIncluded != null">
+          <strong class="h6">Counter Top Included:</strong>
+          {{ product.counterTopIncluded }}
+        </p>
+        <p class="mb-2" *ngIf="product.counterMaterial != null">
+          <strong class="h6">Counter Material:</strong>
+          {{ product.counterMaterial }}
+        </p>
+        <p class="mb-2" *ngIf="product.sinkIncluded != null">
+          <strong class="h6">Sink Included:</strong>
+          {{ product.sinkIncluded }}
+        </p>
+        <p class="mb-2" *ngIf="product.sinkType != null">
+          <strong class="h6">Sink Type:</strong>
+          {{ product.sinkType }}
+        </p>
         <div class="d-flex align-content-center">
           <p class="mb-2">
             <strong class="h6">Color:</strong> {{ product.color }}
@@ -65,19 +81,19 @@
           <tbody>
             <tr>
               <td class="w-50">Overall Width</td>
-              <td class="w-50">{{ product.overallWidth }}</td>
+              <td class="w-50">{{ product.overallWidth }}"</td>
             </tr>
             <tr>
               <td class="w-50">Overall Height</td>
-              <td class="w-50">{{ product.overallHeight }}</td>
+              <td class="w-50">{{ product.overallHeight }}"</td>
             </tr>
             <tr>
               <td class="w-50">Overall Lenght</td>
-              <td class="w-50">{{ product.overallLenght }}</td>
+              <td class="w-50">{{ product.overallLenght }}"</td>
             </tr>
             <tr>
               <td class="w-50">Overall Weight</td>
-              <td class="w-50">{{ product.overallWeight }}</td>
+              <td class="w-50">{{ product.overallWeight }}lb</td>
             </tr>
           </tbody>
         </table>
@@ -106,13 +122,17 @@
         <table class="table table-striped-columns">
           <tbody>
             <h6>Assembly</h6>
-            <tr>
+            <tr *ngIf="product.levelAssembly != 'None'">
               <td class="w-50">Level Assembly</td>
               <td class="w-50">{{ product.levelAssembly }}</td>
             </tr>
-            <tr>
+            <tr *ngIf="product.category == 'bathroom'">
+              <td class="w-50">Time of Intallation</td>
+              <td class="w-50">60 min</td>
+            </tr>
+            <tr *ngIf="product.category != 'bathroom'">
               <td class="w-50">Time Assembly</td>
-              <td class="w-50">{{ product.timeAssembly }}</td>
+              <td class="w-50">{{ product.timeAssembly }} min</td>
             </tr>
             <tr>
               <td class="w-50">Aditional Tools</td>

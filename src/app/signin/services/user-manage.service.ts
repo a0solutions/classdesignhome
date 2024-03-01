@@ -53,6 +53,9 @@ export class UserManage {
     this.tokenManage.logOut();
     this.router.navigate(['/signin'], { queryParams: { returnTo: param } });
   }
+  addNewsLetter(email: object): Observable<object> {
+    return this.cnt.post(this.url + '?newsletter=true', email);
+  }
 }
 
 export type response = {

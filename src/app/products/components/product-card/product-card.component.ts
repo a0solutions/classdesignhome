@@ -41,23 +41,21 @@ export class ProductCardComponent implements OnInit {
       '/1.jpg';
   }
   changeBackgound(InOut: number): void {
-    InOut == 1
-      ? (this.background =
-          'http://localhost/classapi/images/' +
-          this.product.category.replaceAll(' ', '_') +
-          '/products/' +
-          this.spaceDatele(this.product.parentRef) +
-          '/' +
-          this.substrByCategory(this.product) +
-          '/2.jpg')
-      : (this.background =
-          'http://localhost/classapi/images/' +
-          this.product.category.replaceAll(' ', '_') +
-          '/products/' +
-          this.spaceDatele(this.product.parentRef) +
-          '/' +
-          this.substrByCategory(this.product) +
-          '/1.jpg');
+    let url =
+      'http://localhost/classapi/images/' +
+      this.product.category.replaceAll(' ', '_') +
+      '/products/' +
+      this.spaceDatele(this.product.parentRef) +
+      '/' +
+      this.substrByCategory(this.product) +
+      '/';
+
+    InOut == 1 ? this.imageExists(url) : (this.background = url + '1.jpg');
+  }
+  imageExists(url: string): void {
+    let image = new Image();
+    image.src = url + '2.jpg';
+    image.width != 0 ? (this.background = url + '2.jpg') : null;
   }
   dataProcess(products: product[]) {
     products.forEach((y) => {
