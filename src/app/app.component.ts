@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { LoaderService } from './share/components/loader/services/loader.service';
 import { TokenManage } from './personal-area/services/token-manage.service';
 
@@ -25,10 +25,7 @@ export class AppComponent {
       }
     });
   }
-
-  onActivate(_event: any): void {
-    if (this.mainContentDiv) {
-      (this.mainContentDiv.nativeElement as HTMLElement).scrollTop = 0;
-    }
+  onActivate(e: Event, outlet: HTMLElement) {
+    outlet.scrollTop = 0;
   }
 }
