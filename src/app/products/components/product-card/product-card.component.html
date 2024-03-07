@@ -4,12 +4,14 @@
   (click)="navigate(product.id, product.name)"
 >
   <div class="position-absolute d-flex z-3">
-    <button
+    <a
+      (click)="shareProduct($event, product.id, product.name)"
       class="btn btn-white rounded-pill text-muted shadow-sm btn-sm"
+      data-action="share/whatsapp/share"
       title="Share with friends"
     >
       Share!
-    </button>
+    </a>
     <p
       *ngIf="product.new == 1"
       class="bg-white p-1 px-2 text-white rounded-pill text-muted cursor-default mb-0 ms-3 shadow-sm"

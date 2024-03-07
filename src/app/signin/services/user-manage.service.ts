@@ -16,8 +16,8 @@ export class UserManage {
     private tokenManage: TokenManage,
     private router: Router
   ) {}
-  postUser(data: Form): Observable<string> {
-    return this.cnt.post<string>(this.url, data);
+  postUser(data: Form): Observable<boolean> {
+    return this.cnt.post<boolean>(this.url, data);
   }
   verifyUser(data: any): Observable<string> {
     return this.cnt.post(this.url, data, { responseType: 'text' });
@@ -35,6 +35,7 @@ export class UserManage {
     return this.tokenManage.getUserId();
   }
   updateData(form: NgForm, id: string, table: string): Observable<object> {
+    console.log(id);
     return this.cnt.put(
       this.url +
         '?validate=' +

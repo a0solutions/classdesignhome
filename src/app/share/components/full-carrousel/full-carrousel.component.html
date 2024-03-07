@@ -1,0 +1,31 @@
+<article class="position-fixed full-carrousel p-5" *ngIf="carouselFull">
+  <div
+    class="ecommerce-gallery"
+    data-mdb-zoom-effect="true"
+    data-mdb-auto-height="true"
+  >
+    <div class="row shadow-5">
+      <div class="col-12 mb-3 position-relative px-0">
+        <button
+          (click)="closeFullCarousel()"
+          class="col-1 btn btn-light position-absolute shadow-sm ms-auto zoom-button rounded-pill mobile-out"
+        >
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <div
+          class="lightbox2"
+          [style]="'background-image:url(' + fullPicture + ')'"
+        ></div>
+      </div>
+      <div class="row list-images">
+        <div
+          class="carrousel-image-datail"
+          *ngFor="let thisImage of allImages; index as i"
+          [ngClass]="{ imageActive: image[i] }"
+          [style]="'background-image:url(' + url + thisImage + ')'"
+          (click)="updatePicture($event, i)"
+        ></div>
+      </div>
+    </div>
+  </div>
+</article>

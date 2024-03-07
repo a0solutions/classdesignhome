@@ -1,7 +1,10 @@
 .nav-item,
 button {
-  width: 50%;
+  width: 33.33%;
 }
 .nav-link {
   color: var(--bg-light);
+}
+h2 {
+  font-size: 45px !important;
 }

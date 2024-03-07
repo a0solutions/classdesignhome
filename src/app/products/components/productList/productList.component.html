@@ -9,7 +9,7 @@
 
   <ng-template #productlist>
     <div
-      [ngClass]="cardSize + ' col-sm-12 col-md-6 mb-4'"
+      [ngClass]="'col-sm-12 col-md-6 col-lg-4 mb-4'"
       *ngFor="let product of printProduct"
     >
       <product-card [product]="product"></product-card>

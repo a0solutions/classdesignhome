@@ -24,3 +24,9 @@
 .card-footer a:hover {
   color: white !important;
 }
+.cardname {
+  height: 50px;
+}
+.h5 {
+  font-size: 1.05rem;
+}

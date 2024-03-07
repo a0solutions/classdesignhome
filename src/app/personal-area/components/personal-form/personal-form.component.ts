@@ -33,7 +33,7 @@ export class PersonalFormComponent implements OnInit {
   }
   submit(form: NgForm, flag: string): void {
     this.loader = true;
-    this.users.updateData(form, this.personal.userid, flag).subscribe({
+    this.users.updateData(form, this.personal.id, flag).subscribe({
       next: this.updateUser.bind(this),
       error: this.setAlert.bind(''),
     });
@@ -44,6 +44,7 @@ export class PersonalFormComponent implements OnInit {
     this.setAlert('personalUpdate');
   }
   setAlert(code: any): void {
+    console.log(code);
     this.alert.setAlertMessage(code);
   }
 }

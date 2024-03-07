@@ -1,39 +1,51 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { CarouselService } from './service/carousel.service';
 import {
   ProductManage,
   imagedata,
   product,
 } from 'src/app/products/services/product-manage.service';
-import { CarouselService } from 'src/app/share/components/full-carrousel/service/carousel.service';
-import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
-import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
-import { urls } from 'src/app/share/services/apiurl';
+import { CategorySubstrPipe } from '../../pipes/categorySubstr.pipe';
+import { SpacesDeletePipe } from '../../pipes/spacesDelete.pipe';
+import { urls } from '../../services/apiurl';
 
 @Component({
-  selector: 'productGalery',
-  templateUrl: './productGalery.component.html',
-  styleUrls: ['./productGalery.component.css'],
+  selector: 'app-full-carrousel',
+  templateUrl: './full-carrousel.component.html',
+  styleUrls: ['./full-carrousel.component.css'],
 })
-export class ProductGalery implements OnChanges {
+export class FullCarrouselComponent implements OnInit, OnChanges {
   @Input() product: product = <product>{};
   image: boolean[] = [true, false, false, false];
   fullPicture: string = '';
   allImages: any;
   url: string = '';
+  carouselFull: boolean = true;
   constructor(
     private products: ProductManage,
     private substrPipe: CategorySubstrPipe,
     private spacesPipe: SpacesDeletePipe,
     private carousel: CarouselService
   ) {}
+  ngOnInit(): void {
+    this.carousel.show.subscribe((x) => {
+      this.carouselFull = x;
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.product.category != undefined) {
       this.loadPictures();
     }
   }
-  openFullCarousel(): void {
-    this.carousel.show.next(true);
+  closeFullCarousel(): void {
+    this.carousel.show.next(false);
   }
   loadPictures(): void {
     let data: imagedata = <imagedata>{};

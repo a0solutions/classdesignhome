@@ -2,6 +2,12 @@
   [ngClass]="{ selected: selected }"
   (click)="selectColor(colorName)"
   class="color-select rounded-pill shadow-sm"
-  [style]="'background:' + background"
+  [style]="
+    'background:' +
+    background +
+    ';background-image: url(' +
+    check +
+    ') !important'
+  "
   [title]="colorName | uppercase"
 ></div>

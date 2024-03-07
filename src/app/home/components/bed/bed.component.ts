@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { urls } from 'src/app/share/services/apiurl';
 
 @Component({
   selector: 'bed',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./bed.component.css'],
 })
 export class BedComponent {
+  url: string = urls.url;
   constructor() {}
 }

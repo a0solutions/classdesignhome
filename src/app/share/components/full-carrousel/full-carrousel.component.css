@@ -1,15 +1,27 @@
+.full-carrousel {
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999999;
+  background: rgba(0, 0, 0, 0.7);
+}
 .carrousel-image-datail:hover {
   outline: 1px solid var(--secondary-color);
 }
 .imageActive {
   outline: 1px solid var(--secondary-color);
 }
-.lightbox {
+.lightbox2 {
   width: 100%;
   overflow: hidden;
-  background-size: 100% auto;
+  background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center center;
+}
+.list-images {
+  margin-top: -122px;
+  z-index: 9;
 }
 .zoom-button {
   top: 20px;
@@ -20,13 +32,14 @@
   z-index: 99;
 }
 .zoom-button .bi::before {
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   margin-left: -1px;
 }
 .carrousel-image-datail {
   flex: 0 0 auto;
   width: 100px;
   height: 100px;
+  background: white;
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: center center;
@@ -35,4 +48,7 @@
   cursor: pointer;
   border: 9px solid white;
   margin: 3px;
+}
+.lightbox2 {
+  height: 92vh;
 }

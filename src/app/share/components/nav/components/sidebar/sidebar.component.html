@@ -27,7 +27,7 @@
         routerLink="/aboutus"
         class="nav-link p-3 side-nav-link"
         data-bs-dismiss="offcanvas"
-        >Us</a
+        >Story</a
       >
       <a
         routerLink="/collections"
@@ -40,12 +40,6 @@
         class="nav-link p-3 side-nav-link"
         data-bs-dismiss="offcanvas"
         >Shop</a
-      >
-      <a
-        routerLink="/contact"
-        class="nav-link p-3 side-nav-link"
-        data-bs-dismiss="offcanvas"
-        >Contact</a
       >
     </div>
     <h4 class="py-2 mb-0">CATEGORIES</h4>
@@ -61,7 +55,7 @@
             [id]="i"
             (click)="expandAccordion($event)"
           >
-            {{ category.category | uppercase }}
+            {{ category.category | capitalize }}
           </button>
         </h3>
         <div [id]="i + 'subcategories'" class="accordion-collapse collapse">
@@ -73,6 +67,11 @@
               *ngFor="let subcategory of category.subcategories"
               [href]="'products/' + category.category + '/' + subcategory"
               class="nav-link w-100"
+              [style]="
+                getAllProductsBySub(subcategory) == 0
+                  ? 'display:none'
+                  : 'display:block'
+              "
               ><div class="subcategories_list_item d-flex">
                 <p>
                   {{ subcategory | capitalize }}

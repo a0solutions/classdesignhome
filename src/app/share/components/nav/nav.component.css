@@ -8,10 +8,11 @@
   text-transform: uppercase;
 }
 .navbar {
-  z-index: 99;
+  z-index: 999;
   top: 0px;
   width: 100vw;
-  height: 90px;
+  height: 80px;
+  position: fixed;
 }
 .navbar button:hover {
   background: transparent !important;

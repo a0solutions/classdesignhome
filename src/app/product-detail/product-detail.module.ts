@@ -15,7 +15,6 @@ import { SpacesDeletePipe } from '../share/pipes/spacesDelete.pipe';
   imports: [CommonModule, ShareModule, PipesModule, RouterModule],
   declarations: [
     ProductDetailComponent,
-    ProductGalery,
     ProductDescriptionComponent,
     DescripptionAccordionComponent,
   ],

@@ -6,6 +6,7 @@ import {
 } from 'src/app/share/services/categories.service';
 import { FilterManage, filter } from '../../services/filterManage.service';
 import { ProductManage, product } from '../../services/product-manage.service';
+import { urls } from 'src/app/share/services/apiurl';
 
 interface sizes {
   category: string;
@@ -19,6 +20,7 @@ interface sizes {
 export class ProductsFilterComponent implements OnInit {
   @Input() categorySelected: string = '';
   @Input() subcategorySelected: string = '';
+  url: string = urls.url;
   allCategories: categories[] = [];
   allColorFilters: string[] = [];
   subcategoriesFilter: string[] = [];

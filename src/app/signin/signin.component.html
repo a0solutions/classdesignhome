@@ -1,5 +1,5 @@
 <article class="pb-5">
-  <div class="separador10"></div>
+  <div class="separador-menu"></div>
   <div
     class="mx-auto col-xl-6 col-lg-7 col-md-10 col-sm-12 animate__animated animate__fadeInUp"
   >
@@ -24,13 +24,27 @@
             class="nav-link btn-sm w-100 rounded-0"
             id="pills-profile-tab"
             data-bs-toggle="pill"
-            data-bs-target="#pills-profile"
+            data-bs-target="#pills-member"
             type="button"
             role="tab"
-            aria-controls="pills-profile"
+            aria-controls="pills-member"
             aria-selected="false"
           >
             Be a member
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link btn-sm w-100 rounded-0"
+            id="pills-profile-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-partner"
+            type="button"
+            role="tab"
+            aria-controls="pills-partner"
+            aria-selected="false"
+          >
+            Become a partner
           </button>
         </li>
       </ul>
@@ -54,9 +68,30 @@
         </div>
         <div
           class="tab-pane fade"
-          id="pills-profile"
+          id="pills-member"
           role="tabpanel"
-          aria-labelledby="pills-profile-tab"
+          aria-labelledby="pills-member-tab"
+          tabindex="0"
+        >
+          <div class="row">
+            <div class="title col-12">
+              <h2 class="fw-bolder text-center">Sing up as a member</h2>
+              <p class="text-center">
+                Fill all fields requires with your personal information
+              </p>
+              <div class="separador-centrado"></div>
+            </div>
+            <signup-form
+              [type]="'member'"
+              class="col-12 col-lg-12 p-3"
+            ></signup-form>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-partner"
+          role="tabpanel"
+          aria-labelledby="pills-partner-tab"
           tabindex="0"
         >
           <div class="row">
@@ -67,7 +102,10 @@
               </p>
               <div class="separador-centrado"></div>
             </div>
-            <signup-form class="col-12 col-lg-12 p-3"></signup-form>
+            <signup-form
+              [type]="'professional'"
+              class="col-12 col-lg-12 p-3"
+            ></signup-form>
           </div>
         </div>
       </div>

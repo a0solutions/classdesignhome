@@ -3,6 +3,7 @@ import { Checkout } from 'src/app/checkout-page/services/checkout.service';
 import { product } from 'src/app/products/services/product-manage.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
+import { urls } from 'src/app/share/services/apiurl';
 
 @Component({
   selector: 'cart-item',
@@ -21,7 +22,8 @@ export class CartItemComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.background =
-      'http://localhost/classapi/images/' +
+      urls.url +
+      'classapi/images/' +
       this.product.category.replaceAll(' ', '_') +
       '/products/' +
       this.spacesDelete(this.product.parentRef) +

@@ -7,7 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { headerManage } from './popous/popups';
-
+import { urls } from '../../services/apiurl';
 @Component({
   selector: 'app-headers',
   templateUrl: './headers.component.html',
@@ -19,6 +19,7 @@ export class HeadersComponent implements OnChanges {
   backgroundImage: string = '';
   popups: any = [];
   headerNameUrl: string;
+  url: string = urls.url;
   constructor(private headerManage: headerManage) {}
 
   ngOnChanges(changes: SimpleChanges): void {

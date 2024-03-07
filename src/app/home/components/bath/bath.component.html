@@ -1,5 +1,10 @@
 <div>
-  <div class="image-showroom">
+  <div
+    class="image-showroom"
+    [style]="
+      'background-image:url(' + url + 'classapi/images/bathroom/home/bath.png)'
+    "
+  >
     <div class="image-showroom-content p-lg-5 p-md-3 p-sm-1 w-75">
       <h2 class="text-white fw-bolder">Bathroom</h2>
       <div class="image-showroom-buttons d-flex">
@@ -7,9 +12,9 @@
           Show rooms
         </button> -->
         <a
-          class="btn btn-light rounded-0 px-4 card-button w-25"
+          class="btn btn-outline-light backdrop-filter rounded-0 px-4 card-button w-25"
           routerLink="/products/bathroom"
-          >Products</a
+          >Explore</a
         >
       </div>
     </div>

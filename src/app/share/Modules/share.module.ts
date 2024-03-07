@@ -17,6 +17,9 @@ import { RouterModule } from '@angular/router';
 import { ShowroomCardComponent } from '../components/popup/showroomCard/showroom-card.component';
 import { CategorySubstrPipe } from '../pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from '../pipes/spacesDelete.pipe';
+import { FullCarrouselComponent } from '../components/full-carrousel/full-carrousel.component';
+import { CarouselService } from '../components/full-carrousel/service/carousel.service';
+import { ProductGalery } from 'src/app/product-detail/components/productGalery/productGalery.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, PipesModule, RouterModule],
@@ -31,8 +34,16 @@ import { SpacesDeletePipe } from '../pipes/spacesDelete.pipe';
     ShowroomCardComponent,
     ProductCardComponent,
     ColorSelectComponent,
+    FullCarrouselComponent,
+    ProductGalery,
   ],
-  providers: [AlertManage, headerManage, CategorySubstrPipe, SpacesDeletePipe],
+  providers: [
+    AlertManage,
+    headerManage,
+    CategorySubstrPipe,
+    SpacesDeletePipe,
+    CarouselService,
+  ],
   exports: [
     CartItemComponent,
     ListedComponent,
@@ -43,6 +54,8 @@ import { SpacesDeletePipe } from '../pipes/spacesDelete.pipe';
     PopupComponent,
     ProductCardComponent,
     ColorSelectComponent,
+    FullCarrouselComponent,
+    ProductGalery,
   ],
 })
 export class ShareModule {}

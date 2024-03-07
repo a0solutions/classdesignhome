@@ -29,6 +29,7 @@ export class SidebarComponent implements OnInit {
   getAllProductsBySub(sub: string): number {
     return this.products.getNumberBySub(sub);
   }
+
   expandAccordion(accordion: any): void {
     let id = accordion.target.id;
     if (document.getElementById(id)?.classList.contains('collapsed')) {

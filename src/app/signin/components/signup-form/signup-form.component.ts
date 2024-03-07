@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserManage } from '../../services/user-manage.service';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import { NgForm } from '@angular/forms';
@@ -10,15 +10,16 @@ import { NgForm } from '@angular/forms';
 })
 export class SignupFormComponent {
   constructor(private users: UserManage, private alert: AlertManage) {}
-
+  @Input() type: string = '';
   submit(form: NgForm): void {
     this.users.postUser(form.value).subscribe({
       next: this.manageResponse.bind(this),
       error: this.setAlert.bind(''),
     });
   }
-  manageResponse(response: string): void {
-    parseInt(<string>(<unknown>response)) == 400
+  manageResponse(response: boolean): void {
+    console.log(response);
+    response == false
       ? this.setAlert('email-exist')
       : this.setAlert('registered');
   }

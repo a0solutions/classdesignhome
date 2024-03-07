@@ -35,7 +35,7 @@
         & Color Detail: {{ product.detailColor }}</span
       >
     </p>
-    <div class="row fullmobile-halfPc mt-2">
+    <div class="row col-6 mt-2">
       <div class="col-2" *ngFor="let color of colors">
         <color-select
           (click)="navigateParent(color.id, color.name)"
@@ -64,11 +64,7 @@
           <img
             width="100%"
             class="p-0"
-            [src]="
-              'http://localhost/classapi/images/app/custom-icons/' +
-              size +
-              '.png'
-            "
+            [src]="url + 'classapi/images/app/custom-icons/' + size + '.png'"
           />
         </button>
       </div>
@@ -93,7 +89,8 @@
             width="100%"
             class="p-0"
             [src]="
-              'http://localhost/classapi/images/app/custom-icons/' +
+              url +
+              'classapi/images/app/custom-icons/' +
               (set | spaces) +
               '.png'
             "

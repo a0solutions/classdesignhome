@@ -1,4 +1,4 @@
-<div
+<article
   class="ecommerce-gallery"
   data-mdb-zoom-effect="true"
   data-mdb-auto-height="true"
@@ -33,7 +33,13 @@
   </h3>
   <p class="pc-out">Material Detail: {{ product.materialDetail }}</p>
   <div class="row shadow-5">
-    <div class="col-12 mb-3 px-0">
+    <div class="col-12 mb-3 position-relative px-0">
+      <button
+        (click)="openFullCarousel()"
+        class="col-1 btn btn-light position-absolute shadow-sm ms-auto zoom-button rounded-pill mobile-out"
+      >
+        <i class="bi bi-zoom-in"></i>
+      </button>
       <div
         class="lightbox"
         [style]="'background-image:url(' + fullPicture + ')'"
@@ -49,4 +55,4 @@
       ></div>
     </div>
   </div>
-</div>
+</article>

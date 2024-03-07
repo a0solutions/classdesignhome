@@ -1,3 +1,4 @@
+<div class="separador-menu"></div>
 <article class="container">
   <div class="title text-center text-content my-5">
     <p class="mb-0">About us</p>
@@ -40,7 +41,14 @@
   </div>
 </article>
 <article>
-  <div class="us-banner">
+  <div
+    class="us-banner"
+    [style]="
+      'background-image: url(' +
+      url +
+      'classapi/images/aboutus/showroom/showroom-aboutus-1.png)'
+    "
+  >
     <div class="us-banner-overlay"></div>
     <h3 class="fw-bolder col-lg-4 col-md-6 col-sm-8">
       Simplicity carried to an extreme becomes elegance
@@ -88,7 +96,7 @@
       <div class="col-lg-6 col-md-6 col-sm-12 mx-auto">
         <div class="p-lg-5 p-md-4 p-sm-3">
           <img
-            src="http://localhost/classapi/images/aboutus/home/about-02.jpg"
+            [src]="url + 'classapi/images/aboutus/home/about-02.jpg'"
             class="us-member"
             width="100%"
           />

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { UserManage } from 'src/app/signin/services/user-manage.service';
 import { AlertManage } from '../alerts/services/alertManage.service';
-
+import { urls } from '../../services/apiurl';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -15,6 +15,7 @@ import { AlertManage } from '../alerts/services/alertManage.service';
 })
 export class FooterComponent implements OnInit {
   allcategories: categories[] = [];
+  url: string = urls.url;
   constructor(
     private categories: CategoriesService,
     private route: Router,

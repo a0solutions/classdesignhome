@@ -12,10 +12,10 @@ export class ProductListComponent implements OnInit {
   products: product[] = [];
   printProduct: product[] = [];
   itemNumber: number;
-  paginateNumber: number = 20;
+  paginateNumber: number = 24;
   more: boolean = false;
   parents: string[] = [];
-  cardSize: string = 'col-lg-3';
+  cardSize: string = 'col-lg-4';
   constructor(
     private allProducts: ProductManage,
     private filters: FilterManage

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CatalogPageComponent } from './catalog-page/catalog-page.component';
 import { CatalogCardComponent } from './catalog-page/components/catalog-card/catalog-card.component';

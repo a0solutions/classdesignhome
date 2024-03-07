@@ -1,8 +1,21 @@
+const url = {
+  url: '',
+};
+const environment = {
+  production: false,
+};
+if (environment.production) {
+  url.url = 'https://testing.classdesign.us/';
+} else {
+  url.url = 'http://localhost/';
+}
 export const urls = {
-  urlctagories: 'http://localhost/classapi/api/apiCategories',
-  urlusers: 'http://localhost/classapi/api/apiUsers',
-  urlContact: 'http://localhost/classapi/api/apiContact',
-  urlProducts: 'http://localhost/classapi/api/apiProducts',
-  urlOrders: 'http://localhost/classapi/api/apiOrders',
-  urlImages: 'http://localhost/classapi/api/apiImages',
+  url: url.url,
+  urlctagories: url.url + 'classapi/api/apiCategories.php',
+  urlusers: url.url + 'classapi/api/apiUsers.php',
+  urlContact: url.url + 'classapi/api/apiContact.php',
+  urlProducts: url.url + 'classapi/api/apiProducts.php',
+  urlOrders: url.url + 'classapi/api/apiOrders.php',
+  urlImages: url.url + 'classapi/api/apiImages.php',
+  urlStripe: url.url + 'classapi/core/stripe.php',
 };

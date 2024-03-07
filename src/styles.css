@@ -165,6 +165,9 @@ footer i:hover {
   border-bottom: 1px solid white !important;
   color: white !important;
 }
+.backdrop-filter {
+  backdrop-filter: blur(10px);
+}
 .separador10 {
   height: 20vh;
 }
@@ -172,7 +175,7 @@ footer i:hover {
   height: 7vh;
 }
 .separador-menu {
-  height: 4vh;
+  height: 13vh;
 }
 .separador-centrado {
   width: 60px;
@@ -393,8 +396,8 @@ input[type="checkbox"] {
     bottom: 85px;
   }
   .chatbox-form {
-    bottom: 40vh;
-    right: 10%;
+    bottom: 20vh;
+    right: 15px;
   }
   .btn-chatbox i::before {
     position: relative;
@@ -515,7 +518,7 @@ input[type="checkbox"] {
 @media (min-width: 600px) {
   .filter-table {
     position: sticky;
-    top: 0;
+    top: 80px;
     z-index: 1020;
   }
   .top-nav {
@@ -566,7 +569,7 @@ input[type="checkbox"] {
 @media (min-width: 801px) {
   .filter-table {
     position: sticky;
-    top: 0;
+    top: 80px;
     z-index: 1020;
   }
 
@@ -634,7 +637,7 @@ input[type="checkbox"] {
 @media (min-width: 1025px) {
   .filter-table {
     position: sticky;
-    top: 0;
+    top: 80px;
     z-index: 1020;
   }
 
@@ -654,7 +657,7 @@ input[type="checkbox"] {
 @media (min-width: 1281px) {
   .filter-table {
     position: sticky;
-    top: 0;
+    top: 80px;
     z-index: 1020;
   }
 

@@ -6,7 +6,7 @@ import {
 } from '../../services/product-manage.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
-
+import { urls } from 'src/app/share/services/apiurl';
 @Component({
   selector: 'product-card',
   templateUrl: './product-card.component.html',
@@ -32,7 +32,8 @@ export class ProductCardComponent implements OnInit {
       })
       .unsubscribe();
     this.background =
-      'http://localhost/classapi/images/' +
+      urls.url +
+      'classapi/images/' +
       this.product.category.replaceAll(' ', '_') +
       '/products/' +
       this.spaceDatele(this.product.parentRef) +
@@ -42,7 +43,8 @@ export class ProductCardComponent implements OnInit {
   }
   changeBackgound(InOut: number): void {
     let url =
-      'http://localhost/classapi/images/' +
+      urls.url +
+      'classapi/images/' +
       this.product.category.replaceAll(' ', '_') +
       '/products/' +
       this.spaceDatele(this.product.parentRef) +
@@ -69,12 +71,24 @@ export class ProductCardComponent implements OnInit {
     });
   }
   navigate(id: string, name: string): void {
-    window.open('product/' + id + '/' + name, '_blank');
+    window.open('product/' + id + '/' + name.replaceAll(' ', '_'), '_blank');
   }
   substrByCategory(product: product): string {
     return this.substrPipe.transform(product);
   }
   spaceDatele(text: string): string {
     return this.spacesPipe.transform(text);
+  }
+  shareProduct(event: Event, arg1: string, arg2: string) {
+    let url =
+      'whatsapp://send?text=Look at this awesome thing I found!: ' +
+      urls.url +
+      'product/' +
+      arg1 +
+      '/' +
+      arg2.replaceAll(' ', '_');
+    event.preventDefault();
+    event.stopPropagation();
+    location.assign(url);
   }
 }

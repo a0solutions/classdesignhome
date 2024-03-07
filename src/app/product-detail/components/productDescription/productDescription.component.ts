@@ -14,6 +14,7 @@ import {
   product,
 } from 'src/app/products/services/product-manage.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
+import { urls } from 'src/app/share/services/apiurl';
 @Component({
   selector: 'productDescription',
   templateUrl: './productDescription.component.html',
@@ -24,9 +25,10 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
   isLogged: boolean = false;
   count: number = 1;
   colors: colorId[] = <colorId[]>[];
-
+  url: string = urls.url;
   sizes: string[] = [];
   sets: string[] = [];
+  urls: any;
   constructor(
     private products: ProductManage,
     private checkout: Checkout,

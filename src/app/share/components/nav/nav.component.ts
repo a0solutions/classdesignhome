@@ -8,8 +8,8 @@ import { ModalAskManage } from '../modal-ask/services/modalAskManage.service';
 import { Subscription } from 'rxjs';
 import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
 import { UserManage } from 'src/app/signin/services/user-manage.service';
-import { ActivatedRoute, Router } from '@angular/router';
-
+import { Router } from '@angular/router';
+import { urls } from '../../services/apiurl';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -21,6 +21,7 @@ export class NavComponent implements OnInit {
   items: number = 0;
   cheick: boolean = false;
   answer: Subscription;
+  url: string = urls.url;
   constructor(
     private checkout: Checkout,
     private nav: NavManage,

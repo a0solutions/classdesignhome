@@ -12,7 +12,7 @@ import { AlertManage } from '../share/components/alerts/services/alertManage.ser
 import { ModalAskManage } from '../share/components/modal-ask/services/modalAskManage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { urls } from '../share/services/apiurl';
 @Component({
   selector: 'app-checkout-page',
   templateUrl: './checkout-page.component.html',
@@ -70,13 +70,16 @@ export class CheckoutPageComponent implements OnInit {
 
   createSession(): void {
     this.processingPayment = true;
-    this.client
-      .post('http://localhost/classapi/core/stripe.php', this.order)
-      .subscribe((x: any) => {
+    this.client.post(urls.urlStripe, this.order).subscribe(
+      (x: any) => {
         this.order.order = x.description;
         this.checkout.saveTempOrder(this.order);
         window.open(<string>x.url, '_self');
-      });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
   completeOrder(): void {
     let order = this.checkout.getTempData();

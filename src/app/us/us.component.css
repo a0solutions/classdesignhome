@@ -5,9 +5,9 @@
   justify-content: center;
   align-items: center;
   background: rgb(158, 158, 158);
-  background-image: url("http://localhost/classapi/images/aboutus/showroom/showroom-aboutus-1.png");
   background-attachment: fixed;
-  background-size: cover;
+  background-size: auto 100%;
+  background-position: center center;
   overflow: hidden;
   background-blend-mode: multiply;
 }
