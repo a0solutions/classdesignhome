@@ -9,6 +9,7 @@ import {
 import { ModalAskManage } from 'src/app/share/components/modal-ask/services/modalAskManage.service';
 import { UserManage } from 'src/app/signin/services/user-manage.service';
 import { ActivatedRoute } from '@angular/router';
+import { countries, states } from 'src/app/share/services/states';
 
 @Component({
   selector: 'checkout-form',
@@ -20,7 +21,9 @@ export class CheckoutFormComponent implements OnInit {
   shipping: shipping = <shipping>{};
   billing: billing = <billing>{};
   fillOrder: order = <order>{};
+  states: string[] = states;
   @Output() formData = new EventEmitter<order>();
+  countries: string[] = countries;
   constructor(
     private modal: ModalAskManage,
     private user: UserManage,
@@ -32,12 +35,20 @@ export class CheckoutFormComponent implements OnInit {
     this.route.queryParamMap.subscribe((x) => {
       x.get('response') == 'ko' ? this.getDataTemp() : null;
     });
+    this.billing.billingState = '';
+    this.billing.billingCountry = '';
+    this.shipping.shippingCountry = '';
+    this.shipping.shippingState = '';
   }
   getDataTemp(): void {
     let order = this.checkout.getTempData();
-    console.log(order);
     this.fillAllBills(order.billing);
     this.isSameAddress(order.billing);
+  }
+  getTaxes(state: string): void {
+    this.checkout.getTaxes(state).subscribe((x: any) => {
+      this.checkout.typeTax.next(x.taxes);
+    });
   }
   showModal() {
     this.modal.showModalMessage('useDataCheckout');
@@ -62,7 +73,6 @@ export class CheckoutFormComponent implements OnInit {
     });
   }
   fillAllBills(x: any) {
-    console.log(x.billingName);
     this.billing.billingName = x.billingName;
     this.billing.billingSurname = x.billingSurname;
     this.billing.billingEmail = x.billingEmail;
@@ -71,7 +81,9 @@ export class CheckoutFormComponent implements OnInit {
     this.billing.billingAddress2 = x.billingAddress2;
     this.billing.billingZip = x.billingZip;
     this.billing.billingCity = x.billingCity;
+    this.billing.billingState = x.billingState;
     this.billing.billingCountry = x.billingCountry;
+    this.getTaxes(x.billingState);
   }
   sameAddress(billing: billing): void {
     !this.sameAddressFlag
@@ -86,6 +98,7 @@ export class CheckoutFormComponent implements OnInit {
     this.shipping.shippingAddress2 = billing.billingAddress2;
     this.shipping.shippingCity = billing.billingCity;
     this.shipping.shippingZip = billing.billingZip;
+    this.shipping.shippingState = billing.billingState;
     this.shipping.shippingCountry = billing.billingCountry;
     this.sendOrder();
   }

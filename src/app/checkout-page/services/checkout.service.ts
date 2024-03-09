@@ -10,6 +10,7 @@ export class Checkout {
   items: BehaviorSubject<cartProduct[]> = new BehaviorSubject(
     <cartProduct[]>[]
   );
+  typeTax: BehaviorSubject<number> = new BehaviorSubject(0);
   url: string = urls.urlOrders;
   localList: cartProduct[] = [];
   constructor(private http: HttpClient) {}
@@ -92,12 +93,21 @@ export class Checkout {
     let order = localStorage.getItem('TempOrder');
     return <order>JSON.parse(<string>order);
   }
+  getTaxes(state: string): Observable<object> {
+    return this.http.get(this.url + '?taxes=' + state);
+  }
+  getTrackingNumber(trackingNumber: string): Observable<object> {
+    return this.http.get(this.url + '?tracking=' + trackingNumber);
+  }
+  cancelOrder(number: string): Observable<object> {
+    return this.http.post(this.url + '?cancel=true', number);
+  }
 }
-export type cartProduct = {
+export interface cartProduct {
   product: product;
   count: number;
-};
-export type order = {
+}
+export interface order {
   billing: billing;
   shipping: shipping;
   cartProducts: cartProduct[];
@@ -105,24 +115,34 @@ export type order = {
   member: string;
   items: number;
   order?: string;
-};
-export type billing = {
+  atelier?: string;
+  oceanic?: string;
+  finale?: string;
+  roadshow?: string;
+  trackingNumber?: string;
+  date?: string;
+  orderId?: string;
+  state?: number;
+}
+export interface billing {
   billingName: string;
   billingSurname: string;
   billingEmail: string;
   billingPhone: string;
   billingAddress: string;
   billingAddress2: string;
-  billingCity: string;
   billingZip: string;
+  billingCity: string;
+  billingState: string;
   billingCountry: string;
-};
-export type shipping = {
+}
+export interface shipping {
   shippingName: string;
   shippingSurname: string;
   shippingAddress: string;
   shippingAddress2: string;
-  shippingCity: string;
   shippingZip: string;
+  shippingCity: string;
+  shippingState: string;
   shippingCountry: string;
-};
+}

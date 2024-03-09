@@ -19,17 +19,9 @@
           (click)="closeAlert()"
         ></button>
       </div>
-      <div class="modal-body">
-        <p>{{ message }}</p>
+      <div class="modal-body" id>
+        <p [innerHTML]="message"></p>
       </div>
     </div>
   </div>
 </div>
-
-<!-- <p
-  class="alert text-start shadow bg-white p-4 rounded-0 d-flex animate__animated animate__fadeInUp"
-  *ngIf="show"
->
-  {{ message }}
-  <button class="btn-close ms-3" (click)="closeAlert()"></button>
-</p> -->

@@ -91,7 +91,7 @@ export class CheckoutPageComponent implements OnInit {
           : answer == 2
           ? this.route.navigate(['products/products'])
           : null;
-        answer != 0 ? this.modal.show.next(false) : null;
+        answer != 0 ? this.modal.closeModalAsk() : null;
       });
       this.checkout.deleteAll();
     });

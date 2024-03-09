@@ -17,6 +17,7 @@ import { HomeModule } from './home/home.module';
 import { PersonalModule } from './personal-area/personal.module';
 import { ProductDetailModule } from './product-detail/product-detail.module';
 import { UsModule } from './us/us.module';
+import { TrackingModule } from './tracking/tracking.module';
 
 @NgModule({
   declarations: [AppComponent, CatalogPageComponent, CatalogCardComponent],
@@ -35,6 +36,7 @@ import { UsModule } from './us/us.module';
     AppRoutingModule,
     HttpClientModule,
     UsModule,
+    TrackingModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

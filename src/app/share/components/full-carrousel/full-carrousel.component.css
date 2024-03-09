@@ -5,6 +5,7 @@
   height: 100vh;
   z-index: 999999999;
   background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
 }
 .carrousel-image-datail:hover {
   outline: 1px solid var(--secondary-color);

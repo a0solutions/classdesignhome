@@ -4,14 +4,15 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ModalAskManage implements OnChanges {
+export class ModalAskManage {
   show: BehaviorSubject<boolean> = new BehaviorSubject(false);
   title: string = '';
   text: string = '';
   answer: BehaviorSubject<number> = new BehaviorSubject(0);
   constructor() {}
-  ngOnChanges(changes: SimpleChanges): void {
-    this.show.value ? this.answer.next(0) : console.log(this.answer.value);
+  closeModalAsk(): void {
+    this.show.next(false);
+    this.answer.next(0);
   }
   showModalMessage(code: string): void {
     if (code == 'cartExist') {
@@ -26,6 +27,10 @@ export class ModalAskManage implements OnChanges {
       this.title = 'Congratulations!';
       this.text =
         'Your purchase has been made correctly. You will receive an email with all the details. Would you like to keep shopping?';
+    } else if (code == 'cancelOrder') {
+      this.title = 'Cancelation';
+      this.text =
+        'We recommend for you to check our cancelation policy before this action. Are you shure that you whant to keep foward with the cancelation?';
     }
     this.show.next(true);
   }

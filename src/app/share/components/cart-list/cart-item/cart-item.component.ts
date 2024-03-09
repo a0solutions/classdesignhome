@@ -14,6 +14,7 @@ export class CartItemComponent implements OnInit {
   @Input() itemCount: number = 0;
   @Input() product: product;
   @Input() size: boolean;
+  @Input() counter: boolean = true;
   background: string = '';
   constructor(
     private chechout: Checkout,

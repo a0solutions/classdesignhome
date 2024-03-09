@@ -522,7 +522,7 @@ input[type="checkbox"] {
     z-index: 1020;
   }
   .top-nav {
-    top: 120px;
+    top: 120px !important;
   }
   /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
   .navbar-ul {

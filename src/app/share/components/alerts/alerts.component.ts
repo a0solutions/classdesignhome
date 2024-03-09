@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { AlertManage } from './services/alertManage.service';
 @Component({
   selector: 'app-alerts',
@@ -7,8 +15,8 @@ import { AlertManage } from './services/alertManage.service';
 })
 export class AlertsComponent implements OnInit {
   @Input() message: any = { message: '', data: '' };
-  show: boolean = false;
   @Output() offshow = new EventEmitter<boolean>(false);
+  show: boolean = false;
   constructor(private alert: AlertManage) {}
 
   ngOnInit(): void {

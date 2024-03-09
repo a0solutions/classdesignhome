@@ -10,6 +10,7 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { PersonalAreaComponent } from './personal-area/personal-area.component';
 import { AuthGuard } from './share/services/auth/auth-guard.service';
 import { UsComponent } from './us/us.component';
+import { TrackingComponent } from './tracking/tracking.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'aboutus',
     component: UsComponent,
+  },
+  {
+    path: 'tracking',
+    component: TrackingComponent,
   },
   { path: '**', component: HomeComponent },
 ];

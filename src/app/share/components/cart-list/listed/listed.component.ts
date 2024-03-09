@@ -14,7 +14,10 @@ export class ListedComponent implements OnInit {
   subtotal: number = 0;
   show: boolean = false;
   shipping: number = 0;
-  total: number = this.shipping + this.subtotal;
+  typeTax: number = 0;
+  taxes: number = (this.shipping + this.subtotal) * (this.typeTax / 100);
+  total: number = this.shipping + this.subtotal + this.taxes;
+
   @Input() size: boolean = false;
   constructor(private checkout: Checkout) {}
 
@@ -24,15 +27,25 @@ export class ListedComponent implements OnInit {
       next: this.resetProperties.bind(this),
       error: console.log.bind(this),
     });
+    this.checkout.typeTax.subscribe((x) => {
+      this.typeTax = x;
+      this.UpdateCalcAll();
+    });
   }
   resetProperties(allItems: cartProduct[]): void {
     allItems.length == 0 ? (this.printList = []) : (this.printList = allItems);
     this.countPrices();
+    this.UpdateCalcAll();
   }
   countPrices() {
     this.subtotal = 0;
     this.printList.forEach((x) => {
       this.subtotal = this.subtotal + x.product.price * x.count;
+      this.UpdateCalcAll();
     });
+  }
+  UpdateCalcAll(): void {
+    this.taxes = (this.shipping + this.subtotal) * (this.typeTax / 100);
+    this.total = this.shipping + this.subtotal + this.taxes;
   }
 }

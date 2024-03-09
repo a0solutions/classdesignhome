@@ -1,0 +1,207 @@
+<div class="separador-menu"></div>
+<article class="container">
+  <div class="title text-center text-content my-5">
+    <p class="mb-0">Tracking area</p>
+    <h1 class="fw-bolder">Orders details</h1>
+    <div class="separador-centrado mb-5 mt-3"></div>
+  </div>
+</article>
+<article class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-6 mx-auto">
+      <form
+        ngForm
+        #trackingForm="ngForm"
+        (submit)="getTrackinNumber(trackingForm)"
+      >
+        <h5 class="text-center">Please, introduce your tracking number</h5>
+        <p class="text-center">
+          Your already recieve your tracking number in our confirmation emails.
+        </p>
+        <div class="d-flex flex-column flex-sm-row w-100">
+          <input
+            ngModel
+            #tracking="ngModel"
+            type="text"
+            name="trackingNumber"
+            class="form-control rounded-0 me-0"
+            placeholder="Tracking number"
+          />
+
+          <button
+            [disabled]="trackingForm.invalid"
+            class="btn px-5 btn-dark rounded-0 ms-0"
+            type="submit"
+          >
+            Verify
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="separador-menu"></div>
+</article>
+<article class="container" *ngIf="order.items != undefined">
+  <!--*ngIf="order.items != undefined" -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-12 animate__animated animate__fadeInUp">
+        <div class="page-header">
+          <h2 class="fw-bolder mb-4">Order Details</h2>
+        </div>
+        <div class="row me-4 p-3 sticky-lg-top details">
+          <div class="col-lg-4 col-12 p-3">
+            <h5>Tracking number</h5>
+            <p>{{ order.trackingNumber }}</p>
+          </div>
+          <div class="col-lg-4 col-12 p-3 border-start">
+            <h5>Shipping address</h5>
+            <p *ngIf="order.shipping">
+              {{
+                order.shipping.shippingAddress +
+                  order.shipping.shippingAddress2 +
+                  ", " +
+                  order.shipping.shippingZip +
+                  ", " +
+                  order.shipping.shippingCity +
+                  ", " +
+                  order.shipping.shippingState +
+                  order.shipping.shippingCountry
+              }}
+            </p>
+          </div>
+          <div class="col-lg-4 col-12 p-3 border-start">
+            <h5>Purchase date</h5>
+            <p>{{ order.date }}</p>
+          </div>
+          <div
+            class="col-lg-12 col-12 p-3"
+            *ngFor="let product of order.cartProducts"
+          >
+            <cart-item
+              [product]="product.product"
+              [size]="true"
+              [counter]="false"
+              [itemCount]="product.count"
+              class="p-0 mt-3"
+            ></cart-item>
+          </div>
+
+          <div class="col-lg-12 col-12 p-3" *ngIf="showCancel">
+            <button
+              class="btn btn-dark w-100 rounded-0 p-3"
+              (click)="cancelOrder()"
+            >
+              Cancel my order {{ timeCountDown }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-12 animate__animated animate__fadeInUp">
+        <div class="page-header">
+          <h2 class="fw-bolder">Timeline</h2>
+        </div>
+        <ul class="timeline">
+          <li
+            class="timeline-inverted"
+            [ngClass]="{ 'muted-step': order.atelier == null }"
+          >
+            <div class="timeline-badge warning">
+              <i class="glyphicon glyphicon-credit-card"></i>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4 class="timeline-title">The Artisan's Atelier</h4>
+                <p>{{ order.atelier != null ? order.atelier : "" }}</p>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  Production - "The Artisan's Atelier": This phase can be
+                  visualized as the creative birthplace of the product, where
+                  skilled artisans and craftsmen meticulously shape and craft
+                  the piece.
+                </p>
+              </div>
+            </div>
+          </li>
+
+          <li
+            class="timeline-inverted"
+            [ngClass]="{ 'muted-step': order.oceanic == null }"
+          >
+            <div class="timeline-badge warning">
+              <i class="glyphicon glyphicon-credit-card"></i>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4 class="timeline-title">Oceanic Voyage</h4>
+                <p>{{ order.oceanic != null ? order.oceanic : "" }}</p>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  Shipping Container on Boat - "Oceanic Voyage": This stage
+                  represents the journey of the product across the sea,
+                  encapsulating the idea of travel and exploration. It could be
+                  visualized with a stylized representation of a ship navigating
+                  through the waves.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li
+            class="timeline-inverted"
+            [ngClass]="{ 'muted-step': order.finale == null }"
+          >
+            <div class="timeline-badge warning">
+              <i class="glyphicon glyphicon-credit-card"></i>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4 class="timeline-title">The Masterpiece Finale</h4>
+                <p>{{ order.finale != null ? order.finale : "" }}</p>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  Quality Control and Packaging in the US - "The Masterpiece
+                  Finale": In this stage, each product undergoes a meticulous
+                  quality control process, ensuring every detail adheres to the
+                  highest standards. It's then elegantly packaged in its final
+                  box, symbolizing the culmination of artistry and
+                  craftsmanship. This phase could be depicted artistically as a
+                  careful and precise final touch in an artist's studio, where
+                  the masterpiece is completed and prepared for its grand
+                  reveal.
+                </p>
+              </div>
+            </div>
+          </li>
+
+          <li
+            class="timeline-inverted"
+            [ngClass]="{ 'muted-step': order.roadshow == null }"
+          >
+            <div class="timeline-badge warning">
+              <i class="glyphicon glyphicon-credit-card"></i>
+            </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h4 class="timeline-title">The Great American Roadshow</h4>
+                <p>{{ order.roadshow != null ? order.roadshow : "" }}</p>
+              </div>
+              <div class="timeline-body">
+                <p>
+                  Truck Shipping Continental US - "The Great American Roadshow":
+                  This final step symbolizes the product's journey across the
+                  continent, reaching its final destination. It can be depicted
+                  as a vintage or modern truck traveling through iconic American
+                  landscapes.
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>

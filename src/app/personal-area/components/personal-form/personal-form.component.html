@@ -211,6 +211,7 @@
                   name="shipaddress2"
                   class="form-control rounded-0"
                   placeholder="Address (Optional)"
+                  value=""
                 />
               </div>
               <div class="mb-3 col-lg-6 col-12">
@@ -220,7 +221,7 @@
                   type="text"
                   name="shipcity"
                   class="form-control rounded-0"
-                  placeholder="Phone*"
+                  placeholder="City*"
                   required
                 />
                 <small
@@ -245,22 +246,48 @@
                   >This field is required</small
                 >
               </div>
+              <div
+                class="mb-3 col-lg-6 col-12"
+                [style]="
+                  countryBilling.value == 'United States'
+                    ? 'display:block'
+                    : 'display:none'
+                "
+              >
+                <select
+                  [(ngModel)]="personal.shippingState"
+                  #State="ngModel"
+                  name="shipstate"
+                  class="form-select rounded-0"
+                  required
+                >
+                  <option value="" selected>State*</option>
+                  <option *ngFor="let state of states" [value]="state">
+                    {{ state }}
+                  </option>
+                </select>
 
+                <p *ngIf="State.touched && State.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
+              </div>
               <div class="mb-3 col-lg-6 col-12">
-                <input
+                <select
                   [(ngModel)]="personal.shippingCountry"
                   #countryShipping="ngModel"
-                  type="tel"
                   name="shipcountry"
-                  class="form-control rounded-0"
-                  placeholder="Country*"
+                  class="form-select rounded-0"
                   required
-                />
-                <small
-                  *ngIf="countryShipping.touched && countryShipping.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
                 >
+                  <option value="" selected>Country*</option>
+                  <option *ngFor="let country of countries" [value]="country">
+                    {{ country }}
+                  </option>
+                </select>
+
+                <p *ngIf="countryShipping.touched && countryShipping.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
               <div class="mb-3 col-lg-6 col-12">
                 <input
@@ -371,6 +398,7 @@
                   name="billaddress2"
                   class="form-control rounded-0"
                   placeholder="Address (Optional)"
+                  value=""
                 />
               </div>
               <div class="mb-3 col-lg-6 col-12">
@@ -380,7 +408,7 @@
                   type="text"
                   name="billcity"
                   class="form-control rounded-0"
-                  placeholder="Phone*"
+                  placeholder="City*"
                   required
                 />
                 <small
@@ -405,22 +433,47 @@
                   >This field is required</small
                 >
               </div>
+              <div
+                class="mb-3 col-lg-6 col-12"
+                [style]="
+                  countryBilling.value == 'United States'
+                    ? 'display:block'
+                    : 'display:none'
+                "
+              >
+                <select
+                  [(ngModel)]="personal.billingState"
+                  #State="ngModel"
+                  name="billstate"
+                  class="form-select rounded-0"
+                >
+                  <option value="" selected>State*</option>
+                  <option *ngFor="let state of states" [value]="state">
+                    {{ state }}
+                  </option>
+                </select>
 
+                <p *ngIf="State.touched && State.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
+              </div>
               <div class="mb-3 col-lg-6 col-12">
-                <input
+                <select
                   [(ngModel)]="personal.billingCountry"
                   #countryBilling="ngModel"
-                  type="tel"
                   name="billcountry"
-                  class="form-control rounded-0"
-                  placeholder="Country*"
+                  class="form-select rounded-0"
                   required
-                />
-                <small
-                  *ngIf="countryBilling.touched && countryBilling.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
                 >
+                  <option value="" selected>Country*</option>
+                  <option *ngFor="let country of countries" [value]="country">
+                    {{ country }}
+                  </option>
+                </select>
+
+                <p *ngIf="countryBilling.touched && countryBilling.invalid">
+                  <i class="bi bi-exclamation-square"></i>
+                </p>
               </div>
             </div>
           </div>

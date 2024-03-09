@@ -58,7 +58,7 @@ export class NavComponent implements OnInit {
     if (response != 0) {
       response == 1 ? this.checkout.deleteAll() : this.checkout.setNewTime();
       this.modal.answer.next(0);
-      this.modal.show.next(false);
+      this.modal.closeModalAsk();
       this.answer.unsubscribe();
     }
   }

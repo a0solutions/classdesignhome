@@ -14,12 +14,16 @@
       <div class="ms-auto">{{ subtotal | currency : "USD" }}</div>
     </div>
     <div class="w-100 d-flex mb-3 border-bottom">
-      <div class="me-auto">Shipping</div>
+      <div class="me-auto">Shipping 6-8 weeks</div>
       <div class="ms-auto">{{ shipping | currency : "USD" }}</div>
+    </div>
+    <div class="w-100 d-flex mb-3 border-bottom">
+      <div class="me-auto">Tax {{ typeTax }}%</div>
+      <div class="ms-auto">{{ taxes | currency : "USD" }}</div>
     </div>
     <div class="w-100 d-flex">
       <div class="me-auto h4">TOTAL</div>
-      <div class="ms-auto h4">{{ subtotal + shipping | currency : "USD" }}</div>
+      <div class="ms-auto h4">{{ total | currency : "USD" }}</div>
     </div>
   </div>
 
