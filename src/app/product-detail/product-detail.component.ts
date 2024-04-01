@@ -17,7 +17,7 @@ import { LoaderService } from '../share/components/loader/services/loader.servic
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  id: string = '';
+  reference: string = '';
   product: product = <product>{};
   category: string = '';
   constructor(
@@ -29,13 +29,13 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.nav.dark.next(true);
     this.http.paramMap.subscribe((x) => {
-      this.id = <string>x.get('id');
-      this.products.getProduct(this.id).subscribe((x) => {
+      this.reference = <string>x.get('id');
+      this.products.getProduct(this.reference).subscribe((x) => {
         this.product = x;
       });
       this.products.setAllProducts().then((x) => {
         this.category = <string>(
-          this.products.getCategoryById(this.id)?.category
+          this.products.getCategoryById(this.reference)?.category
         );
         this.loader.show.next(false);
       });

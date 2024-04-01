@@ -78,9 +78,9 @@ export class ProductManage {
       return this.allProducts.filter((x) => x.offer);
     });
   }
-  getProduct(id: string): Observable<product> {
+  getProduct(reference: string): Observable<product> {
     this.setAllProducts();
-    return this.http.get<product>(this.url + '?id=' + id);
+    return this.http.get<product>(this.url + '?reference=' + reference);
   }
 
   findProduct(id: string): product {

@@ -63,7 +63,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
       this.filterSizeAndSets(x, y);
       let tempColor: colorId = <colorId>{};
       tempColor.color = y.color;
-      tempColor.id = y.id;
+      tempColor.id = y.reference;
       tempColor.name = y.name;
       this.colors.some((x) => x.color === y.color)
         ? null
@@ -122,7 +122,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
       this.product.sets,
       this.product.parentRef
     );
-    this.router.navigate(['/product', product.id, product.name]);
+    this.router.navigate(['/product', product.reference, product.name]);
   }
   selectSets(sets: string) {
     let product: product = this.products.getDetailFilter(
@@ -131,7 +131,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
       sets,
       this.product.parentRef
     );
-    this.router.navigate(['/product', product.id, product.name]);
+    this.router.navigate(['/product', product.reference, product.name]);
   }
   substrByCategory(product: product): string {
     return this.substrPipe.transform(product);
