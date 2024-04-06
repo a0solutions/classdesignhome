@@ -18,6 +18,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
 import { LoaderService } from '../components/loader/services/loader.service';
 import { SidebarComponent } from '../components/nav/components/sidebar/sidebar.component';
 import { UserManage } from 'src/app/signin/services/user-manage.service';
+import { Component404 } from '../components/404/404.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, PipesModule, ShareModule, RouterModule],
@@ -29,6 +30,7 @@ import { UserManage } from 'src/app/signin/services/user-manage.service';
     ModalAskComponent,
     LoaderComponent,
     SidebarComponent,
+    Component404,
   ],
   providers: [
     NavManage,
@@ -46,6 +48,7 @@ import { UserManage } from 'src/app/signin/services/user-manage.service';
     AlertsComponent,
     ModalAskComponent,
     LoaderComponent,
+    Component404,
   ],
 })
 export class TemplateModule {}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { urls } from 'src/app/share/services/apiurl';
 
 @Component({
@@ -8,5 +9,8 @@ import { urls } from 'src/app/share/services/apiurl';
 })
 export class LivingComponent {
   url: string = urls.url;
-  constructor() {}
+  constructor(private route: Router) {}
+  navigate(route: string): void {
+    this.route.navigate(['/products/' + route]);
+  }
 }

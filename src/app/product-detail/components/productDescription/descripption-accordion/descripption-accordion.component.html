@@ -28,27 +28,35 @@
           <strong class="h6">Frame Material:</strong>
           {{ product.frameMaterial }}
         </p>
-        <p class="mb-2" *ngIf="product.counterTopIncluded != null">
+        <p class="mb-2" *ngIf="product.counterTopIncluded">
           <strong class="h6">Counter Top Included:</strong>
           {{ product.counterTopIncluded }}
         </p>
-        <p class="mb-2" *ngIf="product.counterMaterial != null">
+        <p class="mb-2" *ngIf="product.counterMaterial">
           <strong class="h6">Counter Material:</strong>
           {{ product.counterMaterial }}
         </p>
-        <p class="mb-2" *ngIf="product.sinkIncluded != null">
+        <p class="mb-2" *ngIf="product.sinkIncluded">
           <strong class="h6">Sink Included:</strong>
           {{ product.sinkIncluded }}
         </p>
-        <p class="mb-2" *ngIf="product.sinkType != null">
+        <p class="mb-2" *ngIf="product.sinkType">
           <strong class="h6">Sink Type:</strong>
           {{ product.sinkType }}
         </p>
-        <div class="d-flex align-content-center">
-          <p class="mb-2">
-            <strong class="h6">Color:</strong> {{ product.color }}
-          </p>
-        </div>
+
+        <p class="mb-2" *ngIf="product.upholstered">
+          <strong class="h6">Upholstered:</strong> {{ product.upholstered }}
+        </p>
+        <p class="mb-2" *ngIf="product.upholsteryMaterial">
+          <strong class="h6">Upholstery Material:</strong>
+          {{ product.upholsteryMaterial }}
+        </p>
+        <p class="mb-2" *ngIf="product.upholsteryFillMaterial">
+          <strong class="h6">Upholstery Fill Material:</strong>
+          {{ product.upholsteryFillMaterial }}
+        </p>
+
         <h6>Features</h6>
         <ul class="descriptions-text">
           <li *ngFor="let bullet of getBullets(product.featureBullet)">
@@ -94,6 +102,18 @@
             <tr>
               <td class="w-50">Overall Weight</td>
               <td class="w-50">{{ product.overallWeight }}lb</td>
+            </tr>
+          </tbody>
+        </table>
+        <h6 *ngIf="product.headboardHeight">Headboards</h6>
+        <table
+          *ngIf="product.headboardHeight"
+          class="table table-striped-columns"
+        >
+          <tbody>
+            <tr>
+              <td class="w-50">Headboard Height</td>
+              <td class="w-50">{{ product.headboardHeight }}</td>
             </tr>
           </tbody>
         </table>

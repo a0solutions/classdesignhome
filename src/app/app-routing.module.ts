@@ -11,6 +11,7 @@ import { PersonalAreaComponent } from './personal-area/personal-area.component';
 import { AuthGuard } from './share/services/auth/auth-guard.service';
 import { UsComponent } from './us/us.component';
 import { TrackingComponent } from './tracking/tracking.component';
+import { Component404 } from './share/components/404/404.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,7 +38,7 @@ const routes: Routes = [
     path: 'tracking',
     component: TrackingComponent,
   },
-  { path: '**', component: HomeComponent },
+  { path: '**', component: Component404 },
 ];
 
 @NgModule({

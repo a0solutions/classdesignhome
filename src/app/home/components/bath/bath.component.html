@@ -13,12 +13,13 @@
         </button> -->
         <a
           class="btn btn-outline-light backdrop-filter rounded-0 px-4 card-button w-25"
-          routerLink="/products/bathroom"
+          routerLink="/products"
+          (click)="navigate('Bathroom')"
           >Explore</a
         >
       </div>
     </div>
-    <popup
+    <!-- <popup
       [data]="{
         top: '20%',
         left: '33%',
@@ -31,7 +32,7 @@
         left: '70%',
         id: '35',
       }"
-    ></popup>
+    ></popup> -->
     <div class="image-showroom-overlay"></div>
   </div>
 </div>

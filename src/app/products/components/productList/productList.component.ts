@@ -12,7 +12,7 @@ export class ProductListComponent implements OnInit {
   products: product[] = [];
   printProduct: product[] = [];
   itemNumber: number;
-  paginateNumber: number = 24;
+  paginateNumber: number = 21;
   more: boolean = false;
   parents: string[] = [];
   cardSize: string = 'col-lg-4';

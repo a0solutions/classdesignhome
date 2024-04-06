@@ -47,7 +47,7 @@
         <option class="rounded-0" value="products">ALL</option>
         <option
           class="rounded-0"
-          [value]="category.category"
+          [value]="category.category | capitalize"
           *ngFor="let category of allCategories"
         >
           {{ category.category | uppercase }}

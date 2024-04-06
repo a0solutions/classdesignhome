@@ -161,7 +161,9 @@ export interface product {
   detailColor: string;
   frameMaterial: string;
   materialDetail: string;
-  upholstered: number;
+  upholstered: string;
+  upholsteryMaterial: string;
+  upholsteryFillMaterial: string;
   price: number;
   oldprice: number;
   minimunOrder: number;
