@@ -3,7 +3,7 @@
   data-mdb-zoom-effect="true"
   data-mdb-auto-height="true"
 >
-  <p class="pc-out">
+  <p class="pc-out" @fadeUp>
     <a class="text-dark" routerLink="/">Home </a> /
     <a class="text-dark" [routerLink]="'/products/' + product.category"
       >{{ product.category | capitalize }}
@@ -16,7 +16,7 @@
     </a>
     / {{ product.name }}
   </p>
-  <div class="pc-out">
+  <div class="pc-out" @fadeUp1>
     <div class="d-flex">
       <h1 class="bold mb-0 h5">{{ product.name }}</h1>
       <p class="ms-3">
@@ -28,12 +28,12 @@
       </p>
     </div>
   </div>
-  <h3 class="mt-2 mb-0 h3 color-gold pc-out">
+  <h3 class="mt-2 mb-0 h3 color-gold pc-out" @fadeUp2>
     {{ product.price | currency : "USD" }}<br />
   </h3>
-  <p class="pc-out">Material Detail: {{ product.materialDetail }}</p>
+  <p class="pc-out" @fadeUp3>Material Detail: {{ product.materialDetail }}</p>
   <div class="row shadow-5">
-    <div class="col-12 mb-3 position-relative px-0">
+    <div class="col-12 mb-3 position-relative px-0" @fadeUp>
       <button
         (click)="openFullCarousel()"
         class="col-1 btn btn-light position-absolute shadow-sm ms-auto zoom-button rounded-pill mobile-out"
@@ -47,6 +47,7 @@
     </div>
     <div class="row">
       <div
+        @fadeUp1
         class="carrousel-image-datail"
         *ngFor="let thisImage of allImages; index as i"
         [ngClass]="{ imageActive: image[i] }"

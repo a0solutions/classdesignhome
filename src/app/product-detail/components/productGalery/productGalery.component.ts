@@ -7,12 +7,19 @@ import {
 import { CarouselService } from 'src/app/share/components/full-carrousel/service/carousel.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
+import {
+  fadeUp,
+  fadeUp1,
+  fadeUp2,
+  fadeUp3,
+} from 'src/app/share/services/animations';
 import { urls } from 'src/app/share/services/apiurl';
 
 @Component({
   selector: 'productGalery',
   templateUrl: './productGalery.component.html',
   styleUrls: ['./productGalery.component.css'],
+  animations: [fadeUp, fadeUp1, fadeUp2, fadeUp3],
 })
 export class ProductGalery implements OnChanges {
   @Input() product: product = <product>{};

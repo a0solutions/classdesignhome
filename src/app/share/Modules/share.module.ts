@@ -20,9 +20,15 @@ import { SpacesDeletePipe } from '../pipes/spacesDelete.pipe';
 import { FullCarrouselComponent } from '../components/full-carrousel/full-carrousel.component';
 import { CarouselService } from '../components/full-carrousel/service/carousel.service';
 import { ProductGalery } from 'src/app/product-detail/components/productGalery/productGalery.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
-  imports: [CommonModule, FormsModule, PipesModule, RouterModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    PipesModule,
+    RouterModule,
+    BrowserAnimationsModule,
+  ],
   declarations: [
     CartItemComponent,
     ListedComponent,

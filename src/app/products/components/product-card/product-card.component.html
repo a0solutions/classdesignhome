@@ -3,7 +3,7 @@
   style="width: 100%"
   (click)="navigate(product.reference, product.name)"
 >
-  <div class="position-absolute d-flex z-3">
+  <div class="position-absolute m-3 d-flex z-3">
     <a
       (click)="shareProduct($event, product.id, product.name)"
       class="btn btn-white rounded-pill text-muted shadow-sm btn-sm"
@@ -21,7 +21,7 @@
     </p>
   </div>
   <div
-    class="w-100 mt-3 card-background"
+    class="w-100 card-background"
     [style]="'background-image:url(' + background + ')'"
     (mouseover)="changeBackgound(1)"
     (mouseout)="changeBackgound(0)"

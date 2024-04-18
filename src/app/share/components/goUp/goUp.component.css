@@ -1,0 +1,7 @@
+.btn-goUp {
+  position: fixed;
+  right: 80px;
+  z-index: 999999;
+  width: 55px;
+  height: 55px;
+}

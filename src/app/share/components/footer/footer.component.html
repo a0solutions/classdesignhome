@@ -1,27 +1,25 @@
 <footer class="border-top">
   <div class="container footer-container mt-3">
     <div class="row">
-      <div class="col-lg-2 col-md-2 col-12 mb-5 center-mobile">
+      <div @fadeUp class="col-lg-2 col-md-4 col-md-2 col-12 mb-5 center-mobile">
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a
-              href="tel:+34643152892"
-              class="btn btn-outline-dark w-100 rounded-0"
-              >Call to us</a
+            <a href="tel:+34643152892" class="btn btn-dark w-100 rounded-0"
+              >Call us</a
             >
           </li>
           <li class="nav-item mb-2">
             <a
               href="mailto:contact@classdesignhome.com"
-              class="btn btn-outline-dark w-100 rounded-0"
-              >Write to us</a
+              class="btn btn-dark w-100 rounded-0"
+              >Write us</a
             >
           </li>
         </ul>
       </div>
-      <div class="col-lg-2 mobile-out"></div>
-      <div class="col-lg-2 col-md-2 col-6 mb-3 center-mobile">
-        <h5>Section</h5>
+      <div @fadeUp class="col-lg-2 mobile-out tablet-out"></div>
+      <div @fadeUp1 class="col-lg-2 col-md-4 col-md-2 col-6 mb-3 center-mobile">
+        <!-- <h5>Section</h5> -->
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
             <a routerLink="/aboutus" class="nav-link p-0 text-body-secondary"
@@ -30,7 +28,7 @@
           </li>
           <li class="nav-item mb-2">
             <a routerLink="/aboutus" class="nav-link p-0 text-body-secondary"
-              >Us</a
+              >Story</a
             >
           </li>
           <li class="nav-item mb-2">
@@ -48,14 +46,14 @@
             >
           </li>
           <li class="nav-item mb-2">
-            <a routerLink="/contact" class="nav-link p-0 text-body-secondary"
-              >Contact</a
+            <a routerLink="/tracking" class="nav-link p-0 text-body-secondary"
+              >Tracking</a
             >
           </li>
         </ul>
       </div>
-      <div class="col-lg-2 col-6 mb-3 center-mobile">
-        <h5>Products</h5>
+      <div @fadeUp2 class="col-lg-2 col-md-4 col-6 mb-3 center-mobile">
+        <!-- <h5>Products</h5> -->
         <ul class="nav flex-column">
           <li class="nav-item mb-2" *ngFor="let category of allcategories">
             <a
@@ -67,7 +65,7 @@
         </ul>
       </div>
 
-      <div class="col-lg-4 col-12 mx-auto mb-3 center-mobile">
+      <div @fadeUp3 class="col-lg-4 col-12 mx-auto mb-3 center-mobile">
         <form
           ngForm
           #formNewsletter="ngForm"

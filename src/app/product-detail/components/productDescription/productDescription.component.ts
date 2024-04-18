@@ -14,11 +14,35 @@ import {
   product,
 } from 'src/app/products/services/product-manage.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
+import {
+  fadeLeft,
+  fadeUp,
+  fadeUp1,
+  fadeUp2,
+  fadeUp3,
+  fadeUp4,
+  fadeUp5,
+  fadeUp6,
+  fadeUp7,
+  fadeUp8,
+} from 'src/app/share/services/animations';
 import { urls } from 'src/app/share/services/apiurl';
 @Component({
   selector: 'productDescription',
   templateUrl: './productDescription.component.html',
   styleUrls: ['./productDescription.component.css'],
+  animations: [
+    fadeLeft,
+    fadeUp,
+    fadeUp1,
+    fadeUp2,
+    fadeUp3,
+    fadeUp4,
+    fadeUp5,
+    fadeUp6,
+    fadeUp7,
+    fadeUp8,
+  ],
 })
 export class ProductDescriptionComponent implements OnChanges, OnInit {
   @Input() product: product = <product>{};

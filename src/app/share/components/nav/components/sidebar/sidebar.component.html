@@ -11,12 +11,55 @@
       aria-label="Close"
       class="btn rounded-0 border-0 btn-light ms-auto"
     >
-      <i class="bi bi-arrow-right-short"></i>
+      <i class="bi bi-arrow-left"></i>
     </button>
   </div>
   <div class="offcanvas-body">
+    <div class="accordion rounded-0" id="accordionExample">
+      <h4 class="py-2 mb-0">Categories</h4>
+      <div
+        class="accordion-item border-0 rounded-0"
+        *ngFor="let category of allCategories; index as i"
+      >
+        <h3 class="accordion-header border-top rounded-0">
+          <button
+            class="accordion-button rouned-0 collapsed"
+            type="button"
+            [id]="i"
+            (click)="expandAccordion($event)"
+          >
+            {{ category.category | capitalize }}
+          </button>
+        </h3>
+        <div [id]="i + 'subcategories'" class="accordion-collapse collapse">
+          <div class="subcategories_list">
+            <a [href]="'products/' + category.category" class="nav-link w-100">
+              <div class="subcategories_list_item"><p>See All</p></div>
+            </a>
+            <a
+              *ngFor="let subcategory of category.subcategories"
+              [href]="'products/' + category.category + '/' + subcategory"
+              class="nav-link w-100"
+              [style]="
+                getAllProductsBySub(subcategory) == 0
+                  ? 'display:none'
+                  : 'display:block'
+              "
+              ><div class="subcategories_list_item d-flex">
+                <p>
+                  {{ subcategory | capitalize }}
+                </p>
+                <p class="ms-auto mb-0">
+                  {{ getAllProductsBySub(subcategory) }}
+                </p>
+              </div></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="mb-3">
-      <h4 class="py-3">MENU</h4>
+      <h4 class="py-2 mb-0">Menu</h4>
       <a
         routerLink="/"
         class="nav-link p-3 side-nav-link"
@@ -47,49 +90,6 @@
         data-bs-dismiss="offcanvas"
         >Tracking</a
       >
-    </div>
-    <h4 class="py-2 mb-0">CATEGORIES</h4>
-    <div class="accordion rounded-0" id="accordionExample">
-      <div
-        class="accordion-item border-0 rounded-0"
-        *ngFor="let category of allCategories; index as i"
-      >
-        <h3 class="accordion-header border-top rounded-0">
-          <button
-            class="accordion-button rouned-0 collapsed"
-            type="button"
-            [id]="i"
-            (click)="expandAccordion($event)"
-          >
-            {{ category.category | capitalize }}
-          </button>
-        </h3>
-        <div [id]="i + 'subcategories'" class="accordion-collapse collapse">
-          <div class="subcategories_list">
-            <a [href]="'products/' + category.category" class="nav-link w-100">
-              <div class="subcategories_list_item">See All</div>
-            </a>
-            <a
-              *ngFor="let subcategory of category.subcategories"
-              [href]="'products/' + category.category + '/' + subcategory"
-              class="nav-link w-100"
-              [style]="
-                getAllProductsBySub(subcategory) == 0
-                  ? 'display:none'
-                  : 'display:block'
-              "
-              ><div class="subcategories_list_item d-flex">
-                <p>
-                  {{ subcategory | capitalize }}
-                </p>
-                <p class="ms-auto mb-0">
-                  {{ getAllProductsBySub(subcategory) }}
-                </p>
-              </div></a
-            >
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

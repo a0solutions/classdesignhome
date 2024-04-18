@@ -1,7 +1,8 @@
 <div class="modal-backdrop" [ngClass]="{ 'd-none': !show }"></div>
 
 <div
-  class="modal fade rounded-0 animate__animated animate__fadeInUp"
+  @fadeUp
+  class="modal fade rounded-0"
   [ngClass]="{ 'show d-block': show }"
   id="modalAsk"
   tabindex="-1"
@@ -11,7 +12,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content rounded-0">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalAskLabel">Alert!</h1>
+        <h1 class="modal-title fs-5" id="modalAskLabel">Hi there!</h1>
         <button
           type="button"
           class="btn-close"

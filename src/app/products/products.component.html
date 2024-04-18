@@ -1,11 +1,11 @@
 <!-- <app-headers [headerName]="category"></app-headers> -->
 <!--<app-offers class="my-3 mx-5" [category]="category"></app-offers>-->
 <div class="separador-menu"></div>
-<article>
+<article class="container">
   <div class="row">
-    <div class="text-start col-sm-12 col-lg-4 col-md-4">
-      <div class="sticky-lg-top category-name px-5 pt-5">
-        <p class="mb-0">
+    <div class="text-start col-sm-12 col-lg-4 col-md-4 p-3">
+      <div class="sticky-lg-top category-name pe-5 pt-5">
+        <p class="mb-0" @fadeUp>
           <a routerLink="/" class="text-dark">Home</a> /
           <a [routerLink]="'/products/' + category" class="text-dark">{{
             category | capitalize
@@ -17,16 +17,25 @@
             >{{ " / " + (subcategory | capitalize) }}</a
           >
         </p>
-        <h1 class="products-page-title mb-0">{{ category | capitalize }}</h1>
+        <h1 @fadeUp1 class="products-page-title mb-0">
+          {{ category | capitalize }}
+        </h1>
+        <p @fadeUp2 class="products-page-description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec
+          tempus tellus. Proin a aliquam massa. Etiam quis pharetra nibh, eu
+          commodo leo. Integer dolor ante, vestibulum sit amet felis vel,
+          lacinia auctor risus.
+        </p>
       </div>
     </div>
     <app-headers
-      class="mobile-out col-8 m-0"
+      @fadeLeft
+      class="mobile-out col-8 m-0 p-0"
       [headerName]="category"
     ></app-headers>
   </div>
 </article>
-<div class="px-4 bg-white border-bottom filter-table">
+<div class="bg-white container border-bottom filter-table" @fadeUp1>
   <products-filter
     [categorySelected]="category"
     [subcategorySelected]="subcategory"

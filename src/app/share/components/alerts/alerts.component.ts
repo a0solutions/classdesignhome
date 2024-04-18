@@ -8,10 +8,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { AlertManage } from './services/alertManage.service';
+import { fadeUp } from '../../services/animations';
 @Component({
   selector: 'app-alerts',
   templateUrl: './alerts.component.html',
   styleUrls: ['./alerts.component.css'],
+  animations: [fadeUp],
 })
 export class AlertsComponent implements OnInit {
   @Input() message: any = { message: '', data: '' };

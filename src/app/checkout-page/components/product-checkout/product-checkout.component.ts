@@ -2,11 +2,19 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Checkout, cartProduct } from '../../services/checkout.service';
 import { ProductManage } from 'src/app/products/services/product-manage.service';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
+import {
+  fadeUp,
+  fadeUp1,
+  fadeUp2,
+  fadeUp3,
+  fadeUp4,
+} from 'src/app/share/services/animations';
 
 @Component({
   selector: 'product-checkout',
   templateUrl: './product-checkout.component.html',
   styleUrls: ['./product-checkout.component.css'],
+  animations: [fadeUp, fadeUp1, fadeUp2, fadeUp3, fadeUp4],
 })
 export class ProductCheckoutComponent implements OnInit {
   list: number = 0;

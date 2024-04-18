@@ -1,8 +1,11 @@
 <div class="separador-menu"></div>
 <article class="pb-5">
   <div class="container position-relative z-2">
-    <div class="row animate__animated animate__fadeInUp">
-      <div class="col-lg-7 col-12 order-sm-first order-last mt-4 p-sm-2 p-lg-3">
+    <div class="row">
+      <div
+        @fadeUp
+        class="col-lg-7 col-12 order-sm-first order-last mt-4 p-sm-2 p-lg-3"
+      >
         <checkout-form (formData)="insertForm($event)"></checkout-form>
       </div>
       <div class="col-lg-5 col-12 order-sm-last order-first mt-4 p-sm-2 p-lg-3">
@@ -13,10 +16,12 @@
             (items)="insertItemNumber($event)"
           ></product-checkout>
           <button
+            @fadeUp4
             (click)="sendOrder()"
             class="btn btn-dark rounded-0 w-100 py-3"
           >
             <div
+              @fadeUp
               *ngIf="processingPayment"
               class="spinner-border spinner-border-sm mx-3"
               role="status"

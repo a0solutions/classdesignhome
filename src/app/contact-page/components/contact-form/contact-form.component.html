@@ -11,7 +11,7 @@
       type="text"
       name="fullname"
       class="form-control rounded-0"
-      placeholder="Fullname*"
+      placeholder="Full name*"
       required
     />
     <p *ngIf="fullname.invalid && fullname.touched">
@@ -45,7 +45,7 @@
       <i class="bi bi-exclamation-square"></i>
     </p>
   </div>
-  <div class="mb-3">
+  <div class="mb-3" *ngIf="subject.value != ''">
     <select
       ngModel
       #topic="ngModel"
@@ -86,7 +86,7 @@
       name="textmessage"
       class="form-control rounded-0"
       maxlength="500"
-      placeholder="Text Message*"
+      placeholder="Message*"
       required
     ></textarea>
     <div class="d-flex">
@@ -104,6 +104,11 @@
       class="btn btn-dark rounded-0 w-100"
       [disabled]="contactForm.invalid"
     >
+      <div
+        *ngIf="processingContact"
+        class="spinner-border spinner-border-sm mx-3"
+        role="status"
+      ></div>
       Send
     </button>
   </div>

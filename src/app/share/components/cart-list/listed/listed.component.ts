@@ -3,11 +3,19 @@ import {
   Checkout,
   cartProduct,
 } from 'src/app/checkout-page/services/checkout.service';
+import {
+  fadeUp,
+  fadeUp1,
+  fadeUp2,
+  fadeUp3,
+  fadeUp4,
+} from 'src/app/share/services/animations';
 
 @Component({
   selector: 'app-listed',
   templateUrl: './listed.component.html',
   styleUrls: ['./listed.component.css'],
+  animations: [fadeUp, fadeUp1, fadeUp2, fadeUp3, fadeUp4],
 })
 export class ListedComponent implements OnInit {
   printList: cartProduct[] = [];

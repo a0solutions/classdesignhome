@@ -19,6 +19,7 @@ import { LoaderService } from '../components/loader/services/loader.service';
 import { SidebarComponent } from '../components/nav/components/sidebar/sidebar.component';
 import { UserManage } from 'src/app/signin/services/user-manage.service';
 import { Component404 } from '../components/404/404.component';
+import { GoUpComponent } from '../components/goUp/goUp.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, PipesModule, ShareModule, RouterModule],
@@ -31,6 +32,7 @@ import { Component404 } from '../components/404/404.component';
     LoaderComponent,
     SidebarComponent,
     Component404,
+    GoUpComponent,
   ],
   providers: [
     NavManage,
@@ -49,6 +51,7 @@ import { Component404 } from '../components/404/404.component';
     ModalAskComponent,
     LoaderComponent,
     Component404,
+    GoUpComponent,
   ],
 })
 export class TemplateModule {}

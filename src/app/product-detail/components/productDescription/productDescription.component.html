@@ -1,5 +1,5 @@
 <div class="descriptions p-lg-4">
-  <p class="mobile-out">
+  <p class="mobile-out" @fadeUp>
     <a class="text-dark" routerLink="/">Home </a> /
     <a class="text-dark" [routerLink]="'/products/' + product.category"
       >{{ product.category | capitalize }}
@@ -12,9 +12,9 @@
     </a>
     / {{ product.name }}
   </p>
-  <div class="mobile-out">
+  <div class="mobile-out" @fadeUp1>
     <div class="d-flex">
-      <h1 class="bold mb-0 h5">{{ product.name }}</h1>
+      <h1 class="bold mb-0 h5">{{ product.name }} - {{ product.size }}</h1>
       <p class="ms-3">
         <span
           class="badge p-1 px-2 rounded-pill rounded-0"
@@ -24,11 +24,13 @@
       </p>
     </div>
   </div>
-  <h3 class="mt-2 mb-0 h3 color-gold mobile-out">
+  <h3 class="mt-2 mb-0 h3 color-gold mobile-out" @fadeUp2>
     {{ product.price | currency : "USD" }}<br />
   </h3>
-  <p class="mb-0 mobile-out">Material Detail: {{ product.materialDetail }}</p>
-  <div class="my-4">
+  <p @fadeUp2 class="mb-0 mobile-out">
+    Material Detail: {{ product.materialDetail }}
+  </p>
+  <div class="my-4" @fadeUp3>
     <p class="mb-2">
       Color: <strong>{{ product.color }}</strong>
       <span *ngIf="product.detailColor != ''">
@@ -45,7 +47,7 @@
       </div>
     </div>
   </div>
-  <div class="row my-3">
+  <div class="row my-3" @fadeUp4>
     <div class="col-lg-6 col-md-12 col-sm-12">
       <p class="mb-2">
         Sizes: <strong>{{ product.size }}</strong>
@@ -100,7 +102,7 @@
     </div>
   </div>
 
-  <div class="mt-3 d-flex border-top border-bottom py-3">
+  <div class="mt-3 d-flex border-top border-bottom py-3" @fadeUp5>
     <app-counter
       class="w-25"
       [min]="product.minimunOrder"
@@ -120,9 +122,9 @@
       </button>
     </ng-template>
   </div>
-  <p class="py-2 border-bottom mb-0">
+  <p class="py-2 border-bottom mb-0" @fadeUp6>
     SKU: {{ product.reference }} &nbsp;&nbsp;&nbsp;&nbsp; Categories:
     {{ product.category | capitalize }} / {{ product.subcategory | capitalize }}
   </p>
-  <descripption-accordion [product]="product"></descripption-accordion>
+  <descripption-accordion @fadeUp7 [product]="product"></descripption-accordion>
 </div>

@@ -10,4 +10,7 @@ export const pantone = [
   { color: 'Teal', hex: '#005553' },
   { color: 'Taupe', hex: '#AAA198' },
   { color: 'Brown', hex: '#4A2B0C' },
+  { color: 'Silver', hex: 'silver' },
+  { color: 'Light Beige', hex: 'beige' },
+  { color: 'Gold', hex: '#d4af37' },
 ];

@@ -1,11 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductManage, product } from '../../services/product-manage.service';
 import { FilterManage, filter } from '../../services/filterManage.service';
+import { fadeUp } from 'src/app/share/services/animations';
 
 @Component({
   selector: 'productList',
   templateUrl: './productList.component.html',
   styleUrls: ['./productList.component.css'],
+  animations: [fadeUp],
 })
 export class ProductListComponent implements OnInit {
   @Input() category: string = '';

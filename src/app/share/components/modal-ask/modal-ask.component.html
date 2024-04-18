@@ -1,7 +1,8 @@
 <div class="modal-backdrop" [ngClass]="{ 'd-none': !show }"></div>
 
 <div
-  class="modal fade animate__animated animate__fadeInUp"
+  @fadeUp
+  class="modal fade"
   [ngClass]="{ 'show d-block': show }"
   id="modalAsk"
   tabindex="-1"

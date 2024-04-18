@@ -5,7 +5,7 @@
   >
     <div class="bg-white m-lg-5 p-4 border">
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" role="presentation" @fadeUp>
           <button
             class="nav-link btn-sm active w-100 rounded-0"
             id="pills-home-tab"
@@ -19,7 +19,7 @@
             Sign in
           </button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" role="presentation" @fadeUp1>
           <button
             class="nav-link btn-sm w-100 rounded-0"
             id="pills-profile-tab"
@@ -30,10 +30,10 @@
             aria-controls="pills-member"
             aria-selected="false"
           >
-            Be a member
+            Become a member
           </button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" role="presentation" @fadeUp2>
           <button
             class="nav-link btn-sm w-100 rounded-0"
             id="pills-profile-tab"
@@ -58,12 +58,17 @@
           tabindex="0"
         >
           <div class="row">
-            <div class="title col-12">
-              <h2 class="fw-bolder text-center">Sign in</h2>
+            <div class="title col-12" @fadeUp3>
+              <h2 class="fw-bolder text-center">
+                Sign-in to access your account
+              </h2>
               <p class="text-center">Introduce your access information</p>
               <div class="separador-centrado"></div>
             </div>
-            <signin-form class="col-12 col-lg-12 mt-3 p-3"></signin-form>
+            <signin-form
+              @fadeUp3
+              class="col-12 col-lg-12 mt-3 p-3"
+            ></signin-form>
           </div>
         </div>
         <div
@@ -75,13 +80,14 @@
         >
           <div class="row">
             <div class="title col-12">
-              <h2 class="fw-bolder text-center">Sing up as a member</h2>
-              <p class="text-center">
-                Fill all fields requires with your personal information
-              </p>
+              <h2 class="fw-bolder text-center" @fadeUp>
+                Sign-up to become a member
+              </h2>
+              <p class="text-center" @fadeUp1>Input required fields</p>
               <div class="separador-centrado"></div>
             </div>
             <signup-form
+              @fadeUp3
               [type]="'member'"
               class="col-12 col-lg-12 p-3"
             ></signup-form>
@@ -96,13 +102,14 @@
         >
           <div class="row">
             <div class="title col-12">
-              <h2 class="fw-bolder text-center">Create new account</h2>
-              <p class="text-center">
-                Fill all fields requires with your personal information
-              </p>
+              <h2 class="fw-bolder text-center" @fadeUp>
+                Sign-up to become a partner
+              </h2>
+              <p class="text-center" @fadeUp1>Input required fields</p>
               <div class="separador-centrado"></div>
             </div>
             <signup-form
+              @fadeUp3
               [type]="'professional'"
               class="col-12 col-lg-12 p-3"
             ></signup-form>

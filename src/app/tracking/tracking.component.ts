@@ -9,11 +9,19 @@ import {
 } from '../checkout-page/services/checkout.service';
 import { AlertManage } from '../share/components/alerts/services/alertManage.service';
 import { ModalAskManage } from '../share/components/modal-ask/services/modalAskManage.service';
+import {
+  fadeLeft,
+  fadeUp,
+  fadeUp1,
+  fadeUp2,
+  fadeUp3,
+} from '../share/services/animations';
 
 @Component({
   selector: 'app-tracking',
   templateUrl: './tracking.component.html',
   styleUrls: ['./tracking.component.css'],
+  animations: [fadeUp, fadeUp1, fadeUp2, fadeUp3, fadeLeft],
 })
 export class TrackingComponent implements OnInit {
   order: order = <order>{};
@@ -34,7 +42,7 @@ export class TrackingComponent implements OnInit {
   getTrackinNumber(tracking: NgForm): void {
     this.checkout.getTrackingNumber(tracking.value.trackingNumber).subscribe({
       next: this.printOrder.bind(this),
-      error: this.setAlert.bind(this),
+      error: console.log.bind(this), //this.setAlert.bind(this),
     });
   }
   printOrder(order: object): void {

@@ -103,6 +103,7 @@ export class Checkout {
     return this.http.post(this.url + '?cancel=true', number);
   }
 }
+
 export interface cartProduct {
   product: product;
   count: number;

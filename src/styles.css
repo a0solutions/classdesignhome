@@ -84,6 +84,10 @@ h2 {
   background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
+#pills-profile-tab:hover {
+  background: var(--secondary-color) !important;
+}
+
 .card-title {
   font-size: 22px;
   font-weight: 800;
@@ -175,7 +179,7 @@ footer i:hover {
   height: 7vh;
 }
 .separador-menu {
-  height: 13vh;
+  height: 12vh;
 }
 .separador-centrado {
   width: 60px;
@@ -365,6 +369,12 @@ input[type="checkbox"] {
   .navbar-ul {
     display: none;
   }
+  .tablet-out {
+    display: none !important;
+  }
+  .products-page-description {
+    display: none;
+  }
   h5 {
     font-size: 1rem !important;
   }
@@ -392,17 +402,21 @@ input[type="checkbox"] {
     font-size: 3rem;
     font-weight: bolder;
   }
-  .btn-chatbox {
+  .btn-chatbox,
+  .btn-goUp {
     bottom: 85px;
   }
+
   .chatbox-form {
     bottom: 20vh;
     right: 15px;
   }
-  .btn-chatbox i::before {
+  .btn-chatbox i::before,
+  .btn-goUp i::before {
     position: relative;
     bottom: 1px;
   }
+
   .title h1 {
     font-size: 48px;
   }
@@ -433,7 +447,7 @@ input[type="checkbox"] {
     position: relative;
   }
   .blocks-categories .image-showroom-content h2 {
-    font-size: 85px;
+    font-size: 70px;
     opacity: 0.3;
     height: 152px;
   }
@@ -518,8 +532,12 @@ input[type="checkbox"] {
   .side-nav {
     display: block;
   }
+
   .mobile-out {
     display: block !important;
+  }
+  .tablet-out {
+    display: none !important;
   }
   .center-mobile {
     text-align: left;
@@ -552,23 +570,36 @@ input[type="checkbox"] {
   }
   /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
   .navbar-ul {
-    display: none;
+    display: inline-block;
+  }
+  .navbar-ul li {
+    display: inline-block;
+    margin: 10px;
   }
   .side-nav {
     display: block;
   }
   .products-page-title {
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: bolder;
   }
-  .btn-chatbox {
+  .btn-chatbox,
+  .btn-goUp {
+    bottom: 15px;
+  }
+  .btn-goUp {
     bottom: 15px;
   }
   .chatbox-form {
     bottom: 97px;
     right: 15px;
   }
-  .btn-chatbox i::before {
+  .btn-chatbox i::before,
+  .btn-goUp i::before {
+    position: relative;
+    bottom: 5px;
+  }
+  .btn-goUp i::before {
     position: relative;
     bottom: 5px;
   }
@@ -604,10 +635,11 @@ input[type="checkbox"] {
   .carousel-control-prev {
     left: -100px;
   }
-  /* tablet, landscape iPad, lo-res laptops ands desktops */
-  .navbar-ul {
-    display: none;
+  .products-page-description {
+    display: block;
   }
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+
   .side-nav {
     display: block;
   }
@@ -664,12 +696,23 @@ input[type="checkbox"] {
     margin-top: 73%;
     opacity: 1;
   }
+  .products-page-title {
+    font-size: 3rem;
+    font-weight: bolder;
+  }
 }
 @media (min-width: 1025px) {
   .filter-table {
     position: sticky;
     top: 80px;
     z-index: 1020;
+  }
+  .tablet-out {
+    display: block;
+  }
+  .products-page-title {
+    font-size: 5rem;
+    font-weight: bolder;
   }
   .carousel-control-next {
     right: -100px;
@@ -682,9 +725,7 @@ input[type="checkbox"] {
   .side-nav {
     display: none;
   }
-  .navbar-ul {
-    display: inline-block;
-  }
+
   nav .nav-item {
     display: inline-block;
     margin: 0px 15px;

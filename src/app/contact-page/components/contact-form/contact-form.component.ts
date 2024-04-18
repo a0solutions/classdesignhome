@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import { Contactform } from 'src/app/share/services/contactform.service';
 import { allSubSubjects } from './subjects';
+import { NgForm } from '@angular/forms';
 interface subjects {
   subject: string;
   subSubject: string[];
@@ -15,6 +16,8 @@ export class ContactFormComponent {
   message: any = '';
   show: boolean = false;
   subSubjects: string[] = [];
+  processingContact: boolean = false;
+  @Output() hideForm: EventEmitter<boolean> = new EventEmitter();
   constructor(private contact: Contactform, private alert: AlertManage) {}
 
   selectSubSubject(subject: string): void {
@@ -25,17 +28,22 @@ export class ContactFormComponent {
       });
   }
 
-  submit(data: any): void {
+  submit(data: NgForm): void {
+    this.processingContact = true;
     this.contact.postContact(data.value).subscribe({
-      next: this.responseManage.bind(this),
-      error: this.setAlert.bind(this),
+      next: this.responseManage.bind(this, data),
+      error: console.log.bind(this),
     });
   }
-  responseManage(): void {
+  responseManage(data: NgForm): void {
+    this.processingContact = false;
+    data.reset();
+    this.hideForm.emit(true);
     this.setAlert('contact');
   }
   setAlert(code: string): void {
     this.alert.setAlertMessage(code);
     this.alert.show.next(true);
+    this.processingContact = false;
   }
 }

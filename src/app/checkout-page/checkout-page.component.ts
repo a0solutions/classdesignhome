@@ -13,13 +13,27 @@ import { ModalAskManage } from '../share/components/modal-ask/services/modalAskM
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { urls } from '../share/services/apiurl';
+import { ProductManage } from '../products/services/product-manage.service';
+import {
+  fadeLeft,
+  fadeUp,
+  fadeUp1,
+  fadeUp2,
+  fadeUp3,
+  fadeUp4,
+} from '../share/services/animations';
 @Component({
   selector: 'app-checkout-page',
   templateUrl: './checkout-page.component.html',
   styleUrls: ['./checkout-page.component.css'],
+  animations: [fadeLeft, fadeUp, fadeUp1, fadeUp2, fadeUp3, fadeUp4],
 })
 export class CheckoutPageComponent implements OnInit {
   order: order = <order>{
+    billing: <billing>{},
+    shipping: <shipping>{},
+  };
+  finalOrder: order = <order>{
     billing: <billing>{},
     shipping: <shipping>{},
   };
@@ -35,7 +49,8 @@ export class CheckoutPageComponent implements OnInit {
     private modal: ModalAskManage,
     private route: Router,
     private client: HttpClient,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private products: ProductManage
   ) {}
   async ngOnInit() {
     this.nav.dark.next(true);
@@ -82,8 +97,9 @@ export class CheckoutPageComponent implements OnInit {
     );
   }
   completeOrder(): void {
-    let order = this.checkout.getTempData();
-    this.checkout.sendOrder(order).subscribe((x) => {
+    this.finalOrder = this.checkout.getTempData();
+    this.simplifyOrder();
+    this.checkout.sendOrder(this.finalOrder).subscribe((x) => {
       this.modal.showModalMessage('shopSuccess');
       this.modal.answer.subscribe((answer) => {
         answer == 1
@@ -94,6 +110,11 @@ export class CheckoutPageComponent implements OnInit {
         answer != 0 ? this.modal.closeModalAsk() : null;
       });
       this.checkout.deleteAll();
+    });
+  }
+  simplifyOrder(): void {
+    this.finalOrder.cartProducts.forEach((x) => {
+      x.product = this.products.simplifyOrderProduct(x.product);
     });
   }
   validateData(): boolean {

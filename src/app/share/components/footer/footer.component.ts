@@ -8,10 +8,12 @@ import { NgForm } from '@angular/forms';
 import { UserManage } from 'src/app/signin/services/user-manage.service';
 import { AlertManage } from '../alerts/services/alertManage.service';
 import { urls } from '../../services/apiurl';
+import { fadeUp, fadeUp1, fadeUp2, fadeUp3 } from '../../services/animations';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
+  animations: [fadeUp, fadeUp1, fadeUp2, fadeUp3],
 })
 export class FooterComponent implements OnInit {
   allcategories: categories[] = [];
