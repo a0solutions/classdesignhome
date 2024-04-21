@@ -1,0 +1,17 @@
+li {
+  font-weight: 300;
+}
+.nav-pills {
+  top: 120px;
+}
+.nav-link {
+  color: var(--bs-dark) !important;
+}
+.nav-link.active {
+  color: white !important;
+  border-radius: 0px;
+}
+.container {
+  position: relative;
+  z-index: 0;
+}

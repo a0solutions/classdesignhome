@@ -5,8 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CapitalizePipe implements PipeTransform {
   transform(value: string): unknown {
-    if (value != undefined)
-      return value.slice(0, 1).toUpperCase() + value.slice(1, value.length);
-    return '';
+    const words = value.split(' ');
+    let newString: string = '';
+    words.forEach(async (x) => {
+      newString =
+        newString + ' ' + x.slice(0, 1).toUpperCase() + x.slice(1, x.length);
+    });
+    return newString.slice(1, newString.length);
   }
 }

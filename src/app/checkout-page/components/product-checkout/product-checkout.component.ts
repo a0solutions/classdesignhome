@@ -34,9 +34,7 @@ export class ProductCheckoutComponent implements OnInit {
       error: console.log.bind(this),
     });
   }
-  policyAlert(): void {
-    this.alerts.setAlertMessage('policy-checkout');
-  }
+
   getCartListItems(allItems: cartProduct[]): void {
     this.subtotal = 0;
     this.list = 0;

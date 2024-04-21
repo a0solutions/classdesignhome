@@ -14,6 +14,7 @@ import {
   fadeUp3,
 } from 'src/app/share/services/animations';
 import { urls } from 'src/app/share/services/apiurl';
+import { SeoService } from 'src/app/share/services/seo.service';
 
 @Component({
   selector: 'productGalery',
@@ -31,7 +32,8 @@ export class ProductGalery implements OnChanges {
     private products: ProductManage,
     private substrPipe: CategorySubstrPipe,
     private spacesPipe: SpacesDeletePipe,
-    private carousel: CarouselService
+    private carousel: CarouselService,
+    private seo: SeoService
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -58,6 +60,11 @@ export class ProductGalery implements OnChanges {
       '/';
     this.products.getProductImages(data).forEach((x: any) => {
       this.fullPicture = this.url + x[0];
+      this.seo.setSeo(
+        this.product.name,
+        this.product.description,
+        this.fullPicture
+      );
       this.allImages = x;
     });
   }

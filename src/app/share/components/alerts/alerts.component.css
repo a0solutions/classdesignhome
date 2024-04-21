@@ -6,3 +6,6 @@
   z-index: 999999;
   max-width: 400px;
 }
+.modal-backdrop {
+  backdrop-filter: blur(5px);
+}

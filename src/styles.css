@@ -242,7 +242,7 @@ select ~ p {
   padding: 0px;
   position: absolute;
   top: 4px;
-  right: 23px;
+  right: 30px;
 }
 
 .icons i {
@@ -369,9 +369,7 @@ input[type="checkbox"] {
   .navbar-ul {
     display: none;
   }
-  .tablet-out {
-    display: none !important;
-  }
+
   .products-page-description {
     display: none;
   }
@@ -416,7 +414,10 @@ input[type="checkbox"] {
     position: relative;
     bottom: 1px;
   }
-
+  i::before {
+    position: relative;
+    bottom: 1px;
+  }
   .title h1 {
     font-size: 48px;
   }
@@ -536,9 +537,7 @@ input[type="checkbox"] {
   .mobile-out {
     display: block !important;
   }
-  .tablet-out {
-    display: none !important;
-  }
+
   .center-mobile {
     text-align: left;
   }
@@ -597,11 +596,11 @@ input[type="checkbox"] {
   .btn-chatbox i::before,
   .btn-goUp i::before {
     position: relative;
-    bottom: 5px;
+    bottom: 4px;
   }
-  .btn-goUp i::before {
+  i::before {
     position: relative;
-    bottom: 5px;
+    bottom: 4px;
   }
   .title h2 {
     font-size: 55px;

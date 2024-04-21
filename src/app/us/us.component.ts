@@ -9,6 +9,7 @@ import {
   fadeUp2,
   fadeUp3,
 } from '../share/services/animations';
+import { SeoService } from '../share/services/seo.service';
 
 @Component({
   selector: 'app-us',
@@ -17,9 +18,14 @@ import {
   animations: [fadeUp, fadeUp1, fadeUp2, fadeUp3, fadeLeft],
 })
 export class UsComponent implements OnInit {
-  constructor(private loader: LoaderService, private nav: NavManage) {}
+  constructor(
+    private loader: LoaderService,
+    private nav: NavManage,
+    private seo: SeoService
+  ) {}
   url: string = urls.url;
   ngOnInit() {
+    this.seo.setSeo();
     this.loader.show.next(false);
     this.nav.dark.next(true);
   }

@@ -10,6 +10,7 @@ import { TokenManage } from 'src/app/personal-area/services/token-manage.service
 import { UserManage } from 'src/app/signin/services/user-manage.service';
 import { Router } from '@angular/router';
 import { urls } from '../../services/apiurl';
+import { SeoService } from '../../services/seo.service';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -39,6 +40,7 @@ export class NavComponent implements OnInit {
       next: this.bascketUpdate.bind(this),
       error: console.log.bind(this),
     });
+
     this.nav.dark.subscribe({ next: this.darkChange.bind(this) });
   }
   bascketUpdate(products: cartProduct[]): void {

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavManage } from '../share/components/nav/services/navManage.service';
 import { LoaderService } from '../share/components/loader/services/loader.service';
-import { TokenManage } from './services/token-manage.service';
-import { Router } from '@angular/router';
+import { SeoService } from '../share/services/seo.service';
 
 @Component({
   selector: 'app-personal-area',
@@ -10,9 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./personal-area.component.css'],
 })
 export class PersonalAreaComponent implements OnInit {
-  constructor(private nav: NavManage, private loader: LoaderService) {}
+  constructor(
+    private nav: NavManage,
+    private loader: LoaderService,
+    private seo: SeoService
+  ) {}
 
   ngOnInit() {
+    this.seo.setSeo();
     this.nav.dark.next(true);
     this.loader.show.next(false);
   }

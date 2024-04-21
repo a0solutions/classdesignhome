@@ -9,21 +9,22 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./signup-form.component.css'],
 })
 export class SignupFormComponent {
+  actualform: NgForm;
   constructor(private users: UserManage, private alert: AlertManage) {}
-  @Input() type: string = '';
   submit(form: NgForm): void {
+    this.actualform = form;
     this.users.postUser(form.value).subscribe({
       next: this.manageResponse.bind(this),
       error: this.setAlert.bind(''),
     });
   }
   manageResponse(response: boolean): void {
-    console.log(response);
     response == false
       ? this.setAlert('email-exist')
       : this.setAlert('registered');
   }
   setAlert(code: string): void {
+    code == 'registered' ? this.actualform.reset() : null;
     this.alert.setAlertMessage(code);
   }
 }

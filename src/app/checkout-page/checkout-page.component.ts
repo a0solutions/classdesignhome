@@ -22,6 +22,7 @@ import {
   fadeUp3,
   fadeUp4,
 } from '../share/services/animations';
+import { SeoService } from '../share/services/seo.service';
 @Component({
   selector: 'app-checkout-page',
   templateUrl: './checkout-page.component.html',
@@ -50,9 +51,11 @@ export class CheckoutPageComponent implements OnInit {
     private route: Router,
     private client: HttpClient,
     private activeRoute: ActivatedRoute,
-    private products: ProductManage
+    private products: ProductManage,
+    private seo: SeoService
   ) {}
   async ngOnInit() {
+    this.seo.setSeo();
     this.nav.dark.next(true);
     this.loader.show.next(false);
     this.activeRoute.queryParamMap.subscribe((x) => {

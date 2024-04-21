@@ -16,6 +16,7 @@ import {
   fadeUp2,
   fadeUp3,
 } from '../share/services/animations';
+import { SeoService } from '../share/services/seo.service';
 
 @Component({
   selector: 'app-tracking',
@@ -32,10 +33,12 @@ export class TrackingComponent implements OnInit {
     private nav: NavManage,
     private checkout: Checkout,
     private alert: AlertManage,
-    private question: ModalAskManage
+    private question: ModalAskManage,
+    private seo: SeoService
   ) {}
 
   ngOnInit() {
+    this.seo.setSeo();
     this.nav.dark.next(true);
     this.loader.show.next(false);
   }

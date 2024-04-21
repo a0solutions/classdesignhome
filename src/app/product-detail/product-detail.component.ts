@@ -10,6 +10,7 @@ import {
   product,
 } from '../products/services/product-manage.service';
 import { LoaderService } from '../share/components/loader/services/loader.service';
+import { SeoService } from '../share/services/seo.service';
 
 @Component({
   selector: 'product-detail',

@@ -1,64 +1,18 @@
 <article class="pb-5">
   <div class="separador-menu"></div>
-  <div
-    class="mx-auto col-xl-6 col-lg-7 col-md-10 col-sm-12 animate__animated animate__fadeInUp"
-  >
+  <div class="mx-auto col-xl-6 col-lg-7 col-md-10 col-sm-12" @fadeUp>
     <div class="bg-white m-lg-5 p-4 border">
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation" @fadeUp>
-          <button
-            class="nav-link btn-sm active w-100 rounded-0"
-            id="pills-home-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-home"
-            type="button"
-            role="tab"
-            aria-controls="pills-home"
-            aria-selected="true"
-          >
-            Sign in
-          </button>
-        </li>
-        <li class="nav-item" role="presentation" @fadeUp1>
-          <button
-            class="nav-link btn-sm w-100 rounded-0"
-            id="pills-profile-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-member"
-            type="button"
-            role="tab"
-            aria-controls="pills-member"
-            aria-selected="false"
-          >
-            Become a member
-          </button>
-        </li>
-        <li class="nav-item" role="presentation" @fadeUp2>
-          <button
-            class="nav-link btn-sm w-100 rounded-0"
-            id="pills-profile-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-partner"
-            type="button"
-            role="tab"
-            aria-controls="pills-partner"
-            aria-selected="false"
-          >
-            Become a partner
-          </button>
-        </li>
-      </ul>
-
       <div class="tab-content" id="pills-tabContent">
         <div
-          class="tab-pane fade show active"
+          class="tab-pane fade"
+          [class]="moduleActive ? 'show active' : null"
           id="pills-home"
           role="tabpanel"
           aria-labelledby="pills-home-tab"
           tabindex="0"
         >
           <div class="row">
-            <div class="title col-12" @fadeUp3>
+            <div class="title col-12" @fadeUp1>
               <h2 class="fw-bolder text-center">
                 Sign-in to access your account
               </h2>
@@ -66,13 +20,23 @@
               <div class="separador-centrado"></div>
             </div>
             <signin-form
-              @fadeUp3
+              @fadeUp2
               class="col-12 col-lg-12 mt-3 p-3"
             ></signin-form>
+            <div class="px-3 col-12" @fadeUp3>
+              <button
+                (click)="moduleActive = !moduleActive"
+                class="btn btn-outline-dark w-100 rounded-0"
+                type="button"
+              >
+                Register
+              </button>
+            </div>
           </div>
         </div>
         <div
           class="tab-pane fade"
+          [class]="!moduleActive ? 'show active' : null"
           id="pills-member"
           role="tabpanel"
           aria-labelledby="pills-member-tab"
@@ -81,38 +45,22 @@
           <div class="row">
             <div class="title col-12">
               <h2 class="fw-bolder text-center" @fadeUp>
-                Sign-up to become a member
+                Sign-up to create your account
               </h2>
               <p class="text-center" @fadeUp1>Input required fields</p>
               <div class="separador-centrado"></div>
             </div>
-            <signup-form
-              @fadeUp3
-              [type]="'member'"
-              class="col-12 col-lg-12 p-3"
-            ></signup-form>
-          </div>
-        </div>
-        <div
-          class="tab-pane fade"
-          id="pills-partner"
-          role="tabpanel"
-          aria-labelledby="pills-partner-tab"
-          tabindex="0"
-        >
-          <div class="row">
-            <div class="title col-12">
-              <h2 class="fw-bolder text-center" @fadeUp>
-                Sign-up to become a partner
-              </h2>
-              <p class="text-center" @fadeUp1>Input required fields</p>
-              <div class="separador-centrado"></div>
+            <signup-form @fadeUp3 class="col-12 col-lg-12 p-3"></signup-form>
+            <div class="px-3 col-12" @fadeUp4>
+              <button
+                (click)="moduleActive = !moduleActive"
+                class="btn btn-outline-dark w-100 rounded-0"
+                type="button"
+                role="tab"
+              >
+                Sign In
+              </button>
             </div>
-            <signup-form
-              @fadeUp3
-              [type]="'professional'"
-              class="col-12 col-lg-12 p-3"
-            ></signup-form>
           </div>
         </div>
       </div>

@@ -3,12 +3,13 @@
     <div class="d-flex">
       <div @fadeUp1>
         <h3 class="text-uppercase">Checkout cart</h3>
-        <p
-          class="text-decoration-underline cursor-pointer"
-          (click)="policyAlert()"
+        <a
+          class="text-decoration-underline cursor-pointer text-dark"
+          routerLink="/policy"
+          target="_black"
         >
           <i class="bi bi-shield-check"></i> Check our policy
-        </p>
+        </a>
       </div>
       <h3 class="ms-auto" @fadeUp1>
         <span class="badge text-dark rounded-0"

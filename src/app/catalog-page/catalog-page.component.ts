@@ -8,6 +8,7 @@ import {
   fadeUp2,
   fadeUp3,
 } from '../share/services/animations';
+import { SeoService } from '../share/services/seo.service';
 
 @Component({
   selector: 'catalog-page',
@@ -16,8 +17,13 @@ import {
   animations: [fadeLeft, fadeUp, fadeUp1, fadeUp2, fadeUp3],
 })
 export class CatalogPageComponent implements OnInit {
-  constructor(private nav: NavManage, private loader: LoaderService) {}
+  constructor(
+    private nav: NavManage,
+    private loader: LoaderService,
+    private seo: SeoService
+  ) {}
   ngOnInit(): void {
+    this.seo.setSeo();
     this.nav.dark.next(true);
     this.loader.show.next(false);
   }

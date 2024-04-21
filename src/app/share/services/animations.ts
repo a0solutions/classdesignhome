@@ -47,3 +47,7 @@ export let fadeLeft = trigger('fadeLeft', [
   state('void', style({ opacity: 0, transform: 'translate(80px)' })),
   transition('void => *', [animate('1.4s 0.5s cubic-bezier(.14,.44,.5,.9)')]),
 ]);
+export let modalFade = trigger('modalFade', [
+  state('void', style({ opacity: 0, transform: 'translateY(150px)' })),
+  transition('void <=> *', [animate('2s 0.5s cubic-bezier(.14,.44,.5,.9)')]),
+]);

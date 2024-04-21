@@ -7,42 +7,78 @@ import { BehaviorSubject } from 'rxjs';
 export class AlertManage {
   show: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   message: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  title: BehaviorSubject<string> = new BehaviorSubject<string>('');
   constructor() {}
 
   setAlertMessage(code: string): void {
-    this.message.next(this.selectMessage(code));
+    this.selectMessage(code);
     this.show.next(true);
   }
 
-  private selectMessage(code: string): string {
+  private selectMessage(code: string): void {
     if (code == 'user-pass') {
-      return "Sorry, user and password don't match, try again or change your password.";
+      this.message.next(
+        'The credentials you entered do not match our records. Please try again or reset your password for a seamless experience.'
+      );
+      this.title.next('Login Error');
     } else if (code == 'email-exist') {
-      return 'There is another account using this email.';
+      this.message.next(
+        'It appears there is already an account associated with this email address. Please use a different email or log in to your existing account.'
+      );
+      this.title.next('Email Already Used for Account Creation');
     } else if (code == 'registered') {
-      return 'Congratulations. Your sign up was successful. You are about to receive an email with more details.';
+      this.message.next(
+        'Welcome to Class Design Home! Your sign-up was successful. You will soon receive an email with further details to enrich your journey with us.'
+      );
+      this.title.next('Successful User Registration');
     } else if (code == 'personalUpdate') {
-      return 'Congratulations your update has been set successfully.';
+      this.message.next(
+        'Your account information has been updated successfully. Thank you for curating your experience with Class Design Home.'
+      );
+      this.title.next('Successful Information Update');
     } else if (code == 'contact') {
-      return 'Thank you for writing to us, we will get in touch with you as soon as possible.';
+      this.message.next(
+        'Thank you for reaching out to us. Your message is important, and we will be in contact shortly.'
+      );
+      this.title.next('Contact Form Submission');
     } else if (code == 'dataCartList') {
-      return 'You must fill all fields or add some products to your cart list.';
+      this.message.next(
+        'Please ensure all fields are filled and your cart is not empty before proceeding to checkout. Every detail matters in crafting your experience.'
+      );
+      this.title.next('Incomplete Billing/Shipping Details or Empty Cart');
     } else if (code == 'badPayment') {
-      return 'Sorry, something went wrong with the payment process, try again and if this error persists get in touch with us.';
+      this.message.next(
+        'We encountered an issue when processing your payment. Please attempt again, and should the problem persist, contact our support team for assistance.'
+      );
+      this.title.next('Payment Gateway Error');
     } else if (code == 'newsletterOk') {
-      return 'Your email has been  successfully added to our newsletter.';
+      this.message.next(
+        'You are now subscribed to the Class Design Home newsletter. Welcome to an exclusive realm of updates and insights, where the art of furniture meets timeless design. Discover the latest trends, innovations, and inspirations that define luxury living."'
+      );
+      this.title.next('Newsletter Signup Confirmation');
     } else if (code == 'newsletterExist') {
-      return 'Your email already exist.';
-    } else if (code == 'policy-checkout') {
-      return '<strong>Legal Notice: Reception Procedure and Terms of Order</strong><br><br>Dear Valued Customer,<br>Thank you for choosing Class Design Home for your home furnishing needs. To ensure a smooth and satisfactory experience, please review the following reception procedure and terms of your order:<br><br><strong>Reception Procedure:</strong><br><ol> <li>Delivery Inspection: Upon delivery, carefully inspect the packaging for any signs of damage. If you notice any damage, it is crucial to reject the delivery and note the specific reasons on the Bill of Lading (BOL).</li><li>Unpacking: After accepting the delivery, carefully unpack your items. In the event of discovering any damages, please be aware that these must be communicated to us within the first 48 hours after delivery.</li><li>Defect Reporting: If you identify any defects, please report them immediately to Class Design Home Customer Service at customer.service@classdesignhome.com. Include photographs and a detailed description of the defect for prompt assistance.</li><li>Acceptance: Once you have inspected and are satisfied with the condition of the items, please sign the delivery receipt to confirm acceptance.</li></ol><br><br><strong>Terms of Order:</strong><ol><li>Payment: Full payment is required at the time of purchase. Class Design Home accepts a variety of payment methods for your convenience.</li><li>Cancellation Policy: Orders can be canceled within 24 hours of placement without any charge. Cancellations after this period may be subject to a cancellation fee.</li><li>Return Policy: We offer a 30-day return policy on our products, provided the items are returned in their original condition and packaging. Please note that custom orders are non-returnable and non-refundable.</li><li>Warranty: Our products come with a limited warranty covering manufacturing defects. This warranty does not cover damages resulting from improper use or normal wear and tear.</li><li>Product Variation: Given the unique nature of our materials, there may be slight variations in fabric, color, and finish.</li></ol><br><br> By confirming your order with Class Design Home, you agree to these terms. We are committed to delivering the highest quality and ensuring your complete satisfaction with every piece. Should you have any questions or need further assistance, our customer service team is readily available to help.<br> Thank you for bringing Class Design Home into your life.<br> Class Design Home Team.';
+      this.message.next(
+        "This email address is already subscribed to our newsletter. We're delighted to keep you informed with our latest news."
+      );
+      this.title.next('Existing Email in Newsletter Database');
     } else if (code == 'noTracking') {
-      return 'This tracking number is wrong or does not exist any more. Please try again or quet in touch with us to help you.';
+      this.message.next(
+        'This tracking number is wrong or does not exist any more. Please try again or quet in touch with us to help you.'
+      );
+      this.title.next('Wrong Tracking Number');
     } else if (code == 'orderCanceled') {
-      return 'Sorry but it seems that this order has been canceled, please get in touch with us.';
+      this.message.next(
+        'Sorry but it seems that this order has been canceled, please get in touch with us.'
+      );
+      this.title.next('Order Canceled');
     } else if (code == 'CanceledOK') {
-      return 'The order has been canceled successfully.';
+      this.message.next('The order has been canceled successfully.');
+      this.title.next('Order Canceled');
     } else {
-      return 'Somthing went wrong tray again later.';
+      this.message.next(
+        'An unexpected error occurred. Please try again later, and thank you for your patience.'
+      );
+      this.title.next('Unidentified Error');
     }
   }
 }

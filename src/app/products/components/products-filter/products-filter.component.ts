@@ -97,7 +97,8 @@ export class ProductsFilterComponent implements OnInit {
   }
 
   setUrl(category: string): void {
-    this.http.navigateByUrl('products/' + category);
+    window.location.href = 'products/' + category;
+    //this.http.navigate(['products/' + category]);
   }
   //updating filter object[subcategory]
   updateFilterSub(sub: any): void {

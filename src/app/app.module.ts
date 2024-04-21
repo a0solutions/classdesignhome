@@ -18,6 +18,7 @@ import { PersonalModule } from './personal-area/personal.module';
 import { ProductDetailModule } from './product-detail/product-detail.module';
 import { UsModule } from './us/us.module';
 import { TrackingModule } from './tracking/tracking.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, CatalogPageComponent, CatalogCardComponent],
@@ -37,6 +38,7 @@ import { TrackingModule } from './tracking/tracking.module';
     HttpClientModule,
     UsModule,
     TrackingModule,
+    BrowserAnimationsModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

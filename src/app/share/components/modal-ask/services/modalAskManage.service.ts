@@ -16,21 +16,21 @@ export class ModalAskManage {
   }
   showModalMessage(code: string): void {
     if (code == 'cartExist') {
-      this.title = 'We remember you';
+      this.title = 'A Gentle Reminder from Class Design';
       this.text =
-        "Hi there, It's been a while. Would you like to retake your last cart list?";
+        "We noticed you paused your selection. Would you like to review and complete your purchase of our exquisite pieces? If you have questions, we're here to assist!";
     } else if (code == 'useDataCheckout') {
-      this.title = 'Personal information';
+      this.title = 'Streamlined Checkout';
       this.text =
-        'We see that your are logged in, Would you like to use your personal information to make this payment?';
+        'You are currently logged in. Would you prefer to use your saved information for a quicker checkout?';
     } else if (code == 'shopSuccess') {
-      this.title = 'Congratulations!';
+      this.title = 'Purchase Successful!';
       this.text =
         'Your purchase has been made correctly. You will receive an email with all the details. Would you like to keep shopping?';
     } else if (code == 'cancelOrder') {
       this.title = 'Cancelation';
       this.text =
-        'We recommend for you to check our cancelation policy before this action. Are you shure that you whant to keep foward with the cancelation?';
+        'Your cancelation has been made. An email with all the details has been sent. Would you like to continue exploring our collections?';
     }
     this.show.next(true);
   }
