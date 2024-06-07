@@ -14,10 +14,9 @@ export class SeoService implements OnInit {
 
   setSeo(title?: string, description?: string, image?: string): void {
     let route = this.router.url;
-    console.log(route.substr(0, 9));
-
     this.title = 'Class Design Home - ' + route.substr(1, route.length);
-    this.image = 'https://testing.classdesign.us/classapi/images/logo.png';
+    this.image =
+      'https://' + window.location.hostname + '/classapi/images/logo.png';
     this.description =
       "At Class Design Home, we believe that every piece of furniture is a canvas for creating warmth and togetherness in the family home. Our designs serve not just a function, but as pillars of shared moments and cherished memories. Each creation carries the essence of family, designed to enrich your home with a warmth that's felt in every wood grain and fabric stitch.";
     this.placeMetaData();

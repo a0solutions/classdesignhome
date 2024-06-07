@@ -30,10 +30,21 @@
         </ng-template>
         <app-counter
           *ngIf="counter"
-          class="mt-4"
+          class="mt-5"
           [number]="itemCount"
           (numberCount)="numberCount($event)"
         ></app-counter>
+        <div class="mt-5 pt-2" (click)="numberCount(0)">
+          <img
+            #imgTrash
+            (mouseover)="imgTrash.src = 'assets/icons/trash-gold.svg'"
+            (mouseout)="imgTrash.src = 'assets/icons/trash.svg'"
+            src="assets/icons/trash.svg"
+            height="13px"
+            class="cursor-pointer"
+          />
+          <!-- <i class="bi bi-trash cursor-pointer"></i> -->
+        </div>
       </div>
     </div>
   </div>

@@ -13,6 +13,7 @@ import { TokenManage } from 'src/app/personal-area/services/token-manage.service
 export class SigninFormComponent implements OnInit {
   verify = new JwtHelperService();
   goTo: string = 'personal';
+  processingSignIn: boolean = false;
   constructor(
     private users: UserManage,
     private route: Router,
@@ -29,12 +30,14 @@ export class SigninFormComponent implements OnInit {
   }
 
   submit(form: any): void {
+    this.processingSignIn = true;
     this.users.verifyUser(form.value).subscribe({
       next: this.manageResponse.bind(this),
       error: this.setAlert.bind(this),
     });
   }
   manageResponse(response: string): void {
+    this.processingSignIn = false;
     response == '400' ? this.setAlert('user-pass') : this.openSession(response);
   }
   openSession(response: string): void {

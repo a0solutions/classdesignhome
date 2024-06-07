@@ -29,7 +29,6 @@ export class TrackingComponent implements OnInit {
   timeCountDown: string = '';
   showCancel: boolean = true;
   constructor(
-    private loader: LoaderService,
     private nav: NavManage,
     private checkout: Checkout,
     private alert: AlertManage,
@@ -40,7 +39,6 @@ export class TrackingComponent implements OnInit {
   ngOnInit() {
     this.seo.setSeo();
     this.nav.dark.next(true);
-    this.loader.show.next(false);
   }
   getTrackinNumber(tracking: NgForm): void {
     this.checkout.getTrackingNumber(tracking.value.trackingNumber).subscribe({

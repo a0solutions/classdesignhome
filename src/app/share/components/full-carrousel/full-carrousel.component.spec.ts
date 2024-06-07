@@ -1,8 +1,5 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
 import { FullCarrouselComponent } from './full-carrousel.component';
 
 describe('FullCarrouselComponent', () => {
@@ -11,9 +8,8 @@ describe('FullCarrouselComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FullCarrouselComponent ]
-    })
-    .compileComponents();
+      declarations: [FullCarrouselComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

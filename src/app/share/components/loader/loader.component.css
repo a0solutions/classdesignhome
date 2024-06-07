@@ -1,5 +1,5 @@
 .loader {
-  background: white;
+  background: rgba(255, 255, 255, 0.7);
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -7,4 +7,5 @@
   z-index: 9999999999;
   top: 0px;
   left: 0px;
+  backdrop-filter: blur(10px);
 }

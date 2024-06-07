@@ -1,23 +1,20 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { 404Component } from './404.component';
+import { Component404 } from './404.component';
 
 describe('404Component', () => {
-  let component: 404Component;
-  let fixture: ComponentFixture<404Component>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ 404Component ]
-    })
-    .compileComponents();
-  }));
+  let component: Component404;
+  let fixture: ComponentFixture<Component404>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(404Component);
+    TestBed.configureTestingModule({
+      declarations: [Component404],
+    }).compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(Component404);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

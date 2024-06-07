@@ -40,17 +40,17 @@
       <select
         [(ngModel)]="categorySelected"
         #categories
-        class="form-select rounded-pill border-black mb-0 form-select-sm"
+        class="form-select rounded-pill border-black mb-0 form-select-sm selectCategoryFilter"
         name="category"
         (change)="setUrl(categories.value)"
       >
-        <option class="rounded-0" value="products">ALL</option>
+        <option class="rounded-0" value="products">All</option>
         <option
           class="rounded-0"
           [value]="category.category | capitalize"
           *ngFor="let category of allCategories"
         >
-          {{ category.category | uppercase }}
+          {{ category.category | capitalize }}
         </option>
       </select>
     </div>
@@ -65,14 +65,30 @@
   <div class="offcanvas-header">
     <button
       type="button"
+      class="btn-close ms-auto"
       data-bs-dismiss="offcanvas"
       aria-label="Close"
-      class="btn rounded-0 border-0 btn-light ms-auto"
-    >
-      <i class="bi bi-arrow-left"></i>
-    </button>
+    ></button>
   </div>
+
   <div class="offcanvas-body">
+    <div class="mb-3 d-flex">
+      <h4
+        class="mb-0 me-auto"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasFilters"
+        aria-controls="offcanvasFilters"
+      >
+        Filters
+      </h4>
+      <p
+        (click)="clearAllFilters()"
+        class="text-muted text-decoration-underline ms-auto cursor-pointer hover-gold"
+      >
+        Clear All
+      </p>
+    </div>
+
     <div class="filter">
       <div class="accordion rounded-0" id="accordionExample">
         <div class="accordion-item border-0 rounded-0">
@@ -188,9 +204,6 @@
             data-bs-parent="#accordionExample"
           >
             <div class="accordion-body">
-              <label for="customRange3" class="form-label">{{
-                priceRange.value | currency : "USD"
-              }}</label>
               <input
                 #priceRange
                 (ngModel)="(priceFilter)"
@@ -199,12 +212,14 @@
                 min="50"
                 max="30000"
                 step="50"
-                value="30000"
+                [value]="priceFilter"
                 (change)="updateFilterPrice(priceRange.value)"
               />
               <div class="d-flex" style="margin-top: -14px">
                 <small class="me-auto">$0</small>
-                <small class="ms-auto">$30,000</small>
+                <small class="ms-auto">{{
+                  priceRange.value | currency : "USD"
+                }}</small>
               </div>
             </div>
           </div>

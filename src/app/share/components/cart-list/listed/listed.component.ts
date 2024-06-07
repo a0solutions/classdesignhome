@@ -56,4 +56,8 @@ export class ListedComponent implements OnInit {
     this.taxes = (this.shipping + this.subtotal) * (this.typeTax / 100);
     this.total = this.shipping + this.subtotal + this.taxes;
   }
+  deleteAll(): void {
+    this.subtotal = 0;
+    this.checkout.deleteAll();
+  }
 }

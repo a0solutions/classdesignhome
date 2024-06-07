@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { FilterManageService } from './filterManage.service';
+import { FilterManage } from './filterManage.service';
 
 describe('Service: FilterManage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [FilterManageService]
+      providers: [FilterManage],
     });
   });
 
-  it('should ...', inject([FilterManageService], (service: FilterManageService) => {
+  it('should ...', inject([FilterManage], (service: FilterManage) => {
     expect(service).toBeTruthy();
   }));
 });

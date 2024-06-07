@@ -100,10 +100,7 @@
     </div>
   </div>
   <div>
-    <button
-      class="btn btn-dark rounded-0 w-100"
-      [disabled]="contactForm.invalid"
-    >
+    <button class="btn btn-dark w-100" [disabled]="contactForm.invalid">
       <div
         *ngIf="processingContact"
         class="spinner-border spinner-border-sm mx-3"

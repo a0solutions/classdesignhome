@@ -1,5 +1,5 @@
 <div
-  [ngClass]="{ selected: selected }"
+  [ngClass]="activeColor || selected ? 'selected' : null"
   (click)="selectColor(colorName)"
   class="color-select rounded-pill shadow-sm"
   [style]="

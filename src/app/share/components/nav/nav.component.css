@@ -16,10 +16,14 @@
 }
 .navbar button:hover {
   background: transparent !important;
+  color: var(--secondary-color) !important;
 }
 .nav-item {
   font-size: 14px;
 }
 .subcategories_list_item:hover {
   color: var(--secondary-color);
+}
+.p10 {
+  font-size: 10px;
 }

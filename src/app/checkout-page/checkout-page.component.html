@@ -18,10 +18,10 @@
           <button
             @fadeUp4
             (click)="sendOrder()"
-            class="btn btn-dark rounded-0 w-100 py-3"
+            class="btn btn-dark w-100"
+            *ngIf="order.cartProducts.length != 0"
           >
             <div
-              @fadeUp
               *ngIf="processingPayment"
               class="spinner-border spinner-border-sm mx-3"
               role="status"

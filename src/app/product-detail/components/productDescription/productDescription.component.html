@@ -17,9 +17,19 @@
       <h1 class="bold mb-0 h5">{{ product.name }} - {{ product.size }}</h1>
       <p class="ms-3">
         <span
-          class="badge p-1 px-2 rounded-pill rounded-0"
+          class="badge p p-1 px-3 rounded-pill rounded-0"
           [ngClass]="product.stock ? 'bg-success' : 'bg-danger'"
           >{{ product.stock | stock }}</span
+        >
+      </p>
+      <p
+        (click)="shareProduct($event, product.id, product.name)"
+        data-action="share/whatsapp/share"
+        title="Share with friends"
+      >
+        <span
+          class="badge p p-1 px-3 rounded-pill rounded-0 btn shadow-sm ms-2 text-bg-light"
+          >Share!</span
         >
       </p>
     </div>
@@ -32,9 +42,10 @@
   </p>
   <div class="my-4" @fadeUp3>
     <p class="mb-2">
-      Color: <strong>{{ product.color }}</strong>
+      Color: <strong class="hb">{{ product.color }}</strong>
       <span *ngIf="product.detailColor != ''">
-        & Color Detail: <strong> {{ product.detailColor }}</strong></span
+        & Color Detail:
+        <strong class="hb"> {{ product.detailColor }}</strong></span
       >
     </p>
     <div class="row col-6 mt-2">
@@ -50,7 +61,7 @@
   <div class="row my-3" @fadeUp4>
     <div class="col-lg-6 col-md-12 col-sm-12">
       <p class="mb-2">
-        Sizes: <strong>{{ product.size }}</strong>
+        Sizes: <strong class="hb">{{ product.size }}</strong>
       </p>
       <div class="row mx-1">
         <button
@@ -74,7 +85,7 @@
 
     <div class="col-lg-6 col-md-12 col-sm-12">
       <p class="mb-2">
-        Sets: <strong>{{ product.sets }}</strong>
+        Sets: <strong class="hb">{{ product.sets }}</strong>
       </p>
       <div class="row mx-1">
         <button
@@ -111,13 +122,13 @@
     <button
       *ngIf="validToAdd(); else needMember"
       (click)="addCart(product)"
-      class="btn btn-dark w-50 rounded-0"
+      class="btn btn-dark w-50"
       [disabled]="!product.stock"
     >
       ADD TO CART
     </button>
     <ng-template #needMember>
-      <button (click)="goSignIn()" class="btn btn-dark w-50 rounded-0">
+      <button (click)="goSignIn()" class="btn btn-dark w-50">
         SING IN FOR THIS PRODUCT
       </button>
     </ng-template>

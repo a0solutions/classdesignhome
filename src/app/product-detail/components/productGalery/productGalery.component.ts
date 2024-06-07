@@ -15,7 +15,10 @@ import {
 } from 'src/app/share/services/animations';
 import { urls } from 'src/app/share/services/apiurl';
 import { SeoService } from 'src/app/share/services/seo.service';
-
+interface images {
+  url: string;
+  state: boolean;
+}
 @Component({
   selector: 'productGalery',
   templateUrl: './productGalery.component.html',
@@ -26,7 +29,7 @@ export class ProductGalery implements OnChanges {
   @Input() product: product = <product>{};
   image: boolean[] = [true, false, false, false];
   fullPicture: string = '';
-  allImages: any;
+  allImages: images[] = [];
   url: string = '';
   constructor(
     private products: ProductManage,
@@ -46,6 +49,7 @@ export class ProductGalery implements OnChanges {
   }
   loadPictures(): void {
     let data: imagedata = <imagedata>{};
+    this.allImages = [];
     data.category = this.product.category;
     data.folder = this.substrByCategory(this.product);
     data.parentRef = this.spaceDelete(this.product.parentRef);
@@ -59,24 +63,24 @@ export class ProductGalery implements OnChanges {
       data.folder +
       '/';
     this.products.getProductImages(data).forEach((x: any) => {
-      this.fullPicture = this.url + x[0];
+      for (var i = 0; i < x.length; i++) {
+        this.allImages.push({ url: this.url + x[i], state: false });
+      }
+      this.fullPicture = this.allImages[0].url;
+      this.allImages[0].state = true;
       this.seo.setSeo(
         this.product.name,
         this.product.description,
         this.fullPicture
       );
-      this.allImages = x;
     });
   }
-  updatePicture(picture: any, img: number): void {
-    let src = picture.target.style.backgroundImage.substr(
-      5,
-      picture.target.style.backgroundImage.length - 7
-    );
-    for (let img in this.image) {
-      this.image[img] = false;
+  updatePicture(picture: any, index: number): void {
+    let src = this.allImages[index].url;
+    for (var i = 0; i < this.allImages.length; i++) {
+      this.allImages[i].state = false;
     }
-    this.image[img] = true;
+    this.allImages[index].state = true;
     this.fullPicture = src;
   }
   substrByCategory(product: product): string {
@@ -84,5 +88,29 @@ export class ProductGalery implements OnChanges {
   }
   spaceDelete(text: string): string {
     return this.spacesPipe.transform(text);
+  }
+  shareProduct(event: Event, arg1: string, arg2: string) {
+    let url =
+      'whatsapp://send?text=Look at this awesome thing I found!: ' +
+      urls.url +
+      'product/' +
+      arg1 +
+      '/' +
+      arg2.replaceAll(' ', '_');
+    event.preventDefault();
+    event.stopPropagation();
+    location.assign(url);
+  }
+  changeImage(flag: string) {
+    let index: number = 0;
+    for (var i = 0; i < this.allImages.length; i++) {
+      if (this.allImages[i].state == true) {
+        flag == 'next' ? (index = i + 1) : (index = i - 1);
+        index > this.allImages.length ? (index = this.allImages.length) : null;
+      }
+      this.allImages[i].state = false;
+    }
+    this.allImages[index].state = true;
+    this.fullPicture = this.allImages[index].url;
   }
 }

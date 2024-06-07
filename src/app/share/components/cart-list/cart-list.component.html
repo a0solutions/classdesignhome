@@ -7,20 +7,10 @@
   <div class="offcanvas-header p-4">
     <button
       type="button"
+      class="btn-close ms-auto opacity-100"
       data-bs-dismiss="offcanvas"
       aria-label="Close"
-      class="btn rounded-0 border-0 btn-light"
-    >
-      <i class="bi bi-arrow-right"></i>
-    </button>
-    <button
-      (click)="deleteAll()"
-      type="button"
-      title="Delete all products"
-      class="btn rounded-0 color-gold ms-auto border-0 btn-light"
-    >
-      <i class="bi bi-trash3"></i>
-    </button>
+    ></button>
   </div>
   <div class="offcanvas-body p-4">
     <app-listed></app-listed>

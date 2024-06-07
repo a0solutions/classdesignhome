@@ -1,7 +1,5 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { ModalAskComponent } from './modal-ask.component';
 
@@ -11,9 +9,8 @@ describe('ModalAskComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalAskComponent ]
-    })
-    .compileComponents();
+      declarations: [ModalAskComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

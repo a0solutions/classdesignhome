@@ -7,6 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { ProductManage, product } from '../../services/product-manage.service';
+import { LoaderService } from 'src/app/share/components/loader/services/loader.service';
 
 @Component({
   selector: 'app-offers',
@@ -17,7 +18,7 @@ export class OffersComponent implements OnChanges, OnInit {
   allProducts: product[] = [];
   items: number[] = [];
   cardsNum: number = 4;
-  constructor(private products: ProductManage) {}
+  constructor(private products: ProductManage, private loader: LoaderService) {}
   @Input() category: string = '';
 
   ngOnInit(): void {
@@ -44,6 +45,7 @@ export class OffersComponent implements OnChanges, OnInit {
       this.items = [];
       for (var i = 1; i <= Math.ceil(this.allProducts.length / 4); i++) {
         this.items.push(i);
+        this.loader.show.next(false);
       }
     });
   }

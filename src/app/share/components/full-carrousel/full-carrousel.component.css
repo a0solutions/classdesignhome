@@ -20,10 +20,7 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
-.list-images {
-  margin-top: -122px;
-  z-index: 9;
-}
+
 .zoom-button {
   top: 20px;
   right: 20px;
@@ -31,6 +28,7 @@
   height: 40px;
   position: relative;
   z-index: 99;
+  font-size: 21px;
 }
 .zoom-button .bi::before {
   margin-bottom: 2px;
@@ -51,5 +49,5 @@
   margin: 3px;
 }
 .lightbox2 {
-  height: 92vh;
+  height: 80vh;
 }

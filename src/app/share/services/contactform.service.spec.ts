@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-import { ContactformService } from './contactform.service';
-
+import { TestBed, inject } from '@angular/core/testing';
+import { Contactform } from './contactform.service';
+import { HttpClient } from '@angular/common/http';
 describe('Service: Contactform', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ContactformService]
+      providers: [Contactform],
     });
   });
 
-  it('should ...', inject([ContactformService], (service: ContactformService) => {
+  it('should ...', inject([Contactform], (service: Contactform) => {
     expect(service).toBeTruthy();
   }));
 });

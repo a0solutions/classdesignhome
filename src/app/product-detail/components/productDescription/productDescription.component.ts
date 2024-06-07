@@ -160,4 +160,16 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
   substrByCategory(product: product): string {
     return this.substrPipe.transform(product);
   }
+  shareProduct(event: Event, arg1: string, arg2: string) {
+    let url =
+      'whatsapp://send?text=Look at this awesome thing I found!: ' +
+      urls.url +
+      'product/' +
+      arg1 +
+      '/' +
+      arg2.replaceAll(' ', '_');
+    event.preventDefault();
+    event.stopPropagation();
+    location.assign(url);
+  }
 }

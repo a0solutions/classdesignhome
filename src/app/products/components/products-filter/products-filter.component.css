@@ -8,11 +8,19 @@
 }
 select:focus {
   box-shadow: none;
+  background-color: white;
 }
 select option {
   border-radius: 0px;
 }
-
+select {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.selectCategoryFilter:hover {
+  border: 1px solid var(--secondary-color) !important;
+  background-color: #fdf6eb;
+}
 option:hover {
   background-color: #212529 !important;
 }
@@ -25,4 +33,7 @@ option:hover {
 }
 .icon-filter-size.active {
   border: 1px solid var(--secondary-color) !important;
+}
+.hover-gold:hover {
+  color: var(--secondary-color) !important;
 }

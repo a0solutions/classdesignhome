@@ -65,14 +65,18 @@ export class CheckoutPageComponent implements OnInit {
         ? this.alert.setAlertMessage('badPayment')
         : null;
     });
+    console.log(this.order);
   }
-
+  insertUser(user: string): void {
+    this.order.member = user;
+  }
   insertItems(cart: cartProduct[]): void {
     this.order.cartProducts = cart;
   }
   insertForm(form: order): void {
     this.order.billing = form.billing;
     this.order.shipping = form.shipping;
+    this.order.member = form.member;
   }
   insertAmount(amount: number): void {
     this.order.amount = amount;

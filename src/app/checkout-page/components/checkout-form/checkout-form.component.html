@@ -150,7 +150,6 @@
                   name="billingState"
                   class="form-select rounded-0"
                   required
-                  [disabled]="sameAddressFlag"
                 >
                   <option value="" selected>State*</option>
                   <option *ngFor="let state of states" [value]="state">
@@ -169,7 +168,6 @@
                   name="billingCountry"
                   class="form-select rounded-0"
                   required
-                  [disabled]="sameAddressFlag"
                 >
                   <option value="" selected>Country*</option>
                   <option *ngFor="let country of countries" [value]="country">

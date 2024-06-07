@@ -18,46 +18,45 @@
       data-bs-parent="#accordionDescriptions"
     >
       <div class="accordion-body">
-        <h6>Description</h6>
         <p>{{ product.description }}</p>
         <p class="mb-2">
-          <strong class="h6">Manufactured Country:</strong>
+          <strong class="h6 hb">Manufactured Country:</strong>
           {{ product.countryManufacture }}
         </p>
         <p class="mb-2">
-          <strong class="h6">Frame Material:</strong>
+          <strong class="h6 hb">Frame Material:</strong>
           {{ product.frameMaterial }}
         </p>
         <p class="mb-2" *ngIf="product.counterTopIncluded">
-          <strong class="h6">Counter Top Included:</strong>
+          <strong class="h6 hb">Counter Top Included:</strong>
           {{ product.counterTopIncluded }}
         </p>
         <p class="mb-2" *ngIf="product.counterMaterial">
-          <strong class="h6">Counter Material:</strong>
+          <strong class="h6 hb">Counter Material:</strong>
           {{ product.counterMaterial }}
         </p>
         <p class="mb-2" *ngIf="product.sinkIncluded">
-          <strong class="h6">Sink Included:</strong>
+          <strong class="h6 hb">Sink Included:</strong>
           {{ product.sinkIncluded }}
         </p>
         <p class="mb-2" *ngIf="product.sinkType">
-          <strong class="h6">Sink Type:</strong>
+          <strong class="h6 hb">Sink Type:</strong>
           {{ product.sinkType }}
         </p>
 
         <p class="mb-2" *ngIf="product.upholstered">
-          <strong class="h6">Upholstered:</strong> {{ product.upholstered }}
+          <strong class="h6 hb">Upholstered:</strong> {{ product.upholstered }}
         </p>
         <p class="mb-2" *ngIf="product.upholsteryMaterial">
-          <strong class="h6">Upholstery Material:</strong>
+          <strong class="h6 hb">Upholstery Material:</strong>
           {{ product.upholsteryMaterial }}
         </p>
         <p class="mb-2" *ngIf="product.upholsteryFillMaterial">
-          <strong class="h6">Upholstery Fill Material:</strong>
+          <strong class="h6 hb">Upholstery Fill Material:</strong>
           {{ product.upholsteryFillMaterial }}
         </p>
 
-        <h6>Features</h6>
+        <h6 class="hb">Features</h6>
         <ul class="descriptions-text">
           <li *ngFor="let bullet of getBullets(product.featureBullet)">
             {{ bullet }}
@@ -85,34 +84,32 @@
       data-bs-parent="#accordionDescriptions"
     >
       <div class="accordion-body">
-        <table class="table table-striped-columns">
+        <h6 class="hb">Overall</h6>
+        <table class="table">
           <tbody>
             <tr>
-              <td class="w-50">Overall Width</td>
+              <td class="w-50 bg-gray">Overall Width</td>
               <td class="w-50">{{ product.overallWidth }}"</td>
             </tr>
             <tr>
-              <td class="w-50">Overall Height</td>
+              <td class="w-50 bg-gray">Overall Height</td>
               <td class="w-50">{{ product.overallHeight }}"</td>
             </tr>
             <tr>
-              <td class="w-50">Overall Lenght</td>
+              <td class="w-50 bg-gray">Overall Lenght</td>
               <td class="w-50">{{ product.overallLenght }}"</td>
             </tr>
             <tr>
-              <td class="w-50">Overall Weight</td>
+              <td class="w-50 bg-gray">Overall Weight</td>
               <td class="w-50">{{ product.overallWeight }}lb</td>
             </tr>
           </tbody>
         </table>
-        <h6 *ngIf="product.headboardHeight">Headboards</h6>
-        <table
-          *ngIf="product.headboardHeight"
-          class="table table-striped-columns"
-        >
+        <h6 *ngIf="product.headboardHeight" class="hb">Headboards</h6>
+        <table *ngIf="product.headboardHeight" class="table">
           <tbody>
             <tr>
-              <td class="w-50">Headboard Height</td>
+              <td class="w-50 bg-gray">Headboard Height</td>
               <td class="w-50">{{ product.headboardHeight }}</td>
             </tr>
           </tbody>
@@ -139,52 +136,52 @@
       data-bs-parent="#accordionDescriptions"
     >
       <div class="accordion-body">
-        <table class="table table-striped-columns">
+        <table class="table">
           <tbody>
-            <h6>Assembly</h6>
+            <h6 class="hb">Assembly</h6>
             <tr *ngIf="product.levelAssembly != 'None'">
-              <td class="w-50">Level Assembly</td>
+              <td class="w-50 bg-gray">Level Assembly</td>
               <td class="w-50">{{ product.levelAssembly }}</td>
             </tr>
             <tr *ngIf="product.category == 'bathroom'">
-              <td class="w-50">Time of Intallation</td>
+              <td class="w-50 bg-gray">Time of Intallation</td>
               <td class="w-50">60 min</td>
             </tr>
             <tr *ngIf="product.category != 'bathroom'">
-              <td class="w-50">Time Assembly</td>
+              <td class="w-50 bg-gray">Time Assembly</td>
               <td class="w-50">{{ product.timeAssembly }} min</td>
             </tr>
             <tr>
-              <td class="w-50">Aditional Tools</td>
+              <td class="w-50 bg-gray">Aditional Tools</td>
               <td class="w-50">{{ product.aditionalTools }}</td>
             </tr>
             <tr>
-              <td class="w-50">Number of Boxes</td>
+              <td class="w-50 bg-gray">Number of Boxes</td>
               <td class="w-50">{{ product.numberBoxes }}</td>
             </tr>
             <tr>
-              <td class="w-50">Instalation Required</td>
+              <td class="w-50 bg-gray">Instalation Required</td>
               <td class="w-50">{{ product.installationRequired }}</td>
             </tr>
-            <h6 class="mt-4">Warranty</h6>
+            <h6 class="mt-4 hb">Warranty</h6>
             <tr>
-              <td class="w-50">Commercial Warranty</td>
+              <td class="w-50 bg-gray">Commercial Warranty</td>
               <td class="w-50">{{ product.commercialWarranty }}</td>
             </tr>
             <tr>
-              <td class="w-50">Product Warranty</td>
+              <td class="w-50 bg-gray">Product Warranty</td>
               <td class="w-50">{{ product.productWarranty }}</td>
             </tr>
             <tr>
-              <td class="w-50">Warranty Lenght</td>
+              <td class="w-50 bg-gray">Warranty Lenght</td>
               <td class="w-50">{{ product.warrantyLength }}</td>
             </tr>
             <tr>
-              <td class="w-50">Full or Limited Warranty</td>
+              <td class="w-50 bg-gray">Full or Limited Warranty</td>
               <td class="w-50">{{ product.fullOrLimitedWarranty }}</td>
             </tr>
             <tr *ngIf="product.warrantyDetails">
-              <td class="w-50">Warranty Detail</td>
+              <td class="w-50 bg-gray">Warranty Detail</td>
               <td class="w-50">{{ product.warrantyDetails }}</td>
             </tr>
           </tbody>

@@ -7,23 +7,29 @@
     ></cart-item>
   </div>
 </div>
-<div class="cart-checkout" @fadeUp3>
-  <div class="border-top border-bottom py-4">
-    <div class="w-100 d-flex mb-3 border-bottom">
-      <div class="me-auto">Subtotal</div>
-      <div class="ms-auto">{{ subtotal | currency : "USD" }}</div>
-    </div>
+<div class="cart-checkout" @fadeUp3 *ngIf="total != 0; else emptyCart">
+  <div class="border-top py-4">
     <div class="w-100 d-flex mb-3 border-bottom">
       <div class="me-auto">Shipping 6-8 weeks</div>
-      <div class="ms-auto">{{ shipping | currency : "USD" }}</div>
+      <ng-container *ngIf="!size; else showFreeShipping">
+        <div class="ms-auto">Calculated at Checkcout</div>
+      </ng-container>
+      <ng-template #showFreeShipping>
+        <div class="ms-auto">{{ 0 | currency : "USD" }}</div>
+      </ng-template>
     </div>
     <div class="w-100 d-flex mb-3 border-bottom">
       <div class="me-auto">Tax {{ typeTax }}%</div>
-      <div class="ms-auto">{{ taxes | currency : "USD" }}</div>
+      <ng-container *ngIf="!size; else showTaxes">
+        <div class="ms-auto">Calculated at Checkcout</div>
+      </ng-container>
+      <ng-template #showTaxes>
+        <div class="ms-auto">{{ taxes | currency : "USD" }}</div>
+      </ng-template>
     </div>
     <div class="w-100 d-flex">
-      <div class="me-auto h4">TOTAL</div>
-      <div class="ms-auto h4">{{ total | currency : "USD" }}</div>
+      <div class="me-auto hb h4">SUBTOTAL</div>
+      <div class="ms-auto hb h4">{{ total | currency : "USD" }}</div>
     </div>
   </div>
 
@@ -32,8 +38,31 @@
     data-bs-dismiss="offcanvas"
     aria-label="Close"
     routerLink="/checkout"
-    class="btn btn-outline-dark rounded-0 w-100 py-3"
+    class="btn btn-dark w-100 mb-3"
   >
     Cart checkout
   </a>
+  <button
+    *ngIf="!size"
+    class="btn btn-outline-dark w-100 mb-3"
+    (click)="deleteAll()"
+  >
+    Clear Cart
+  </button>
 </div>
+<ng-template #emptyCart>
+  <div class="text-center mb-3 border-bottom">
+    <img src="assets/icons/shopping-bag.svg" height="180px" class="mb-3" />
+  </div>
+  <h3 class="text-center">Your cart is empty</h3>
+  <p class="text-center">Looks like you have not added anything to the cart</p>
+  <button class="btn btn-dark w-100 mb-3" data-bs-dismiss="offcanvas">
+    Continue Shopping
+  </button>
+  <a
+    class="btn btn-outline-dark w-100"
+    routerLink="/signin"
+    data-bs-dismiss="offcanvas"
+    >Sign In</a
+  >
+</ng-template>

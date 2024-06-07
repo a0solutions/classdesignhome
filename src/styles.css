@@ -1,12 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("../node_modules/bootstrap-icons/font/bootstrap-icons.css");
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@font-face {
+  font-family: "Helvetica-regular"; /*a name to be used later*/
+  src: url("assets/fonts/HelveticaNeueRegular.ttf"); /*URL to font*/
+}
+@font-face {
+  font-family: "Helvetica-bold"; /*a name to be used later*/
+  src: url("assets/fonts/HelveticaNeueCondensedBold.ttf"); /*URL to font*/
+}
 :root {
-  --secondary-color: #c19a83;
+  --secondary-color: #ae7204;
   --bg-gray: #f1f2f2;
 }
 * {
-  font-family: "Oswald", sans-serif;
+  font-family: "Helvetica-regular", sans-serif;
+  font-size: 12pt;
+}
+.hb {
+  font-family: "Helvetica-bold", sans-serif !important ;
 }
 .cursor-pointer {
   cursor: pointer;
@@ -14,7 +26,12 @@
 .cursor-default {
   cursor: default !important;
 }
-
+.over-offer {
+  font-size: 30px !important;
+}
+.bg-gray {
+  background: var(--bg-gray) !important;
+}
 .w-5 {
   width: 20%;
 }
@@ -65,9 +82,14 @@ a:hover {
 }
 h1,
 h2 {
-  font-family: "Playfair Display", serif;
+  font-family: "PT Serif", serif;
 }
-
+h3,
+h4,
+h5 {
+  font-family: "Helvetica-bold", sans-serif;
+  font-size: 12pt;
+}
 .w-90 {
   width: 90%;
 }
@@ -122,13 +144,15 @@ popup {
 /********************************* Bootstrap *********************************/
 .bi-sliders2::before {
   content: "\f789";
-  margin-bottom: 11px;
 }
 .btn-white {
   background: white !important;
 }
 /************** HOVER ****************/
-
+.gold {
+  transition: all 0.5s;
+  color: var(--secondary-color) !important;
+}
 .hover-gold:hover {
   transition: all 0.5s;
   color: var(--secondary-color);
@@ -156,10 +180,13 @@ footer i:hover {
   transition: all 0.5s !important;
   font-size: 15px;
 }
-.subcategories_list .nav-link:hover .subcategories_list_item {
+.subcategories_list .nav-link:hover .subcategories_list_item,
+.side-nav-link:hover {
   color: var(--secondary-color) !important;
-  padding-left: 35px;
+  background: rgb(235, 235, 235);
+  padding-left: 35px !important;
 }
+
 .menu-movil {
   width: 80%;
 }
@@ -231,7 +258,7 @@ textarea ~ div p {
   margin-bottom: 7px;
   padding: 0px;
   position: absolute;
-  top: 4px;
+  top: 8px;
   right: 10px;
 }
 select ~ p {
@@ -241,26 +268,9 @@ select ~ p {
   margin-bottom: 7px;
   padding: 0px;
   position: absolute;
-  top: 4px;
+  top: 8px;
   right: 30px;
 }
-
-.icons i {
-  transition: all 0.5s;
-}
-.icons i:hover {
-  color: var(--secondary-color) !important;
-}
-/* input[type="text"],
-input[type="tel"],
-input[type="email"],
-input[type="password"],
-select,
-textarea {
-  background: transparent !important;
-  border: none !important;
-  border-bottom: 1px solid #212529 !important;
-} */
 
 /****************** range ***********/
 .form-range::-webkit-slider-thumb {
@@ -370,9 +380,6 @@ input[type="checkbox"] {
     display: none;
   }
 
-  .products-page-description {
-    display: none;
-  }
   h5 {
     font-size: 1rem !important;
   }
@@ -409,11 +416,7 @@ input[type="checkbox"] {
     bottom: 20vh;
     right: 15px;
   }
-  .btn-chatbox i::before,
-  .btn-goUp i::before {
-    position: relative;
-    bottom: 1px;
-  }
+
   i::before {
     position: relative;
     bottom: 1px;
@@ -545,7 +548,7 @@ input[type="checkbox"] {
     height: 62vh;
   }
   .pc-out {
-    display: none;
+    display: none !important;
   }
   .nav-link {
     color: var(--bg-light);
@@ -590,13 +593,8 @@ input[type="checkbox"] {
     bottom: 15px;
   }
   .chatbox-form {
-    bottom: 97px;
+    bottom: 125px;
     right: 15px;
-  }
-  .btn-chatbox i::before,
-  .btn-goUp i::before {
-    position: relative;
-    bottom: 4px;
   }
   i::before {
     position: relative;
@@ -710,7 +708,7 @@ input[type="checkbox"] {
     display: block;
   }
   .products-page-title {
-    font-size: 5rem;
+    font-size: 44px;
     font-weight: bolder;
   }
   .carousel-control-next {
@@ -752,10 +750,7 @@ input[type="checkbox"] {
 nav .nav-item:hover {
   color: var(--scondary-color) !important;
 }
-.icons i:hover,
-.icons div:hover {
-  opacity: 0.5s;
-}
+
 i {
   vertical-align: middle !important;
 }

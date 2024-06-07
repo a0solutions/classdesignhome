@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, SimpleChange } from '@angular/core';
-import { Router } from '@angular/router';
 import {
   CategoriesService,
   categories,
@@ -7,6 +6,7 @@ import {
 import { FilterManage, filter } from '../../services/filterManage.service';
 import { ProductManage, product } from '../../services/product-manage.service';
 import { urls } from 'src/app/share/services/apiurl';
+import { take } from 'rxjs';
 
 interface sizes {
   category: string;
@@ -25,24 +25,30 @@ export class ProductsFilterComponent implements OnInit {
   allColorFilters: string[] = [];
   subcategoriesFilter: string[] = [];
   filterProducts: number = 0;
-  priceFilter: number = 30000;
+  priceFilter: number = 0;
   sizesFilter: sizes[] = [];
   colors: string[] = [];
   products: product[] = [];
   sizeSelected: boolean[] = [];
   showedProducts: number = 0;
   constructor(
-    private http: Router,
     private categories: CategoriesService,
     private filter: FilterManage,
     private product: ProductManage
   ) {}
 
   ngOnInit(): void {
-    this.categories.getCategories().subscribe({
-      next: this.getCategories.bind(this),
-      error: console.log.bind(this),
-    });
+    this.getProducts();
+    this.priceFilter = 30000;
+  }
+  getProducts() {
+    this.categories
+      .getCategories()
+      .pipe(take(1))
+      .subscribe({
+        next: this.getCategories.bind(this),
+        error: console.log.bind(this),
+      });
     //getting subcategory filter
     this.subcategoriesFilter = [this.subcategorySelected];
     this.filter.allFilters.value.subcategory = this.subcategoriesFilter;
@@ -52,10 +58,10 @@ export class ProductsFilterComponent implements OnInit {
       next: this.getFiltersByCategories.bind(this),
       error: console.log.bind(this),
     });
-    this.product.showedProducts.subscribe((x) => {
+    this.product.showedProducts.pipe(take(1)).subscribe((x) => {
       this.showedProducts = x;
     });
-    this.product.filterProducts.subscribe((x) => {
+    this.product.filterProducts.pipe(take(1)).subscribe((x) => {
       this.filterProducts = x;
     });
   }
@@ -127,6 +133,7 @@ export class ProductsFilterComponent implements OnInit {
   updateFilterPrice(price: string): void {
     this.filter.allFilters.value.price = parseInt(price);
     this.updateAllFilter();
+    this.priceFilter = parseInt(price);
   }
   updateFilterSize(size: string, index: number): void {
     this.sizeSelected = [];
@@ -141,5 +148,10 @@ export class ProductsFilterComponent implements OnInit {
 
   changeFilter(cardSize: string) {
     this.filter.cardSize.next(cardSize);
+  }
+  clearAllFilters() {
+    this.updateFilterPrice('30000');
+    this.colors = [];
+    this.getProducts();
   }
 }

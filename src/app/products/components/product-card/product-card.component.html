@@ -1,12 +1,12 @@
 <div
-  class="card p-3 rounded-0 border-0 mx-auto cursor-pointer"
+  class="card p-3 rounded-4 border-0 mx-auto cursor-pointer"
   style="width: 100%"
   (click)="navigate(product.reference, product.name)"
 >
   <div class="position-absolute m-3 d-flex z-3">
     <a
       (click)="shareProduct($event, product.id, product.name)"
-      class="btn btn-white rounded-pill text-muted shadow-sm btn-sm"
+      class="btn hb btn-white rounded-pill shadow-sm btn-sm"
       data-action="share/whatsapp/share"
       title="Share with friends"
     >

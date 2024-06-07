@@ -1,7 +1,16 @@
 <button
-  @fadeLeft
-  class="btn btn-goUp bg-white btn-outline-dark p-sm-3 p-md-3 p-lg-3 rounded-2"
+  *ngIf="scrolled"
+  @fade
+  id="scrollTop"
+  class="btn btn-goUp bg-white btn-outline-dark p-sm-3 p-md-3 p-lg-3"
   (click)="goUp()"
+  (scroll)="onScroll()"
+  (mouseover)="imgUp.src = 'assets/icons/arrow-up-white.svg'"
+  (mouseout)="imgUp.src = 'assets/icons/arrow-up.svg'"
 >
-  <i class="bi bi-arrow-up"></i>
+  <img
+    #imgUp
+    src="assets/icons/arrow-up.svg"
+    class="w-100 cursor-pointer mb-lg-3"
+  />
 </button>

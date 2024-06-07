@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class StockPipe implements PipeTransform {
   transform(value: number): unknown {
-    if (value != 0) return 'IN STOCK';
-    return 'OUT OF STOCK';
+    if (value != 0) return 'In Stock';
+    return 'Out of Stock';
   }
 }

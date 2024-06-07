@@ -17,16 +17,11 @@ import { SeoService } from '../share/services/seo.service';
   animations: [fadeUp, fadeUp1, fadeUp2, fadeUp3, fadeUp4],
 })
 export class SigninComponent implements OnInit {
-  constructor(
-    private nav: NavManage,
-    private loader: LoaderService,
-    private seo: SeoService
-  ) {}
+  constructor(private nav: NavManage, private seo: SeoService) {}
   moduleActive: boolean = true;
   ngOnInit(): void {
     this.seo.setSeo();
     this.nav.dark.next(true);
-    this.loader.show.next(false);
   }
   signInActive() {}
 }

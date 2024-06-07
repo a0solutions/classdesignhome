@@ -10,8 +10,5 @@ import { product } from 'src/app/products/services/product-manage.service';
 export class CartListComponent {
   list: product[] = [];
   subtotal: number = 0;
-  constructor(private checkout: Checkout) {}
-  deleteAll(): void {
-    this.checkout.deleteAll();
-  }
+  constructor() {}
 }

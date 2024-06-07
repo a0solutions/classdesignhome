@@ -42,7 +42,6 @@
       </form>
     </div>
   </div>
-  <div class="separador-menu"></div>
 </article>
 <article class="container" *ngIf="order.items != undefined">
   <!--*ngIf="order.items != undefined" -->
@@ -211,4 +210,10 @@
       </div>
     </div>
   </div>
+</article>
+<article class="container mt-5">
+  <div class="border-bottom mb-5"></div>
+  <h2 class="fw-bold over-offer">Complete your home</h2>
+  <div class="separador-start"></div>
+  <app-offers [category]="'products'"></app-offers>
 </article>

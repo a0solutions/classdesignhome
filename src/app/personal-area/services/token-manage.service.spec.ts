@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { TokenManageService } from './token-manage.service';
+import { TokenManage } from './token-manage.service';
 
 describe('Service: TokenManage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TokenManageService]
+      providers: [TokenManage],
     });
   });
 
-  it('should ...', inject([TokenManageService], (service: TokenManageService) => {
+  it('should ...', inject([TokenManage], (service: TokenManage) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -18,10 +18,12 @@
   height: 40px;
   position: relative;
   z-index: 99;
+  font-size: 21px;
+  text-align: center;
 }
 .zoom-button .bi::before {
-  margin-bottom: 5px;
-  margin-left: -1px;
+  margin-left: -3px;
+  font-size: 21px;
 }
 .carrousel-image-datail {
   flex: 0 0 auto;
@@ -35,4 +37,32 @@
   cursor: pointer;
   border: 9px solid white;
   margin: 3px;
+}
+.bullets-points {
+  height: 8px !important;
+  width: 8px !important;
+  background: var(--bg-gray);
+  border: none;
+  margin: 5px;
+  border-radius: 50%;
+  padding: 0px;
+}
+.bullets {
+  text-align: center;
+  margin: auto;
+}
+.bullets-points-active {
+  background: var(--secondary-color);
+}
+.carrousel-buttons {
+  top: 45%;
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+}
+.carrousel-buttons button {
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
 }

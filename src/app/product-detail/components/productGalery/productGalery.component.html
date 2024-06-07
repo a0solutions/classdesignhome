@@ -26,6 +26,16 @@
           >{{ product.stock | stock }}</span
         >
       </p>
+      <p
+        (click)="shareProduct($event, product.id, product.name)"
+        data-action="share/whatsapp/share"
+        title="Share with friends"
+      >
+        <span
+          class="badge p p-1 px-3 rounded-pill rounded-0 btn shadow-sm ms-2 text-bg-light"
+          >Share!</span
+        >
+      </p>
     </div>
   </div>
   <h3 class="mt-2 mb-0 h3 color-gold pc-out" @fadeUp2>
@@ -34,6 +44,24 @@
   <p class="pc-out" @fadeUp3>Material Detail: {{ product.materialDetail }}</p>
   <div class="row shadow-5">
     <div class="col-12 mb-3 position-relative px-0" @fadeUp>
+      <div class="position-absolute carrousel-buttons pc-out">
+        <div class="me-auto">
+          <button
+            class="rounded-pill btn shadow-sm btn-light"
+            (click)="changeImage('prev')"
+          >
+            <i class="bi bi-arrow-left"></i>
+          </button>
+        </div>
+        <div class="ms-auto">
+          <button
+            class="rounded-pill btn shadow btn-light"
+            (click)="changeImage('next')"
+          >
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
       <button
         (click)="openFullCarousel()"
         class="col-1 btn btn-light position-absolute shadow-sm ms-auto zoom-button rounded-pill mobile-out"
@@ -45,13 +73,21 @@
         [style]="'background-image:url(' + fullPicture + ')'"
       ></div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="allImages.length > 1">
+      <div class="bullets my-3">
+        <button
+          *ngFor="let thisImage of allImages; index as i"
+          (click)="updatePicture($event, i)"
+          class="bullets-points"
+          [ngClass]="{ 'bullets-points-active': thisImage.state }"
+        ></button>
+      </div>
       <div
         @fadeUp1
-        class="carrousel-image-datail"
+        class="carrousel-image-datail mobile-out"
         *ngFor="let thisImage of allImages; index as i"
-        [ngClass]="{ imageActive: image[i] }"
-        [style]="'background-image:url(' + url + thisImage + ')'"
+        [ngClass]="{ imageActive: thisImage.state }"
+        [style]="'background-image:url(' + thisImage.url + ')'"
         (click)="updatePicture($event, i)"
       ></div>
     </div>

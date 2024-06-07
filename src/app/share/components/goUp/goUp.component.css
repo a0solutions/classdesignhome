@@ -1,7 +1,18 @@
 .btn-goUp {
   position: fixed;
-  right: 80px;
+  right: 15px;
   z-index: 999999;
-  width: 55px;
-  height: 55px;
+  width: 45px;
+  height: 45px;
+  bottom: 70px;
+}
+@media (max-width: 600px) {
+  .btn-goUp {
+    bottom: 140px;
+  }
+  .btn-goUp i::before {
+    position: relative;
+    bottom: 9px;
+    left: -2px;
+  }
 }

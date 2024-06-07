@@ -5,7 +5,10 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-
+export let fade = trigger('fade', [
+  state('void', style({ opacity: 0 })),
+  transition('void <=> *', [animate('0.5s')]),
+]);
 export let fadeUp = trigger('fadeUp', [
   state('void', style({ opacity: 0, transform: 'translateY(80px)' })),
   transition('void => *', [animate('1.4s 0.2s cubic-bezier(.14,.44,.5,.9)')]),

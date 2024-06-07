@@ -67,6 +67,7 @@ export class CheckoutFormComponent implements OnInit {
     this.user.getAllUserInfo(id).subscribe((x: any) => {
       x.billingEmail = x.email;
       x.billingPhone = x.phone;
+      this.fillOrder.member = x.id;
       this.fillAllBills(x);
       this.isSameAddress(this.billing);
       this.modal.show.next(false);
@@ -100,6 +101,7 @@ export class CheckoutFormComponent implements OnInit {
     this.shipping.shippingZip = billing.billingZip;
     this.shipping.shippingState = billing.billingState;
     this.shipping.shippingCountry = billing.billingCountry;
+    this.getTaxes(billing.billingState);
     this.sendOrder();
   }
   isNotSameAddress(): void {

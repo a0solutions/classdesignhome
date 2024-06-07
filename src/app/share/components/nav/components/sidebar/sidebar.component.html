@@ -4,60 +4,15 @@
   id="offcanvasExample"
   aria-labelledby="offcanvasExampleLabel"
 >
-  <div class="offcanvas-header text-end">
+  <div class="offcanvas-header">
     <button
       type="button"
+      class="btn-close ms-auto opacity-100"
       data-bs-dismiss="offcanvas"
       aria-label="Close"
-      class="btn rounded-0 border-0 btn-light ms-auto"
-    >
-      <i class="bi bi-arrow-left"></i>
-    </button>
+    ></button>
   </div>
   <div class="offcanvas-body">
-    <div class="accordion rounded-0" id="accordionExample">
-      <h4 class="py-2 mb-0">Categories</h4>
-      <div
-        class="accordion-item border-0 rounded-0"
-        *ngFor="let category of allCategories; index as i"
-      >
-        <h3 class="accordion-header border-top rounded-0">
-          <button
-            class="accordion-button rouned-0 collapsed"
-            type="button"
-            [id]="i"
-            (click)="expandAccordion($event)"
-          >
-            {{ category.category | capitalize }}
-          </button>
-        </h3>
-        <div [id]="i + 'subcategories'" class="accordion-collapse collapse">
-          <div class="subcategories_list">
-            <a [href]="'products/' + category.category" class="nav-link w-100">
-              <div class="subcategories_list_item"><p>See All</p></div>
-            </a>
-            <a
-              *ngFor="let subcategory of category.subcategories"
-              [href]="'products/' + category.category + '/' + subcategory"
-              class="nav-link w-100"
-              [style]="
-                getAllProductsBySub(subcategory) == 0
-                  ? 'display:none'
-                  : 'display:block'
-              "
-              ><div class="subcategories_list_item d-flex">
-                <p>
-                  {{ subcategory | capitalize }}
-                </p>
-                <p class="ms-auto mb-0">
-                  {{ getAllProductsBySub(subcategory) }}
-                </p>
-              </div></a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="mb-3">
       <h4 class="py-2 mb-0">Menu</h4>
       <a
@@ -78,12 +33,78 @@
         data-bs-dismiss="offcanvas"
         >Designer Shop</a
       >
-      <a
-        routerLink="/products/products"
-        class="nav-link p-3 side-nav-link"
-        data-bs-dismiss="offcanvas"
-        >Shop</a
-      >
+      <div class="accordion rounded-0" id="accordionCategories">
+        <div class="accordion-item border-0 rounded-0">
+          <h3 class="accordion-header border-top rounded-0">
+            <button
+              class="accordion-button collapsed py-3"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              Shop
+            </button>
+          </h3>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionCategories"
+          >
+            <div class="accordion-body row py-0">
+              <div
+                class="accordion-item border-0 rounded-0 border-top px-0"
+                *ngFor="let category of allCategories; index as i"
+              >
+                <h3 class="accordion-header rounded-0">
+                  <button
+                    class="accordion-button rouned-0 collapsed"
+                    type="button"
+                    [id]="i"
+                    (click)="expandAccordion($event)"
+                  >
+                    {{ category.category | capitalize }}
+                  </button>
+                </h3>
+                <div
+                  [id]="i + 'subcategories'"
+                  class="accordion-collapse collapse"
+                >
+                  <div class="subcategories_list">
+                    <a
+                      [href]="'products/' + category.category"
+                      class="nav-link w-100"
+                    >
+                      <div class="subcategories_list_item"><p>See All</p></div>
+                    </a>
+                    <a
+                      *ngFor="let subcategory of category.subcategories"
+                      [href]="
+                        'products/' + category.category + '/' + subcategory
+                      "
+                      class="nav-link w-100"
+                      [style]="
+                        getAllProductsBySub(subcategory) == 0
+                          ? 'display:none'
+                          : 'display:block'
+                      "
+                      ><div class="subcategories_list_item d-flex">
+                        <p>
+                          {{ subcategory | capitalize }}
+                        </p>
+                        <p class="ms-auto mb-0">
+                          {{ getAllProductsBySub(subcategory) }}
+                        </p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <a
         routerLink="/tracking"
         class="nav-link p-3 side-nav-link"

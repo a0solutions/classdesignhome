@@ -1,7 +1,7 @@
 .color-select {
   width: 25px;
   height: 25px;
-  border: 2px solid white;
+  border: 1px solid black;
   cursor: pointer;
   transition: all 0.8s;
 }
@@ -10,6 +10,7 @@
 }
 .selected {
   background-size: cover !important;
+  border: 1px solid #ae7204;
   box-shadow: 0 0 0 3px rgba(203, 161, 53, 0.289) !important;
-  outline: 1px solid #cba135;
+  outline: 1px solid #ae7204;
 }

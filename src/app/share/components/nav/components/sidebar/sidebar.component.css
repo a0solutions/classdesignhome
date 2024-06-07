@@ -41,8 +41,9 @@ select option {
 .side-nav-link {
   border-top: var(--bs-border-width) var(--bs-border-style)
     var(--bs-border-color) !important;
-  font-weight: 400;
-  font-size: 1rem;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 1rem 1.25rem;
 }
 h4 {
   font-size: 1.1rem;

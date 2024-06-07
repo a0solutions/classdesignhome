@@ -4,7 +4,7 @@
 <article class="container">
   <div class="row">
     <div class="text-start col-sm-12 col-lg-4 col-md-4 p-3">
-      <div class="sticky-lg-top category-name pe-5 pt-5">
+      <div class="sticky-lg-top category-name pe-lg-5 pt-lg-5">
         <p class="mb-0" @fadeUp>
           <a routerLink="/" class="text-dark">Home</a> /
           <a [routerLink]="'/products/' + category" class="text-dark">{{
@@ -17,17 +17,17 @@
             >{{ " / " + (subcategory | capitalize) }}</a
           >
         </p>
-        <h1 @fadeUp1 class="products-page-title mb-0">
+        <h1 @fadeUp1 class="products-page-title mb-0 pd-sm-3">
           {{ categoryTitle | capitalize }}
         </h1>
-        <p @fadeUp2 class="products-page-description">
+        <p @fadeUp2 class="products-page-description pd-sm-3">
           {{ categoryText }}
         </p>
       </div>
     </div>
     <app-headers
       @fadeLeft
-      class="mobile-out col-8 m-0 p-0"
+      class="col-sm-12 col-lg-8 m-0 p-0"
       [headerName]="category"
     ></app-headers>
   </div>

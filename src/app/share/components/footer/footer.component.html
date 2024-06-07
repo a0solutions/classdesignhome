@@ -1,71 +1,56 @@
 <footer class="border-top">
   <div class="container footer-container mt-3">
     <div class="row">
-      <div @fadeUp class="col-lg-2 col-md-4 col-md-2 col-12 mb-5 center-mobile">
+      <!-- <div @fadeUp class="col-lg-2 col-md-4 col-md-2 col-12 mb-5 center-mobile">
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a href="tel:+34643152892" class="btn btn-dark w-100 rounded-0"
-              >Call us</a
-            >
+            <a href="tel:+34643152892" class="btn btn-dark w-100">Call us</a>
           </li>
           <li class="nav-item mb-2">
             <a
               href="mailto:contact@classdesignhome.com"
-              class="btn btn-dark w-100 rounded-0"
+              class="btn btn-dark w-100"
               >Write us</a
             >
           </li>
         </ul>
-      </div>
-      <div @fadeUp class="col-lg-2 mobile-out tablet-out"></div>
-      <div @fadeUp1 class="col-lg-2 col-md-4 col-md-2 col-6 mb-3 center-mobile">
-        <!-- <h5>Section</h5> -->
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2">
-            <a routerLink="/aboutus" class="nav-link p-0 text-body-secondary"
-              >Home</a
-            >
-          </li>
-          <li class="nav-item mb-2">
-            <a routerLink="/aboutus" class="nav-link p-0 text-body-secondary"
-              >Story</a
-            >
-          </li>
-          <li class="nav-item mb-2">
-            <a
-              routerLink="/collections"
-              class="nav-link p-0 text-body-secondary"
-              >Collections</a
-            >
-          </li>
-          <li class="nav-item mb-2">
-            <a
-              routerLink="/products/products"
-              class="nav-link p-0 text-body-secondary"
-              >Shop</a
-            >
-          </li>
-          <li class="nav-item mb-2">
-            <a routerLink="/tracking" class="nav-link p-0 text-body-secondary"
-              >Tracking</a
-            >
-          </li>
-        </ul>
-      </div>
-      <div @fadeUp2 class="col-lg-2 col-md-4 col-6 mb-3 center-mobile">
-        <!-- <h5>Products</h5> -->
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2" *ngFor="let category of allcategories">
-            <a
-              (click)="setRoute(category.category)"
-              class="nav-link p-0 text-body-secondary cursor-pointer"
-              >{{ category.category | capitalize }}</a
-            >
-          </li>
-        </ul>
+      </div> -->
+      <div @fadeUp1 class="col-lg-8 col-md-8 col-12 mb-4 center-mobile">
+        <div class="row w-100">
+          <!-- MENU -->
+          <ul class="nav col-lg-12 col-md-12 col-6 mb-4">
+            <li class="nav-item mb-2">
+              <a routerLink="/aboutus" class="p-0 hb">Home</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a routerLink="/aboutus" class="p-0 hb">About Us</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a routerLink="/collections" class="p-0 hb">Collections</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a routerLink="/products/products" class="p-0 hb">Shop</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a routerLink="/tracking" class="p-0 hb">Tracking</a>
+            </li>
+          </ul>
+
+          <!-- <h5>Products</h5> -->
+          <ul class="nav col-lg-12 col-md-12 col-6">
+            <li class="nav-item mb-2" *ngFor="let category of allcategories">
+              <a
+                (click)="setRoute(category.category)"
+                class="p-0 cursor-pointer hb"
+                >{{ category.category | capitalize }}</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- CATEGORIES -->
       </div>
 
-      <div @fadeUp3 class="col-lg-4 col-12 mx-auto mb-3 center-mobile">
+      <div @fadeUp3 class="col-lg-4 col-md-4 col-12 mx-auto mb-3 center-mobile">
         <form
           ngForm
           #formNewsletter="ngForm"
@@ -117,7 +102,9 @@
       class="d-flex flex-column flex-sm-row justify-content-between pt-4 mt-4 border-top center-mobile"
     >
       <p>&copy; 2024 Class Design Home. All rights reserved.</p>
-      <a class="text-dark" routerLink="/policy" target="_blank">Our Policies</a>
+      <a class="text-dark hb" routerLink="/policy" target="_blank"
+        >Our Policies</a
+      >
     </div>
   </div>
 </footer>

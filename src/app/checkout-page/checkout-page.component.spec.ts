@@ -1,20 +1,16 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CheckoutPageComponent } from './checkout-page.component';
 
 describe('CheckoutPageComponent', () => {
   let component: CheckoutPageComponent;
   let fixture: ComponentFixture<CheckoutPageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckoutPageComponent ]
-    })
-    .compileComponents();
-  }));
+      declarations: [CheckoutPageComponent],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CheckoutPageComponent);
