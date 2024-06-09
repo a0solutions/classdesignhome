@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { urls } from 'src/app/share/services/apiurl';
 
 @Component({
-  selector: 'living',
+  selector: 'app-living',
   templateUrl: './living.component.html',
   styleUrls: ['./living.component.css'],
 })

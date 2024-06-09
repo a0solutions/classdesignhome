@@ -22,7 +22,7 @@
           class="p-3"
           ngForm
           #billingform="ngForm"
-          (change)="listenForm(billingform, 'billing')"
+          (change)="listenForm(billingform)"
         >
           <div class="billing">
             <div class="row">
@@ -139,7 +139,7 @@
               <div
                 class="mb-3 col-lg-6 col-12"
                 [style]="
-                  country.value == 'United States'
+                  country.value === 'United States'
                     ? 'display:block'
                     : 'display:none'
                 "
@@ -224,7 +224,7 @@
           ngForm
           #shippingform="ngForm"
           class="p-3"
-          (change)="listenForm(shippingform, 'shipping')"
+          (change)="listenForm(shippingform)"
         >
           <div class="billing">
             <div class="row">
@@ -317,7 +317,7 @@
               <div
                 class="mb-3 col-lg-6 col-12"
                 [style]="
-                  shipcountry.value == 'United States'
+                  shipcountry.value === 'United States'
                     ? 'display:block'
                     : 'display:none'
                 "

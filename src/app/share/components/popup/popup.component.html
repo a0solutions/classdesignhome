@@ -1,3 +1,5 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <div
   [ngClass]="{ 'backdrop-filter-blur': popup_active }"
   class="popup-container popup"
@@ -8,6 +10,6 @@
     (click)="popup_active = !popup_active"
   ></div>
   <div *ngIf="popup_active" class="showroom-container">
-    <showroom-card [product]="product"></showroom-card>
+    <app-showroom-card [product]="product"></app-showroom-card>
   </div>
 </div>

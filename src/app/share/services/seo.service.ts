@@ -1,19 +1,18 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SeoService implements OnInit {
-  title: string = 'PRUEBA';
-  image: string = 'PRUEBA';
-  description: string = 'PRUEBA';
+export class SeoService {
+  title = 'PRUEBA';
+  image = 'PRUEBA';
+  description = 'PRUEBA';
   constructor(private meta: Meta, private router: Router) {}
-  ngOnInit(): void {}
 
   setSeo(title?: string, description?: string, image?: string): void {
-    let route = this.router.url;
+    const route = this.router.url;
     this.title = 'Class Design Home - ' + route.substr(1, route.length);
     this.image =
       'https://' + window.location.hostname + '/classapi/images/logo.png';

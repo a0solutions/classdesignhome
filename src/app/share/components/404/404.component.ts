@@ -9,7 +9,7 @@ import { fadeUp, fadeUp1, fadeUp2 } from '../../services/animations';
   styleUrls: ['./404.component.css'],
   animations: [fadeUp, fadeUp1, fadeUp2],
 })
-export class Component404 implements OnInit {
+export class The404Component implements OnInit {
   constructor(private loader: LoaderService, private nav: NavManage) {}
 
   ngOnInit(): void {

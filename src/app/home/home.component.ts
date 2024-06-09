@@ -1,17 +1,10 @@
-import {
-  AfterContentChecked,
-  AfterContentInit,
-  AfterViewChecked,
-  Component,
-  HostListener,
-  OnInit,
-} from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { NavManage } from '../share/components/nav/services/navManage.service';
 import { LoaderService } from '../share/components/loader/services/loader.service';
 import { SeoService } from '../share/services/seo.service';
 
 @Component({
-  selector: 'home',
+  selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
@@ -28,5 +21,4 @@ export class HomeComponent implements OnInit {
     this.seo.setSeo('home');
     setTimeout(() => [this.loader.show.next(false)], 2000);
   }
-  onLoad() {}
 }

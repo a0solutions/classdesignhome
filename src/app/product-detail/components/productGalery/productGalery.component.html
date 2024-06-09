@@ -1,3 +1,6 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/elements-content -->
 <article
   class="ecommerce-gallery"
   data-mdb-zoom-effect="true"
@@ -73,23 +76,27 @@
         [style]="'background-image:url(' + fullPicture + ')'"
       ></div>
     </div>
-    <div class="row" *ngIf="allImages.length > 1">
-      <div class="bullets my-3">
-        <button
-          *ngFor="let thisImage of allImages; index as i"
-          (click)="updatePicture($event, i)"
-          class="bullets-points"
-          [ngClass]="{ 'bullets-points-active': thisImage.state }"
-        ></button>
+    <ng-container *ngIf="allImages.length > 1">
+      <div class="row">
+        <div class="bullets my-3">
+          <ng-container *ngFor="let thisImage of allImages; index as i">
+            <button
+              (click)="updatePicture(i)"
+              class="bullets-points"
+              [ngClass]="{ 'bullets-points-active': thisImage.state }"
+            ></button>
+          </ng-container>
+        </div>
+        <ng-container *ngFor="let thisImage of allImages; index as i">
+          <div
+            @fadeUp1
+            class="carrousel-image-datail mobile-out"
+            [ngClass]="{ imageActive: thisImage.state }"
+            [style]="'background-image:url(' + thisImage.url + ')'"
+            (click)="updatePicture(i)"
+          ></div>
+        </ng-container>
       </div>
-      <div
-        @fadeUp1
-        class="carrousel-image-datail mobile-out"
-        *ngFor="let thisImage of allImages; index as i"
-        [ngClass]="{ imageActive: thisImage.state }"
-        [style]="'background-image:url(' + thisImage.url + ')'"
-        (click)="updatePicture($event, i)"
-      ></div>
-    </div>
+    </ng-container>
   </div>
 </article>

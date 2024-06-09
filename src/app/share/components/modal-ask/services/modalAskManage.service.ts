@@ -1,4 +1,4 @@
-import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -6,10 +6,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ModalAskManage {
   show: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  title: string = '';
-  text: string = '';
+  title = '';
+  text = '';
   answer: BehaviorSubject<number> = new BehaviorSubject(0);
-  constructor() {}
+
   closeModalAsk(): void {
     this.show.next(false);
     this.answer.next(0);

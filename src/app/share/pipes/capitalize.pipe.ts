@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CapitalizePipe implements PipeTransform {
   transform(value: string): unknown {
-    let newString: string = '';
+    let newString = '';
     if (value != undefined) {
       const words = value.split(' ');
       words.forEach(async (x) => {

@@ -1,14 +1,6 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AlertManage } from './services/alertManage.service';
-import { fadeUp, modalFade } from '../../services/animations';
+import { modalFade } from '../../services/animations';
 @Component({
   selector: 'app-alerts',
   templateUrl: './alerts.component.html',
@@ -16,10 +8,11 @@ import { fadeUp, modalFade } from '../../services/animations';
   animations: [modalFade],
 })
 export class AlertsComponent implements OnInit {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() message: any = { message: '', data: '' };
   @Output() offshow = new EventEmitter<boolean>(false);
-  show: boolean = false;
-  title: string = '';
+  show = false;
+  title = '';
   constructor(private alert: AlertManage) {}
 
   ngOnInit(): void {

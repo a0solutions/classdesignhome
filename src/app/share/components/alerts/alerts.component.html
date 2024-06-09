@@ -1,7 +1,6 @@
 <div class="modal-backdrop" [ngClass]="{ 'd-none': !show }"></div>
 
 <div
-  class="modal rounded-0 animate__animated animate__fadeUp"
   [ngClass]="{ 'show d-block': show }"
   id="modalAsk"
   tabindex="-1"
@@ -9,12 +8,12 @@
   aria-hidden="false"
 >
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content rounded-0">
+    <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="modalAskLabel">{{ title }}</h1>
         <button
           type="button"
-          class="btn-close"
+          class="btn-close opacity-100"
           aria-label="Close"
           (click)="closeAlert()"
         ></button>

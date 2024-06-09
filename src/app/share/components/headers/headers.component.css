@@ -7,6 +7,11 @@
 .main-container {
   position: relative;
 }
+@media (max-width: 600px) {
+  .header {
+    border-radius: 0px !important;
+  }
+}
 .header {
   overflow-x: hidden;
   overflow-y: hidden;

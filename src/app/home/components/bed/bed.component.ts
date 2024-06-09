@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { urls } from 'src/app/share/services/apiurl';
 
 @Component({
-  selector: 'bed',
+  selector: 'app-bed',
   templateUrl: './bed.component.html',
   styleUrls: ['./bed.component.css'],
 })

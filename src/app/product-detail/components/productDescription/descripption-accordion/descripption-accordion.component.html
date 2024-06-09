@@ -139,15 +139,15 @@
         <table class="table">
           <tbody>
             <h6 class="hb">Assembly</h6>
-            <tr *ngIf="product.levelAssembly != 'None'">
+            <tr *ngIf="product.levelAssembly !== 'None'">
               <td class="w-50 bg-gray">Level Assembly</td>
               <td class="w-50">{{ product.levelAssembly }}</td>
             </tr>
-            <tr *ngIf="product.category == 'bathroom'">
+            <tr *ngIf="product.category === 'bathroom'">
               <td class="w-50 bg-gray">Time of Intallation</td>
               <td class="w-50">60 min</td>
             </tr>
-            <tr *ngIf="product.category != 'bathroom'">
+            <tr *ngIf="product.category !== 'bathroom'">
               <td class="w-50 bg-gray">Time Assembly</td>
               <td class="w-50">{{ product.timeAssembly }} min</td>
             </tr>

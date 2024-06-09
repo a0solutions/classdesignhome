@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavManage } from '../share/components/nav/services/navManage.service';
-import { LoaderService } from '../share/components/loader/services/loader.service';
 import {
   fadeUp,
   fadeUp1,
@@ -18,10 +17,9 @@ import { SeoService } from '../share/services/seo.service';
 })
 export class SigninComponent implements OnInit {
   constructor(private nav: NavManage, private seo: SeoService) {}
-  moduleActive: boolean = true;
+  moduleActive = true;
   ngOnInit(): void {
     this.seo.setSeo();
     this.nav.dark.next(true);
   }
-  signInActive() {}
 }

@@ -10,17 +10,16 @@ import { TokenManage } from 'src/app/personal-area/services/token-manage.service
 import { UserManage } from 'src/app/signin/services/user-manage.service';
 import { Router } from '@angular/router';
 import { urls } from '../../services/apiurl';
-import { SeoService } from '../../services/seo.service';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
-  @Input() dark: boolean = false;
-  isLogged: boolean = false;
-  items: number = 0;
-  cheick: boolean = false;
+  @Input() dark = false;
+  isLogged = false;
+  items = 0;
+  cheick = false;
   answer: Subscription;
   url: string = urls.url;
   constructor(

@@ -4,21 +4,21 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-12 mb-4">
-        <productGalery
+        <app-product-galery
           class="sticky-lg-top sticky-md-top"
           [product]="product"
-        ></productGalery>
+        ></app-product-galery>
       </div>
       <div class="col-md-6 col-12">
-        <productDescription [product]="product"></productDescription>
+        <app-product-description [product]="product"></app-product-description>
       </div>
     </div>
   </div>
 </article>
-<div class="separador7"></div>
 
-<article class="my-5 container mobile-out">
-  <h2 class="fw-bolder">Related products</h2>
+<article class="container mt-5">
+  <div class="border-bottom mb-5"></div>
+  <h2 class="fw-bold over-offer">Complete your home</h2>
   <div class="separador-start"></div>
-  <app-offers [category]="category"></app-offers>
+  <app-offers [category]="'products'"></app-offers>
 </article>

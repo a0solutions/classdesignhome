@@ -9,7 +9,6 @@ import {
   fadeUp1,
   fadeUp2,
 } from '../share/services/animations';
-import { Title } from '@angular/platform-browser';
 import { SeoService } from '../share/services/seo.service';
 import { urls } from '../share/services/apiurl';
 
@@ -20,8 +19,8 @@ import { urls } from '../share/services/apiurl';
   animations: [fadeUp, fadeLeft, fadeUp1, fadeUp2],
 })
 export class ProductsComponent implements OnInit {
-  category: string = '';
-  subcategory: string = '';
+  category = '';
+  subcategory = '';
   categoryTitle: string;
   categoryText: string;
   urlsWeb: string = urls.url;
@@ -41,7 +40,7 @@ export class ProductsComponent implements OnInit {
     this.nav.dark.next(true);
   }
   getCategory(param: ParamMap): void {
-    this.allProducts.setAllProducts().then((res) => {
+    this.allProducts.setAllProducts().then(() => {
       this.category = <string>param.get('category');
       this.category == 'products'
         ? (this.categoryTitle = 'Shop Designs')

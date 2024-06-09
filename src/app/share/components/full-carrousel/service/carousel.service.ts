@@ -6,5 +6,4 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CarouselService {
   show: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  constructor() {}
 }

@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class TokenManage {
-  token: string = '';
+  token = '';
   isLogged: BehaviorSubject<boolean> = new BehaviorSubject(true);
   verify = new JwtHelperService();
   constructor() {
@@ -24,7 +24,7 @@ export class TokenManage {
   getUserId(): string {
     this.getToken();
     if (!this.verify.isTokenExpired(this.token)) {
-      let info = this.verify.decodeToken(this.token);
+      const info = this.verify.decodeToken(this.token);
       return info.iss;
     } else {
       return '';

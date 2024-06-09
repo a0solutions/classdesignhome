@@ -6,7 +6,6 @@ import { ListedComponent } from '../components/cart-list/listed/listed.component
 import { CounterComponent } from '../components/counter/counter.component';
 import { FormsModule } from '@angular/forms';
 import { OffersComponent } from 'src/app/products/components/offers/offers.component';
-import { OfferCardComponent } from 'src/app/products/components/offers/offer-card/offer-card.component';
 import { HeadersComponent } from '../components/headers/headers.component';
 import { headerManage } from '../components/headers/popous/popups';
 import { PopupComponent } from '../components/popup/popup.component';
@@ -19,7 +18,7 @@ import { CategorySubstrPipe } from '../pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from '../pipes/spacesDelete.pipe';
 import { FullCarrouselComponent } from '../components/full-carrousel/full-carrousel.component';
 import { CarouselService } from '../components/full-carrousel/service/carousel.service';
-import { ProductGalery } from 'src/app/product-detail/components/productGalery/productGalery.component';
+import { ProductGaleryComponent } from 'src/app/product-detail/components/productGalery/productGalery.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   imports: [
@@ -34,14 +33,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ListedComponent,
     CounterComponent,
     OffersComponent,
-    OfferCardComponent,
     HeadersComponent,
     PopupComponent,
     ShowroomCardComponent,
     ProductCardComponent,
     ColorSelectComponent,
     FullCarrouselComponent,
-    ProductGalery,
+    ProductGaleryComponent,
   ],
   providers: [
     AlertManage,
@@ -55,13 +53,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ListedComponent,
     CounterComponent,
     OffersComponent,
-    OfferCardComponent,
     HeadersComponent,
     PopupComponent,
     ProductCardComponent,
     ColorSelectComponent,
     FullCarrouselComponent,
-    ProductGalery,
+    ProductGaleryComponent,
   ],
 })
 export class ShareModule {}

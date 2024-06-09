@@ -1,3 +1,5 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <div class="bg-white">
   <div class="row">
     <div class="col-lg-10 col-6 p-3">
@@ -65,7 +67,7 @@
   <div class="offcanvas-header">
     <button
       type="button"
-      class="btn-close ms-auto"
+      class="btn-close ms-auto opacity-100"
       data-bs-dismiss="offcanvas"
       aria-label="Close"
     ></button>
@@ -111,8 +113,10 @@
           >
             <div class="accordion-body row">
               <div *ngFor="let category of allCategories">
-                <div *ngIf="categorySelected != 'products'; else allcategories">
-                  <div *ngIf="categorySelected == category.category">
+                <div
+                  *ngIf="categorySelected !== 'products'; else allcategories"
+                >
+                  <div *ngIf="categorySelected === category.category">
                     <div
                       class="form-check"
                       *ngFor="
@@ -125,7 +129,7 @@
                         type="checkbox"
                         [value]="subcategory"
                         [id]="subcategory"
-                        [checked]="subcategorySelected == subcategory"
+                        [checked]="subcategorySelected === subcategory"
                         (change)="updateFilterSub($event)"
                       />
                       <label class="form-check-label" [for]="subcategory">
@@ -145,7 +149,7 @@
                       type="checkbox"
                       [value]="subcategory"
                       [id]="subcategory"
-                      [checked]="subcategorySelected == subcategory"
+                      [checked]="subcategorySelected === subcategory"
                       (change)="updateFilterSub($event)"
                     />
                     <label class="form-check-label" [for]="subcategory">
@@ -176,12 +180,15 @@
             data-bs-parent="#accordionExample"
           >
             <div class="accordion-body row">
-              <div class="col-2 mb-3" *ngFor="let colors of colors">
-                <color-select
-                  [background]="colors"
-                  (selectedColor)="updateFilterColor($event)"
-                ></color-select>
-              </div>
+              <ng-container *ngFor="let color of colors">
+                <div class="col-2 mb-3">
+                  <app-color-select
+                    [background]="color"
+                    (selectedColor)="updateFilterColor($event)"
+                    [reset]="resetColor"
+                  ></app-color-select>
+                </div>
+              </ng-container>
             </div>
           </div>
         </div>
@@ -243,7 +250,7 @@
             data-bs-parent="#accordionExample"
           >
             <div class="accordion-body">
-              <div *ngIf="categorySelected != 'products'; else sizeFilter">
+              <div *ngIf="categorySelected !== 'products'; else sizeFilter">
                 <p>
                   {{ categorySelected | capitalize }}
                 </p>
@@ -254,6 +261,7 @@
                     (click)="updateFilterSize(size.size, i)"
                   >
                     <img
+                      alt="size icon"
                       [src]="
                         url +
                         'classapi/images/app/custom-icons/' +
@@ -270,8 +278,10 @@
               </div>
 
               <ng-template #sizeFilter>
-                <div *ngFor="let category of allCategories; index as i">
-                  <div *ngIf="findSizesFilter(category.category)">
+                <ng-container
+                  *ngFor="let category of allCategories; index as c"
+                >
+                  <ng-container *ngIf="findSizesFilter(category.category)">
                     <p class="col-12">
                       {{ category.category | capitalize }}
                     </p>
@@ -284,24 +294,27 @@
                           );
                           index as i
                         "
-                        (click)="updateFilterSize(size.size, i)"
+                        (click)="updateFilterSize(size.size, size.index)"
                       >
                         <img
+                          alt="sizes Icon"
                           [src]="
                             url +
                             'classapi/images/app/custom-icons/' +
                             size.size +
                             '.png'
                           "
-                          [ngClass]="{ active: sizeSelected[i] }"
+                          [ngClass]="{
+                            active: sizeSelected[size.index]
+                          }"
                           class="p-0 m-0 border icon-filter-size"
                           width="100%"
                           [title]="size.size | capitalize"
                         />
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </ng-container>
+                </ng-container>
               </ng-template>
             </div>
           </div>

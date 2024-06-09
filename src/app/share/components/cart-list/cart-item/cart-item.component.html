@@ -1,3 +1,6 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/mouse-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <div
   class="card mb-3 border-0 shadow-sm rounded-0"
   style="border-left: 3px solid var(--bs-dark)"
@@ -36,6 +39,7 @@
         ></app-counter>
         <div class="mt-5 pt-2" (click)="numberCount(0)">
           <img
+            alt="trash icon"
             #imgTrash
             (mouseover)="imgTrash.src = 'assets/icons/trash-gold.svg'"
             (mouseout)="imgTrash.src = 'assets/icons/trash.svg'"
@@ -43,7 +47,6 @@
             height="13px"
             class="cursor-pointer"
           />
-          <!-- <i class="bi bi-trash cursor-pointer"></i> -->
         </div>
       </div>
     </div>

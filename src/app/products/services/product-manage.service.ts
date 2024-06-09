@@ -28,21 +28,22 @@ export class ProductManage {
     return this.http.get<product[]>(this.url);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getFilterProducts(filters: any): product[] {
     this.products = new BehaviorSubject(this.allProducts);
-    for (let prop in filters) {
-      if (filters[prop] == 0 || filters[prop] == '') {
-      } else {
+    for (const prop in filters) {
+      if (filters[prop] != 0 || filters[prop] != '') {
         if (prop != 'price' && prop != 'category') {
           this.products.next(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             this.products.value.filter((x: any) =>
               filters[prop].includes(x[prop])
             )
           );
         } else if (prop == 'category') {
-          if (filters.category == 'products') {
-          } else {
+          if (filters.category != 'products') {
             this.products.next(
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               this.products.value.filter((x: any) =>
                 filters.category.includes(x.category)
               )
@@ -50,6 +51,7 @@ export class ProductManage {
           }
         } else {
           this.products.next(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             this.products.value.filter((x: any) => filters.price >= x.price)
           );
         }
@@ -70,7 +72,7 @@ export class ProductManage {
   }
 
   getOfferProduct(category: string): Promise<product[]> {
-    return this.setAllProducts().then((x) => {
+    return this.setAllProducts().then(() => {
       if (category != 'products')
         return this.allProducts.filter(
           (x) => x.category == category && x.offer
@@ -99,7 +101,7 @@ export class ProductManage {
   }
 
   getNumberBySub(sub: string): number {
-    let productsNo: string[] = [];
+    const productsNo: string[] = [];
     this.allProducts
       .filter((x) => x.subcategory == sub)
       .forEach((y) => {
@@ -138,8 +140,9 @@ export class ProductManage {
         data.parentRef
     );
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   simplifyOrderProduct(order: any): any {
-    let ssimplifyObject = order;
+    const ssimplifyObject = order;
     delete ssimplifyObject.dimentions;
     delete ssimplifyObject.frameMaterial;
     delete ssimplifyObject.materialDetail;

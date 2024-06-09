@@ -10,7 +10,7 @@ import { fade } from '../../services/animations';
   animations: [fade],
 })
 export class LoaderComponent implements OnInit {
-  @Input() show: boolean = true;
+  @Input() show = true;
   constructor(private loader: LoaderService) {}
   url: string = urls.url;
 

@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Component,
   HostListener,
   Input,
   OnChanges,
   OnInit,
-  SimpleChanges,
 } from '@angular/core';
 import { ProductManage, product } from '../../services/product-manage.service';
 import { LoaderService } from 'src/app/share/components/loader/services/loader.service';
@@ -17,16 +17,16 @@ import { LoaderService } from 'src/app/share/components/loader/services/loader.s
 export class OffersComponent implements OnChanges, OnInit {
   allProducts: product[] = [];
   items: number[] = [];
-  cardsNum: number = 4;
+  cardsNum = 4;
   constructor(private products: ProductManage, private loader: LoaderService) {}
-  @Input() category: string = '';
+  @Input() category = '';
 
   ngOnInit(): void {
     this.compareNumber(window.innerWidth);
   }
   @HostListener('window:resize', ['$event'])
   handleKeyDown(event: any): void {
-    let width = event.target.innerWidth;
+    const width = event.target.innerWidth;
     this.compareNumber(width);
   }
   compareNumber(width: number): void {
@@ -38,12 +38,12 @@ export class OffersComponent implements OnChanges, OnInit {
       this.cardsNum = 1;
     }
   }
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.allProducts = [];
     this.products.getOfferProduct(this.category).then((x) => {
       this.allProducts = x;
       this.items = [];
-      for (var i = 1; i <= Math.ceil(this.allProducts.length / 4); i++) {
+      for (let i = 1; i <= Math.ceil(this.allProducts.length / 4); i++) {
         this.items.push(i);
         this.loader.show.next(false);
       }

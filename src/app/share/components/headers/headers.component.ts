@@ -3,7 +3,6 @@ import {
   ElementRef,
   Input,
   OnChanges,
-  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { headerManage } from './popous/popups';
@@ -14,15 +13,16 @@ import { urls } from '../../services/apiurl';
   styleUrls: ['./headers.component.css'],
 })
 export class HeadersComponent implements OnChanges {
-  @Input() headerName: string = '';
+  @Input() headerName = '';
   @ViewChild('header') myDiv: ElementRef;
-  backgroundImage: string = '';
+  backgroundImage = '';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   popups: any = [];
   headerNameUrl: string;
   url: string = urls.url;
   constructor(private headerManage: headerManage) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.headerNameUrl = this.headerName.replaceAll(' ', '_');
     this.popups = [];
     if (this.headerManage.getPopups(this.headerName).length != 1) {
@@ -34,6 +34,7 @@ export class HeadersComponent implements OnChanges {
     const ele = this.myDiv.nativeElement;
     ele.style.cursor = 'grab';
     let pos = { top: 0, left: 0, x: 0, y: 0 };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const mouseDownHandler = function (e: any): void {
       ele.style.cursor = 'grabbing';
       ele.style.userSelect = 'none';
@@ -47,6 +48,7 @@ export class HeadersComponent implements OnChanges {
       document.addEventListener('mousemove', mouseMoveHandler);
       document.addEventListener('mouseup', mouseUpHandler);
     };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const mouseMoveHandler = function (e: any): void {
       // How far the mouse has been moved
       const dx = e.clientX - pos.x;

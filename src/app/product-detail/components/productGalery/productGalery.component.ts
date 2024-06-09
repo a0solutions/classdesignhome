@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import {
   ProductManage,
   imagedata,
@@ -20,17 +20,17 @@ interface images {
   state: boolean;
 }
 @Component({
-  selector: 'productGalery',
+  selector: 'app-product-galery',
   templateUrl: './productGalery.component.html',
   styleUrls: ['./productGalery.component.css'],
   animations: [fadeUp, fadeUp1, fadeUp2, fadeUp3],
 })
-export class ProductGalery implements OnChanges {
+export class ProductGaleryComponent implements OnChanges {
   @Input() product: product = <product>{};
   image: boolean[] = [true, false, false, false];
-  fullPicture: string = '';
+  fullPicture = '';
   allImages: images[] = [];
-  url: string = '';
+  url = '';
   constructor(
     private products: ProductManage,
     private substrPipe: CategorySubstrPipe,
@@ -39,7 +39,7 @@ export class ProductGalery implements OnChanges {
     private seo: SeoService
   ) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     if (this.product.category != undefined) {
       this.loadPictures();
     }
@@ -48,7 +48,7 @@ export class ProductGalery implements OnChanges {
     this.carousel.show.next(true);
   }
   loadPictures(): void {
-    let data: imagedata = <imagedata>{};
+    const data: imagedata = <imagedata>{};
     this.allImages = [];
     data.category = this.product.category;
     data.folder = this.substrByCategory(this.product);
@@ -62,8 +62,9 @@ export class ProductGalery implements OnChanges {
       '/' +
       data.folder +
       '/';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.products.getProductImages(data).forEach((x: any) => {
-      for (var i = 0; i < x.length; i++) {
+      for (let i = 0; i < x.length; i++) {
         this.allImages.push({ url: this.url + x[i], state: false });
       }
       this.fullPicture = this.allImages[0].url;
@@ -75,9 +76,9 @@ export class ProductGalery implements OnChanges {
       );
     });
   }
-  updatePicture(picture: any, index: number): void {
-    let src = this.allImages[index].url;
-    for (var i = 0; i < this.allImages.length; i++) {
+  updatePicture(index: number): void {
+    const src = this.allImages[index].url;
+    for (let i = 0; i < this.allImages.length; i++) {
       this.allImages[i].state = false;
     }
     this.allImages[index].state = true;
@@ -90,7 +91,7 @@ export class ProductGalery implements OnChanges {
     return this.spacesPipe.transform(text);
   }
   shareProduct(event: Event, arg1: string, arg2: string) {
-    let url =
+    const url =
       'whatsapp://send?text=Look at this awesome thing I found!: ' +
       urls.url +
       'product/' +
@@ -102,8 +103,8 @@ export class ProductGalery implements OnChanges {
     location.assign(url);
   }
   changeImage(flag: string) {
-    let index: number = 0;
-    for (var i = 0; i < this.allImages.length; i++) {
+    let index = 0;
+    for (let i = 0; i < this.allImages.length; i++) {
       if (this.allImages[i].state == true) {
         flag == 'next' ? (index = i + 1) : (index = i - 1);
         index > this.allImages.length ? (index = this.allImages.length) : null;

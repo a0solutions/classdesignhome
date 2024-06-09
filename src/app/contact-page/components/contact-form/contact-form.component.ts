@@ -1,22 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import { Contactform } from 'src/app/share/services/contactform.service';
 import { allSubSubjects } from './subjects';
 import { NgForm } from '@angular/forms';
-interface subjects {
-  subject: string;
-  subSubject: string[];
-}
+
 @Component({
-  selector: 'contact-form',
+  selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.css'],
 })
 export class ContactFormComponent {
   message: any = '';
-  show: boolean = false;
+  show = false;
   subSubjects: string[] = [];
-  processingContact: boolean = false;
+  processingContact = false;
   @Output() hideForm: EventEmitter<boolean> = new EventEmitter();
   constructor(private contact: Contactform, private alert: AlertManage) {}
 

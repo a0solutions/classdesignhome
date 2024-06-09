@@ -19,14 +19,14 @@ import {
 })
 export class ListedComponent implements OnInit {
   printList: cartProduct[] = [];
-  subtotal: number = 0;
-  show: boolean = false;
-  shipping: number = 0;
-  typeTax: number = 0;
+  subtotal = 0;
+  show = false;
+  shipping = 0;
+  typeTax = 0;
   taxes: number = (this.shipping + this.subtotal) * (this.typeTax / 100);
   total: number = this.shipping + this.subtotal + this.taxes;
 
-  @Input() size: boolean = false;
+  @Input() size = false;
   constructor(private checkout: Checkout) {}
 
   ngOnInit(): void {

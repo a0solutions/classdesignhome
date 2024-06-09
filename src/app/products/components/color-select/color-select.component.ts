@@ -1,22 +1,35 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { pantone } from './colors';
 import { urls } from 'src/app/share/services/apiurl';
 @Component({
-  selector: 'color-select',
+  selector: 'app-color-select',
   templateUrl: './color-select.component.html',
   styleUrls: ['./color-select.component.css'],
 })
-export class ColorSelectComponent implements OnInit {
-  @Input() background: string = 'red';
-  colorName: string = '';
-  @Input() activeColor: boolean = false;
-  @Output() selectedColor = new EventEmitter<Object>();
+export class ColorSelectComponent implements OnInit, OnChanges {
+  @Input() background = 'red';
+  colorName = '';
+  @Input() activeColor = false;
+  @Input() reset = false;
+  @Output() selectedColor = new EventEmitter<object>();
   url: string = urls.url;
-  selected: boolean = false;
-  check: string = '';
-  constructor() {}
+  selected = false;
+  check = '';
+
+  ngOnChanges(): void {
+    this.selected = true;
+    this.selectColor(this.colorName);
+  }
+
   ngOnInit(): void {
-    let fullColor = pantone.find((x) => x.color == this.background);
+    const fullColor = pantone.find((x) => x.color == this.background);
     this.colorName = <string>fullColor?.color;
     this.background = <string>fullColor?.hex;
     this.activeColor

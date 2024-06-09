@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import {
-  ProductManage,
-  product,
-} from 'src/app/products/services/product-manage.service';
+  Checkout,
+  order,
+} from 'src/app/checkout-page/services/checkout.service';
 
 @Component({
-  selector: 'personal-info',
+  selector: 'app-personal-info',
   templateUrl: './personal-info.component.html',
   styleUrls: ['./personal-info.component.css'],
 })
 export class PersonalInfoComponent implements OnInit {
-  printProducts: product[] = [];
-  product: product[] = <product[]>[];
-  constructor(private allProduct: ProductManage) {}
+  allOrders: Observable<order[]>;
+  constructor(private orders: Checkout) {}
 
   ngOnInit(): void {
-    this.printProducts = this.allProduct.allProducts.filter(
-      (x) => x.new || x.membersOnly
-    );
+    this.allOrders = this.orders.getUserOrders();
   }
 }

@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { CarouselService } from './service/carousel.service';
 import {
   ProductManage,
@@ -23,10 +17,11 @@ import { urls } from '../../services/apiurl';
 export class FullCarrouselComponent implements OnInit, OnChanges {
   @Input() product: product = <product>{};
   image: boolean[] = [true, false, false, false];
-  fullPicture: string = '';
+  fullPicture = '';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   allImages: any;
-  url: string = '';
-  carouselFull: boolean = true;
+  url = '';
+  carouselFull = true;
   constructor(
     private products: ProductManage,
     private substrPipe: CategorySubstrPipe,
@@ -39,7 +34,7 @@ export class FullCarrouselComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     if (this.product.category != undefined) {
       this.loadPictures();
     }
@@ -48,7 +43,7 @@ export class FullCarrouselComponent implements OnInit, OnChanges {
     this.carousel.show.next(false);
   }
   loadPictures(): void {
-    let data: imagedata = <imagedata>{};
+    const data: imagedata = <imagedata>{};
     data.category = this.product.category;
     data.folder = this.substrByCategory(this.product);
     data.parentRef = this.spaceDelete(this.product.parentRef);
@@ -61,17 +56,19 @@ export class FullCarrouselComponent implements OnInit, OnChanges {
       '/' +
       data.folder +
       '/';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.products.getProductImages(data).forEach((x: any) => {
       this.fullPicture = this.url + x[0];
       this.allImages = x;
     });
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   updatePicture(picture: any, img: number): void {
-    let src = picture.target.style.backgroundImage.substr(
+    const src = picture.target.style.backgroundImage.substr(
       5,
       picture.target.style.backgroundImage.length - 7
     );
-    for (let img in this.image) {
+    for (const img in this.image) {
       this.image[img] = false;
     }
     this.image[img] = true;

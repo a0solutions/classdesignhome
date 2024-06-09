@@ -1,22 +1,17 @@
 <div class="row mx-auto">
-  <div
-    *ngIf="products.length == 0; else productlist"
-    class="col-lg-6 col-md-6 col-sm-12 m-auto"
-  >
-    <!-- <img src="../../../assets/images/app/productnon.png" class="w-100" /> -->
-    <p class="py-4 text-center w-100">No product was found</p>
-  </div>
-
-  <ng-template #productlist>
-    <div
-      @fadeUp
-      [ngClass]="'col-sm-12 col-md-6 col-lg-4 mb-4'"
-      *ngFor="let product of printProduct"
-    >
-      <product-card [product]="product"></product-card>
+  <ng-container *ngIf="products.length === 0; else productlist">
+    <div class="col-lg-6 col-md-6 col-sm-12 m-auto">
+      <p class="py-4 text-center w-100">No product was found</p>
     </div>
+  </ng-container>
+  <ng-template #productlist>
+    <ng-container *ngFor="let product of printProduct">
+      <div @fadeUp [ngClass]="'col-sm-12 col-md-6 col-lg-4 mb-4'">
+        <app-product-card [product]="product"></app-product-card>
+      </div>
+    </ng-container>
   </ng-template>
-  <div class="col-12 my-4 text-center" *ngIf="more && products.length != 0">
+  <div class="col-12 my-4 text-center" *ngIf="more && products.length !== 0">
     <button class="btn btn-outline-dark p-3" (click)="paginateMore()">
       Show more products<br />
     </button>

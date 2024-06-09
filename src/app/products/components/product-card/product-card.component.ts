@@ -7,15 +7,18 @@ import {
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
 import { urls } from 'src/app/share/services/apiurl';
+import { fadeButtonCard } from 'src/app/share/services/animations';
 @Component({
-  selector: 'product-card',
+  selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
+  animations: [fadeButtonCard],
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: product;
   colors: colorId[] = [];
-  background: string = '';
+  background = '';
+  hover = false;
   constructor(
     private products: ProductManage,
     private substrPipe: CategorySubstrPipe,
@@ -42,7 +45,7 @@ export class ProductCardComponent implements OnInit {
       '/1.jpg';
   }
   changeBackgound(InOut: number): void {
-    let url =
+    const url =
       urls.url +
       'classapi/images/' +
       this.product.category.replaceAll(' ', '_') +
@@ -55,13 +58,13 @@ export class ProductCardComponent implements OnInit {
     InOut == 1 ? this.imageExists(url) : (this.background = url + '1.jpg');
   }
   imageExists(url: string): void {
-    let image = new Image();
+    const image = new Image();
     image.src = url + '2.jpg';
     image.width != 0 ? (this.background = url + '2.jpg') : null;
   }
   dataProcess(products: product[]) {
     products.forEach((y) => {
-      let tempColor: colorId = <colorId>{};
+      const tempColor: colorId = <colorId>{};
       tempColor.color = y.color;
       tempColor.id = y.id;
       tempColor.name = y.name;
@@ -80,7 +83,7 @@ export class ProductCardComponent implements OnInit {
     return this.spacesPipe.transform(text);
   }
   shareProduct(event: Event, arg1: string, arg2: string) {
-    let url =
+    const url =
       'whatsapp://send?text=Look at this awesome thing I found!: ' +
       urls.url +
       'product/' +

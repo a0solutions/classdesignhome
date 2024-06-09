@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Checkout } from 'src/app/checkout-page/services/checkout.service';
 import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
@@ -28,7 +22,7 @@ import {
 } from 'src/app/share/services/animations';
 import { urls } from 'src/app/share/services/apiurl';
 @Component({
-  selector: 'productDescription',
+  selector: 'app-product-description',
   templateUrl: './productDescription.component.html',
   styleUrls: ['./productDescription.component.css'],
   animations: [
@@ -46,12 +40,13 @@ import { urls } from 'src/app/share/services/apiurl';
 })
 export class ProductDescriptionComponent implements OnChanges, OnInit {
   @Input() product: product = <product>{};
-  isLogged: boolean = false;
-  count: number = 1;
+  isLogged = false;
+  count = 1;
   colors: colorId[] = <colorId[]>[];
   url: string = urls.url;
   sizes: string[] = [];
   sets: string[] = [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   urls: any;
   constructor(
     private products: ProductManage,
@@ -65,14 +60,14 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
       this.isLogged = x;
     });
   }
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.colors = <colorId[]>[];
     this.setAllParameters();
   }
 
   setAllParameters(): void {
     this.count = 1;
-    this.products.products.subscribe((y) => {
+    this.products.products.subscribe(() => {
       this.processData(
         this.product,
         this.products.getProductByParent(this.product.parentRef)
@@ -85,7 +80,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     this.sets = [];
     products.forEach((y) => {
       this.filterSizeAndSets(x, y);
-      let tempColor: colorId = <colorId>{};
+      const tempColor: colorId = <colorId>{};
       tempColor.color = y.color;
       tempColor.id = y.reference;
       tempColor.name = y.name;
@@ -140,7 +135,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     });
   }
   selectSize(size: string) {
-    let product: product = this.products.getDetailFilter(
+    const product: product = this.products.getDetailFilter(
       this.product.color,
       size,
       this.product.sets,
@@ -149,7 +144,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     this.router.navigate(['/product', product.reference, product.name]);
   }
   selectSets(sets: string) {
-    let product: product = this.products.getDetailFilter(
+    const product: product = this.products.getDetailFilter(
       this.product.color,
       this.product.size,
       sets,
@@ -161,7 +156,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     return this.substrPipe.transform(product);
   }
   shareProduct(event: Event, arg1: string, arg2: string) {
-    let url =
+    const url =
       'whatsapp://send?text=Look at this awesome thing I found!: ' +
       urls.url +
       'product/' +

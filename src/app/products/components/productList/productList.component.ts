@@ -4,20 +4,20 @@ import { FilterManage, filter } from '../../services/filterManage.service';
 import { fadeUp } from 'src/app/share/services/animations';
 
 @Component({
-  selector: 'productList',
+  selector: 'app-product-list',
   templateUrl: './productList.component.html',
   styleUrls: ['./productList.component.css'],
   animations: [fadeUp],
 })
 export class ProductListComponent implements OnInit {
-  @Input() category: string = '';
+  @Input() category = '';
   products: product[] = [];
   printProduct: product[] = [];
   itemNumber: number;
-  paginateNumber: number = 21;
-  more: boolean = false;
+  paginateNumber = 21;
+  more = false;
   parents: string[] = [];
-  cardSize: string = 'col-lg-4';
+  cardSize = 'col-lg-4';
   constructor(
     private allProducts: ProductManage,
     private filters: FilterManage

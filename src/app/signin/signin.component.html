@@ -19,10 +19,10 @@
               <p class="text-center">Introduce your access information</p>
               <div class="separador-centrado"></div>
             </div>
-            <signin-form
+            <app-signin-form
               @fadeUp2
               class="col-12 col-lg-12 mt-3 p-3"
-            ></signin-form>
+            ></app-signin-form>
             <div class="px-3 col-12" @fadeUp3>
               <button
                 (click)="moduleActive = !moduleActive"
@@ -50,7 +50,10 @@
               <p class="text-center" @fadeUp1>Input required fields</p>
               <div class="separador-centrado"></div>
             </div>
-            <signup-form @fadeUp3 class="col-12 col-lg-12 p-3"></signup-form>
+            <app-signup-form
+              @fadeUp3
+              class="col-12 col-lg-12 p-3"
+            ></app-signup-form>
             <div class="px-3 col-12" @fadeUp4>
               <button
                 (click)="moduleActive = !moduleActive"

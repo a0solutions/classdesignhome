@@ -1,3 +1,5 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <div
   class="card p-2 border-0 mx-auto cursor-pointer"
   style="width: 100%"
@@ -11,7 +13,7 @@
       Share!
     </button>
     <p
-      *ngIf="product.new == 1"
+      *ngIf="product.new === 1"
       class="bg-white p-1 px-2 text-white rounded-pill text-muted cursor-default mb-0 ms-3 shadow-sm"
       title="New product"
     >
@@ -20,14 +22,12 @@
   </div>
   <div class="card-body p-0 mt-5 text-center">
     <h2 class="card-title cardname h5 fw-bolder">{{ product.name }}</h2>
-
-    <!-- <p class="ms-auto my-2">{{ product.price | currency : "USD" }}</p> -->
     <div class="d-flex w-100 my-3 justify-content-center">
-      <color-select
+      <app-color-select
         class="mx-1"
         *ngFor="let color of colors"
         [background]="color.color"
-      ></color-select>
+      ></app-color-select>
     </div>
   </div>
 </div>

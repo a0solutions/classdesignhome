@@ -1,20 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserManage } from '../../services/user-manage.service';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import { NgForm } from '@angular/forms';
 import { fadeUp } from 'src/app/share/services/animations';
 
 @Component({
-  selector: 'signup-form',
+  selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
   styleUrls: ['./signup-form.component.css'],
   animations: [fadeUp],
 })
 export class SignupFormComponent {
   actualform: NgForm;
-  processingSignUp: boolean = false;
-  formNew1: string = '';
-  formnew2: string = '';
+  processingSignUp = false;
+  formNew1 = '';
+  formnew2 = '';
   constructor(private users: UserManage, private alert: AlertManage) {}
   submit(form: NgForm): void {
     this.processingSignUp = true;

@@ -49,7 +49,7 @@ export class FooterComponent implements OnInit {
       ? this.alert.setAlertMessage('newsletterOk')
       : this.alert.setAlertMessage('newsletterExist');
   }
-  responseManageKo(code: string): void {
+  responseManageKo(): void {
     this.alert.setAlertMessage('');
   }
 }

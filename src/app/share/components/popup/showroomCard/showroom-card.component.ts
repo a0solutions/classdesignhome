@@ -6,14 +6,14 @@ import {
 } from 'src/app/products/services/product-manage.service';
 
 @Component({
-  selector: 'showroom-card',
+  selector: 'app-showroom-card',
   templateUrl: './showroom-card.component.html',
   styleUrls: ['./showroom-card.component.css'],
 })
 export class ShowroomCardComponent implements OnInit {
   @Input() product: product;
   colors: colorId[] = [];
-  background: string = '';
+  background = '';
   constructor(private products: ProductManage) {}
   ngOnInit(): void {
     this.products.products
@@ -29,7 +29,7 @@ export class ShowroomCardComponent implements OnInit {
 
   dataProcess(products: product[]) {
     products.forEach((y) => {
-      let tempColor: colorId = <colorId>{};
+      const tempColor: colorId = <colorId>{};
       tempColor.color = y.color;
       tempColor.id = y.id;
       tempColor.name = y.name;

@@ -4,13 +4,14 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'categorySubstr',
 })
 export class CategorySubstrPipe implements PipeTransform {
-  transform(value: any, args?: any): any {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+  transform(value: any, _args?: any): any {
     if (value.category == 'Bedroom') {
       return value.reference.substr(0, 9).replaceAll(' ', '');
     } else if (value.category == 'Bathroom') {
-      let newLenght: number = value.reference.length;
-      let sufix: string = value.reference.substr(newLenght - 3, 3);
-      let prefix: string = value.reference.substr(1, 7);
+      const newLenght: number = value.reference.length;
+      const sufix: string = value.reference.substr(newLenght - 3, 3);
+      const prefix: string = value.reference.substr(1, 7);
       return prefix + sufix;
     }
   }

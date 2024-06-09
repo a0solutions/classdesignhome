@@ -1,19 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
 import { UserManage } from '../../services/user-manage.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
 
 @Component({
-  selector: 'signin-form',
+  selector: 'app-signin-form',
   templateUrl: './signin-form.component.html',
   styleUrls: ['./signin-form.component.css'],
 })
 export class SigninFormComponent implements OnInit {
   verify = new JwtHelperService();
-  goTo: string = 'personal';
-  processingSignIn: boolean = false;
+  goTo = 'personal';
+  processingSignIn = false;
   constructor(
     private users: UserManage,
     private route: Router,
@@ -41,7 +42,7 @@ export class SigninFormComponent implements OnInit {
     response == '400' ? this.setAlert('user-pass') : this.openSession(response);
   }
   openSession(response: string): void {
-    let token = <string>response;
+    const token = <string>response;
     this.actionLoggin(token);
   }
   actionLoggin(token: string): void {

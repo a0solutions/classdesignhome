@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable @angular-eslint/use-lifecycle-interface */
 import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import {
   CategoriesService,
@@ -11,26 +14,29 @@ import { take } from 'rxjs';
 interface sizes {
   category: string;
   size: string;
+  index: number;
 }
+
 @Component({
-  selector: 'products-filter',
+  selector: 'app-products-filter',
   templateUrl: './products-filter.component.html',
   styleUrls: ['./products-filter.component.css'],
 })
 export class ProductsFilterComponent implements OnInit {
-  @Input() categorySelected: string = '';
-  @Input() subcategorySelected: string = '';
-  url: string = urls.url;
+  @Input() categorySelected = '';
+  @Input() subcategorySelected = '';
+  url = urls.url;
   allCategories: categories[] = [];
   allColorFilters: string[] = [];
   subcategoriesFilter: string[] = [];
-  filterProducts: number = 0;
-  priceFilter: number = 0;
+  filterProducts = 0;
+  priceFilter = 0;
   sizesFilter: sizes[] = [];
   colors: string[] = [];
   products: product[] = [];
   sizeSelected: boolean[] = [];
-  showedProducts: number = 0;
+  showedProducts = 0;
+  resetColor = false;
   constructor(
     private categories: CategoriesService,
     private filter: FilterManage,
@@ -69,17 +75,19 @@ export class ProductsFilterComponent implements OnInit {
   getFiltersByCategories(filters: filter): void {
     this.colors = [];
     this.sizesFilter = [];
-
+    let index = 0;
     this.product.getProductByCategory(filters.category).forEach((y) => {
       this.colors.includes(y.color) ? null : this.colors.push(y.color);
-      let sizes: sizes = <sizes>{};
+      const sizes: sizes = <sizes>{};
       sizes.category = y.category;
       sizes.size = y.size;
+      sizes.index = index;
       this.sizesFilter.find(
         (x) => x.size === sizes.size && x.category === sizes.category
       )
         ? null
         : this.sizesFilter.push(sizes);
+      index++;
     });
   }
   findSizesFilter(category: string): boolean {
@@ -108,7 +116,7 @@ export class ProductsFilterComponent implements OnInit {
   }
   //updating filter object[subcategory]
   updateFilterSub(sub: any): void {
-    let values = sub.target.value;
+    const values = sub.target.value;
     sub.target.checked
       ? this.subcategoriesFilter.push(values)
       : this.subcategoriesFilter.splice(
@@ -144,6 +152,9 @@ export class ProductsFilterComponent implements OnInit {
   //updating filter observable in FilterServices
   updateAllFilter(): void {
     this.filter.allFilters.next(this.filter.allFilters.value);
+    setTimeout(() => {
+      this.resetColor = false;
+    }, 2000);
   }
 
   changeFilter(cardSize: string) {
@@ -151,7 +162,12 @@ export class ProductsFilterComponent implements OnInit {
   }
   clearAllFilters() {
     this.updateFilterPrice('30000');
-    this.colors = [];
+    this.sizeSelected = [];
+    this.filter.allFilters.value.size = '';
+    this.colors.splice(0, this.colors.length);
+    this.filter.allFilters.value.color = [];
+    this.allColorFilters = [];
+    this.resetColor = true;
     this.getProducts();
   }
 }

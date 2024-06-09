@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+/* eslint-disable no-cond-assign */
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
 import { product } from 'src/app/products/services/product-manage.service';
 import { urls } from 'src/app/share/services/apiurl';
 @Injectable({
@@ -13,14 +15,14 @@ export class Checkout {
   typeTax: BehaviorSubject<number> = new BehaviorSubject(0);
   url: string = urls.urlOrders;
   localList: cartProduct[] = [];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private token: TokenManage) {}
 
   checkCartList(): boolean {
-    let time = JSON.parse(<string>localStorage.getItem('timeCartList'));
+    const time = JSON.parse(<string>localStorage.getItem('timeCartList'));
     if (time) {
       this.getLocalStorage();
-      let since = Date.now() - time;
-      let sixHours = 8 * (60 * 60000);
+      const since = Date.now() - time;
+      const sixHours = 8 * (60 * 60000);
       if (since > sixHours) return true;
       return false;
     } else {
@@ -34,13 +36,13 @@ export class Checkout {
   }
 
   postLocalStorage(product: product, count: number): void {
-    let cartItem: cartProduct = { product, count };
+    const cartItem: cartProduct = { product, count };
     this.findCartItem(cartItem.product)
       ? this.upadateProductCart(cartItem)
       : this.insertNewProductCart(cartItem);
   }
   findCartItem(product: product): boolean {
-    let findedItem: cartProduct = <cartProduct>(
+    const findedItem: cartProduct = <cartProduct>(
       this.localList.find((x) => x.product.id == product.id)
     );
     if (findedItem) return true;
@@ -51,7 +53,7 @@ export class Checkout {
     this.setLocalStorage();
   }
   upadateProductCart(cartItem: cartProduct): void {
-    let index = this.localList.indexOf(
+    const index = this.localList.indexOf(
       <cartProduct>(
         this.localList.find((x) => x.product.id == cartItem.product.id)
       )
@@ -63,7 +65,7 @@ export class Checkout {
       : null;
   }
   setNewTime(): void {
-    let time = Date.now();
+    const time = Date.now();
     localStorage.setItem('timeCartList', JSON.stringify(time));
   }
   setLocalStorage(): void {
@@ -90,7 +92,7 @@ export class Checkout {
     localStorage.setItem('TempOrder', JSON.stringify(order));
   }
   getTempData(): order {
-    let order = localStorage.getItem('TempOrder');
+    const order = localStorage.getItem('TempOrder');
     return <order>JSON.parse(<string>order);
   }
   getTaxes(state: string): Observable<object> {
@@ -101,6 +103,15 @@ export class Checkout {
   }
   cancelOrder(number: string): Observable<object> {
     return this.http.post(this.url + '?cancel=true', number);
+  }
+  getUserOrders(): Observable<order[]> {
+    const token = this.token.token;
+    const userId = this.token.getUserId();
+    console.log(userId);
+    const params = new HttpParams()
+      .set('userId', userId)
+      .set('validate', token);
+    return this.http.get<order[]>(this.url, { params });
   }
 }
 
@@ -124,6 +135,8 @@ export interface order {
   date?: string;
   orderId?: string;
   state?: number;
+  canceled: string;
+  delivered: string;
 }
 export interface billing {
   billingName: string;

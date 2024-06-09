@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
 import { NavManage } from '../share/components/nav/services/navManage.service';
 import { LoaderService } from '../share/components/loader/services/loader.service';
@@ -38,9 +39,9 @@ export class CheckoutPageComponent implements OnInit {
     billing: <billing>{},
     shipping: <shipping>{},
   };
-  processingPayment: boolean = false;
-  show: boolean = false;
-  member: string = '';
+  processingPayment = false;
+  show = false;
+  member = '';
   stripe: any;
   constructor(
     private nav: NavManage,
@@ -106,7 +107,7 @@ export class CheckoutPageComponent implements OnInit {
   completeOrder(): void {
     this.finalOrder = this.checkout.getTempData();
     this.simplifyOrder();
-    this.checkout.sendOrder(this.finalOrder).subscribe((x) => {
+    this.checkout.sendOrder(this.finalOrder).subscribe(() => {
       this.modal.showModalMessage('shopSuccess');
       this.modal.answer.subscribe((answer) => {
         answer == 1

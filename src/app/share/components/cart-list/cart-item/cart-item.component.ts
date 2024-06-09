@@ -6,16 +6,16 @@ import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
 import { urls } from 'src/app/share/services/apiurl';
 
 @Component({
-  selector: 'cart-item',
+  selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.css'],
 })
 export class CartItemComponent implements OnInit {
-  @Input() itemCount: number = 0;
+  @Input() itemCount = 0;
   @Input() product: product;
   @Input() size: boolean;
-  @Input() counter: boolean = true;
-  background: string = '';
+  @Input() counter = true;
+  background = '';
   constructor(
     private chechout: Checkout,
     private substrPipe: CategorySubstrPipe,
@@ -33,7 +33,7 @@ export class CartItemComponent implements OnInit {
       '/1.jpg';
   }
   numberCount(count: number): void {
-    let product: product = this.product;
+    const product: product = this.product;
     this.chechout.upadateProductCart({ product, count });
   }
   substrByCategory(product: product): string {

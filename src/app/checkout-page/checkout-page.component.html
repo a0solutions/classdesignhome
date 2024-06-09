@@ -6,20 +6,20 @@
         @fadeUp
         class="col-lg-7 col-12 order-sm-first order-last mt-4 p-sm-2 p-lg-3"
       >
-        <checkout-form (formData)="insertForm($event)"></checkout-form>
+        <app-checkout-form (formData)="insertForm($event)"></app-checkout-form>
       </div>
       <div class="col-lg-5 col-12 order-sm-last order-first mt-4 p-sm-2 p-lg-3">
         <div class="sticky-lg-top top-nav">
-          <product-checkout
+          <app-product-checkout
             (cartItems)="insertItems($event)"
             (amount)="insertAmount($event)"
             (items)="insertItemNumber($event)"
-          ></product-checkout>
+          ></app-product-checkout>
           <button
             @fadeUp4
             (click)="sendOrder()"
             class="btn btn-dark w-100"
-            *ngIf="order.cartProducts.length != 0"
+            *ngIf="order.cartProducts.length !== 0"
           >
             <div
               *ngIf="processingPayment"

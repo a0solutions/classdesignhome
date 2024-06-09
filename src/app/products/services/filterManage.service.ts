@@ -1,4 +1,4 @@
-import { Injectable, OnChanges, SimpleChange } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class FilterManage {
   allFilters: BehaviorSubject<filter> = new BehaviorSubject(<filter>{});
   cardSize: BehaviorSubject<string> = new BehaviorSubject('col-lg-3');
-  constructor() {}
+
   resetFilters() {
     this.allFilters.next(<filter>{});
   }

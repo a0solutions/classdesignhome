@@ -1,6 +1,12 @@
 .card-text {
   font-size: 12px;
 }
+.button-quick {
+  height: 50px;
+}
+.button-quick button {
+  font-size: 12px;
+}
 .btn-social {
   top: 20px;
   right: 20px;

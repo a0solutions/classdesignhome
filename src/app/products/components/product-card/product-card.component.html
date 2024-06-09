@@ -1,7 +1,14 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/mouse-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/eqeqeq -->
 <div
-  class="card p-3 rounded-4 border-0 mx-auto cursor-pointer"
+  class="card p-3 rounded-4 border-0 mx-auto"
   style="width: 100%"
-  (click)="navigate(product.reference, product.name)"
+  (mouseover)="changeBackgound(1)"
+  (mouseover)="hover = true"
+  (mouseleave)="changeBackgound(0)"
+  (mouseleave)="hover = false"
 >
   <div class="position-absolute m-3 d-flex z-3">
     <a
@@ -23,20 +30,27 @@
   <div
     class="w-100 card-background"
     [style]="'background-image:url(' + background + ')'"
-    (mouseover)="changeBackgound(1)"
-    (mouseout)="changeBackgound(0)"
   ></div>
-
-  <div class="card-body p-0 mt-4 text-center">
+  <div class="button-quick text-center my-2">
+    <button
+      @fadeButtonCard
+      *ngIf="hover"
+      class="btn btn-light bg-white shadow-sm w-50 rounded-4 my-2 p-2 hb"
+      (click)="navigate(product.reference, product.name)"
+    >
+      Quick View
+    </button>
+  </div>
+  <div class="card-body p-0 text-center">
     <h2 class="card-title h5 fw-bolder card-title-name">{{ product.name }}</h2>
 
     <p class="ms-auto my-2">{{ product.price | currency : "USD" }}</p>
     <div class="d-flex w-100 my-3 justify-content-center">
-      <color-select
+      <app-color-select
         class="mx-1"
         *ngFor="let color of colors"
         [background]="color.color"
-      ></color-select>
+      ></app-color-select>
     </div>
   </div>
 </div>

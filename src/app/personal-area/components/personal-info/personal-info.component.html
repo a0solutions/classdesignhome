@@ -1,12 +1,12 @@
-<div class="d-flex align-items-start">
+<div class="row align-items-start">
   <div
-    class="nav flex-column w-25 nav-pills me-3 text-start pt-5"
+    class="nav col-12 nav-pills me-3 text-start p-4"
     id="v-pills-tab"
     role="tablist"
     aria-orientation="vertical"
   >
     <button
-      class="nav-link p-3 active"
+      class="px-3 active mx-2 border-2 btn btn-outline-dark rounded-3"
       id="v-pills-home-tab"
       data-bs-toggle="pill"
       data-bs-target="#v-pills-home"
@@ -18,20 +18,8 @@
       <i class="bi bi-file-person"></i>
       <span class="title-pc"> Personal Information</span>
     </button>
-    <!-- <button
-      class="nav-link p-3"
-      id="v-pills-profile-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#v-pills-profile"
-      type="button"
-      role="tab"
-      aria-controls="v-pills-profile"
-      aria-selected="false"
-    >
-      <i class="bi bi-collection"></i> Products
-    </button> -->
     <button
-      class="nav-link p-3"
+      class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
       id="v-pills-profile-tab"
       data-bs-toggle="pill"
       data-bs-target="#v-pills-profile"
@@ -40,33 +28,22 @@
       aria-controls="v-pills-profile"
       aria-selected="false"
     >
-      <i class="bi bi-box-seam"></i> Buying History
+      <i class="bi bi-box-seam"></i>
+      <span class="title-pc"> Buying History</span>
     </button>
-    <!-- <button
-      class="nav-link p-3"
-      id="v-pills-profile-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#v-pills-profile"
-      type="button"
-      role="tab"
-      aria-controls="v-pills-profile"
-      aria-selected="false"
-    >
-      <i class="bi bi-sliders"></i> Settings
-    </button> -->
   </div>
-  <div class="tab-content w-75" id="v-pills-tabContent">
+  <div class="tab-content col-12 p-4" id="v-pills-tabContent">
     <div
-      class="tab-pane fade show active px-lg-5"
+      class="tab-pane fade show active p-0"
       id="v-pills-home"
       role="tabpanel"
       aria-labelledby="v-pills-home-tab"
       tabindex="0"
     >
-      <personal-form></personal-form>
+      <app-personal-form></app-personal-form>
     </div>
     <div
-      class="tab-pane fade px-lg-5"
+      class="tab-pane fade p-0"
       id="v-pills-profile"
       role="tabpanel"
       aria-labelledby="v-pills-profile-tab"
@@ -74,18 +51,25 @@
     >
       <div class="tab-personal-item border bg-white">
         <div class="tab-personal-item-header d-flex p-4 border-bottom">
-          <div><i class="bi bi-1-square-fill me-3"></i> Buying history</div>
+          <div class="hb">
+            <i class="bi bi-1-square-fill me-3"></i> Buying history
+          </div>
         </div>
         <div class="p-4">
-          <div class="overflow-y-auto overflow-x-hidden h-70 p-1">
+          <div class="overflow-y-auto overflow-x-hidden p-1">
             <div class="row">
-              <div
-                class="col-lg-4 col-md-6 col-sm-12"
-                *ngFor="let product of printProducts"
-              >
-                <product-card [product]="product"></product-card>
-                <!-- <personal-card [product]="product"></personal-card> -->
-              </div>
+              <ng-container *ngIf="allOrders | async; else noOrders">
+                <ng-container *ngFor="let order of allOrders | async">
+                  <app-personal-card [order]="order"></app-personal-card>
+                </ng-container>
+              </ng-container>
+              <ng-template #noOrders>
+                <div class="text-center">
+                  <h4>You have no History Order</h4>
+                  <p>These section will display all your feature orders.</p>
+                  <button class="btn btn-dark">See the Products</button>
+                </div>
+              </ng-template>
             </div>
           </div>
         </div>
@@ -93,3 +77,8 @@
     </div>
   </div>
 </div>
+<article class="container mt-5">
+  <h2 class="fw-bold over-offer">Complete your home</h2>
+  <div class="separador-start"></div>
+  <app-offers [category]="'products'"></app-offers>
+</article>

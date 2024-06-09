@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from '../share/components/loader/services/loader.service';
 import { NavManage } from '../share/components/nav/services/navManage.service';
 import { NgForm } from '@angular/forms';
 import {
@@ -26,8 +25,8 @@ import { SeoService } from '../share/services/seo.service';
 })
 export class TrackingComponent implements OnInit {
   order: order = <order>{};
-  timeCountDown: string = '';
-  showCancel: boolean = true;
+  timeCountDown = '';
+  showCancel = true;
   constructor(
     private nav: NavManage,
     private checkout: Checkout,
@@ -47,7 +46,7 @@ export class TrackingComponent implements OnInit {
     });
   }
   printOrder(order: object): void {
-    let tempOrder = <order>order;
+    const tempOrder = <order>order;
     order
       ? tempOrder.state == 2
         ? this.setAlert('orderCanceled')
@@ -62,16 +61,16 @@ export class TrackingComponent implements OnInit {
     this.order.cartProducts = <cartProduct[]>this.order.cartProducts;
   }
   mathTime(): void {
-    let date = new Date(<string>this.order.date).getTime() + 583631000;
-    let now = new Date().getTime();
-    let distance = date - now;
+    const date = new Date(<string>this.order.date).getTime() + 583631000;
+    const now = new Date().getTime();
+    const distance = date - now;
     // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor(
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
     this.timeCountDown =
       days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's ';
     if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
@@ -89,7 +88,7 @@ export class TrackingComponent implements OnInit {
     });
   }
   killOrder(): void {
-    this.checkout.cancelOrder(<string>this.order.orderId).subscribe((x) => {
+    this.checkout.cancelOrder(<string>this.order.orderId).subscribe(() => {
       this.question.closeModalAsk();
       this.setAlert('CanceledOK');
       this.order = <order>{};

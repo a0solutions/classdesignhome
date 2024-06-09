@@ -11,14 +11,14 @@ import {
 } from 'src/app/share/services/animations';
 
 @Component({
-  selector: 'product-checkout',
+  selector: 'app-product-checkout',
   templateUrl: './product-checkout.component.html',
   styleUrls: ['./product-checkout.component.css'],
   animations: [fadeUp, fadeUp1, fadeUp2, fadeUp3, fadeUp4],
 })
 export class ProductCheckoutComponent implements OnInit {
-  list: number = 0;
-  subtotal: number = 0;
+  list = 0;
+  subtotal = 0;
   @Output() cartItems = new EventEmitter<cartProduct[]>();
   @Output() amount = new EventEmitter<number>();
   @Output() items = new EventEmitter<number>();

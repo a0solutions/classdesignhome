@@ -6,7 +6,7 @@ import {
 import { ProductManage } from 'src/app/products/services/product-manage.service';
 
 @Component({
-  selector: 'sidebar',
+  selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
 })
@@ -23,6 +23,7 @@ export class SidebarComponent implements OnInit {
       error: console.log.bind(this),
     });
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setCategories(categories: any): void {
     this.allCategories = <categories[]>categories;
   }
@@ -30,8 +31,9 @@ export class SidebarComponent implements OnInit {
     return this.products.getNumberBySub(sub);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   expandAccordion(accordion: any): void {
-    let id = accordion.target.id;
+    const id = accordion.target.id;
     if (document.getElementById(id)?.classList.contains('collapsed')) {
       document.getElementById(id + 'subcategories')?.classList.add('show');
       document.getElementById(id)?.classList.remove('collapsed');

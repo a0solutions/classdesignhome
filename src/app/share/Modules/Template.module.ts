@@ -18,7 +18,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
 import { LoaderService } from '../components/loader/services/loader.service';
 import { SidebarComponent } from '../components/nav/components/sidebar/sidebar.component';
 import { UserManage } from 'src/app/signin/services/user-manage.service';
-import { Component404 } from '../components/404/404.component';
+import { The404Component } from '../components/404/404.component';
 import { GoUpComponent } from '../components/goUp/goUp.component';
 import { PoliciesComponent } from '../components/policies/policies.component';
 import { SeoService } from '../services/seo.service';
@@ -33,7 +33,7 @@ import { SeoService } from '../services/seo.service';
     ModalAskComponent,
     LoaderComponent,
     SidebarComponent,
-    Component404,
+    The404Component,
     GoUpComponent,
     PoliciesComponent,
   ],
@@ -54,7 +54,7 @@ import { SeoService } from '../services/seo.service';
     AlertsComponent,
     ModalAskComponent,
     LoaderComponent,
-    Component404,
+    The404Component,
     GoUpComponent,
     PoliciesComponent,
   ],

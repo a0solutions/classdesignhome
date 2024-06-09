@@ -1,3 +1,4 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <div class="descriptions p-lg-4">
   <p class="mobile-out" @fadeUp>
     <a class="text-dark" routerLink="/">Home </a> /
@@ -23,7 +24,7 @@
         >
       </p>
       <p
-        (click)="shareProduct($event, product.id, product.name)"
+        (keydown)="shareProduct($event, product.id, product.name)"
         data-action="share/whatsapp/share"
         title="Share with friends"
       >
@@ -43,18 +44,18 @@
   <div class="my-4" @fadeUp3>
     <p class="mb-2">
       Color: <strong class="hb">{{ product.color }}</strong>
-      <span *ngIf="product.detailColor != ''">
+      <span *ngIf="product.detailColor !== ''">
         & Color Detail:
         <strong class="hb"> {{ product.detailColor }}</strong></span
       >
     </p>
     <div class="row col-6 mt-2">
       <div class="col-2" *ngFor="let color of colors">
-        <color-select
+        <app-color-select
           (click)="navigateParent(color.id, color.name)"
-          [activeColor]="color.color == product.color ? true : false"
+          [activeColor]="color.color === product.color ? true : false"
           [background]="color.color"
-        ></color-select>
+        ></app-color-select>
       </div>
     </div>
   </div>
@@ -67,8 +68,8 @@
         <button
           *ngFor="let size of sizes; index as i"
           [ngClass]="{
-            'bg-gold border-gold text-white': size == product.size,
-            'bg-light': size != product.size
+            'bg-gold border-gold text-white': size === product.size,
+            'bg-light': size !== product.size
           }"
           [title]="size"
           class="btn rounded-0 p-0 size-icon col-4"
@@ -77,6 +78,7 @@
           <img
             width="100%"
             class="p-0"
+            [alt]="product.name"
             [src]="url + 'classapi/images/app/custom-icons/' + size + '.png'"
           />
         </button>
@@ -91,8 +93,8 @@
         <button
           *ngFor="let set of sets; index as i"
           [ngClass]="{
-            'border-gold text-white': set == product.sets,
-            'bg-light': set != product.sets
+            'border-gold text-white': set === product.sets,
+            'bg-light': set !== product.sets
           }"
           [title]="set"
           class="btn rounded-0 p-0 size-icon col-4"
@@ -101,6 +103,7 @@
           <img
             width="100%"
             class="p-0"
+            [alt]="product.name"
             [src]="
               url +
               'classapi/images/app/custom-icons/' +
@@ -122,13 +125,13 @@
     <button
       *ngIf="validToAdd(); else needMember"
       (click)="addCart(product)"
-      class="btn btn-dark w-50"
+      class="btn btn-dark w-50 ms-3"
       [disabled]="!product.stock"
     >
       ADD TO CART
     </button>
     <ng-template #needMember>
-      <button (click)="goSignIn()" class="btn btn-dark w-50">
+      <button (click)="goSignIn()" class="btn btn-dark w-50 ms-3">
         SING IN FOR THIS PRODUCT
       </button>
     </ng-template>
@@ -137,5 +140,8 @@
     SKU: {{ product.reference }} &nbsp;&nbsp;&nbsp;&nbsp; Categories:
     {{ product.category | capitalize }} / {{ product.subcategory | capitalize }}
   </p>
-  <descripption-accordion @fadeUp7 [product]="product"></descripption-accordion>
+  <app-descripption-accordion
+    @fadeUp7
+    [product]="product"
+  ></app-descripption-accordion>
 </div>

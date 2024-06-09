@@ -1,4 +1,3 @@
-import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
@@ -19,7 +18,7 @@ export class AuthGuard {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    let activo: boolean = this.auth.isLogged();
+    const activo: boolean = this.auth.isLogged();
     if (activo) return true;
     this.auth.signOut();
     this.router.navigate(['/signin'], {

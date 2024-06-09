@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ProductDetailComponent } from './product-detail.component';
-import { ProductGalery } from './components/productGalery/productGalery.component';
 import { ProductDescriptionComponent } from './components/productDescription/productDescription.component';
 import { CommonModule } from '@angular/common';
 import { ShareModule } from '../share/Modules/share.module';

@@ -9,9 +9,14 @@
   font-family: "Helvetica-bold"; /*a name to be used later*/
   src: url("assets/fonts/HelveticaNeueCondensedBold.ttf"); /*URL to font*/
 }
+.accordion-button {
+  border-radius: 0px !important;
+}
+
 :root {
   --secondary-color: #ae7204;
   --bg-gray: #f1f2f2;
+  --bg-darkgray: #3e3e3e;
 }
 * {
   font-family: "Helvetica-regular", sans-serif;
@@ -20,6 +25,7 @@
 .hb {
   font-family: "Helvetica-bold", sans-serif !important ;
 }
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -29,6 +35,12 @@
 .over-offer {
   font-size: 30px !important;
 }
+.home-explore {
+  background: var(--bg-darkgray) !important;
+  font-size: "Helvetica-regular", sans-serif;
+  font-weight: 300;
+}
+
 .bg-gray {
   background: var(--bg-gray) !important;
 }

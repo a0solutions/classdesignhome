@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { fadeUp } from '../../services/animations';
 
 @Component({
@@ -9,7 +9,7 @@ import { fadeUp } from '../../services/animations';
 })
 export class ContactChatComponent {
   hideForm = true;
-  constructor() {}
+
   closeChat(event: boolean) {
     this.hideForm = event;
   }

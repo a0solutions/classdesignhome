@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {
@@ -12,12 +13,12 @@ import { ActivatedRoute } from '@angular/router';
 import { countries, states } from 'src/app/share/services/states';
 
 @Component({
-  selector: 'checkout-form',
+  selector: 'app-checkout-form',
   templateUrl: './checkout-form.component.html',
   styleUrls: ['./checkout-form.component.css'],
 })
 export class CheckoutFormComponent implements OnInit {
-  sameAddressFlag: boolean = false;
+  sameAddressFlag = false;
   shipping: shipping = <shipping>{};
   billing: billing = <billing>{};
   fillOrder: order = <order>{};
@@ -41,7 +42,7 @@ export class CheckoutFormComponent implements OnInit {
     this.shipping.shippingState = '';
   }
   getDataTemp(): void {
-    let order = this.checkout.getTempData();
+    const order = this.checkout.getTempData();
     this.fillAllBills(order.billing);
     this.isSameAddress(order.billing);
   }
@@ -63,7 +64,7 @@ export class CheckoutFormComponent implements OnInit {
   }
 
   fillAllPersonal() {
-    let id: string = this.user.getUserId();
+    const id: string = this.user.getUserId();
     this.user.getAllUserInfo(id).subscribe((x: any) => {
       x.billingEmail = x.email;
       x.billingPhone = x.phone;
@@ -107,7 +108,7 @@ export class CheckoutFormComponent implements OnInit {
   isNotSameAddress(): void {
     this.shipping = <shipping>{};
   }
-  listenForm(form: NgForm, formName: string): void {
+  listenForm(form: NgForm): void {
     form.valid ? this.sendOrder() : null;
   }
   sendOrder(): void {

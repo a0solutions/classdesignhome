@@ -1,3 +1,4 @@
+<!-- eslint-disable @angular-eslint/template/mouse-events-have-key-events -->
 <nav
   [ngClass]="{
     'bg-gradient-light border-bottom': dark,
@@ -56,10 +57,16 @@
       </div>
       <div class="m-auto">
         <a *ngIf="!dark" class="navbar-brand text-center w-50 logo-pc" href="./"
-          ><img [src]="url + 'classapi/images/logo.png'" height="50px"
+          ><img
+            [src]="url + 'classapi/images/logo.png'"
+            height="50px"
+            alt="Logo"
         /></a>
         <a *ngIf="dark" class="navbar-brand text-center w-50 logo-pc" href="./"
-          ><img [src]="url + 'classapi/images/logo-black.png'" height="50px"
+          ><img
+            [src]="url + 'classapi/images/logo-black.png'"
+            height="50px"
+            alt="Logo"
         /></a>
       </div>
     </div>
@@ -74,10 +81,18 @@
 
       <button routerLink="personal" class="btn border-0 rounded-0">
         <img
+          #userNav
+          alt="User Icon"
           [src]="
             dark
               ? 'assets/icons/user_Icon.svg'
               : 'assets/icons/user_Icon-white.svg'
+          "
+          (mouseover)="userNav.src = 'assets/icons/user_Icon-gold.svg'"
+          (mouseout)="
+            dark
+              ? (userNav.src = 'assets/icons/user_Icon.svg')
+              : (userNav.src = 'assets/icons/user_Icon-white.svg')
           "
           height="13px"
           class="cursor-pointer"
@@ -104,16 +119,24 @@
         aria-controls="offcanvasRight"
       >
         <img
+          #bagNav
+          alt="shipping icon"
           [src]="
             dark
               ? 'assets/icons/shopping-bag.svg'
               : 'assets/icons/shopping-bag-white.svg'
           "
+          (mouseover)="bagNav.src = 'assets/icons/shopping-bag-gold.svg'"
+          (mouseout)="
+            dark
+              ? (bagNav.src = 'assets/icons/shopping-bag.svg')
+              : (bagNav.src = 'assets/icons/shopping-bag-white.svg')
+          "
           height="13px"
           class="cursor-pointer"
         />
         <span
-          [ngStyle]="{ opacity: items != 0 ? 1 : 0 }"
+          [ngStyle]="{ opacity: items !== 0 ? 1 : 0 }"
           [ngClass]="{
             'bg-dark text-white': dark,
             'bg-light text-dark': !dark
@@ -126,6 +149,6 @@
     </div>
   </div>
 </nav>
-<cart-list></cart-list>
-<sidebar></sidebar>
+<app-cart-list></app-cart-list>
+<app-sidebar></app-sidebar>
 <app-alerts></app-alerts>

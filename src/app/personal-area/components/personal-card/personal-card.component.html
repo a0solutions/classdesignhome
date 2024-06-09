@@ -1,26 +1,101 @@
-<div class="card mb-3" style="max-width: 540px">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img
-        [src]="'./assets/images/' + product.category + '/products/productx.png'"
-        class="img-fluid rounded-start"
-        alt="..."
-      />
+<div class="card mb-3 w-100 shadow-sm">
+  <div class="card-body p-0">
+    <div class="d-lg-flex bg-gray p-3 rounded-top justify-content-center">
+      <p class="card-text mb-0 text-center">
+        <small class="text-body-secondary px-3"
+          ><span class="hb">Order Number:</span> {{ order.order }}</small
+        >
+      </p>
+      <p class="card-text mb-0">
+        <small class="text-body-secondary px-3"
+          ><span class="hb">Date:</span> {{ order.date | date }}</small
+        >
+      </p>
+      {{ order.state }}
+      <p class="card-text mb-0 mobile-out">
+        <span class="hb">{{ getStatus(order) }}</span>
+      </p>
+      <p class="card-text mb-0">
+        <small class="text-body-secondary px-3"
+          ><span class="hb">Total Amount:</span>
+          {{ order.amount | currency : "USD" }}</small
+        >
+      </p>
     </div>
-    <div class="col-md-8">
-      <div class="card-body ps-3 p-2">
-        <h6 class="card-title mb-0">{{ product.name }}</h6>
-        <p class="card-text mb-0">
-          <small class="text-body-secondary">{{ product.reference }}</small>
-        </p>
-        <p class="card-text mb-0">
-          <small class="text-body-secondary">{{ product.dimentions }}</small>
-        </p>
-        <p class="card-text mb-0">
-          <small class="text-body-secondary">{{
-            product.price | currency : "USD"
-          }}</small>
-        </p>
+    <div class="row p-3">
+      <div class="allProducts col-lg-10 col-12">
+        <div class="row px-2">
+          <div class="w-100 col-lg-10 col-12 mobile-out">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Qty</th>
+                  <th scope="col">Porduct Name</th>
+                  <th scope="col">Sku</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container
+                  *ngFor="let product of order.cartProducts; let first = first"
+                >
+                  <tr>
+                    <th scope="row">
+                      <small class="px-2"
+                        ><img
+                          [alt]="product.product.name"
+                          [src]="getImageUrl(product.product)"
+                          width="30px"
+                          class="shadow-sm rounded-2"
+                      /></small>
+                    </th>
+                    <td>{{ product.count }}</td>
+                    <td>{{ product.product.name }}</td>
+                    <td>{{ product.product.reference }}</td>
+                    <td>{{ product.product.price | currency : "USD" }}</td>
+                    <td>
+                      <button
+                        style="
+                          --bs-btn-padding-y: 0.25rem;
+                          --bs-btn-padding-x: 0.5rem;
+                          --bs-btn-font-size: 0.55rem;
+                        "
+                        class="btn btn-outline-dark btn-sm col-2 mt-1 w-100"
+                        (click)="
+                          navigate(
+                            product.product.reference,
+                            product.product.name
+                          )
+                        "
+                      >
+                        Quick View
+                      </button>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="allButtons col-lg-2 col-12 text-center">
+        <button
+          (click)="buyAgain()"
+          style="height: 40px"
+          class="btn btn-dark mx-2 mb-2 w-90"
+        >
+          Buy Again
+        </button>
+        <a
+          *ngIf="
+            getStatus(order) !== 'Delivered' || getStatus(order) !== 'Canceled'
+          "
+          href="/tracking/"
+          class="text-body-secondary btn btn-outline-dark w-90 mx-2 mb-3"
+          >Tracking</a
+        >
       </div>
     </div>
   </div>

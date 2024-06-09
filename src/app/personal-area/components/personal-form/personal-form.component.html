@@ -1,23 +1,12 @@
-<div class="accordion rounded-0" id="accordionExample">
-  <div class="accordion-item rounded-0">
-    <h2 class="accordion-header rounded-0">
-      <button
-        class="accordion-button h3 p-4 rounded-0"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseOne"
-        aria-expanded="true"
-        aria-controls="collapseOne"
-      >
-        <i class="bi bi-1-square-fill rounded-0 me-3"></i> Personal Information
-      </button>
-    </h2>
-    <div
-      id="collapseOne"
-      class="accordion-collapse collapse show"
-      data-bs-parent="#accordionExample"
-    >
-      <div class="accordion-body">
+<div class="tab-personal-item border bg-white">
+  <div class="tab-personal-item-header d-flex p-4 border-bottom">
+    <div class="hb text-uppercase">
+      <i class="bi bi-1-square-fill me-3"></i>Personal Information
+    </div>
+  </div>
+  <div class="p-4">
+    <div class="overflow-y-auto overflow-x-hidden p-1">
+      <div class="row">
         <form class="p-3" ngForm #personalform="ngForm">
           <div class="billing">
             <div class="row">
@@ -130,361 +119,337 @@
       </div>
     </div>
   </div>
-  <div class="accordion-item rounded-0">
-    <h2 class="accordion-header">
-      <button
-        class="accordion-button p-4 rounded-0 collapsed"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseTwo"
-        aria-expanded="false"
-        aria-controls="collapseTwo"
-      >
-        <i class="bi bi-2-square-fill me-3"></i> Shipping address
-      </button>
-    </h2>
-    <div
-      id="collapseTwo"
-      class="accordion-collapse collapse"
-      data-bs-parent="#accordionExample"
-    >
-      <div class="accordion-body rounded-0">
-        <form ngForm #shippingform="ngForm" class="p-3">
-          <div class="billing">
-            <div class="d-flex p-2 mb-3"></div>
-            <div class="row">
-              <div class="mb-3 col-lg-6 col-md-12 col-12">
-                <input
-                  [(ngModel)]="personal.shippingName"
-                  #nameShipping="ngModel"
-                  type="text"
-                  name="shipname"
-                  class="form-control rounded-0"
-                  placeholder="Name*"
-                  required
-                />
-                <small
-                  *ngIf="nameShipping.touched && nameShipping.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
-              </div>
-              <div class="mb-3 col-lg-6 col-md-12 col-12">
-                <input
-                  [(ngModel)]="personal.shippingSurname"
-                  #surnameShipping="ngModel"
-                  type="text"
-                  name="shipsurname"
-                  class="form-control rounded-0"
-                  placeholder="Surname*"
-                  required
-                />
-                <small
-                  *ngIf="surnameShipping.touched && surnameShipping.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
-              </div>
-              <div class="mb-3 col-12">
-                <input
-                  [(ngModel)]="personal.shippingAddress"
-                  #shipaddressShipping="ngModel"
-                  type="text"
-                  name="shipaddress"
-                  class="form-control rounded-0"
-                  placeholder="Address*"
-                  required
-                />
-                <small
-                  *ngIf="
-                    shipaddressShipping.touched && shipaddressShipping.invalid
-                  "
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
-              </div>
-              <div class="mb-3 col-12">
-                <input
-                  [(ngModel)]="personal.shippingAddress2"
-                  #address2="ngModel"
-                  type="text"
-                  name="shipaddress2"
-                  class="form-control rounded-0"
-                  placeholder="Address (Optional)"
-                  value=""
-                />
-              </div>
-              <div class="mb-3 col-lg-6 col-12">
-                <input
-                  [(ngModel)]="personal.shippingCity"
-                  #cityShipping="ngModel"
-                  type="text"
-                  name="shipcity"
-                  class="form-control rounded-0"
-                  placeholder="City*"
-                  required
-                />
-                <small
-                  *ngIf="cityShipping.touched && cityShipping.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
-              </div>
-              <div class="mb-3 col-lg-6 col-12">
-                <input
-                  [(ngModel)]="personal.shippingZip"
-                  #zipShipping="ngModel"
-                  type="text"
-                  name="shipzip"
-                  class="form-control rounded-0"
-                  placeholder="Zip code*"
-                  required
-                />
-                <small
-                  *ngIf="zipShipping.touched && zipShipping.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
-              </div>
-              <div
-                class="mb-3 col-lg-6 col-12"
-                [style]="
-                  countryShipping.value == 'United States'
-                    ? 'display:block'
-                    : 'display:none'
-                "
-              >
-                <select
-                  [(ngModel)]="personal.shippingState"
-                  #State="ngModel"
-                  name="shipstate"
-                  class="form-select rounded-0"
-                  required
-                >
-                  <option value="" selected>State*</option>
-                  <option *ngFor="let state of states" [value]="state">
-                    {{ state }}
-                  </option>
-                </select>
+</div>
 
-                <p *ngIf="State.touched && State.invalid">
-                  <i class="bi bi-exclamation-square"></i>
-                </p>
-              </div>
-              <div class="mb-3 col-lg-6 col-12">
-                <select
-                  [(ngModel)]="personal.shippingCountry"
-                  #countryShipping="ngModel"
-                  name="shipcountry"
-                  class="form-select rounded-0"
-                  required
-                >
-                  <option value="" selected>Country*</option>
-                  <option *ngFor="let country of countries" [value]="country">
-                    {{ country }}
-                  </option>
-                </select>
-
-                <p *ngIf="countryShipping.touched && countryShipping.invalid">
-                  <i class="bi bi-exclamation-square"></i>
-                </p>
-              </div>
-              <div class="mb-3 col-lg-6 col-12">
-                <input
-                  [(ngModel)]="personal.shippingPhone"
-                  #phoneShipping="ngModel"
-                  type="tel"
-                  name="shipphone"
-                  class="form-control rounded-0"
-                  placeholder="Contact phone*"
-                  required
-                />
-                <small
-                  *ngIf="phoneShipping.touched && phoneShipping.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
-              </div>
-            </div>
-          </div>
-          <button
-            class="btn btn-dark p-3 mt-3 rounded-0"
-            (click)="submit(shippingform, 'shipping')"
-          >
-            Update Information
-          </button>
-        </form>
-      </div>
+<div class="tab-personal-item border bg-white">
+  <div class="tab-personal-item-header d-flex p-4 border-bottom">
+    <div class="hb text-uppercase">
+      <i class="bi bi-2-square-fill me-3"></i>Shipping Information
     </div>
   </div>
-  <div class="accordion-item rounded-0">
-    <h2 class="accordion-header">
-      <button
-        class="accordion-button p-4 rounded-0 collapsed"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseThree"
-        aria-expanded="false"
-        aria-controls="collapseThree"
-      >
-        <i class="bi bi-3-square-fill me-3"></i> Billing Information
-      </button>
-    </h2>
-    <div
-      id="collapseThree"
-      class="accordion-collapse collapse"
-      data-bs-parent="#accordionExample"
-    >
-      <div class="accordion-body rounded-0">
-        <form ngForm #billingform="ngForm" class="p-3">
-          <div class="billing">
-            <div class="d-flex p-2 mb-3"></div>
-            <div class="row">
-              <div class="mb-3 col-lg-6 col-md-12 col-12">
-                <input
-                  [(ngModel)]="personal.billingName"
-                  #nameBilling="ngModel"
-                  type="text"
-                  name="billname"
-                  class="form-control rounded-0"
-                  placeholder="Name*"
-                  required
-                />
-                <small
-                  *ngIf="nameBilling.touched && nameBilling.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
-              </div>
-              <div class="mb-3 col-lg-6 col-md-12 col-12">
-                <input
-                  [(ngModel)]="personal.billingSurname"
-                  #surnameBilling="ngModel"
-                  type="text"
-                  name="billsurname"
-                  class="form-control rounded-0"
-                  placeholder="Surname*"
-                  required
-                />
-                <small
-                  *ngIf="surnameBilling.touched && surnameBilling.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
-              </div>
-              <div class="mb-3 col-12">
-                <input
-                  [(ngModel)]="personal.billingAddress"
-                  #shipaddressBilling="ngModel"
-                  type="text"
-                  name="billaddress"
-                  class="form-control rounded-0"
-                  placeholder="Address*"
-                  required
-                />
-                <small
-                  *ngIf="
-                    shipaddressBilling.touched && shipaddressBilling.invalid
-                  "
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
-              </div>
-              <div class="mb-3 col-12">
-                <input
-                  [(ngModel)]="personal.billingAddress2"
-                  #billingaddress2="ngModel"
-                  type="text"
-                  name="billaddress2"
-                  class="form-control rounded-0"
-                  placeholder="Address (Optional)"
-                  value=""
-                />
-              </div>
-              <div class="mb-3 col-lg-6 col-12">
-                <input
-                  [(ngModel)]="personal.billingCity"
-                  #cityBilling="ngModel"
-                  type="text"
-                  name="billcity"
-                  class="form-control rounded-0"
-                  placeholder="City*"
-                  required
-                />
-                <small
-                  *ngIf="cityBilling.touched && cityBilling.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
-              </div>
-              <div class="mb-3 col-lg-6 col-12">
-                <input
-                  [(ngModel)]="personal.billingZip"
-                  #zipBilling="ngModel"
-                  type="text"
-                  name="billzip"
-                  class="form-control rounded-0"
-                  placeholder="Zip code*"
-                  required
-                />
-                <small
-                  *ngIf="zipBilling.touched && zipBilling.invalid"
-                  class="text-muted p-3"
-                  >This field is required</small
-                >
-              </div>
-              <div
-                class="mb-3 col-lg-6 col-12"
-                [style]="
-                  countryBilling.value == 'United States'
-                    ? 'display:block'
-                    : 'display:none'
-                "
+  <div class="p-4">
+    <div class="overflow-y-auto overflow-x-hidden p-1">
+      <form ngForm #shippingform="ngForm" class="p-3">
+        <div class="billing">
+          <div class="d-flex p-2 mb-3"></div>
+          <div class="row">
+            <div class="mb-3 col-lg-6 col-md-12 col-12">
+              <input
+                [(ngModel)]="personal.shippingName"
+                #nameShipping="ngModel"
+                type="text"
+                name="shipname"
+                class="form-control rounded-0"
+                placeholder="Name*"
+                required
+              />
+              <small
+                *ngIf="nameShipping.touched && nameShipping.invalid"
+                class="text-muted p-3"
+                >This field is required</small
               >
-                <select
-                  [(ngModel)]="personal.billingState"
-                  #State="ngModel"
-                  name="billstate"
-                  class="form-select rounded-0"
-                >
-                  <option value="" selected>State*</option>
-                  <option *ngFor="let state of states" [value]="state">
-                    {{ state }}
-                  </option>
-                </select>
+            </div>
+            <div class="mb-3 col-lg-6 col-md-12 col-12">
+              <input
+                [(ngModel)]="personal.shippingSurname"
+                #surnameShipping="ngModel"
+                type="text"
+                name="shipsurname"
+                class="form-control rounded-0"
+                placeholder="Surname*"
+                required
+              />
+              <small
+                *ngIf="surnameShipping.touched && surnameShipping.invalid"
+                class="text-muted p-3"
+                >This field is required</small
+              >
+            </div>
+            <div class="mb-3 col-12">
+              <input
+                [(ngModel)]="personal.shippingAddress"
+                #shipaddressShipping="ngModel"
+                type="text"
+                name="shipaddress"
+                class="form-control rounded-0"
+                placeholder="Address*"
+                required
+              />
+              <small
+                *ngIf="
+                  shipaddressShipping.touched && shipaddressShipping.invalid
+                "
+                class="text-muted p-3"
+                >This field is required</small
+              >
+            </div>
+            <div class="mb-3 col-12">
+              <input
+                [(ngModel)]="personal.shippingAddress2"
+                #address2="ngModel"
+                type="text"
+                name="shipaddress2"
+                class="form-control rounded-0"
+                placeholder="Address (Optional)"
+                value=""
+              />
+            </div>
+            <div class="mb-3 col-lg-6 col-12">
+              <input
+                [(ngModel)]="personal.shippingCity"
+                #cityShipping="ngModel"
+                type="text"
+                name="shipcity"
+                class="form-control rounded-0"
+                placeholder="City*"
+                required
+              />
+              <small
+                *ngIf="cityShipping.touched && cityShipping.invalid"
+                class="text-muted p-3"
+                >This field is required</small
+              >
+            </div>
+            <div class="mb-3 col-lg-6 col-12">
+              <input
+                [(ngModel)]="personal.shippingZip"
+                #zipShipping="ngModel"
+                type="text"
+                name="shipzip"
+                class="form-control rounded-0"
+                placeholder="Zip code*"
+                required
+              />
+              <small
+                *ngIf="zipShipping.touched && zipShipping.invalid"
+                class="text-muted p-3"
+                >This field is required</small
+              >
+            </div>
+            <div
+              class="mb-3 col-lg-6 col-12"
+              [style]="
+                countryShipping.value === 'United States'
+                  ? 'display:block'
+                  : 'display:none'
+              "
+            >
+              <select
+                [(ngModel)]="personal.shippingState"
+                #State="ngModel"
+                name="shipstate"
+                class="form-select rounded-0"
+                required
+              >
+                <option value="" selected>State*</option>
+                <option *ngFor="let state of states" [value]="state">
+                  {{ state }}
+                </option>
+              </select>
 
-                <p *ngIf="State.touched && State.invalid">
-                  <i class="bi bi-exclamation-square"></i>
-                </p>
-              </div>
-              <div class="mb-3 col-lg-6 col-12">
-                <select
-                  [(ngModel)]="personal.billingCountry"
-                  #countryBilling="ngModel"
-                  name="billcountry"
-                  class="form-select rounded-0"
-                  required
-                >
-                  <option value="" selected>Country*</option>
-                  <option *ngFor="let country of countries" [value]="country">
-                    {{ country }}
-                  </option>
-                </select>
+              <p *ngIf="State.touched && State.invalid">
+                <i class="bi bi-exclamation-square"></i>
+              </p>
+            </div>
+            <div class="mb-3 col-lg-6 col-12">
+              <select
+                [(ngModel)]="personal.shippingCountry"
+                #countryShipping="ngModel"
+                name="shipcountry"
+                class="form-select rounded-0"
+                required
+              >
+                <option value="" selected>Country*</option>
+                <option *ngFor="let country of countries" [value]="country">
+                  {{ country }}
+                </option>
+              </select>
 
-                <p *ngIf="countryBilling.touched && countryBilling.invalid">
-                  <i class="bi bi-exclamation-square"></i>
-                </p>
-              </div>
+              <p *ngIf="countryShipping.touched && countryShipping.invalid">
+                <i class="bi bi-exclamation-square"></i>
+              </p>
+            </div>
+            <div class="mb-3 col-lg-6 col-12">
+              <input
+                [(ngModel)]="personal.shippingPhone"
+                #phoneShipping="ngModel"
+                type="tel"
+                name="shipphone"
+                class="form-control rounded-0"
+                placeholder="Contact phone*"
+                required
+              />
+              <small
+                *ngIf="phoneShipping.touched && phoneShipping.invalid"
+                class="text-muted p-3"
+                >This field is required</small
+              >
             </div>
           </div>
-          <button
-            class="btn btn-dark p-3 mt-3 rounded-0"
-            (click)="submit(billingform, 'billing')"
-          >
-            Update Information
-          </button>
-        </form>
-      </div>
+        </div>
+        <button
+          class="btn btn-dark p-3 mt-3 rounded-0"
+          (click)="submit(shippingform, 'shipping')"
+        >
+          Update Information
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="tab-personal-item border bg-white">
+  <div class="tab-personal-item-header d-flex p-4 border-bottom">
+    <div class="hb text-uppercase">
+      <i class="bi bi-3-square-fill me-3"></i>Billing Information
+    </div>
+  </div>
+  <div class="p-4">
+    <div class="overflow-y-auto overflow-x-hidden p-1">
+      <form ngForm #billingform="ngForm" class="p-3">
+        <div class="billing">
+          <div class="row">
+            <div class="mb-3 col-lg-6 col-md-12 col-12">
+              <input
+                [(ngModel)]="personal.billingName"
+                #nameBilling="ngModel"
+                type="text"
+                name="billname"
+                class="form-control rounded-0"
+                placeholder="Name*"
+                required
+              />
+              <small
+                *ngIf="nameBilling.touched && nameBilling.invalid"
+                class="text-muted p-3"
+                >This field is required</small
+              >
+            </div>
+            <div class="mb-3 col-lg-6 col-md-12 col-12">
+              <input
+                [(ngModel)]="personal.billingSurname"
+                #surnameBilling="ngModel"
+                type="text"
+                name="billsurname"
+                class="form-control rounded-0"
+                placeholder="Surname*"
+                required
+              />
+              <small
+                *ngIf="surnameBilling.touched && surnameBilling.invalid"
+                class="text-muted p-3"
+                >This field is required</small
+              >
+            </div>
+            <div class="mb-3 col-12">
+              <input
+                [(ngModel)]="personal.billingAddress"
+                #shipaddressBilling="ngModel"
+                type="text"
+                name="billaddress"
+                class="form-control rounded-0"
+                placeholder="Address*"
+                required
+              />
+              <small
+                *ngIf="shipaddressBilling.touched && shipaddressBilling.invalid"
+                class="text-muted p-3"
+                >This field is required</small
+              >
+            </div>
+            <div class="mb-3 col-12">
+              <input
+                [(ngModel)]="personal.billingAddress2"
+                #billingaddress2="ngModel"
+                type="text"
+                name="billaddress2"
+                class="form-control rounded-0"
+                placeholder="Address (Optional)"
+                value=""
+              />
+            </div>
+            <div class="mb-3 col-lg-6 col-12">
+              <input
+                [(ngModel)]="personal.billingCity"
+                #cityBilling="ngModel"
+                type="text"
+                name="billcity"
+                class="form-control rounded-0"
+                placeholder="City*"
+                required
+              />
+              <small
+                *ngIf="cityBilling.touched && cityBilling.invalid"
+                class="text-muted p-3"
+                >This field is required</small
+              >
+            </div>
+            <div class="mb-3 col-lg-6 col-12">
+              <input
+                [(ngModel)]="personal.billingZip"
+                #zipBilling="ngModel"
+                type="text"
+                name="billzip"
+                class="form-control rounded-0"
+                placeholder="Zip code*"
+                required
+              />
+              <small
+                *ngIf="zipBilling.touched && zipBilling.invalid"
+                class="text-muted p-3"
+                >This field is required</small
+              >
+            </div>
+            <div
+              class="mb-3 col-lg-6 col-12"
+              [style]="
+                countryBilling.value === 'United States'
+                  ? 'display:block'
+                  : 'display:none'
+              "
+            >
+              <select
+                [(ngModel)]="personal.billingState"
+                #State="ngModel"
+                name="billstate"
+                class="form-select rounded-0"
+              >
+                <option value="" selected>State*</option>
+                <option *ngFor="let state of states" [value]="state">
+                  {{ state }}
+                </option>
+              </select>
+
+              <p *ngIf="State.touched && State.invalid">
+                <i class="bi bi-exclamation-square"></i>
+              </p>
+            </div>
+            <div class="mb-3 col-lg-6 col-12">
+              <select
+                [(ngModel)]="personal.billingCountry"
+                #countryBilling="ngModel"
+                name="billcountry"
+                class="form-select rounded-0"
+                required
+              >
+                <option value="" selected>Country*</option>
+                <option *ngFor="let country of countries" [value]="country">
+                  {{ country }}
+                </option>
+              </select>
+
+              <p *ngIf="countryBilling.touched && countryBilling.invalid">
+                <i class="bi bi-exclamation-square"></i>
+              </p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="btn btn-dark p-3 mt-3 rounded-0"
+          (click)="submit(billingform, 'billing')"
+        >
+          Update Information
+        </button>
+      </form>
     </div>
   </div>
 </div>

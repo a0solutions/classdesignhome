@@ -43,7 +43,7 @@
     </div>
   </div>
 </article>
-<article class="container" *ngIf="order.items != undefined">
+<article class="container" *ngIf="order.items !== undefined">
   <!--*ngIf="order.items != undefined" -->
   <div class="container">
     <div class="row">
@@ -76,42 +76,44 @@
             <h5>Purchase date</h5>
             <p>{{ order.date }}</p>
           </div>
-          <div
-            class="col-lg-12 col-12 p-3"
-            *ngFor="let product of order.cartProducts"
-          >
-            <cart-item
-              [product]="product.product"
-              [size]="true"
-              [counter]="false"
-              [itemCount]="product.count"
-              class="p-0 mt-3"
-            ></cart-item>
-          </div>
-
-          <div class="col-lg-12 col-12 p-3" *ngIf="showCancel">
-            <button
-              class="btn btn-dark w-100 rounded-0 p-3"
-              (click)="cancelOrder()"
-            >
-              Cancel my order {{ timeCountDown }}
-            </button>
-          </div>
+          <ng-container *ngFor="let product of order.cartProducts">
+            <div class="col-lg-12 col-12 p-3">
+              <app-cart-item
+                [product]="product.product"
+                [size]="true"
+                [counter]="false"
+                [itemCount]="product.count"
+                class="p-0 mt-3"
+              ></app-cart-item>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="showCancel">
+            <div class="col-lg-12 col-12 p-3">
+              <button
+                class="btn btn-dark w-100 rounded-0 p-3"
+                (click)="cancelOrder()"
+              >
+                Cancel my order {{ timeCountDown }}
+              </button>
+            </div>
+          </ng-container>
         </div>
       </div>
 
       <div class="col-lg-6 col-12 animate__animated animate__fadeInUp">
         <div class="page-header">
           <h2 class="fw-bolder">Timeline</h2>
-          <p *ngIf="order.atelier == null">
-            We are preparing for the journey of your order, and it will commence
-            shortly.
-          </p>
+          <ng-container *ngIf="order.atelier === null">
+            <p>
+              We are preparing for the journey of your order, and it will
+              commence shortly.
+            </p>
+          </ng-container>
         </div>
         <ul class="timeline">
           <li
             class="timeline-inverted"
-            [ngClass]="{ 'muted-step': order.atelier == null }"
+            [ngClass]="{ 'muted-step': order.atelier === null }"
           >
             <div class="timeline-badge warning">
               <i class="glyphicon glyphicon-credit-card"></i>
@@ -119,7 +121,7 @@
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <h4 class="timeline-title">The Artisan's Atelier</h4>
-                <p>{{ order.atelier != null ? order.atelier : "" }}</p>
+                <p>{{ order.atelier !== null ? order.atelier : "" }}</p>
               </div>
               <div class="timeline-body">
                 <p>
@@ -134,7 +136,7 @@
 
           <li
             class="timeline-inverted"
-            [ngClass]="{ 'muted-step': order.oceanic == null }"
+            [ngClass]="{ 'muted-step': order.oceanic === null }"
           >
             <div class="timeline-badge warning">
               <i class="glyphicon glyphicon-credit-card"></i>
@@ -142,7 +144,7 @@
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <h4 class="timeline-title">Oceanic Voyage</h4>
-                <p>{{ order.oceanic != null ? order.oceanic : "" }}</p>
+                <p>{{ order.oceanic !== null ? order.oceanic : "" }}</p>
               </div>
               <div class="timeline-body">
                 <p>
@@ -157,7 +159,7 @@
           </li>
           <li
             class="timeline-inverted"
-            [ngClass]="{ 'muted-step': order.finale == null }"
+            [ngClass]="{ 'muted-step': order.finale === null }"
           >
             <div class="timeline-badge warning">
               <i class="glyphicon glyphicon-credit-card"></i>
@@ -165,7 +167,7 @@
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <h4 class="timeline-title">The Masterpiece Finale</h4>
-                <p>{{ order.finale != null ? order.finale : "" }}</p>
+                <p>{{ order.finale !== null ? order.finale : "" }}</p>
               </div>
               <div class="timeline-body">
                 <p>
@@ -185,7 +187,7 @@
 
           <li
             class="timeline-inverted"
-            [ngClass]="{ 'muted-step': order.roadshow == null }"
+            [ngClass]="{ 'muted-step': order.roadshow === null }"
           >
             <div class="timeline-badge warning">
               <i class="glyphicon glyphicon-credit-card"></i>
@@ -193,7 +195,7 @@
             <div class="timeline-panel">
               <div class="timeline-heading">
                 <h4 class="timeline-title">The Great American Roadshow</h4>
-                <p>{{ order.roadshow != null ? order.roadshow : "" }}</p>
+                <p>{{ order.roadshow !== null ? order.roadshow : "" }}</p>
               </div>
               <div class="timeline-body">
                 <p>

@@ -1,13 +1,13 @@
 <div class="cart-items py-3" @fadeUp2>
-  <div *ngFor="let product of printList">
-    <cart-item
+  <ng-container *ngFor="let product of printList">
+    <app-cart-item
       [product]="product.product"
       [size]="size"
       [itemCount]="product.count"
-    ></cart-item>
-  </div>
+    ></app-cart-item>
+  </ng-container>
 </div>
-<div class="cart-checkout" @fadeUp3 *ngIf="total != 0; else emptyCart">
+<div class="cart-checkout" @fadeUp3 *ngIf="total !== 0; else emptyCart">
   <div class="border-top py-4">
     <div class="w-100 d-flex mb-3 border-bottom">
       <div class="me-auto">Shipping 6-8 weeks</div>
@@ -52,7 +52,12 @@
 </div>
 <ng-template #emptyCart>
   <div class="text-center mb-3 border-bottom">
-    <img src="assets/icons/shopping-bag.svg" height="180px" class="mb-3" />
+    <img
+      alt="Shopping icon"
+      src="assets/icons/shopping-bag.svg"
+      height="180px"
+      class="mb-3"
+    />
   </div>
   <h3 class="text-center">Your cart is empty</h3>
   <p class="text-center">Looks like you have not added anything to the cart</p>

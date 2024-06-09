@@ -9,9 +9,9 @@ import { fadeUp } from '../../services/animations';
   animations: [fadeUp],
 })
 export class ModalAskComponent implements OnInit {
-  title: string = '';
-  text: string = '';
-  show: boolean = false;
+  title = '';
+  text = '';
+  show = false;
   constructor(private modal: ModalAskManage) {}
   ngOnInit(): void {
     this.modal.show.subscribe({ next: this.showModalManage.bind(this) });

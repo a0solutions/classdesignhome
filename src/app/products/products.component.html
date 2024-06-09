@@ -33,11 +33,11 @@
   </div>
 </article>
 <div class="bg-white container border-bottom filter-table" @fadeUp1>
-  <products-filter
+  <app-products-filter
     [categorySelected]="category"
     [subcategorySelected]="subcategory"
-  ></products-filter>
+  ></app-products-filter>
 </div>
 <article class="container mt-5">
-  <productList [category]="category"></productList>
+  <app-product-list [category]="category"></app-product-list>
 </article>

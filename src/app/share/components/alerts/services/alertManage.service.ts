@@ -8,9 +8,9 @@ export class AlertManage {
   show: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   message: BehaviorSubject<string> = new BehaviorSubject<string>('');
   title: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  constructor() {}
 
   setAlertMessage(code: string): void {
+    console.log(code);
     this.selectMessage(code);
     this.show.next(true);
   }

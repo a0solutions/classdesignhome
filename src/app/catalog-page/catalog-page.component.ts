@@ -11,7 +11,7 @@ import {
 import { SeoService } from '../share/services/seo.service';
 
 @Component({
-  selector: 'catalog-page',
+  selector: 'app-catalog-page',
   templateUrl: './catalog-page.component.html',
   styleUrls: ['./catalog-page.component.css'],
   animations: [fadeLeft, fadeUp, fadeUp1, fadeUp2, fadeUp3],
