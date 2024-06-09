@@ -137,6 +137,7 @@ export interface order {
   state?: number;
   canceled: string;
   delivered: string;
+  taxes: number;
 }
 export interface billing {
   billingName: string;

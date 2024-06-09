@@ -3,8 +3,6 @@ import {
   Checkout,
   cartProduct,
 } from '../../../share/services/checkout.service';
-import { ProductManage } from 'src/app/share/services/product-manage.service';
-import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import {
   fadeUp,
   fadeUp1,
@@ -25,11 +23,7 @@ export class ProductCheckoutComponent implements OnInit {
   @Output() cartItems = new EventEmitter<cartProduct[]>();
   @Output() amount = new EventEmitter<number>();
   @Output() items = new EventEmitter<number>();
-  constructor(
-    private checkout: Checkout,
-    private products: ProductManage,
-    private alerts: AlertManage
-  ) {}
+  constructor(private checkout: Checkout) {}
 
   ngOnInit(): void {
     this.checkout.items.subscribe({

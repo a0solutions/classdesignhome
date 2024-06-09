@@ -6,6 +6,7 @@
     <div class="separador-centrado mb-5 mt-3" @fadeUp1></div>
   </div>
 </article>
+
 <article class="container">
   <div class="row">
     <div class="col-lg-6 col-md-6 col-12 mx-auto">
@@ -43,176 +44,203 @@
     </div>
   </div>
 </article>
-<article class="container" *ngIf="order.items !== undefined">
-  <!--*ngIf="order.items != undefined" -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 col-12 animate__animated animate__fadeInUp">
-        <div class="page-header">
-          <h2 class="fw-bolder mb-4">Order Details</h2>
-        </div>
-        <div class="row me-4 p-3 sticky-lg-top details">
-          <div class="col-lg-4 col-12 p-3">
-            <h5>Tracking number</h5>
-            <p>{{ order.trackingNumber }}</p>
-          </div>
-          <div class="col-lg-4 col-12 p-3 border-start">
-            <h5>Shipping address</h5>
-            <p *ngIf="order.shipping">
-              {{
-                order.shipping.shippingAddress +
-                  order.shipping.shippingAddress2 +
-                  ", " +
-                  order.shipping.shippingZip +
-                  ", " +
-                  order.shipping.shippingCity +
-                  ", " +
-                  order.shipping.shippingState +
-                  order.shipping.shippingCountry
-              }}
-            </p>
-          </div>
-          <div class="col-lg-4 col-12 p-3 border-start">
-            <h5>Purchase date</h5>
-            <p>{{ order.date }}</p>
-          </div>
-          <ng-container *ngFor="let product of order.cartProducts">
-            <div class="col-lg-12 col-12 p-3">
-              <app-cart-item
-                [product]="product.product"
-                [size]="true"
-                [counter]="false"
-                [itemCount]="product.count"
-                class="p-0 mt-3"
-              ></app-cart-item>
+<ng-container *ngIf="order.items !== undefined">
+  <article @fadeUp class="container my-4">
+    <div class="separador-menu"></div>
+    <h2 class="h5">Order: {{ order.order }}</h2>
+  </article>
+
+  <article @fadeUp1 class="container">
+    <div class="text-center">
+      <h4 [class]="this.getCurrentStatus().status === 5 ? 'text-danger' : null">
+        {{ this.getCurrentStatus().title }}
+      </h4>
+      <ng-container *ngIf="this.getCurrentStatus().status === 5">
+        <p
+          [class]="this.getCurrentStatus().status === 5 ? 'text-danger' : null"
+        >
+          {{ order.canceled }}
+        </p>
+      </ng-container>
+      <p>
+        {{ this.getCurrentStatus().subtitle }}
+      </p>
+    </div>
+    <ng-container *ngIf="this.getCurrentStatus().status !== 5">
+      <div class="mx-auto">
+        <div class="timeline">
+          <div class="active" style="width: 0%">
+            <div class="start">
+              <span>Order placed</span>
             </div>
-          </ng-container>
-          <ng-container *ngIf="showCancel">
-            <div class="col-lg-12 col-12 p-3">
-              <button
-                class="btn btn-dark w-100 rounded-0 p-3"
-                (click)="cancelOrder()"
-              >
-                Cancel my order {{ timeCountDown }}
-              </button>
+          </div>
+          <div
+            [class]="
+              this.getCurrentStatus().status >= 1 ? 'active' : 'inactive'
+            "
+            style="width: 20%"
+          >
+            <div
+              [class]="
+                this.getCurrentStatus().status >= 1 ? 'start' : 'inactive-start'
+              "
+            >
+              <span>Atelier</span>
             </div>
-          </ng-container>
+          </div>
+          <div
+            [class]="
+              this.getCurrentStatus().status >= 2 ? 'active' : 'inactive'
+            "
+            style="width: 20%"
+          >
+            <div
+              [class]="
+                this.getCurrentStatus().status >= 2 ? 'start' : 'inactive-start'
+              "
+            >
+              <span>Oceanic</span>
+            </div>
+          </div>
+          <div
+            [class]="
+              this.getCurrentStatus().status >= 3 ? 'active' : 'inactive'
+            "
+            style="width: 20%"
+          >
+            <div
+              [class]="
+                this.getCurrentStatus().status >= 3 ? 'start' : 'inactive-start'
+              "
+            >
+              <span>Finale</span>
+            </div>
+          </div>
+          <div
+            [class]="
+              this.getCurrentStatus().status >= 4 ? 'active' : 'inactive'
+            "
+            style="width: 20%"
+          >
+            <div
+              [class]="
+                this.getCurrentStatus().status >= 4 ? 'start' : 'inactive-start'
+              "
+            >
+              <span>Roadshow</span>
+            </div>
+          </div>
+          <div
+            [class]="
+              this.getCurrentStatus().status === 6 ? 'active' : 'inactive'
+            "
+            style="width: 20%"
+          >
+            <div
+              [class]="
+                this.getCurrentStatus().status === 6
+                  ? 'start'
+                  : 'inactive-start'
+              "
+            >
+              <span>Order delivered</span>
+            </div>
+          </div>
         </div>
       </div>
+    </ng-container>
+  </article>
 
-      <div class="col-lg-6 col-12 animate__animated animate__fadeInUp">
-        <div class="page-header">
-          <h2 class="fw-bolder">Timeline</h2>
-          <ng-container *ngIf="order.atelier === null">
-            <p>
-              We are preparing for the journey of your order, and it will
-              commence shortly.
-            </p>
-          </ng-container>
-        </div>
-        <ul class="timeline">
-          <li
-            class="timeline-inverted"
-            [ngClass]="{ 'muted-step': order.atelier === null }"
-          >
-            <div class="timeline-badge warning">
-              <i class="glyphicon glyphicon-credit-card"></i>
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4 class="timeline-title">The Artisan's Atelier</h4>
-                <p>{{ order.atelier !== null ? order.atelier : "" }}</p>
-              </div>
-              <div class="timeline-body">
-                <p>
-                  Production - "The Artisan's Atelier": This phase can be
-                  visualized as the creative birthplace of the product, where
-                  skilled artisans and craftsmen meticulously shape and craft
-                  the piece.
-                </p>
-              </div>
-            </div>
-          </li>
-
-          <li
-            class="timeline-inverted"
-            [ngClass]="{ 'muted-step': order.oceanic === null }"
-          >
-            <div class="timeline-badge warning">
-              <i class="glyphicon glyphicon-credit-card"></i>
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4 class="timeline-title">Oceanic Voyage</h4>
-                <p>{{ order.oceanic !== null ? order.oceanic : "" }}</p>
-              </div>
-              <div class="timeline-body">
-                <p>
-                  Shipping Container on Boat - "Oceanic Voyage": This stage
-                  represents the journey of the product across the sea,
-                  encapsulating the idea of travel and exploration. It could be
-                  visualized with a stylized representation of a ship navigating
-                  through the waves.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li
-            class="timeline-inverted"
-            [ngClass]="{ 'muted-step': order.finale === null }"
-          >
-            <div class="timeline-badge warning">
-              <i class="glyphicon glyphicon-credit-card"></i>
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4 class="timeline-title">The Masterpiece Finale</h4>
-                <p>{{ order.finale !== null ? order.finale : "" }}</p>
-              </div>
-              <div class="timeline-body">
-                <p>
-                  Quality Control and Packaging in the US - "The Masterpiece
-                  Finale": In this stage, each product undergoes a meticulous
-                  quality control process, ensuring every detail adheres to the
-                  highest standards. It's then elegantly packaged in its final
-                  box, symbolizing the culmination of artistry and
-                  craftsmanship. This phase could be depicted artistically as a
-                  careful and precise final touch in an artist's studio, where
-                  the masterpiece is completed and prepared for its grand
-                  reveal.
-                </p>
-              </div>
-            </div>
-          </li>
-
-          <li
-            class="timeline-inverted"
-            [ngClass]="{ 'muted-step': order.roadshow === null }"
-          >
-            <div class="timeline-badge warning">
-              <i class="glyphicon glyphicon-credit-card"></i>
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4 class="timeline-title">The Great American Roadshow</h4>
-                <p>{{ order.roadshow !== null ? order.roadshow : "" }}</p>
-              </div>
-              <div class="timeline-body">
-                <p>
-                  Truck Shipping Continental US - "The Great American Roadshow":
-                  This final step symbolizes the product's journey across the
-                  continent, reaching its final destination. It can be depicted
-                  as a vintage or modern truck traveling through iconic American
-                  landscapes.
-                </p>
-              </div>
-            </div>
-          </li>
-        </ul>
+  <article @fadeUp2 class="container">
+    <!--*ngIf="order.items != undefined" -->
+    <div class="container">
+      <div class="p-3 sticky-lg-top details">
+        <ng-container *ngIf="order.trackingNumber">
+          <p>
+            <span class="hb">Tracking number:</span>
+            {{ order.trackingNumber }}
+          </p>
+        </ng-container>
+        <p *ngIf="order.shipping">
+          <span class="hb">Shipping address:</span>
+          {{
+            order.shipping.shippingAddress +
+              order.shipping.shippingAddress2 +
+              ", " +
+              order.shipping.shippingZip +
+              ", " +
+              order.shipping.shippingCity +
+              ", " +
+              order.shipping.shippingState +
+              order.shipping.shippingCountry
+          }}
+        </p>
+        <p><span class="hb">Purchase date:</span> {{ order.date }}</p>
       </div>
     </div>
-  </div>
-</article>
+  </article>
+  <article @fadeUp3 class="container pt-4 border-top">
+    <h2 class="h5">Item Ordered</h2>
+    <ng-container *ngFor="let product of order.cartProducts">
+      <div class="p-3">
+        <div class="bg-gray rounded-2 p-2">
+          <div class="row">
+            <div class="col-lg-4 d-flex align-items-center">
+              <p class="mb-0">
+                <img
+                  [src]="getImage(product.product)"
+                  [alt]="product.product.name"
+                  height="90px"
+                  style="mix-blend-mode: multiply; vertical-align: middle"
+                  class="mx-2"
+                />
+              </p>
+              <p class="mb-0">
+                <span class="hb">{{ product.product.name }}</span
+                ><br /><span> {{ product.product.reference }}</span>
+              </p>
+            </div>
+            <div
+              class="col-lg-4 d-flex justify-content-center align-items-center"
+            >
+              <p class="hb mb-0">Qty: {{ product.count }}</p>
+            </div>
+            <div
+              class="col-lg-4 d-flex justify-content-center align-items-center"
+            >
+              <p class="hb mb-0">
+                {{ product.product.price | currency : "USD" }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="d-flex justify-content-end p-3">
+      <div class="me-3">
+        <p class="mb-0">Product total</p>
+        <p class="mb-0">Shipping</p>
+        <p class="mb-0">Taxes</p>
+        <p class="hb border-top pt-2">Total</p>
+      </div>
+      <div class="mx-2 text-end">
+        <p class="mb-0">{{ order.amount | currency : "USD" }}</p>
+        <p class="mb-0">$0.00</p>
+        <p class="mb-0">{{ order.taxes | currency : "USD" }}</p>
+        <p class="hb border-top pt-2">
+          {{ order.amount * 1 + order.taxes * 1 | currency : "USD" }}
+        </p>
+      </div>
+    </div>
+    <ng-container *ngIf="showCancel && this.getCurrentStatus().status !== 5">
+      <div class="col-lg-12 col-12 p-3">
+        <button class="btn btn-dark px-3" (click)="cancelOrder()">
+          Cancel my order {{ timeCountDown }}
+        </button>
+      </div>
+    </ng-container>
+  </article>
+</ng-container>
 <article class="container mt-5">
   <div class="border-bottom mb-5"></div>
   <h2 class="fw-bold over-offer">Complete your home</h2>

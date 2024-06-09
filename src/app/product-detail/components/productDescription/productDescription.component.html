@@ -1,3 +1,4 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <div class="descriptions p-lg-4">
   <p class="mobile-out" @fadeUp>
@@ -24,14 +25,12 @@
         >
       </p>
       <p
-        (keydown)="shareProduct($event, product.id, product.name)"
+        (click)="shareProduct($event, product.id, product.name)"
+        class="badge p p-1 px-3 rounded-pill mt-1 rounded-0 btn shadow-sm ms-2 text-bg-light"
         data-action="share/whatsapp/share"
         title="Share with friends"
       >
-        <span
-          class="badge p p-1 px-3 rounded-pill rounded-0 btn shadow-sm ms-2 text-bg-light"
-          >Share!</span
-        >
+        Share!
       </p>
     </div>
   </div>

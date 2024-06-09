@@ -9,150 +9,71 @@
 .muted-step .warning {
   background: #f1f2f2 !important;
 }
-.timeline:before {
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  content: " ";
-  width: 2px;
-  background-color: #eeeeee;
-  left: 0%;
-  margin-left: -1.5px;
-  height: 80%;
-}
+
 .details {
   top: 120px;
 }
-.timeline > li {
-  margin-bottom: 45px;
-  position: relative;
-  margin-left: 25px;
+.timeline {
+  padding: 5rem 0;
+  transition: all 0.5s;
 }
-
-.timeline > li:before,
-.timeline > li:after {
-  content: " ";
-  display: table;
-}
-
-.timeline > li:after {
-  clear: both;
-}
-
-.timeline > li:before,
-.timeline > li:after {
-  content: " ";
-  display: table;
-}
-
-.timeline > li:after {
-  clear: both;
-}
-
-.timeline > li > .timeline-panel {
-  width: 96%;
+.timeline .active {
+  background: #ae7204;
+  height: 0.5rem;
   float: left;
-  border: 1px solid #d4d4d4;
-  border-radius: 2px;
-  padding: 20px;
   position: relative;
 }
-
-.timeline > li > .timeline-panel:before {
-  position: absolute;
-  top: 26px;
-  right: -15px;
-  display: inline-block;
-  border-top: 15px solid transparent;
-  border-left: 15px solid #ccc;
-  border-right: 0 solid #ccc;
-  border-bottom: 15px solid transparent;
-  content: " ";
+.timeline .inactive {
+  background: #eee;
+  height: 0.5rem;
+  float: left;
+  position: relative;
 }
-
-.timeline > li > .timeline-panel:after {
+.timeline .start {
+  height: 1.5rem;
+  width: 1.5rem;
   position: absolute;
-  top: 27px;
-  right: -14px;
-  display: inline-block;
-  border-top: 14px solid transparent;
-  border-left: 14px solid #fff;
-  border-right: 0 solid #fff;
-  border-bottom: 14px solid transparent;
-  content: " ";
+  right: 0;
+  background: #ae7204;
+  border-radius: 50%;
+  top: -0.5125rem;
+  right: -0.625rem;
+  z-index: 5;
+  background-image: url("https://testing.classdesign.us/classapi/images/app/check.png");
+  background-size: cover;
 }
-
-.timeline > li > .timeline-badge {
-  color: #fff;
-  width: 35px;
-  height: 35px;
-  line-height: 50px;
-  font-size: 1.4em;
+.timeline .start span {
+  position: absolute;
+  font-size: 16px;
+  font-weight: 700;
+  width: 200px;
+  right: -90px;
+  top: 30px;
   text-align: center;
+}
+.timeline .inactive-start {
+  height: 1.5rem;
+  width: 1.5rem;
   position: absolute;
-  top: 26px;
-  left: 0%;
-  margin-left: -42.5px;
-  z-index: 100;
-  /* border-top-right-radius: 50%;
-  border-top-left-radius: 50%;
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%; */
+  right: 0;
+  background: lightgray;
+  border-radius: 50%;
+  top: -0.5125rem;
+  right: -0.625rem;
+  z-index: 5;
+}
+.timeline .inactive-start span {
+  position: absolute;
+  font-size: 16px;
+  font-weight: 700;
+  width: 200px;
+  right: -90px;
+  top: 30px;
+  text-align: center;
+  color: lightgray;
 }
 
-.timeline > li.timeline-inverted > .timeline-panel {
-  float: right;
-}
-
-.timeline > li.timeline-inverted > .timeline-panel:before {
-  border-left-width: 0;
-  border-right-width: 15px;
-  left: -15px;
-  right: auto;
-}
-
-.timeline > li.timeline-inverted > .timeline-panel:after {
-  border-left-width: 0;
-  border-right-width: 14px;
-  left: -14px;
-  right: auto;
-}
-
-.timeline-badge.primary {
-  background: #2e6da4;
-}
-
-.timeline-badge.success {
-  background: #3f903f;
-}
-
-.timeline-badge.warning {
-  background: var(--bs-dark);
-}
-
-.timeline-badge.danger {
-  background: #d9534f;
-}
-
-.timeline-badge.info {
-  background: #5bc0de;
-}
-
-.timeline-title {
-  margin-top: 0;
-  color: inherit;
-}
-
-.timeline-body > p,
-.timeline-body > ul {
-  margin-bottom: 0;
-}
-
-.timeline-body > p + p {
-  margin-top: 5px;
-}
-
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   ul.timeline:before {
     left: 40px;
   }
@@ -186,4 +107,4 @@
     left: -14px;
     right: auto;
   }
-}
+} */

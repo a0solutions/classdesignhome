@@ -32,9 +32,13 @@ export class CheckoutFormComponent implements OnInit {
     private checkout: Checkout
   ) {}
   ngOnInit(): void {
-    this.user.isLogged() ? this.showModal() : null;
     this.route.queryParamMap.subscribe((x) => {
       x.get('response') == 'ko' ? this.getDataTemp() : null;
+      x.get('response') == undefined
+        ? this.user.isLogged()
+          ? this.showModal()
+          : null
+        : null;
     });
     this.billing.billingState = '';
     this.billing.billingCountry = '';

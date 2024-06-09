@@ -2,7 +2,7 @@ const url = {
   url: '',
 };
 const environment = {
-  production: false,
+  production: true,
 };
 if (environment.production) {
   url.url = 'https://testing.classdesign.us/';

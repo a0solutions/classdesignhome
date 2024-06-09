@@ -58,7 +58,6 @@ export class CheckoutPageComponent implements OnInit {
   async ngOnInit() {
     this.seo.setSeo();
     this.nav.dark.next(true);
-    this.loader.show.next(false);
     this.activeRoute.queryParamMap.subscribe((x) => {
       x.get('response') == 'ok'
         ? this.completeOrder()
@@ -66,7 +65,6 @@ export class CheckoutPageComponent implements OnInit {
         ? this.alert.setAlertMessage('badPayment')
         : null;
     });
-    console.log(this.order);
   }
   insertUser(user: string): void {
     this.order.member = user;
@@ -81,6 +79,9 @@ export class CheckoutPageComponent implements OnInit {
   }
   insertAmount(amount: number): void {
     this.order.amount = amount;
+    this.checkout.typeTax.subscribe((x) => {
+      this.order.taxes = amount * (x / 100);
+    });
   }
   insertItemNumber(items: number): void {
     this.order.items = items;
@@ -108,6 +109,7 @@ export class CheckoutPageComponent implements OnInit {
     this.finalOrder = this.checkout.getTempData();
     this.simplifyOrder();
     this.checkout.sendOrder(this.finalOrder).subscribe(() => {
+      this.loader.show.next(false);
       this.modal.showModalMessage('shopSuccess');
       this.modal.answer.subscribe((answer) => {
         answer == 1
