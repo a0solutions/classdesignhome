@@ -6,8 +6,14 @@ import {
   CategoriesService,
   categories,
 } from 'src/app/share/services/categories.service';
-import { FilterManage, filter } from '../../services/filterManage.service';
-import { ProductManage, product } from '../../services/product-manage.service';
+import {
+  FilterManage,
+  filter,
+} from '../../../share/services/filterManage.service';
+import {
+  ProductManage,
+  product,
+} from '../../../share/services/product-manage.service';
 import { urls } from 'src/app/share/services/apiurl';
 import { take } from 'rxjs';
 

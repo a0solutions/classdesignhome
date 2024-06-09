@@ -3,7 +3,7 @@ import {
   CategoriesService,
   categories,
 } from 'src/app/share/services/categories.service';
-import { ProductManage } from 'src/app/products/services/product-manage.service';
+import { ProductManage } from 'src/app/share/services/product-manage.service';
 
 @Component({
   selector: 'app-sidebar',

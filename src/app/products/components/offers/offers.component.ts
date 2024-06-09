@@ -6,7 +6,10 @@ import {
   OnChanges,
   OnInit,
 } from '@angular/core';
-import { ProductManage, product } from '../../services/product-manage.service';
+import {
+  ProductManage,
+  product,
+} from '../../../share/services/product-manage.service';
 import { LoaderService } from 'src/app/share/components/loader/services/loader.service';
 
 @Component({

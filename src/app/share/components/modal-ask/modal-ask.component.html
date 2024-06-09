@@ -1,41 +1,41 @@
-<div class="modal-backdrop" [ngClass]="{ 'd-none': !show }"></div>
-
-<div
-  @fadeUp
-  class="modal fade"
-  [ngClass]="{ 'show d-block': show }"
-  id="modalAsk"
-  tabindex="-1"
-  aria-labelledby="modalAskLabel"
-  aria-hidden="false"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalAskLabel">{{ title }}</h1>
-      </div>
-      <div class="modal-body">
-        <p>{{ text }}</p>
-      </div>
-      <div class="modal-footer">
-        <div class="w-100 d-flex">
-          <button
-            (click)="answer(1)"
-            type="button"
-            class="btn btn-outline-dark w-100 me-1"
-            data-bs-dismiss="modal"
-          >
-            No
-          </button>
-          <button
-            (click)="answer(2)"
-            type="button"
-            class="btn btn-dark w-100 ms-1"
-          >
-            Yes
-          </button>
+<ng-container *ngIf="show">
+  <div class="modal-backdrop" @fade></div>
+  <div
+    @fadeUp
+    class="modal fade show d-block"
+    id="modalAsk"
+    tabindex="-1"
+    aria-labelledby="modalAskLabel"
+    aria-hidden="false"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalAskLabel">{{ title }}</h1>
+        </div>
+        <div class="modal-body">
+          <p>{{ text }}</p>
+        </div>
+        <div class="modal-footer">
+          <div class="w-100 d-flex">
+            <button
+              (click)="answer(1)"
+              type="button"
+              class="btn btn-outline-dark w-100 me-1"
+              data-bs-dismiss="modal"
+            >
+              No
+            </button>
+            <button
+              (click)="answer(2)"
+              type="button"
+              class="btn btn-dark w-100 ms-1"
+            >
+              Yes
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</ng-container>

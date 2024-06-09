@@ -1,13 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  Checkout,
-  cartProduct,
-} from 'src/app/checkout-page/services/checkout.service';
+import { Checkout, cartProduct } from 'src/app/share/services/checkout.service';
 import { NavManage } from './services/navManage.service';
 import { ModalAskManage } from '../modal-ask/services/modalAskManage.service';
 import { Subscription } from 'rxjs';
-import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
-import { UserManage } from 'src/app/signin/services/user-manage.service';
+import { TokenManage } from 'src/app/share/services/token-manage.service';
+import { UserManage } from 'src/app/share/services/user-manage.service';
 import { Router } from '@angular/router';
 import { urls } from '../../services/apiurl';
 @Component({

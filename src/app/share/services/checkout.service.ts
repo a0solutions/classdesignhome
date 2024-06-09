@@ -2,8 +2,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
-import { product } from 'src/app/products/services/product-manage.service';
+import { TokenManage } from 'src/app/share/services/token-manage.service';
+import { product } from 'src/app/share/services/product-manage.service';
 import { urls } from 'src/app/share/services/apiurl';
 @Injectable({
   providedIn: 'root',

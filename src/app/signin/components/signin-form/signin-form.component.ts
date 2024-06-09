@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
-import { UserManage } from '../../services/user-manage.service';
+import { UserManage } from '../../../share/services/user-manage.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
-import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
+import { TokenManage } from 'src/app/share/services/token-manage.service';
 
 @Component({
   selector: 'app-signin-form',

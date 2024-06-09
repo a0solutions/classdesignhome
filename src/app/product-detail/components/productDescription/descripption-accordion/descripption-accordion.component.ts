@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { product } from 'src/app/products/services/product-manage.service';
+import { product } from 'src/app/share/services/product-manage.service';
 
 @Component({
   selector: 'app-descripption-accordion',

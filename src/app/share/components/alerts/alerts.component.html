@@ -1,26 +1,28 @@
-<div class="modal-backdrop" [ngClass]="{ 'd-none': !show }"></div>
-
-<div
-  [ngClass]="{ 'show d-block': show }"
-  id="modalAsk"
-  tabindex="-1"
-  aria-labelledby="modalAskLabel"
-  aria-hidden="false"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalAskLabel">{{ title }}</h1>
-        <button
-          type="button"
-          class="btn-close opacity-100"
-          aria-label="Close"
-          (click)="closeAlert()"
-        ></button>
-      </div>
-      <div class="modal-body" id>
-        <p [innerHTML]="message"></p>
+<ng-container *ngIf="show">
+  <div class="modal-backdrop" @fade></div>
+  <div
+    @fadeUp
+    class="modal show d-block"
+    id="modalAsk"
+    tabindex="-1"
+    aria-labelledby="modalAskLabel"
+    aria-hidden="false"
+  >
+    <div @fadeUp class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalAskLabel">{{ title }}</h1>
+          <button
+            type="button"
+            class="btn-close opacity-100"
+            aria-label="Close"
+            (click)="closeAlert()"
+          ></button>
+        </div>
+        <div class="modal-body" id>
+          <p [innerHTML]="message"></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</ng-container>

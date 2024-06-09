@@ -4,7 +4,7 @@ import {
   ProductManage,
   imagedata,
   product,
-} from 'src/app/products/services/product-manage.service';
+} from 'src/app/share/services/product-manage.service';
 import { CategorySubstrPipe } from '../../pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from '../../pipes/spacesDelete.pipe';
 import { urls } from '../../services/apiurl';

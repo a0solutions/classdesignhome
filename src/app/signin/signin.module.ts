@@ -5,7 +5,7 @@ import { SignupFormComponent } from './components/signup-form/signup-form.compon
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ShareModule } from '../share/Modules/share.module';
-import { UserManage } from './services/user-manage.service';
+import { UserManage } from '../share/services/user-manage.service';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ShareModule],

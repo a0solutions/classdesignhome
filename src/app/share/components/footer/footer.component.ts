@@ -5,7 +5,7 @@ import {
 } from '../../services/categories.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { UserManage } from 'src/app/signin/services/user-manage.service';
+import { UserManage } from 'src/app/share/services/user-manage.service';
 import { AlertManage } from '../alerts/services/alertManage.service';
 import { urls } from '../../services/apiurl';
 import { fadeUp, fadeUp1, fadeUp2, fadeUp3 } from '../../services/animations';

@@ -17,7 +17,7 @@ import { ModalAskManage } from '../components/modal-ask/services/modalAskManage.
 import { LoaderComponent } from '../components/loader/loader.component';
 import { LoaderService } from '../components/loader/services/loader.service';
 import { SidebarComponent } from '../components/nav/components/sidebar/sidebar.component';
-import { UserManage } from 'src/app/signin/services/user-manage.service';
+import { UserManage } from 'src/app/share/services/user-manage.service';
 import { The404Component } from '../components/404/404.component';
 import { GoUpComponent } from '../components/goUp/goUp.component';
 import { PoliciesComponent } from '../components/policies/policies.component';

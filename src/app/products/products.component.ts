@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NavManage } from '../share/components/nav/services/navManage.service';
-import { ProductManage } from './services/product-manage.service';
+import { ProductManage } from '../share/services/product-manage.service';
 import { LoaderService } from '../share/components/loader/services/loader.service';
 import {
   fadeLeft,

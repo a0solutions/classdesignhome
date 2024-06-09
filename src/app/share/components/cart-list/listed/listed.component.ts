@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  Checkout,
-  cartProduct,
-} from 'src/app/checkout-page/services/checkout.service';
+import { Checkout, cartProduct } from 'src/app/share/services/checkout.service';
 import {
   fadeUp,
   fadeUp1,

@@ -4,7 +4,7 @@ import { NavManage } from '../share/components/nav/services/navManage.service';
 import {
   ProductManage,
   product,
-} from '../products/services/product-manage.service';
+} from '../share/services/product-manage.service';
 import { LoaderService } from '../share/components/loader/services/loader.service';
 
 @Component({

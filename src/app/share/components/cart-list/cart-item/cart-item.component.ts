@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Checkout } from 'src/app/checkout-page/services/checkout.service';
-import { product } from 'src/app/products/services/product-manage.service';
+import { Checkout } from 'src/app/share/services/checkout.service';
+import { product } from 'src/app/share/services/product-manage.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
 import { urls } from 'src/app/share/services/apiurl';

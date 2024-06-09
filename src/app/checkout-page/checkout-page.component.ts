@@ -8,13 +8,13 @@ import {
   cartProduct,
   order,
   shipping,
-} from './services/checkout.service';
+} from '../share/services/checkout.service';
 import { AlertManage } from '../share/components/alerts/services/alertManage.service';
 import { ModalAskManage } from '../share/components/modal-ask/services/modalAskManage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { urls } from '../share/services/apiurl';
-import { ProductManage } from '../products/services/product-manage.service';
+import { ProductManage } from '../share/services/product-manage.service';
 import {
   fadeLeft,
   fadeUp,

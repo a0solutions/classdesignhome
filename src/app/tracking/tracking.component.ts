@@ -5,7 +5,7 @@ import {
   Checkout,
   cartProduct,
   order,
-} from '../checkout-page/services/checkout.service';
+} from '../share/services/checkout.service';
 import { AlertManage } from '../share/components/alerts/services/alertManage.service';
 import { ModalAskManage } from '../share/components/modal-ask/services/modalAskManage.service';
 import {

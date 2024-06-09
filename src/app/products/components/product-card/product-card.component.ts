@@ -3,7 +3,7 @@ import {
   ProductManage,
   colorId,
   product,
-} from '../../services/product-manage.service';
+} from '../../../share/services/product-manage.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
 import { urls } from 'src/app/share/services/apiurl';

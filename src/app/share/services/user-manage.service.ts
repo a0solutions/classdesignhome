@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
+import { TokenManage } from 'src/app/share/services/token-manage.service';
 import { urls } from 'src/app/share/services/apiurl';
 
 @Injectable({

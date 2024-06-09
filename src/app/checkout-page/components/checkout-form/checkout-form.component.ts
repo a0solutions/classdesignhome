@@ -6,9 +6,9 @@ import {
   billing,
   order,
   shipping,
-} from '../../services/checkout.service';
+} from '../../../share/services/checkout.service';
 import { ModalAskManage } from 'src/app/share/components/modal-ask/services/modalAskManage.service';
-import { UserManage } from 'src/app/signin/services/user-manage.service';
+import { UserManage } from 'src/app/share/services/user-manage.service';
 import { ActivatedRoute } from '@angular/router';
 import { countries, states } from 'src/app/share/services/states';
 

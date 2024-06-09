@@ -5,9 +5,9 @@ import { PersonalFormComponent } from './components/personal-form/personal-form.
 import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
 import { CommonModule } from '@angular/common';
 import { ShareModule } from '../share/Modules/share.module';
-import { UserManage } from '../signin/services/user-manage.service';
+import { UserManage } from '../share/services/user-manage.service';
 import { FormsModule } from '@angular/forms';
-import { TokenManage } from './services/token-manage.service';
+import { TokenManage } from '../share/services/token-manage.service';
 import { CategoriesService } from '../share/services/categories.service';
 
 @NgModule({

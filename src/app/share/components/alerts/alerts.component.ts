@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AlertManage } from './services/alertManage.service';
-import { modalFade } from '../../services/animations';
+import { fade, fadeUp } from '../../services/animations';
 @Component({
   selector: 'app-alerts',
   templateUrl: './alerts.component.html',
   styleUrls: ['./alerts.component.css'],
-  animations: [modalFade],
+  animations: [fadeUp, fade],
 })
 export class AlertsComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

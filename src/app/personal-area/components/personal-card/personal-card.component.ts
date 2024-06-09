@@ -1,13 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  Checkout,
-  order,
-} from 'src/app/checkout-page/services/checkout.service';
+import { Checkout, order } from 'src/app/share/services/checkout.service';
 import {
   ProductManage,
   product,
-} from 'src/app/products/services/product-manage.service';
+} from 'src/app/share/services/product-manage.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
 import { urls } from 'src/app/share/services/apiurl';

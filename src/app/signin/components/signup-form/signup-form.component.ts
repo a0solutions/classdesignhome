@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserManage } from '../../services/user-manage.service';
+import { UserManage } from '../../../share/services/user-manage.service';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import { NgForm } from '@angular/forms';
 import { fadeUp } from 'src/app/share/services/animations';

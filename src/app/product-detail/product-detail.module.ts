@@ -3,7 +3,7 @@ import { ProductDetailComponent } from './product-detail.component';
 import { ProductDescriptionComponent } from './components/productDescription/productDescription.component';
 import { CommonModule } from '@angular/common';
 import { ShareModule } from '../share/Modules/share.module';
-import { ProductManage } from '../products/services/product-manage.service';
+import { ProductManage } from '../share/services/product-manage.service';
 import { DescripptionAccordionComponent } from './components/productDescription/descripption-accordion/descripption-accordion.component';
 import { PipesModule } from '../share/Modules/pipes.module';
 import { RouterModule } from '@angular/router';

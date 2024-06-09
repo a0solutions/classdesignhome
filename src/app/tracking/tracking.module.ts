@@ -5,7 +5,7 @@ import { PipesModule } from '../share/Modules/pipes.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ShareModule } from '../share/Modules/share.module';
-import { Checkout } from '../checkout-page/services/checkout.service';
+import { Checkout } from '../share/services/checkout.service';
 import { ModalAskManage } from '../share/components/modal-ask/services/modalAskManage.service';
 
 @NgModule({

@@ -3,7 +3,7 @@ import {
   ProductManage,
   imagedata,
   product,
-} from 'src/app/products/services/product-manage.service';
+} from 'src/app/share/services/product-manage.service';
 import { CarouselService } from 'src/app/share/components/full-carrousel/service/carousel.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';

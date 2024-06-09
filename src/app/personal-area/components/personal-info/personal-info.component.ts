@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import {
-  Checkout,
-  order,
-} from 'src/app/checkout-page/services/checkout.service';
+import { Checkout, order } from 'src/app/share/services/checkout.service';
 
 @Component({
   selector: 'app-personal-info',

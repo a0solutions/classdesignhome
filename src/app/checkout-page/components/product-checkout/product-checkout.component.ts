@@ -1,6 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Checkout, cartProduct } from '../../services/checkout.service';
-import { ProductManage } from 'src/app/products/services/product-manage.service';
+import {
+  Checkout,
+  cartProduct,
+} from '../../../share/services/checkout.service';
+import { ProductManage } from 'src/app/share/services/product-manage.service';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import {
   fadeUp,

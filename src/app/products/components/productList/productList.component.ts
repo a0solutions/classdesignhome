@@ -1,7 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ProductManage, product } from '../../services/product-manage.service';
-import { FilterManage, filter } from '../../services/filterManage.service';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  ProductManage,
+  product,
+} from '../../../share/services/product-manage.service';
+import {
+  FilterManage,
+  filter,
+} from '../../../share/services/filterManage.service';
 import { fadeUp } from 'src/app/share/services/animations';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -9,7 +16,7 @@ import { fadeUp } from 'src/app/share/services/animations';
   styleUrls: ['./productList.component.css'],
   animations: [fadeUp],
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   @Input() category = '';
   products: product[] = [];
   printProduct: product[] = [];
@@ -18,17 +25,21 @@ export class ProductListComponent implements OnInit {
   more = false;
   parents: string[] = [];
   cardSize = 'col-lg-4';
+  cardSizeSubscription: Subscription;
   constructor(
     private allProducts: ProductManage,
     private filters: FilterManage
   ) {}
+  ngOnDestroy(): void {
+    this.cardSizeSubscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.filters.allFilters.subscribe({
       next: this.filterProducts.bind(this),
       error: console.log.bind(this),
     });
-    this.filters.cardSize.subscribe((x) => {
+    this.cardSizeSubscription = this.filters.cardSize.subscribe((x) => {
       this.cardSize = x;
     });
   }

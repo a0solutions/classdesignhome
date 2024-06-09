@@ -1,12 +1,12 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Checkout } from 'src/app/checkout-page/services/checkout.service';
-import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
+import { Checkout } from 'src/app/share/services/checkout.service';
+import { TokenManage } from 'src/app/share/services/token-manage.service';
 import {
   ProductManage,
   colorId,
   product,
-} from 'src/app/products/services/product-manage.service';
+} from 'src/app/share/services/product-manage.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import {
   fadeLeft,

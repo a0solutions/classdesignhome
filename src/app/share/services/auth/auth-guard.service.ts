@@ -4,8 +4,8 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
-import { UserManage } from 'src/app/signin/services/user-manage.service';
+import { TokenManage } from 'src/app/share/services/token-manage.service';
+import { UserManage } from 'src/app/share/services/user-manage.service';
 
 @Injectable({
   providedIn: 'root',

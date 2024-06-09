@@ -1,7 +1,7 @@
 import {
   ProductManage,
   product,
-} from 'src/app/products/services/product-manage.service';
+} from 'src/app/share/services/product-manage.service';
 import { popup } from '../headers/popous/popups';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';

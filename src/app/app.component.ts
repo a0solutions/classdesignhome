@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { LoaderService } from './share/components/loader/services/loader.service';
-import { TokenManage } from './personal-area/services/token-manage.service';
+import { TokenManage } from './share/services/token-manage.service';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +21,7 @@ export class AppComponent {
       if (event instanceof NavigationStart) {
         this.loader.show.next(true);
         this.token.isUserLogged();
+        window.scrollTo(0, 0);
       }
     });
   }

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { TokenManage } from 'src/app/personal-area/services/token-manage.service';
+import { TokenManage } from 'src/app/share/services/token-manage.service';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import { LoaderService } from 'src/app/share/components/loader/services/loader.service';
 import { countries, states } from 'src/app/share/services/states';
-import { UserManage } from 'src/app/signin/services/user-manage.service';
+import { UserManage } from 'src/app/share/services/user-manage.service';
 
 @Component({
   selector: 'app-personal-form',

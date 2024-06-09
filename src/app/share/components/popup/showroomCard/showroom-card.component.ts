@@ -3,7 +3,7 @@ import {
   ProductManage,
   colorId,
   product,
-} from 'src/app/products/services/product-manage.service';
+} from 'src/app/share/services/product-manage.service';
 
 @Component({
   selector: 'app-showroom-card',
