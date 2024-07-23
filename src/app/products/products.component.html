@@ -2,7 +2,25 @@
 <!--<app-offers class="my-3 mx-5" [category]="category"></app-offers>-->
 <div class="separador-menu"></div>
 <article class="container">
-  <div class="row">
+  <div class="d-flex p-2 border-bottom">
+    <a
+      routerLink="/products/all"
+      class="hb pe-3 text-dark"
+      [class]="category === 'all' ? 'active' : null"
+      >All</a
+    >
+    <ng-container *ngFor="let thecategory of allCategories">
+      <a
+        [routerLink]="'/products/' + thecategory.category"
+        class="hb px-3 text-dark"
+        [class]="category === thecategory.category ? 'active' : null"
+        >{{ thecategory.category }}</a
+      >
+    </ng-container>
+  </div>
+</article>
+<article class="container">
+  <div class="row mt-3">
     <div class="text-start col-sm-12 col-lg-4 col-md-4 p-3">
       <div class="sticky-lg-top category-name pe-lg-5 pt-lg-5">
         <p class="mb-0" @fadeUp>
@@ -28,16 +46,29 @@
     <app-headers
       @fadeLeft
       class="col-sm-12 col-lg-8 m-0 p-0"
-      [headerName]="category"
+      [headerName]="category === 'like' ? 'products' : category"
     ></app-headers>
   </div>
 </article>
 <div class="bg-white container border-bottom filter-table" @fadeUp1>
-  <app-products-filter
+  <app-filter-menu
     [categorySelected]="category"
     [subcategorySelected]="subcategory"
-  ></app-products-filter>
+  ></app-filter-menu>
 </div>
-<article class="container mt-5">
-  <app-product-list [category]="category"></app-product-list>
+<article class="container mt-5 row mx-auto">
+  <div class="filter-container" [class]="open ? 'col-3' : 'col-0'">
+    <div class="sticky-top t-160" *ngIf="open">
+      <app-products-filter
+        [categorySelected]="category"
+        [subcategorySelected]="subcategory"
+      ></app-products-filter>
+    </div>
+  </div>
+
+  <app-product-list
+    [class]="open ? 'col-9' : 'col-12'"
+    [category]="category"
+  ></app-product-list>
 </article>
+<app-quick-view-modal></app-quick-view-modal>

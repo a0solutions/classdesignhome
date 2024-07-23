@@ -6,16 +6,19 @@ import {
   product,
 } from '../share/services/product-manage.service';
 import { LoaderService } from '../share/components/loader/services/loader.service';
+import { fadeUp7 } from '../share/services/animations';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
+  animations: [fadeUp7],
 })
 export class ProductDetailComponent implements OnInit {
   reference = '';
   product: product = <product>{};
   category = '';
+
   constructor(
     private http: ActivatedRoute,
     private nav: NavManage,

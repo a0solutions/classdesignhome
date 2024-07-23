@@ -8,9 +8,7 @@
 .card {
   min-height: 176px !important;
 }
-.backdrop-filter-blur {
-  backdrop-filter: blur(10px) !important;
-}
+
 .dataShow {
   transition: all 0.5s;
 }
@@ -40,7 +38,7 @@
   z-index: 9;
   cursor: pointer;
   transition: all 0.5s;
-  top: 45%;
+  top: 95%;
   left: -13%;
   outline-offset: 10px;
   animation: mymove 2s;

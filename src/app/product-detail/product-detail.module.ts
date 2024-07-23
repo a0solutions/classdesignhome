@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ProductDetailComponent } from './product-detail.component';
-import { ProductDescriptionComponent } from './components/productDescription/productDescription.component';
 import { CommonModule } from '@angular/common';
 import { ShareModule } from '../share/Modules/share.module';
 import { ProductManage } from '../share/services/product-manage.service';
@@ -12,11 +11,7 @@ import { SpacesDeletePipe } from '../share/pipes/spacesDelete.pipe';
 
 @NgModule({
   imports: [CommonModule, ShareModule, PipesModule, RouterModule],
-  declarations: [
-    ProductDetailComponent,
-    ProductDescriptionComponent,
-    DescripptionAccordionComponent,
-  ],
+  declarations: [ProductDetailComponent, DescripptionAccordionComponent],
   providers: [ProductManage, CategorySubstrPipe, SpacesDeletePipe],
 })
 export class ProductDetailModule {}

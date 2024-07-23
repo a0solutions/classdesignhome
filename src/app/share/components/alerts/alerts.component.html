@@ -1,25 +1,22 @@
 <ng-container *ngIf="show">
   <div class="modal-backdrop" @fade></div>
-  <div
-    @fadeUp
-    class="modal show d-block"
-    id="modalAsk"
-    tabindex="-1"
-    aria-labelledby="modalAskLabel"
-    aria-hidden="false"
-  >
-    <div @fadeUp class="modal-dialog modal-dialog-centered">
+  <div @fadeUp class="modal show d-block">
+    <div @fadeUp class="modal-dialog modal-dialog-centered text-center">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modalAskLabel">{{ title }}</h1>
+        <div class="modal-header border-0">
           <button
             type="button"
             class="btn-close opacity-100"
+            data-bs-dismiss="modal"
             aria-label="Close"
             (click)="closeAlert()"
           ></button>
         </div>
         <div class="modal-body" id>
+          <h1 class="modal-title fs-5 text-center">
+            {{ title }}
+          </h1>
+          <div class="separador-centrado mb-3 mt-3" @fadeUp2></div>
           <p [innerHTML]="message"></p>
         </div>
       </div>

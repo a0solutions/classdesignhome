@@ -44,4 +44,13 @@ export class TokenManage {
   getValidateToken(): string {
     return this.getToken();
   }
+  getUserName() {
+    this.getToken();
+    if (!this.verify.isTokenExpired(this.token)) {
+      const info = this.verify.decodeToken(this.token);
+      return info.user_name;
+    } else {
+      return '';
+    }
+  }
 }

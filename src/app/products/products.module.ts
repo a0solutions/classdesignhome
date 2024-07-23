@@ -11,6 +11,9 @@ import { ShareModule } from '../share/Modules/share.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CategorySubstrPipe } from '../share/pipes/categorySubstr.pipe';
+import { FilterMenuComponent } from './components/products-filter/filteMenu/filteMenu.component';
+import { QuickViewModalComponent } from '../share/components/quickViewModal/quickViewModal.component';
+import { QuickViewService } from '../share/components/quickViewModal/service/quickView.service';
 
 @NgModule({
   imports: [CommonModule, PipesModule, ShareModule, FormsModule, RouterModule],
@@ -18,12 +21,15 @@ import { CategorySubstrPipe } from '../share/pipes/categorySubstr.pipe';
     ProductsComponent,
     ProductListComponent,
     ProductsFilterComponent,
+    FilterMenuComponent,
+    QuickViewModalComponent,
   ],
   providers: [
     FilterManage,
     ProductManage,
     CategoriesService,
     CategorySubstrPipe,
+    QuickViewService,
   ],
 })
 export class ProductsModule {}

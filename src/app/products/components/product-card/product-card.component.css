@@ -29,7 +29,6 @@
   color: white !important;
 }
 .card-background {
-  height: 23em;
   background-size: 100%;
   background-position: center center;
   background-repeat: no-repeat;
@@ -39,4 +38,7 @@
 .card-title-name {
   font-size: 1.05rem;
   height: 45px;
+}
+.bi-suit-heart:hover {
+  color: var(--secondary-color);
 }

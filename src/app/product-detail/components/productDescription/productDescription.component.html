@@ -1,6 +1,6 @@
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
-<div class="descriptions p-lg-4">
+<div class="descriptions">
   <p class="mobile-out" @fadeUp>
     <a class="text-dark" routerLink="/">Home </a> /
     <a class="text-dark" [routerLink]="'/products/' + product.category"
@@ -17,13 +17,13 @@
   <div class="mobile-out" @fadeUp1>
     <div class="d-flex">
       <h1 class="bold mb-0 h5">{{ product.name }} - {{ product.size }}</h1>
-      <p class="ms-3">
+      <!-- <p class="ms-3">
         <span
           class="badge p p-1 px-3 rounded-pill rounded-0"
           [ngClass]="product.stock ? 'bg-success' : 'bg-danger'"
           >{{ product.stock | stock }}</span
         >
-      </p>
+      </p> -->
       <p
         (click)="shareProduct($event, product.id, product.name)"
         class="badge p p-1 px-3 rounded-pill rounded-0 btn shadow-sm ms-2 text-bg-light"
@@ -37,9 +37,12 @@
   <h3 class="mt-2 mb-0 h3 color-gold mobile-out" @fadeUp2>
     {{ product.price | currency : "USD" }}<br />
   </h3>
-  <p @fadeUp2 class="mb-0 mobile-out">
-    Material Detail: {{ product.materialDetail }}
-  </p>
+  <ng-container *ngIf="product.materialDetail">
+    <p @fadeUp2 class="mb-0 mobile-out">
+      Material Detail: {{ product.materialDetail }}
+    </p>
+  </ng-container>
+
   <div class="my-4" @fadeUp3>
     <p class="mb-2">
       Color: <strong class="hb">{{ product.color }}</strong>
@@ -134,13 +137,20 @@
         SING IN FOR THIS PRODUCT
       </button>
     </ng-template>
+    <p
+      class="mb-0 mx-3 cursor-pointer"
+      (click)="addProductLikes(product.parentRef)"
+    >
+      <ng-container *ngIf="!like; else liked">
+        <i class="bi bi-suit-heart h3 hb mb-0"></i>
+      </ng-container>
+      <ng-template #liked>
+        <i class="bi bi-suit-heart-fill h3 hb mb-0 gold"></i
+      ></ng-template>
+    </p>
   </div>
   <p class="py-2 border-bottom mb-0" @fadeUp6>
-    SKU: {{ product.reference }} &nbsp;&nbsp;&nbsp;&nbsp; Categories:
+    Categories:
     {{ product.category | capitalize }} / {{ product.subcategory | capitalize }}
   </p>
-  <app-descripption-accordion
-    @fadeUp7
-    [product]="product"
-  ></app-descripption-accordion>
 </div>

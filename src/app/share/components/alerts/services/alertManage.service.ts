@@ -10,7 +10,6 @@ export class AlertManage {
   title: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   setAlertMessage(code: string): void {
-    console.log(code);
     this.selectMessage(code);
     this.show.next(true);
   }
@@ -74,6 +73,11 @@ export class AlertManage {
     } else if (code == 'CanceledOK') {
       this.message.next('The order has been canceled successfully.');
       this.title.next('Order Canceled');
+    } else if (code == 'isLogOut') {
+      this.message.next(
+        "Sign in to your account to personalize yout shopping experience and add this item to your favorites list!.<br><br><a href='/signin' class='btn btn-dark px-5' >Sign In / Register</a>"
+      );
+      this.title.next("We're glad you like it");
     } else {
       this.message.next(
         'An unexpected error occurred. Please try again later, and thank you for your patience.'

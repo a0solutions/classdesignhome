@@ -1,20 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LivingComponent } from './living.component';
+import { FilterMenuComponent } from './filteMenu.component';
 
-describe('LivingComponent', () => {
-  let component: LivingComponent;
-  let fixture: ComponentFixture<LivingComponent>;
+describe('FilteMenuComponent', () => {
+  let component: FilterMenuComponent;
+  let fixture: ComponentFixture<FilterMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LivingComponent],
+      declarations: [FilterMenuComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LivingComponent);
+    fixture = TestBed.createComponent(FilterMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

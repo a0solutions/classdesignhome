@@ -7,6 +7,7 @@ import { TokenManage } from 'src/app/share/services/token-manage.service';
 import { UserManage } from 'src/app/share/services/user-manage.service';
 import { Router } from '@angular/router';
 import { urls } from '../../services/apiurl';
+import { ProductManage } from '../../services/product-manage.service';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -19,13 +20,15 @@ export class NavComponent implements OnInit {
   cheick = false;
   answer: Subscription;
   url: string = urls.url;
+  like = false;
   constructor(
     private checkout: Checkout,
     private nav: NavManage,
     private modal: ModalAskManage,
     private token: TokenManage,
     private auth: UserManage,
-    private route: Router
+    private route: Router,
+    private productManage: ProductManage
   ) {}
   ngOnInit(): void {
     this.token.isLogged.subscribe((x) => {
@@ -38,6 +41,12 @@ export class NavComponent implements OnInit {
     });
 
     this.nav.dark.subscribe({ next: this.darkChange.bind(this) });
+  }
+  likesFilter() {
+    this.like = !this.like;
+    this.like
+      ? this.route.navigate(['/products/like'])
+      : this.route.navigate(['/products/all']);
   }
   bascketUpdate(products: cartProduct[]): void {
     this.items = 0;

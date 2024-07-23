@@ -1,12 +1,14 @@
 .filter-container {
-  top: 120px;
   z-index: 0;
 }
 .category-name {
   top: 130px;
   z-index: 0;
 }
-
+.active {
+  color: var(--secondary-color) !important;
+  text-decoration: underline !important;
+}
 @media (min-width: 768px) {
   .container {
     max-width: 95%;
@@ -16,4 +18,15 @@
   .pd-sm-3 {
     padding: 0rem 1.25rem !important;
   }
+}
+.filter-container {
+  transition: all 0.5s !important;
+}
+.col-0 {
+  width: 0% !important;
+}
+.t-160 {
+  top: 160px;
+  height: 80vh;
+  overflow: auto;
 }

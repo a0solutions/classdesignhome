@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import {
   ProductManage,
   imagedata,
@@ -31,6 +31,8 @@ export class ProductGaleryComponent implements OnChanges {
   fullPicture = '';
   allImages: images[] = [];
   url = '';
+  size = '55vh!important';
+
   constructor(
     private products: ProductManage,
     private substrPipe: CategorySubstrPipe,
@@ -44,15 +46,17 @@ export class ProductGaleryComponent implements OnChanges {
       this.loadPictures();
     }
   }
+
   openFullCarousel(): void {
     this.carousel.show.next(true);
   }
   loadPictures(): void {
     const data: imagedata = <imagedata>{};
-    this.allImages = [];
+
     data.category = this.product.category;
-    data.folder = this.substrByCategory(this.product);
-    data.parentRef = this.spaceDelete(this.product.parentRef);
+    data.parentRef = this.product.parentRef;
+    data.sets = this.product.sets;
+    data.color = this.product.color;
     this.url =
       urls.url +
       'classapi/images/' +
@@ -60,12 +64,18 @@ export class ProductGaleryComponent implements OnChanges {
       '/products/' +
       data.parentRef +
       '/' +
-      data.folder +
+      data.sets +
+      '/' +
+      data.color +
       '/';
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this.products.getProductImages(data).forEach((x: any) => {
+
+    this.products.getProductImages(data).subscribe((x: any) => {
+      this.allImages = [];
+      console.log(this.allImages);
       for (let i = 0; i < x.length; i++) {
-        this.allImages.push({ url: this.url + x[i], state: false });
+        this.allImages.push({ url: encodeURI(this.url + x[i]), state: false });
       }
       this.fullPicture = this.allImages[0].url;
       this.allImages[0].state = true;

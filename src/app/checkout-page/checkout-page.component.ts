@@ -54,7 +54,9 @@ export class CheckoutPageComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private products: ProductManage,
     private seo: SeoService
-  ) {}
+  ) {
+    this.loader.show.next(true);
+  }
   async ngOnInit() {
     this.seo.setSeo();
     this.nav.dark.next(true);
@@ -109,23 +111,27 @@ export class CheckoutPageComponent implements OnInit {
     this.finalOrder = this.checkout.getTempData();
     this.simplifyOrder();
     this.checkout.sendOrder(this.finalOrder).subscribe(() => {
-      this.loader.show.next(false);
+      this.checkout.deleteAll();
       this.modal.showModalMessage('shopSuccess');
       this.modal.answer.subscribe((answer) => {
-        answer == 1
-          ? this.route.navigate(['/'])
-          : answer == 2
-          ? this.route.navigate(['products/products'])
-          : null;
-        answer != 0 ? this.modal.closeModalAsk() : null;
+        this.loader.show.next(false);
+        answer != 0 ? this.killOrder(answer) : null;
       });
-      this.checkout.deleteAll();
     });
   }
+  killOrder(answer: number) {
+    this.modal.closeModalAsk();
+    let route = '';
+    answer == 1 ? (route = '/') : 'products/products/';
+    this.route.navigate([route]);
+  }
   simplifyOrder(): void {
-    this.finalOrder.cartProducts.forEach((x) => {
-      x.product = this.products.simplifyOrderProduct(x.product);
-    });
+    for (let i = 0; i < this.finalOrder.cartProducts.length; i++) {
+      this.finalOrder.cartProducts[i].product =
+        this.products.simplifyOrderProduct(
+          this.finalOrder.cartProducts[i].product
+        );
+    }
   }
   validateData(): boolean {
     if (

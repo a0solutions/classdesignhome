@@ -1,6 +1,14 @@
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <article class="position-fixed full-carrousel p-5" *ngIf="carouselFull">
+  <div class="close-btn-alert">
+    <button
+      type="button"
+      class="opacity-100 text-white btn-close btn-close-white"
+      aria-label="Close"
+      (click)="closeFullCarousel()"
+    ></button>
+  </div>
   <div
     class="ecommerce-gallery"
     data-mdb-zoom-effect="true"
@@ -8,15 +16,6 @@
   >
     <div class="row shadow-5">
       <div class="col-12 mb-3 position-relative px-0">
-        <button
-          (click)="closeFullCarousel()"
-          type="button"
-          class="btn btn-light bg-white position-absolute shadow-sm ms-auto zoom-button rounded-pill mobile-out opacity-100"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        >
-          <i class="bi bi-x-lg hb text-dark opacity-100"></i>
-        </button>
         <div
           class="lightbox2"
           [style]="'background-image:url(' + fullPicture + ')'"

@@ -9,8 +9,12 @@
           [product]="product"
         ></app-product-galery>
       </div>
-      <div class="col-md-6 col-12">
+      <div class="col-md-6 col-12 p-3">
         <app-product-description [product]="product"></app-product-description>
+        <app-descripption-accordion
+          @fadeUp7
+          [product]="product"
+        ></app-descripption-accordion>
       </div>
     </div>
   </div>

@@ -21,6 +21,7 @@ import {
   fadeUp8,
 } from 'src/app/share/services/animations';
 import { urls } from 'src/app/share/services/apiurl';
+import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 @Component({
   selector: 'app-product-description',
   templateUrl: './productDescription.component.html',
@@ -46,6 +47,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
   url: string = urls.url;
   sizes: string[] = [];
   sets: string[] = [];
+  like = false;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   urls: any;
   constructor(
@@ -53,11 +55,15 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     private checkout: Checkout,
     private router: Router,
     private token: TokenManage,
-    private substrPipe: CategorySubstrPipe
+    private substrPipe: CategorySubstrPipe,
+    private alert: AlertManage
   ) {}
   ngOnInit(): void {
     this.token.isLogged.subscribe((x) => {
       this.isLogged = x;
+    });
+    this.products.allLikes.subscribe((x) => {
+      this.like = this.products.isLike(this.product.parentRef);
     });
   }
   ngOnChanges(): void {
@@ -166,5 +172,15 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     event.preventDefault();
     event.stopPropagation();
     location.assign(url);
+  }
+  addProductLikes(ref: string): void {
+    if (this.token.isLogged.value) {
+      this.products.postLikes(ref).subscribe((x: any) => {
+        this.like = !this.like;
+        this.products.allLikes.next(x);
+      });
+    } else {
+      this.alert.setAlertMessage('isLogOut');
+    }
   }
 }

@@ -2,11 +2,13 @@
   <div
     class="image-showroom"
     [style]="
-      'background-image:url(' + url + 'classapi/images/Living/home/living.png)'
+      'background-image:url(' +
+      url +
+      'classapi/images/showrooms/home/livingroom.png)'
     "
   >
     <div class="image-showroom-content p-lg-5 p-md-3 p-sm-1 w-75">
-      <h2 class="text-white fw-bolder">Living</h2>
+      <h2 class="text-white fw-bolder">Living Room</h2>
       <div class="image-showroom-buttons">
         <a
           routerLink="products/living"
@@ -16,20 +18,27 @@
         >
       </div>
     </div>
-    <!-- <popup
-      [data]="{
-        top: '20%',
-        left: '25%',
-        id: '40',
-      }"
-    ></popup>
-    <popup
+    <app-popup
       [data]="{
         top: '45%',
-        left: '60%',
-        id: '39',
+        left: '25%',
+        reference: '11130815001331360708',
       }"
-    ></popup> -->
+    ></app-popup>
+    <app-popup
+      [data]="{
+        top: '45%',
+        left: '75%',
+        reference: '11130690040390395608',
+      }"
+    ></app-popup>
+    <app-popup
+      [data]="{
+      top: '60%',
+      left: '50%',
+      reference: '11130390881380570803',
+    }"
+    ></app-popup>
 
     <div class="image-showroom-overlay"></div>
   </div>

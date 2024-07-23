@@ -53,6 +53,12 @@
             data-bs-parent="#accordionCategories"
           >
             <div class="accordion-body row py-0">
+              <a
+                routerLink="/products/all"
+                class="nav-link p-3 side-nav-link"
+                data-bs-dismiss="offcanvas"
+                >All</a
+              >
               <div
                 class="accordion-item border-0 rounded-0 border-top px-0"
                 *ngFor="let category of allCategories; index as i"

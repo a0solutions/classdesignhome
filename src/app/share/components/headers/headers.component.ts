@@ -23,7 +23,7 @@ export class HeadersComponent implements OnChanges {
   constructor(private headerManage: headerManage) {}
 
   ngOnChanges(): void {
-    this.headerNameUrl = this.headerName.replaceAll(' ', '_');
+    this.headerNameUrl = this.headerName;
     this.popups = [];
     if (this.headerManage.getPopups(this.headerName).length != 1) {
       this.popups = this.headerManage.getPopups(this.headerName);

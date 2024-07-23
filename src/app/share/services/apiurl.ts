@@ -2,7 +2,7 @@ const url = {
   url: '',
 };
 const environment = {
-  production: false,
+  production: true,
 };
 if (environment.production) {
   url.url = 'https://testing.classdesign.us/';
@@ -18,4 +18,5 @@ export const urls = {
   urlOrders: url.url + 'classapi/api/apiOrders.php',
   urlImages: url.url + 'classapi/api/apiImages.php',
   urlStripe: url.url + 'classapi/core/stripe.php',
+  urllikes: url.url + 'classapi/api/apiLikes.php',
 };

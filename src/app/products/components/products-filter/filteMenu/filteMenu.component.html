@@ -1,0 +1,55 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<div class="bg-white">
+  <div class="row">
+    <div class="col-lg-10 col-6 p-3 mobile-out">
+      <h4 class="mb-0 cursor-pointer hover-gold" (click)="showHideFilters()">
+        <i class="bi bi-sliders2 mb-2"></i>
+        {{ !open ? "Show Filters" : "Hide Filters" }}
+      </h4>
+    </div>
+    <div class="col-lg-10 col-6 p-3 pc-out">
+      <h4
+        class="mb-0 cursor-pointer hover-gold"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasFilters"
+        aria-controls="offcanvasFilters"
+      >
+        <i class="bi bi-sliders2 mb-2"></i>
+        Show Filters
+      </h4>
+    </div>
+    <div class="col-lg-2 col-6 p-3">
+      <select
+        [(ngModel)]="categorySelected"
+        #categories
+        class="form-select rounded-pill border-black mb-0 form-select-sm selectCategoryFilter"
+        name="category"
+      >
+        <option class="rounded-0" value="all">Best Selling</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="offcanvasFilters"
+  aria-labelledby="offcanvasFiltersLabel"
+>
+  <div class="offcanvas-header">
+    <button
+      type="button"
+      class="btn-close ms-auto opacity-100"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <app-products-filter
+      [categorySelected]="categorySelected"
+      [subcategorySelected]="subcategorySelected"
+    ></app-products-filter>
+  </div>
+</div>

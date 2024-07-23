@@ -1,323 +1,233 @@
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
-<div class="bg-white">
-  <div class="row">
-    <div class="col-lg-10 col-6 p-3">
-      <h4
-        class="mb-0 cursor-pointer hover-gold"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasFilters"
-        aria-controls="offcanvasFilters"
-      >
-        <i class="bi bi-sliders2 mb-2"></i>
-        Filters
-      </h4>
-    </div>
-    <!-- <div class="mobile-out col-lg-8">
-      <div class="d-flex justify-content-center">
-        <p class="p-3 mb-1 mt-2">
-          Showing {{ showedProducts }} of {{ filterProducts }} results
-        </p>
-        <span
-          (click)="changeFilter('col-lg-6')"
-          class="p-3 mt-2 cursor-pointer dimentions-cards"
-        >
-          <img [src]="url + 'classapi/images/app/card-2.png'" />
-        </span>
-        <span
-          (click)="changeFilter('col-lg-4')"
-          class="p-3 mt-2 cursor-pointer dimentions-cards"
-        >
-          <img [src]="url + 'classapi/images/app/card-3.png'" />
-        </span>
-        <span
-          (click)="changeFilter('col-lg-3')"
-          class="p-3 mt-2 cursor-pointer dimentions-cards"
-        >
-          <img [src]="url + 'classapi/images/app/card-4.png'" />
-        </span>
-      </div>
-    </div> -->
-    <div class="col-lg-2 col-6 p-3">
-      <select
-        [(ngModel)]="categorySelected"
-        #categories
-        class="form-select rounded-pill border-black mb-0 form-select-sm selectCategoryFilter"
-        name="category"
-        (change)="setUrl(categories.value)"
-      >
-        <option class="rounded-0" value="products">All</option>
-        <option
-          class="rounded-0"
-          [value]="category.category | capitalize"
-          *ngFor="let category of allCategories"
-        >
-          {{ category.category | capitalize }}
-        </option>
-      </select>
-    </div>
-  </div>
+
+<div class="d-flex">
+  <p
+    (click)="clearAllFilters()"
+    class="text-muted text-decoration-underline ms-auto cursor-pointer hover-gold"
+  >
+    Clear All
+  </p>
 </div>
-<div
-  class="offcanvas offcanvas-start"
-  tabindex="-1"
-  id="offcanvasFilters"
-  aria-labelledby="offcanvasFiltersLabel"
->
-  <div class="offcanvas-header">
-    <button
-      type="button"
-      class="btn-close ms-auto opacity-100"
-      data-bs-dismiss="offcanvas"
-      aria-label="Close"
-    ></button>
-  </div>
 
-  <div class="offcanvas-body">
-    <div class="mb-3 d-flex">
-      <h4
-        class="mb-0 me-auto"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasFilters"
-        aria-controls="offcanvasFilters"
+<div class="filter">
+  <div class="accordion rounded-0" id="accordionExample">
+    <div class="accordion-item border-0 rounded-0">
+      <h3 class="accordion-header border-top rounded-0">
+        <button
+          class="accordion-button rouned-0 py-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseCero"
+          aria-expanded="true"
+          aria-controls="collapseCero"
+        >
+          {{ categorySelected | capitalize }}
+        </button>
+      </h3>
+      <div
+        id="collapseCero"
+        class="accordion-collapse collapse show"
+        data-bs-parent="#accordionExample"
       >
-        Filters
-      </h4>
-      <p
-        (click)="clearAllFilters()"
-        class="text-muted text-decoration-underline ms-auto cursor-pointer hover-gold"
-      >
-        Clear All
-      </p>
-    </div>
-
-    <div class="filter">
-      <div class="accordion rounded-0" id="accordionExample">
-        <div class="accordion-item border-0 rounded-0">
-          <h3 class="accordion-header border-top rounded-0">
-            <button
-              class="accordion-button rouned-0 py-3"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseCero"
-              aria-expanded="true"
-              aria-controls="collapseCero"
-            >
-              {{ categorySelected | capitalize }}
-            </button>
-          </h3>
-          <div
-            id="collapseCero"
-            class="accordion-collapse collapse show"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="accordion-body row">
-              <div *ngFor="let category of allCategories">
+        <div class="accordion-body row">
+          <div *ngFor="let category of allCategories">
+            <div *ngIf="categorySelected !== 'all'; else allcategories">
+              <div *ngIf="categorySelected === category.category">
                 <div
-                  *ngIf="categorySelected !== 'products'; else allcategories"
+                  class="form-check"
+                  *ngFor="let subcategory of category.subcategories; index as i"
                 >
-                  <div *ngIf="categorySelected === category.category">
-                    <div
-                      class="form-check"
-                      *ngFor="
-                        let subcategory of category.subcategories;
-                        index as i
-                      "
-                    >
-                      <input
-                        class="form-check-input checked focus-ring-dark"
-                        type="checkbox"
-                        [value]="subcategory"
-                        [id]="subcategory"
-                        [checked]="subcategorySelected === subcategory"
-                        (change)="updateFilterSub($event)"
-                      />
-                      <label class="form-check-label" [for]="subcategory">
-                        {{ subcategory | capitalize }}
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <ng-template #allcategories>
-                  <p class="my-2">{{ category.category | uppercase }}</p>
-                  <div
-                    class="form-check"
-                    *ngFor="let subcategory of category.subcategories"
-                  >
+                  <label class="form-check-label">
                     <input
                       class="form-check-input checked focus-ring-dark"
                       type="checkbox"
                       [value]="subcategory"
-                      [id]="subcategory"
+                      [id]="subcategory.replaceAll(' ', '') | lowercase"
                       [checked]="subcategorySelected === subcategory"
                       (change)="updateFilterSub($event)"
                     />
-                    <label class="form-check-label" [for]="subcategory">
-                      {{ subcategory | capitalize }}
-                    </label>
-                  </div>
-                </ng-template>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item border-0 rounded-0">
-          <h3 class="accordion-header border-top rounded-0">
-            <button
-              class="accordion-button rouned-0 collapsed py-3"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseOne"
-              aria-expanded="true"
-              aria-controls="collapseOne"
-            >
-              Colors
-            </button>
-          </h3>
-          <div
-            id="collapseOne"
-            class="accordion-collapse collapse"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="accordion-body row">
-              <ng-container *ngFor="let color of colors">
-                <div class="col-2 mb-3">
-                  <app-color-select
-                    [background]="color"
-                    (selectedColor)="updateFilterColor($event)"
-                    [reset]="resetColor"
-                  ></app-color-select>
+
+                    {{ subcategory | capitalize }}
+                  </label>
                 </div>
-              </ng-container>
+              </div>
             </div>
+            <ng-template #allcategories>
+              <p class="my-2">{{ category.category | uppercase }}</p>
+              <div
+                class="form-check"
+                *ngFor="let subcategory of category.subcategories"
+              >
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input checked focus-ring-dark"
+                    type="checkbox"
+                    [value]="subcategory"
+                    [id]="subcategory.replaceAll(' ', '') | lowercase"
+                    [checked]="subcategorySelected === subcategory"
+                    (change)="updateFilterSub($event)"
+                  />
+
+                  {{ subcategory | capitalize }}
+                </label>
+              </div>
+            </ng-template>
           </div>
         </div>
-        <div class="accordion-item border-0 rounded-0">
-          <h3 class="accordion-header rounded-0 border-top">
-            <button
-              class="accordion-button collapsed py-3"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo"
-              aria-expanded="false"
-              aria-controls="collapseTwo"
-            >
-              Price
-            </button>
-          </h3>
-          <div
-            id="collapseTwo"
-            class="accordion-collapse collapse"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="accordion-body">
-              <input
-                #priceRange
-                (ngModel)="(priceFilter)"
-                type="range"
-                class="form-range w-100"
-                min="50"
-                max="30000"
-                step="50"
-                [value]="priceFilter"
-                (change)="updateFilterPrice(priceRange.value)"
-              />
-              <div class="d-flex" style="margin-top: -14px">
-                <small class="me-auto">$0</small>
-                <small class="ms-auto">{{
-                  priceRange.value | currency : "USD"
-                }}</small>
+      </div>
+    </div>
+    <div class="accordion-item border-0 rounded-0">
+      <h3 class="accordion-header border-top rounded-0">
+        <button
+          class="accordion-button rouned-0 collapsed py-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          Colors
+        </button>
+      </h3>
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body row">
+          <ng-container *ngFor="let color of colors">
+            <div class="col-2 mb-3">
+              <app-color-select
+                [background]="color"
+                (selectedColor)="updateFilterColor($event)"
+                [reset]="resetColor"
+              ></app-color-select>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item border-0 rounded-0">
+      <h3 class="accordion-header rounded-0 border-top">
+        <button
+          class="accordion-button collapsed py-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseTwo"
+          aria-expanded="false"
+          aria-controls="collapseTwo"
+        >
+          Price
+        </button>
+      </h3>
+      <div
+        id="collapseTwo"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <input
+            #priceRange
+            (ngModel)="(priceFilter)"
+            type="range"
+            class="form-range w-100"
+            min="50"
+            max="30000"
+            step="50"
+            [value]="priceFilter"
+            (change)="updateFilterPrice(priceRange.value)"
+          />
+          <div class="d-flex" style="margin-top: -14px">
+            <small class="me-auto">$0</small>
+            <small class="ms-auto">{{
+              priceRange.value | currency : "USD"
+            }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item border-0 rounded-0">
+      <h3 class="accordion-header rounded-0 border-top">
+        <button
+          class="accordion-button collapsed py-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseThree"
+          aria-expanded="false"
+          aria-controls="collapseThree"
+        >
+          Size
+        </button>
+      </h3>
+      <div
+        id="collapseThree"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <div *ngIf="categorySelected !== 'products'; else sizeFilter">
+            <p>
+              {{ categorySelected | capitalize }}
+            </p>
+            <div class="row">
+              <div
+                class="col-3 cursor-pointer mb-3"
+                *ngFor="let size of sizesFilter; index as i"
+                (click)="updateFilterSize(size.size, i)"
+              >
+                <img
+                  alt="size icon"
+                  [src]="
+                    url +
+                    'classapi/images/app/custom-icons/' +
+                    size.size +
+                    '.png'
+                  "
+                  [ngClass]="{ active: sizeSelected[i] }"
+                  class="p-0 m-0 border icon-filter-size"
+                  width="100%"
+                  [title]="size.size | capitalize"
+                />
               </div>
             </div>
           </div>
-        </div>
-        <div class="accordion-item border-0 rounded-0">
-          <h3 class="accordion-header rounded-0 border-top">
-            <button
-              class="accordion-button collapsed py-3"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseThree"
-              aria-expanded="false"
-              aria-controls="collapseThree"
-            >
-              Size
-            </button>
-          </h3>
-          <div
-            id="collapseThree"
-            class="accordion-collapse collapse"
-            data-bs-parent="#accordionExample"
-          >
-            <div class="accordion-body">
-              <div *ngIf="categorySelected !== 'products'; else sizeFilter">
-                <p>
-                  {{ categorySelected | capitalize }}
+
+          <ng-template #sizeFilter>
+            <ng-container *ngFor="let category of allCategories; index as c">
+              <ng-container *ngIf="findSizesFilter(category.category)">
+                <p class="col-12">
+                  {{ category.category | capitalize }}
                 </p>
                 <div class="row">
                   <div
                     class="col-3 cursor-pointer mb-3"
-                    *ngFor="let size of sizesFilter; index as i"
-                    (click)="updateFilterSize(size.size, i)"
+                    *ngFor="
+                      let size of selectingFilterCategory(category.category);
+                      index as i
+                    "
+                    (click)="updateFilterSize(size.size, size.index)"
                   >
                     <img
-                      alt="size icon"
+                      alt="sizes Icon"
                       [src]="
                         url +
                         'classapi/images/app/custom-icons/' +
                         size.size +
                         '.png'
                       "
-                      [ngClass]="{ active: sizeSelected[i] }"
+                      [ngClass]="{
+                        active: sizeSelected[size.index]
+                      }"
                       class="p-0 m-0 border icon-filter-size"
                       width="100%"
                       [title]="size.size | capitalize"
                     />
                   </div>
                 </div>
-              </div>
-
-              <ng-template #sizeFilter>
-                <ng-container
-                  *ngFor="let category of allCategories; index as c"
-                >
-                  <ng-container *ngIf="findSizesFilter(category.category)">
-                    <p class="col-12">
-                      {{ category.category | capitalize }}
-                    </p>
-                    <div class="row">
-                      <div
-                        class="col-3 cursor-pointer mb-3"
-                        *ngFor="
-                          let size of selectingFilterCategory(
-                            category.category
-                          );
-                          index as i
-                        "
-                        (click)="updateFilterSize(size.size, size.index)"
-                      >
-                        <img
-                          alt="sizes Icon"
-                          [src]="
-                            url +
-                            'classapi/images/app/custom-icons/' +
-                            size.size +
-                            '.png'
-                          "
-                          [ngClass]="{
-                            active: sizeSelected[size.index]
-                          }"
-                          class="p-0 m-0 border icon-filter-size"
-                          width="100%"
-                          [title]="size.size | capitalize"
-                        />
-                      </div>
-                    </div>
-                  </ng-container>
-                </ng-container>
-              </ng-template>
-            </div>
-          </div>
+              </ng-container>
+            </ng-container>
+          </ng-template>
         </div>
       </div>
     </div>

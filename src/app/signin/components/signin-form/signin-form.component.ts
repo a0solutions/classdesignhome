@@ -39,7 +39,7 @@ export class SigninFormComponent implements OnInit {
   }
   manageResponse(response: string): void {
     this.processingSignIn = false;
-    response == '400' ? this.setAlert('user-pass') : this.openSession(response);
+    !response ? this.setAlert('user-pass') : this.openSession(response);
   }
   openSession(response: string): void {
     const token = <string>response;

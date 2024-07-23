@@ -1,7 +1,5 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { BedComponent } from './bed.component';
 
@@ -11,9 +9,8 @@ describe('BedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BedComponent ]
-    })
-    .compileComponents();
+      declarations: [BedComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

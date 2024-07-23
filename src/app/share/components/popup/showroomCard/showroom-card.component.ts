@@ -1,9 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {
-  ProductManage,
-  colorId,
-  product,
-} from 'src/app/share/services/product-manage.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { urls } from 'src/app/share/services/apiurl';
+import { product } from 'src/app/share/services/product-manage.service';
 
 @Component({
   selector: 'app-showroom-card',
@@ -12,33 +10,31 @@ import {
 })
 export class ShowroomCardComponent implements OnInit {
   @Input() product: product;
-  colors: colorId[] = [];
   background = '';
-  constructor(private products: ProductManage) {}
+  url = urls.url;
+  @Output() active: EventEmitter<boolean> = new EventEmitter();
+  constructor(private http: Router) {}
   ngOnInit(): void {
-    this.products.products
-      .subscribe((x) => {
-        x != undefined
-          ? this.dataProcess(
-              this.products.getProductByParent(this.product.parentRef)
-            )
-          : null;
-      })
-      .unsubscribe();
+    this.background =
+      urls.url +
+      'classapi/images/' +
+      this.product.category +
+      '/products/' +
+      this.product.parentRef +
+      '/' +
+      this.product.sets +
+      '/' +
+      this.product.color +
+      '/1.webp';
+    this.background = this.background.replaceAll(' ', '%20');
   }
-
-  dataProcess(products: product[]) {
-    products.forEach((y) => {
-      const tempColor: colorId = <colorId>{};
-      tempColor.color = y.color;
-      tempColor.id = y.id;
-      tempColor.name = y.name;
-      this.colors.some((x) => x.color === y.color)
-        ? null
-        : this.colors.push(tempColor);
-    });
+  close() {
+    this.active.emit(false);
   }
   navigate(id: string, name: string): void {
     window.open('product/' + id + '/' + name, '_blank');
+  }
+  navigateCollection(category: string, subcategory: string): void {
+    this.http.navigate(['/products/' + category + '/' + subcategory]);
   }
 }

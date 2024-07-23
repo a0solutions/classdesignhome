@@ -10,7 +10,13 @@ export class DescripptionAccordionComponent {
   @Input() product: product = <product>{};
 
   getBullets(product: string): Array<string[]> {
-    if (product != undefined) return JSON.parse(<string>product);
+    if (product != undefined) {
+      try {
+        return JSON.parse(<string>product);
+      } catch {
+        return [product.split(';')];
+      }
+    }
     return [];
   }
 }

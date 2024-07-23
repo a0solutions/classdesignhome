@@ -9,7 +9,10 @@
     class="image-showroom-hotspot"
     (click)="popup_active = !popup_active"
   ></div>
-  <div *ngIf="popup_active" class="showroom-container">
-    <app-showroom-card [product]="product"></app-showroom-card>
+  <div *ngIf="popup_active" @fade class="showroom-container">
+    <app-showroom-card
+      [product]="product"
+      (active)="desactive($event)"
+    ></app-showroom-card>
   </div>
 </div>

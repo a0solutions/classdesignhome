@@ -3,16 +3,16 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/eqeqeq -->
 <div
-  class="card p-3 rounded-4 border-0 mx-auto"
+  class="card p-3 rounded-4 border-0 mx-auto cursor-pointer"
   style="width: 100%"
   (mouseover)="changeBackgound(1)"
   (mouseover)="hover = true"
   (mouseleave)="changeBackgound(0)"
   (mouseleave)="hover = false"
 >
-  <div class="position-absolute m-3 d-flex z-3">
+  <div class="m-3 d-flex z-3 w-100">
     <a
-      (click)="shareProduct($event, product.id, product.name)"
+      (click)="shareProduct($event, product.reference, product.name)"
       class="btn hb btn-white rounded-pill shadow-sm btn-sm"
       data-action="share/whatsapp/share"
       title="Share with friends"
@@ -21,22 +21,41 @@
     </a>
     <p
       *ngIf="product.new == 1"
-      class="bg-white p-1 px-2 text-white rounded-pill text-muted cursor-default mb-0 ms-3 shadow-sm"
+      class="btn hb btn-white rounded-pill shadow-sm btn-sm mb-0 ms-2"
       title="New product"
     >
       New
     </p>
+    <p
+      class="mb-0 mx-3 cursor-pointer"
+      (click)="addProductLikes(product.parentRef)"
+    >
+      <ng-container *ngIf="!like; else liked">
+        <i class="bi bi-suit-heart h4 hb mb-0"></i>
+      </ng-container>
+      <ng-template #liked>
+        <i class="bi bi-suit-heart-fill h4 hb mb-0 gold"></i
+      ></ng-template>
+    </p>
   </div>
   <div
+    #cardImage
     class="w-100 card-background"
-    [style]="'background-image:url(' + background + ')'"
+    [style]="
+      'background-image:url(' +
+      background +
+      '); height:' +
+      cardImage.offsetWidth +
+      'px'
+    "
   ></div>
+
   <div class="button-quick text-center my-2">
     <button
       @fadeButtonCard
       *ngIf="hover"
       class="btn btn-light bg-white shadow-sm w-50 rounded-4 my-2 p-2 hb"
-      (click)="navigate(product.reference, product.name)"
+      (click)="navigateModal(product.reference)"
     >
       Quick View
     </button>

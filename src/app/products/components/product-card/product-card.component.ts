@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import {
   ProductManage,
   colorId,
@@ -8,6 +8,9 @@ import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
 import { urls } from 'src/app/share/services/apiurl';
 import { fadeButtonCard } from 'src/app/share/services/animations';
+import { TokenManage } from 'src/app/share/services/token-manage.service';
+import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
+import { QuickViewService } from 'src/app/share/components/quickViewModal/service/quickView.service';
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
@@ -19,10 +22,14 @@ export class ProductCardComponent implements OnInit {
   colors: colorId[] = [];
   background = '';
   hover = false;
+  like = false;
   constructor(
     private products: ProductManage,
     private substrPipe: CategorySubstrPipe,
-    private spacesPipe: SpacesDeletePipe
+    private spacesPipe: SpacesDeletePipe,
+    private token: TokenManage,
+    private alert: AlertManage,
+    private quickView: QuickViewService
   ) {}
   ngOnInit(): void {
     this.products.products
@@ -37,30 +44,40 @@ export class ProductCardComponent implements OnInit {
     this.background =
       urls.url +
       'classapi/images/' +
-      this.product.category.replaceAll(' ', '_') +
+      this.product.category +
       '/products/' +
-      this.spaceDatele(this.product.parentRef) +
+      this.product.parentRef +
       '/' +
-      this.substrByCategory(this.product) +
-      '/1.jpg';
+      this.product.sets +
+      '/' +
+      this.product.color +
+      '/1.webp';
+    this.background = encodeURI(this.background);
+    this.products.allLikes.subscribe((x) => {
+      this.like = this.products.isLike(this.product.parentRef);
+    });
   }
   changeBackgound(InOut: number): void {
-    const url =
+    let url =
       urls.url +
       'classapi/images/' +
-      this.product.category.replaceAll(' ', '_') +
+      this.product.category +
       '/products/' +
-      this.spaceDatele(this.product.parentRef) +
+      this.product.parentRef +
       '/' +
-      this.substrByCategory(this.product) +
+      this.product.sets +
+      '/' +
+      this.product.color +
       '/';
-
-    InOut == 1 ? this.imageExists(url) : (this.background = url + '1.jpg');
+    url = encodeURI(url);
+    InOut == 1
+      ? this.imageExists(url + '2.webp')
+      : (this.background = url + '1.webp');
   }
   imageExists(url: string): void {
     const image = new Image();
-    image.src = url + '2.jpg';
-    image.width != 0 ? (this.background = url + '2.jpg') : null;
+    image.src = url;
+    image.width != 0 ? (this.background = url) : null;
   }
   dataProcess(products: product[]) {
     products.forEach((y) => {
@@ -73,7 +90,11 @@ export class ProductCardComponent implements OnInit {
         : this.colors.push(tempColor);
     });
   }
-  navigate(id: string, name: string): void {
+  navigateModal(id: string): void {
+    this.quickView.reference.next(id);
+    this.quickView.show$.next(true);
+  }
+  navigate(id: string, name: string) {
     window.open('product/' + id + '/' + name.replaceAll(' ', '_'), '_blank');
   }
   substrByCategory(product: product): string {
@@ -93,5 +114,15 @@ export class ProductCardComponent implements OnInit {
     event.preventDefault();
     event.stopPropagation();
     location.assign(url);
+  }
+  addProductLikes(ref: string): void {
+    if (this.token.isLogged.value) {
+      this.products.postLikes(ref).subscribe((x) => {
+        this.like = !this.like;
+        console.log(x);
+      });
+    } else {
+      this.alert.setAlertMessage('isLogOut');
+    }
   }
 }

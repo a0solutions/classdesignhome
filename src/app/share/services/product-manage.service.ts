@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { urls } from 'src/app/share/services/apiurl';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { TokenManage } from './token-manage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductManage {
   url: string = urls.urlProducts;
+  urlLikes: string = urls.urllikes;
   urlImage: string = urls.urlImages;
   allProducts: product[] = [];
+  likes: string[] = [];
   products: BehaviorSubject<product[]> = new BehaviorSubject(this.allProducts);
   filterProducts: BehaviorSubject<number> = new BehaviorSubject(0);
   showedProducts: BehaviorSubject<number> = new BehaviorSubject(0);
-  constructor(private http: HttpClient) {
-    this.setAllProducts();
-  }
+  allLikes: BehaviorSubject<string[]> = new BehaviorSubject(this.likes);
+  constructor(private http: HttpClient, private token: TokenManage) {}
 
   setAllProducts(): Promise<void> {
     return this.getAllProducts().forEach((x) => {
@@ -25,9 +27,32 @@ export class ProductManage {
   }
 
   getAllProducts(): Observable<product[]> {
+    this.getAllLikes();
     return this.http.get<product[]>(this.url);
   }
-
+  getAllLikes() {
+    this.token.isLogged.subscribe((x) => {
+      if (x) {
+        const params = new HttpParams()
+          .set('validate', this.token.getValidateToken())
+          .set('userId', this.token.getUserId());
+        this.http.get<string[]>(this.urlLikes, { params }).subscribe((x) => {
+          this.allLikes.next(x);
+        });
+      }
+    });
+  }
+  postLikes(ref: string) {
+    const params = new HttpParams().set(
+      'validate',
+      this.token.getValidateToken()
+    );
+    return this.http.post(
+      this.urlLikes,
+      { reference: ref, user: this.token.getUserId() },
+      { params }
+    );
+  }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getFilterProducts(filters: any): product[] {
     this.products = new BehaviorSubject(this.allProducts);
@@ -41,7 +66,7 @@ export class ProductManage {
             )
           );
         } else if (prop == 'category') {
-          if (filters.category != 'products') {
+          if (filters.category != 'all') {
             this.products.next(
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               this.products.value.filter((x: any) =>
@@ -57,12 +82,17 @@ export class ProductManage {
         }
       }
     }
+
     return this.products.value;
+  }
+  isLike(ref: string): boolean {
+    if (this.allLikes.value.find((y) => y === ref)) return true;
+    return false;
   }
 
   getProductByCategory(category: string): product[] {
     this.products = new BehaviorSubject(this.allProducts);
-    if (category != 'products')
+    if (category != 'all')
       return this.products.value.filter((x) => x.category == category);
     return this.products.value;
   }
@@ -73,7 +103,7 @@ export class ProductManage {
 
   getOfferProduct(category: string): Promise<product[]> {
     return this.setAllProducts().then(() => {
-      if (category != 'products')
+      if (category != 'all')
         return this.allProducts.filter(
           (x) => x.category == category && x.offer
         );
@@ -130,16 +160,14 @@ export class ProductManage {
     );
   }
   getProductImages(data: imagedata) {
-    return this.http.get(
-      this.urlImage +
-        '?category=' +
-        data.category +
-        '&folder=' +
-        data.folder +
-        '&parent=' +
-        data.parentRef
-    );
+    const params = new HttpParams()
+      .set('category', data.category)
+      .set('folder', data.sets)
+      .set('parent', data.parentRef)
+      .set('subfolder', data.color);
+    return this.http.get(this.urlImage, { params });
   }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   simplifyOrderProduct(order: any): any {
     const ssimplifyObject = order;
@@ -182,8 +210,9 @@ export class ProductManage {
 }
 export interface imagedata {
   category: string;
-  folder: string;
+  sets: string;
   parentRef: string;
+  color: string;
 }
 export interface colorId {
   color: string;

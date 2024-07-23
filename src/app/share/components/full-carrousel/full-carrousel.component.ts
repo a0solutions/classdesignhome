@@ -45,8 +45,9 @@ export class FullCarrouselComponent implements OnInit, OnChanges {
   loadPictures(): void {
     const data: imagedata = <imagedata>{};
     data.category = this.product.category;
-    data.folder = this.substrByCategory(this.product);
-    data.parentRef = this.spaceDelete(this.product.parentRef);
+    data.parentRef = this.product.parentRef;
+    data.color = this.product.color;
+    data.sets = this.product.sets;
     this.url =
       urls.url +
       'classapi/images/' +
@@ -54,8 +55,11 @@ export class FullCarrouselComponent implements OnInit, OnChanges {
       '/products/' +
       data.parentRef +
       '/' +
-      data.folder +
+      data.sets.replaceAll('+', '%2B') +
+      '/' +
+      data.color +
       '/';
+    this.url = this.url.replaceAll(' ', '%20');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.products.getProductImages(data).forEach((x: any) => {
       this.fullPicture = this.url + x[0];

@@ -20,6 +20,8 @@ import { FullCarrouselComponent } from '../components/full-carrousel/full-carrou
 import { CarouselService } from '../components/full-carrousel/service/carousel.service';
 import { ProductGaleryComponent } from 'src/app/product-detail/components/productGalery/productGalery.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductDescriptionComponent } from 'src/app/product-detail/components/productDescription/productDescription.component';
+import { QuickViewService } from '../components/quickViewModal/service/quickView.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ColorSelectComponent,
     FullCarrouselComponent,
     ProductGaleryComponent,
+    ProductDescriptionComponent,
   ],
   providers: [
     AlertManage,
@@ -47,6 +50,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CategorySubstrPipe,
     SpacesDeletePipe,
     CarouselService,
+    QuickViewService,
   ],
   exports: [
     CartItemComponent,
@@ -59,6 +63,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ColorSelectComponent,
     FullCarrouselComponent,
     ProductGaleryComponent,
+    ProductDescriptionComponent,
   ],
 })
 export class ShareModule {}

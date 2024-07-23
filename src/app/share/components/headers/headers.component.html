@@ -6,16 +6,14 @@
         [alt]="headerNameUrl"
         [src]="
           url +
-          'classapi/images/' +
-          headerNameUrl +
-          '/showroom/showroom-' +
+          'classapi/images/showrooms/products/showroom-' +
           headerNameUrl +
           '-1.png'
         "
       />
-      <!-- <div class="header-allhostsports">
-        <popup *ngFor="let popup of popups" [data]="popup"></popup>
-      </div> -->
+      <div class="header-allhostsports">
+        <app-popup *ngFor="let popup of popups" [data]="popup"></app-popup>
+      </div>
       <!-- <div class="header-overlay"></div> -->
     </div>
   </div>
@@ -23,43 +21,5 @@
     <button class="btn btn-white shadow rounded-pill mx-4 mt-4 mb-2">
       <i class="bi bi-fullscreen p-2 m-0"></i>
     </button>
-  </div> -->
-  <!-- <div class="header-carrousel">
-    <div class="header-carrousel-item">
-      <img
-        [src]="
-          url +
-          'classapi/images/' +
-          headerNameUrl +
-          '/showroom/showroom-' +
-          headerNameUrl +
-          '-1.png'
-        "
-      />
-    </div>
-    <div class="header-carrousel-item">
-      <img
-        [src]="
-          url +
-          'classapi/images/' +
-          headerNameUrl +
-          '/showroom/showroom-' +
-          headerNameUrl +
-          '-1.png'
-        "
-      />
-    </div>
-    <div class="header-carrousel-item">
-      <img
-        [src]="
-          url +
-          'classapi/images/' +
-          headerNameUrl +
-          '/showroom/showroom-' +
-          headerNameUrl +
-          '-1.png'
-        "
-      />
-    </div>
   </div> -->
 </div>

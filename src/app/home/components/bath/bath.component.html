@@ -2,7 +2,7 @@
   <div
     class="image-showroom"
     [style]="
-      'background-image:url(' + url + 'classapi/images/Bathroom/home/bath.png)'
+      'background-image:url(' + url + 'classapi/images/showrooms/home/bath.png)'
     "
   >
     <div class="image-showroom-content p-lg-5 p-md-3 p-sm-1 w-75">
@@ -19,20 +19,28 @@
         >
       </div>
     </div>
-    <!-- <popup
+    <app-popup
       [data]="{
         top: '20%',
         left: '33%',
-        id: '34',
+        reference: '10500378001130000103',
       }"
-    ></popup>
-    <popup
+    ></app-popup>
+    <app-popup
+      [data]="{
+      top: '50%',
+      left: '33%',
+      reference: '20102001017050400703',
+    }"
+    ></app-popup>
+
+    <app-popup
       [data]="{
         top: '50%',
-        left: '70%',
-        id: '35',
+        left: '60%',
+        reference: '20102001017060400703',
       }"
-    ></popup> -->
+    ></app-popup>
     <div class="image-showroom-overlay"></div>
   </div>
 </div>

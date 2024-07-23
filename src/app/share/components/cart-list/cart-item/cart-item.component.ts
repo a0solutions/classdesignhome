@@ -25,12 +25,15 @@ export class CartItemComponent implements OnInit {
     this.background =
       urls.url +
       'classapi/images/' +
-      this.product.category.replaceAll(' ', '_') +
+      this.product.category +
       '/products/' +
-      this.spacesDelete(this.product.parentRef) +
+      this.product.parentRef +
       '/' +
-      this.substrByCategory(this.product).replaceAll(' ', '') +
+      this.product.sets.replaceAll('+', '%2B') +
+      '/' +
+      this.product.color +
       '/1.jpg';
+    this.background = this.background.replaceAll(' ', '%20');
   }
   numberCount(count: number): void {
     const product: product = this.product;

@@ -22,13 +22,13 @@
   <div class="pc-out" @fadeUp1>
     <div class="d-flex">
       <h1 class="bold mb-0 h5">{{ product.name }}</h1>
-      <p class="ms-3">
+      <!-- <p class="ms-3">
         <span
           class="badge p-1 px-2 rounded-pill rounded-0"
           [ngClass]="product.stock ? 'bg-success' : 'bg-danger'"
           >{{ product.stock | stock }}</span
         >
-      </p>
+      </p> -->
       <p
         (click)="shareProduct($event, product.id, product.name)"
         data-action="share/whatsapp/share"
@@ -73,11 +73,13 @@
       </button>
       <div
         class="lightbox"
-        [style]="'background-image:url(' + fullPicture + ')'"
+        [style]="
+          'background-image:url(' + fullPicture + ');background-size:auto 100%'
+        "
       ></div>
     </div>
     <ng-container *ngIf="allImages.length > 1">
-      <div class="row">
+      <div class="row justify-content-center">
         <div class="bullets my-3">
           <ng-container *ngFor="let thisImage of allImages; index as i">
             <button
@@ -99,4 +101,10 @@
       </div>
     </ng-container>
   </div>
+  <p @fadeUp2 class="text-center py-3">
+    <small
+      >These images are generated representations and not actual photographs.
+      For additional imagery, kindly reach out to us directly.</small
+    >
+  </p>
 </article>

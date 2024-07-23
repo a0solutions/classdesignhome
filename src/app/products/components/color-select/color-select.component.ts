@@ -6,7 +6,6 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { pantone } from './colors';
 import { urls } from 'src/app/share/services/apiurl';
 @Component({
   selector: 'app-color-select',
@@ -19,6 +18,7 @@ export class ColorSelectComponent implements OnInit, OnChanges {
   @Input() activeColor = false;
   @Input() reset = false;
   @Output() selectedColor = new EventEmitter<object>();
+  urlImage: string;
   url: string = urls.url;
   selected = false;
   check = '';
@@ -29,12 +29,12 @@ export class ColorSelectComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    const fullColor = pantone.find((x) => x.color == this.background);
-    this.colorName = <string>fullColor?.color;
-    this.background = <string>fullColor?.hex;
+    this.urlImage =
+      this.url + 'classapi/images/app/colors/' + this.background + '.png';
     this.activeColor
       ? (this.check = this.url + 'classapi/images/app/check.png')
       : (this.check = '');
+    this.colorName = this.background;
   }
   selectColor(color: string): void {
     this.selected = !this.selected;

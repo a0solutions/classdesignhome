@@ -4,6 +4,7 @@ import { NavManage } from '../share/components/nav/services/navManage.service';
 import { ProductManage } from '../share/services/product-manage.service';
 import { LoaderService } from '../share/components/loader/services/loader.service';
 import {
+  fade,
   fadeLeft,
   fadeUp,
   fadeUp1,
@@ -11,12 +12,15 @@ import {
 } from '../share/services/animations';
 import { SeoService } from '../share/services/seo.service';
 import { urls } from '../share/services/apiurl';
+import { CategoriesService } from '../share/services/categories.service';
+import { FilterManage } from '../share/services/filterManage.service';
+import { QuickViewService } from '../share/components/quickViewModal/service/quickView.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  animations: [fadeUp, fadeLeft, fadeUp1, fadeUp2],
+  animations: [fadeUp, fadeLeft, fadeUp1, fadeUp2, fade],
 })
 export class ProductsComponent implements OnInit {
   category = '';
@@ -24,27 +28,50 @@ export class ProductsComponent implements OnInit {
   categoryTitle: string;
   categoryText: string;
   urlsWeb: string = urls.url;
+  open = false;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  allCategories: any[] = [];
   constructor(
     private url: ActivatedRoute,
     private nav: NavManage,
     private allProducts: ProductManage,
     private loader: LoaderService,
-    private seo: SeoService
+    private seo: SeoService,
+    private categories: CategoriesService,
+    private filter: FilterManage,
+    private quick: QuickViewService
   ) {}
   ngOnInit(): void {
+    this.quick.show$.next(false);
     this.url.paramMap.subscribe({
       next: this.getCategory.bind(this),
       error: console.log.bind(this),
     });
-
+    this.filter.isInFilter.subscribe((x) => {
+      x ? (this.open = true) : (this.open = false);
+    });
+    this.categories.getCategories().subscribe((x: any) => {
+      x.forEach((element: any) => {
+        if (element.category == this.category) {
+          this.allCategories.push({ category: element.category, active: true });
+        } else {
+          this.allCategories.push({
+            category: element.category,
+            active: false,
+          });
+        }
+      });
+    });
     this.nav.dark.next(true);
   }
   getCategory(param: ParamMap): void {
     this.allProducts.setAllProducts().then(() => {
       this.category = <string>param.get('category');
-      this.category == 'products'
+      this.category == 'all' || this.category == 'like'
         ? (this.categoryTitle = 'Shop Designs')
         : (this.categoryTitle = this.category);
+      let urlImage: string;
+      this.category == 'like' ? (urlImage = 'all') : (urlImage = this.category);
       this.subcategory = <string>param.get('subcategory');
       this.categoryText = this.getText(this.category);
       this.seo.setSeo(
@@ -52,16 +79,16 @@ export class ProductsComponent implements OnInit {
         this.categoryText,
         this.urlsWeb +
           'classapi/images/' +
-          this.category +
+          urlImage +
           '/showroom/showroom-' +
-          this.category +
+          urlImage +
           '-1.png'
       );
       this.loader.show.next(false);
     });
   }
   getText(category: string): string {
-    if (category == 'products')
+    if (category == 'all' || category == 'like')
       return 'Discover the essence of luxury home furnishings with Class Design. Our eclectic selection—ranging from minimalist furniture to contemporary statement pieces—ensures that every home can find its perfect match. Explore our expertly crafted designs, perfect for enhancing modern living spaces with elegance and sophistication.';
     if (category == 'Bedroom')
       return "Revitalize your sanctuary with Class Design's versatile bedroom furniture collection. Whether seeking the clean elegance of minimalist design or the bold flair of contemporary beds and dressers, our offerings cater to every style, promising to elevate your bedroom decor to a realm of luxurious comfort and high-end design.";

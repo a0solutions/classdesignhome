@@ -43,6 +43,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.cardSize = x;
     });
   }
+
   filterProducts(filters: filter): void {
     this.itemNumber = this.paginateNumber;
     this.products = [];

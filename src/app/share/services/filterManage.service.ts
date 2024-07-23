@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class FilterManage {
   allFilters: BehaviorSubject<filter> = new BehaviorSubject(<filter>{});
   cardSize: BehaviorSubject<string> = new BehaviorSubject('col-lg-3');
-
+  isInFilter: BehaviorSubject<boolean> = new BehaviorSubject(false);
   resetFilters() {
     this.allFilters.next(<filter>{});
   }

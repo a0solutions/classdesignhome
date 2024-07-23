@@ -6,85 +6,80 @@ export class headerManage {
   headers = {
     bathroom: [
       {
-        top: '13%',
+        top: '5%',
         left: '27%',
-        id: '538',
+        reference: '10500371003130761903',
       },
       {
-        top: '35%',
-        left: '53%',
-        id: '538',
-      },
-      {
-        top: '27%',
-        left: '37%',
-        id: '537',
+        top: '45%',
+        left: '40%',
+        reference: '20102001006030793103',
       },
     ],
     bedroom: [
       {
         top: '23%',
         left: '25%',
-        id: '536',
+        reference: 'DOR 03-BHQM2N',
       },
       {
         top: '5%',
         left: '65%',
-        id: '535',
+        reference: 'DOR 03-BHQM2N',
       },
       {
         top: '50%',
         left: '85%',
-        id: '534',
+        reference: 'DOR 03-BHQM2N',
       },
       {
         top: '35%',
         left: '45%',
-        id: '533',
+        reference: 'DOR 03-BHQM2N',
       },
     ],
     living: [
       {
-        top: '5%',
+        top: '40%',
         left: '20%',
-        id: '532',
+        reference: '11130706935390303008',
       },
       {
-        top: '40%',
-        left: '45%',
-        id: '531',
+        top: '48%',
+        left: '50%',
+        reference: '11132880888380633003',
       },
       {
-        top: '40%',
-        left: '75%',
-        id: '530',
+        top: '25%',
+        left: '70%',
+        reference: '11130815004311163008',
       },
     ],
     products: [
       {
         top: '5%',
         left: '20%',
-        id: '529',
+        reference: 'DOR 03-BHQM2N',
       },
       {
         top: '40%',
         left: '45%',
-        id: '528',
+        reference: 'DOR 03-BHQM2N',
       },
       {
         top: '40%',
         left: '75%',
-        id: '527',
+        reference: 'DOR 03-BHQM2N',
       },
     ],
   };
 
   getPopups(headerName: string) {
-    if (headerName == 'bathroom') {
+    if (headerName == 'Bathroom') {
       return this.headers.bathroom;
-    } else if (headerName == 'bedroom') {
+    } else if (headerName == 'Bedroom') {
       return this.headers.bedroom;
-    } else if (headerName == 'living') {
+    } else if (headerName == 'Living Room') {
       return this.headers.living;
     } else if (headerName == 'products') {
       return this.headers.products;
@@ -97,5 +92,5 @@ export class headerManage {
 export type popup = {
   top: string;
   left: string;
-  id: string;
+  reference: string;
 };
