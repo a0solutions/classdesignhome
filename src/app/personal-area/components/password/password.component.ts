@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import { TokenManage } from 'src/app/share/services/token-manage.service';
 import {
@@ -16,6 +16,8 @@ export class PasswordComponent {
   repeatPassword: string;
   showPass = false;
   changePass: passwordChange = <passwordChange>{};
+  @Input() tokenString = '';
+  @Output() changed: EventEmitter<boolean> = new EventEmitter(false);
   constructor(
     private alert: AlertManage,
     private token: TokenManage,
@@ -25,10 +27,15 @@ export class PasswordComponent {
   submit() {
     if (this.newPassword === this.repeatPassword) {
       this.changePass.newPassword = this.newPassword;
-      this.changePass.userId = this.token.getUserId();
-      this.user.changePassword(this.changePass).subscribe((x) => {
-        x ? this.changeSuccess() : this.changeFeil();
-      });
+      this.tokenString === ''
+        ? (this.tokenString = this.token.getValidateToken())
+        : null;
+      this.changePass.userId = this.token.getUserId(this.tokenString);
+      this.user
+        .changePassword(this.changePass, this.tokenString)
+        .subscribe((x) => {
+          x ? this.changeSuccess() : this.changeFeil();
+        });
     } else {
       this.alert.setAlertMessage('passwordNotMatch');
     }
@@ -37,6 +44,7 @@ export class PasswordComponent {
     this.alert.setAlertMessage('passwordSuccess');
     this.newPassword = '';
     this.repeatPassword = '';
+    this.changed.emit(true);
   }
   changeFeil() {
     this.alert.setAlertMessage('passwordFeil');

@@ -35,7 +35,8 @@ export class UserManage {
     );
   }
   getUserId(): string {
-    return this.tokenManage.getUserId();
+    const token = this.tokenManage.getValidateToken();
+    return this.tokenManage.getUserId(token);
   }
   updateData(form: NgForm, id: string, table: string): Observable<object> {
     return this.http.put(
@@ -60,11 +61,24 @@ export class UserManage {
   addNewsLetter(email: object): Observable<object> {
     return this.http.post(this.url + '?newsletter=true', email);
   }
-  changePassword(changePass: passwordChange): Observable<object> {
+  changePassword(
+    changePass: passwordChange,
+    token: string
+  ): Observable<object> {
+    let userToken = '';
+    token != ''
+      ? (userToken = token)
+      : (userToken = this.tokenManage.getValidateToken());
     const params = new HttpParams()
-      .set('validate', this.tokenManage.getValidateToken())
+      .set('validate', userToken)
       .set('changePassword', true);
     return this.http.put(this.url, changePass, { params });
+  }
+  sendValidationEmailPasswordChange(email: string) {
+    const params = new HttpParams()
+      .set('changePasswordEmail', true)
+      .set('validate', '');
+    return this.http.put(this.url, { email: email }, { params });
   }
 }
 export interface passwordChange {

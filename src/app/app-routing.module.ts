@@ -13,6 +13,7 @@ import { UsComponent } from './us/us.component';
 import { TrackingComponent } from './tracking/tracking.component';
 import { The404Component } from './share/components/404/404.component';
 import { PoliciesComponent } from './share/components/policies/policies.component';
+import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,6 +43,14 @@ const routes: Routes = [
   {
     path: 'policy',
     component: PoliciesComponent,
+  },
+  {
+    path: 'resetpassword/:token',
+    component: ResetPasswordComponent,
+  },
+  {
+    path: 'resetpassword',
+    component: ResetPasswordComponent,
   },
   { path: '**', component: The404Component },
 ];

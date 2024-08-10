@@ -19,17 +19,15 @@ import { SpacesDeletePipe } from '../pipes/spacesDelete.pipe';
 import { FullCarrouselComponent } from '../components/full-carrousel/full-carrousel.component';
 import { CarouselService } from '../components/full-carrousel/service/carousel.service';
 import { ProductGaleryComponent } from 'src/app/product-detail/components/productGalery/productGalery.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
 import { ProductDescriptionComponent } from 'src/app/product-detail/components/productDescription/productDescription.component';
 import { QuickViewService } from '../components/quickViewModal/service/quickView.service';
+import { AlertsComponent } from '../components/alerts/alerts.component';
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    PipesModule,
-    RouterModule,
-    BrowserAnimationsModule,
-  ],
+  imports: [CommonModule, FormsModule, PipesModule, RouterModule],
   declarations: [
     CartItemComponent,
     ListedComponent,
@@ -43,6 +41,7 @@ import { QuickViewService } from '../components/quickViewModal/service/quickView
     FullCarrouselComponent,
     ProductGaleryComponent,
     ProductDescriptionComponent,
+    AlertsComponent,
   ],
   providers: [
     AlertManage,
@@ -64,6 +63,9 @@ import { QuickViewService } from '../components/quickViewModal/service/quickView
     FullCarrouselComponent,
     ProductGaleryComponent,
     ProductDescriptionComponent,
+    RouterModule,
+    FormsModule,
+    AlertsComponent,
   ],
 })
 export class ShareModule {}

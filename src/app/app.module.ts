@@ -20,6 +20,7 @@ import { UsModule } from './us/us.module';
 import { TrackingModule } from './tracking/tracking.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilterManage } from './share/services/filterManage.service';
+import { ResetPasswordModule } from './resetPassword/resetPassword.module';
 
 @NgModule({
   declarations: [AppComponent, CatalogPageComponent, CatalogCardComponent],
@@ -40,6 +41,7 @@ import { FilterManage } from './share/services/filterManage.service';
     UsModule,
     TrackingModule,
     BrowserAnimationsModule,
+    ResetPasswordModule,
   ],
   providers: [AuthGuard, FilterManage],
   bootstrap: [AppComponent],

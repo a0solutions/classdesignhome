@@ -91,6 +91,11 @@ export class AlertManage {
         'There was an issue with updating your password due to authorization. Please try again or contact us for assistance.'
       );
       this.title.next('Password changed Feil');
+    } else if (code == 'pssawordRquested') {
+      this.message.next(
+        'An email has been sent to you to confirm the change of your password.'
+      );
+      this.title.next('Email confirmation');
     } else {
       this.message.next(
         'An unexpected error occurred. Please try again later, and thank you for your patience.'

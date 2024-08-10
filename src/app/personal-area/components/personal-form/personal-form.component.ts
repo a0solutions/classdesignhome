@@ -28,7 +28,8 @@ export class PersonalFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.loader.show.next(true);
-    const id = this.token.getUserId();
+    const tokenString = this.token.getValidateToken();
+    const id = this.token.getUserId(tokenString);
     this.users.getAllUserInfo(id).subscribe({
       next: this.getDataForm.bind(this),
       error: this.setAlert.bind(''),

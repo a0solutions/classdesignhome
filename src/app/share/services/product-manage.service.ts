@@ -33,9 +33,10 @@ export class ProductManage {
   getAllLikes() {
     this.token.isLogged.subscribe((x) => {
       if (x) {
+        const token = this.token.getValidateToken();
         const params = new HttpParams()
           .set('validate', this.token.getValidateToken())
-          .set('userId', this.token.getUserId());
+          .set('userId', this.token.getUserId(token));
         this.http.get<string[]>(this.urlLikes, { params }).subscribe((x) => {
           this.allLikes.next(x);
         });
@@ -47,9 +48,10 @@ export class ProductManage {
       'validate',
       this.token.getValidateToken()
     );
+    const token = this.token.getValidateToken();
     return this.http.post(
       this.urlLikes,
-      { reference: ref, user: this.token.getUserId() },
+      { reference: ref, user: this.token.getUserId(token) },
       { params }
     );
   }

@@ -22,6 +22,7 @@ import { The404Component } from '../components/404/404.component';
 import { GoUpComponent } from '../components/goUp/goUp.component';
 import { PoliciesComponent } from '../components/policies/policies.component';
 import { SeoService } from '../services/seo.service';
+import { PasswordComponent } from 'src/app/personal-area/components/password/password.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, PipesModule, ShareModule, RouterModule],
@@ -29,13 +30,13 @@ import { SeoService } from '../services/seo.service';
     NavComponent,
     CartListComponent,
     FooterComponent,
-    AlertsComponent,
     ModalAskComponent,
     LoaderComponent,
     SidebarComponent,
     The404Component,
     GoUpComponent,
     PoliciesComponent,
+    PasswordComponent,
   ],
   providers: [
     NavManage,
@@ -51,12 +52,12 @@ import { SeoService } from '../services/seo.service';
     CartListComponent,
     FooterComponent,
     CounterComponent,
-    AlertsComponent,
     ModalAskComponent,
     LoaderComponent,
     The404Component,
     GoUpComponent,
     PoliciesComponent,
+    PasswordComponent,
   ],
 })
 export class TemplateModule {}

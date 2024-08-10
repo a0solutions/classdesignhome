@@ -106,7 +106,7 @@ export class Checkout {
   }
   getUserOrders(): Observable<order[]> {
     const token = this.token.token;
-    const userId = this.token.getUserId();
+    const userId = this.token.getUserId(token);
     const params = new HttpParams()
       .set('userId', userId)
       .set('validate', token);

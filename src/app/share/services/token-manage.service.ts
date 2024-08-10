@@ -13,7 +13,7 @@ export class TokenManage {
     this.token = <string>localStorage.getItem('CDHtoken');
   }
   isUserLogged(): void {
-    this.getUserId() != ''
+    this.getUserId(this.token) != ''
       ? this.isLogged.next(true)
       : this.isLogged.next(false);
   }
@@ -21,10 +21,10 @@ export class TokenManage {
     localStorage.removeItem('CDHtoken');
     this.isLogged.next(false);
   }
-  getUserId(): string {
+  getUserId(token: string): string {
     this.getToken();
-    if (!this.verify.isTokenExpired(this.token)) {
-      const info = this.verify.decodeToken(this.token);
+    if (!this.verify.isTokenExpired(token)) {
+      const info = this.verify.decodeToken(token);
       return info.iss;
     } else {
       return '';

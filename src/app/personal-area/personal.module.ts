@@ -9,16 +9,15 @@ import { UserManage } from '../share/services/user-manage.service';
 import { FormsModule } from '@angular/forms';
 import { TokenManage } from '../share/services/token-manage.service';
 import { CategoriesService } from '../share/services/categories.service';
-import { PasswordComponent } from './components/password/password.component';
+import { TemplateModule } from '../share/Modules/Template.module';
 
 @NgModule({
-  imports: [CommonModule, ShareModule, FormsModule],
+  imports: [CommonModule, ShareModule, FormsModule, TemplateModule],
   declarations: [
     PersonalAreaComponent,
     PersonalCardComponent,
     PersonalFormComponent,
     PersonalInfoComponent,
-    PasswordComponent,
   ],
   providers: [UserManage, TokenManage, CategoriesService],
 })
