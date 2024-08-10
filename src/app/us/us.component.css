@@ -21,3 +21,7 @@
   color: white;
   text-align: center;
 }
+ul,
+li {
+  font-weight: 400 !important;
+}

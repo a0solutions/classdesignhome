@@ -19,6 +19,7 @@ import { ProductDetailModule } from './product-detail/product-detail.module';
 import { UsModule } from './us/us.module';
 import { TrackingModule } from './tracking/tracking.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterManage } from './share/services/filterManage.service';
 
 @NgModule({
   declarations: [AppComponent, CatalogPageComponent, CatalogCardComponent],
@@ -40,7 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TrackingModule,
     BrowserAnimationsModule,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, FilterManage],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

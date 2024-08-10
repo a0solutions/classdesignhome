@@ -11,10 +11,10 @@ import {
   fadeUp2,
 } from '../share/services/animations';
 import { SeoService } from '../share/services/seo.service';
-import { urls } from '../share/services/apiurl';
 import { CategoriesService } from '../share/services/categories.service';
 import { FilterManage } from '../share/services/filterManage.service';
 import { QuickViewService } from '../share/components/quickViewModal/service/quickView.service';
+import { urls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-products',
@@ -67,12 +67,12 @@ export class ProductsComponent implements OnInit {
   getCategory(param: ParamMap): void {
     this.allProducts.setAllProducts().then(() => {
       this.category = <string>param.get('category');
+      this.subcategory = <string>param.get('subcategory');
       this.category == 'all' || this.category == 'like'
         ? (this.categoryTitle = 'Shop Designs')
         : (this.categoryTitle = this.category);
       let urlImage: string;
       this.category == 'like' ? (urlImage = 'all') : (urlImage = this.category);
-      this.subcategory = <string>param.get('subcategory');
       this.categoryText = this.getText(this.category);
       this.seo.setSeo(
         this.category,

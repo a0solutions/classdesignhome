@@ -17,11 +17,11 @@ import {
   fadeUp3,
 } from '../share/services/animations';
 import { SeoService } from '../share/services/seo.service';
-import { urls } from '../share/services/apiurl';
 import { product } from '../share/services/product-manage.service';
 import { CategorySubstrPipe } from '../share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from '../share/pipes/spacesDelete.pipe';
 import { LoaderService } from '../share/components/loader/services/loader.service';
+import { urls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-tracking',

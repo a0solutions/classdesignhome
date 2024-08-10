@@ -17,16 +17,9 @@
   <div class="mobile-out" @fadeUp1>
     <div class="d-flex">
       <h1 class="bold mb-0 h5">{{ product.name }} - {{ product.size }}</h1>
-      <!-- <p class="ms-3">
-        <span
-          class="badge p p-1 px-3 rounded-pill rounded-0"
-          [ngClass]="product.stock ? 'bg-success' : 'bg-danger'"
-          >{{ product.stock | stock }}</span
-        >
-      </p> -->
       <p
         (click)="shareProduct($event, product.id, product.name)"
-        class="badge p p-1 px-3 rounded-pill rounded-0 btn shadow-sm ms-2 text-bg-light"
+        class="badge p p-1 buttonShare px-3 rounded-pill rounded-0 btn shadow-sm ms-2 text-bg-light"
         data-action="share/whatsapp/share"
         title="Share with friends"
       >
@@ -81,7 +74,9 @@
             width="100%"
             class="p-0"
             [alt]="product.name"
-            [src]="url + 'classapi/images/app/custom-icons/' + size + '.png'"
+            [src]="
+              url + 'classapi/images/app/custom-icons/size/' + size + '.png'
+            "
           />
         </button>
       </div>

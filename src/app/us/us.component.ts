@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoaderService } from '../share/components/loader/services/loader.service';
 import { NavManage } from '../share/components/nav/services/navManage.service';
-import { urls } from '../share/services/apiurl';
 import {
   fadeLeft,
   fadeUp,
@@ -10,6 +9,7 @@ import {
   fadeUp3,
 } from '../share/services/animations';
 import { SeoService } from '../share/services/seo.service';
+import { urls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-us',

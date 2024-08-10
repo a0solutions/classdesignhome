@@ -20,8 +20,8 @@ import {
   fadeUp7,
   fadeUp8,
 } from 'src/app/share/services/animations';
-import { urls } from 'src/app/share/services/apiurl';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
+import { urls } from 'src/environments/environment';
 @Component({
   selector: 'app-product-description',
   templateUrl: './productDescription.component.html',

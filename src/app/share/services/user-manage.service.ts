@@ -5,7 +5,8 @@ import { Form, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TokenManage } from 'src/app/share/services/token-manage.service';
-import { urls } from 'src/app/share/services/apiurl';
+import { ProductManage } from './product-manage.service';
+import { urls } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,8 @@ export class UserManage {
   constructor(
     private cnt: HttpClient,
     private tokenManage: TokenManage,
-    private router: Router
+    private router: Router,
+    private productService: ProductManage
   ) {}
   postUser(data: Form): Observable<boolean> {
     return this.cnt.post<boolean>(this.url, data);
@@ -53,6 +55,7 @@ export class UserManage {
   }
   signOut(param?: string): void {
     this.tokenManage.logOut();
+    this.productService.allLikes.next([]);
     this.router.navigate(['/signin'], { queryParams: { returnTo: param } });
   }
   addNewsLetter(email: object): Observable<object> {

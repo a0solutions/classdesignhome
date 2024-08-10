@@ -18,24 +18,14 @@ export class headerManage {
     ],
     bedroom: [
       {
-        top: '23%',
-        left: '25%',
-        reference: 'DOR 03-BHQM2N',
+        top: '25%',
+        left: '55%',
+        reference: 'DOR 21-BHKG',
       },
       {
         top: '5%',
-        left: '65%',
-        reference: 'DOR 03-BHQM2N',
-      },
-      {
-        top: '50%',
-        left: '85%',
-        reference: 'DOR 03-BHQM2N',
-      },
-      {
-        top: '35%',
-        left: '45%',
-        reference: 'DOR 03-BHQM2N',
+        left: '35%',
+        reference: 'DOR 21-BHKG2N',
       },
     ],
     living: [
@@ -57,19 +47,15 @@ export class headerManage {
     ],
     products: [
       {
-        top: '5%',
-        left: '20%',
-        reference: 'DOR 03-BHQM2N',
+        top: '25%',
+        left: '35%',
+        reference: '11130550530331575608',
       },
+
       {
-        top: '40%',
-        left: '45%',
-        reference: 'DOR 03-BHQM2N',
-      },
-      {
-        top: '40%',
-        left: '75%',
-        reference: 'DOR 03-BHQM2N',
+        top: '50%',
+        left: '70%',
+        reference: '11130390881380570103',
       },
     ],
   };
@@ -81,7 +67,7 @@ export class headerManage {
       return this.headers.bedroom;
     } else if (headerName == 'Living Room') {
       return this.headers.living;
-    } else if (headerName == 'products') {
+    } else if (headerName == 'all') {
       return this.headers.products;
     } else {
       return [{}];

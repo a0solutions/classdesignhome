@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { fadeUp2, fadeUp3 } from 'src/app/share/services/animations';
-import { urls } from 'src/app/share/services/apiurl';
+import { urls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-catalog-card',

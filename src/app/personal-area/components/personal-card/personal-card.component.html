@@ -1,22 +1,24 @@
-<div class="card mb-3 w-100 shadow-sm">
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<div class="card border-0 mb-3 w-100 shadow-sm">
   <div class="card-body p-0">
-    <div class="d-lg-flex bg-gray p-3 rounded-top justify-content-center">
-      <p class="card-text mb-0 text-center">
-        <small class="text-body-secondary px-3"
+    <div class="d-lg-flex bg-gray p-3 rounded-top">
+      <h4 class="mb-0 p-lg-2 p-sm-1" style="font-size: 1.2rem">
+        <span class="hb">{{ getStatus(order) }}</span>
+      </h4>
+      <p class="mb-0 p-lg-2 p-sm-1">
+        <small class="text-body-secondary p-lg-3 p-sm-1"
           ><span class="hb">Order Number:</span> {{ order.order }}</small
         >
       </p>
-      <p class="card-text mb-0">
-        <small class="text-body-secondary px-3"
+      <p class="mb-0 p-lg-2 p-sm-1">
+        <small class="text-body-secondary"
           ><span class="hb">Date:</span> {{ order.date | date }}</small
         >
       </p>
-      {{ order.state }}
-      <p class="card-text mb-0 mobile-out">
-        <span class="hb">{{ getStatus(order) }}</span>
-      </p>
-      <p class="card-text mb-0">
-        <small class="text-body-secondary px-3"
+
+      <p class="ms-lg-auto mb-0 p-lg-2 p-sm-1">
+        <small class="text-body-secondary"
           ><span class="hb">Total Amount:</span>
           {{ order.amount | currency : "USD" }}</small
         >
@@ -56,22 +58,53 @@
                     <td>{{ product.product.reference }}</td>
                     <td>{{ product.product.price | currency : "USD" }}</td>
                     <td>
-                      <button
-                        style="
-                          --bs-btn-padding-y: 0.25rem;
-                          --bs-btn-padding-x: 0.5rem;
-                          --bs-btn-font-size: 0.55rem;
-                        "
-                        class="btn btn-outline-dark btn-sm col-2 mt-1 w-100"
-                        (click)="
-                          navigate(
-                            product.product.reference,
-                            product.product.name
-                          )
-                        "
+                      <a
+                        class="hb mb-0 text-decoration-underline text-dark cursor-pointer col-2 mt-1 w-100"
+                        (click)="buyAgain(product.product.reference)"
                       >
-                        Quick View
-                      </button>
+                        Buy it again
+                      </a>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+          <div class="w-100 col-lg-10 col-12 pc-out">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Qty</th>
+                  <th scope="col">Porduct Info</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container
+                  *ngFor="let product of order.cartProducts; let first = first"
+                >
+                  <tr>
+                    <th scope="row">
+                      <small class="px-2"
+                        ><img
+                          [alt]="product.product.name"
+                          [src]="getImageUrl(product.product)"
+                          width="30px"
+                          class="shadow-sm rounded-2"
+                      /></small>
+                    </th>
+                    <td>{{ product.count }}</td>
+                    <td>
+                      {{ product.product.name }}<br />{{
+                        product.product.reference
+                      }}<br />{{ product.product.price | currency : "USD"
+                      }}<br />
+                      <a
+                        class="hb mb-0 text-decoration-underline text-dark cursor-pointer col-2 mt-1 w-100"
+                        (click)="buyAgain(product.product.reference)"
+                      >
+                        Buy it again
+                      </a>
                     </td>
                   </tr>
                 </ng-container>
@@ -82,20 +115,100 @@
       </div>
       <div class="allButtons col-lg-2 col-12 text-center">
         <button
-          (click)="buyAgain()"
-          style="height: 40px"
-          class="btn btn-dark mx-2 mb-2 w-90"
+          href="/tracking/"
+          class="text-body-secondary btn btn-outline-dark w-90 mx-2 mb-2"
+          (click)="extraInfo = !extraInfo"
         >
-          Buy Again
+          View order details
         </button>
         <a
           *ngIf="
             getStatus(order) !== 'Delivered' || getStatus(order) !== 'Canceled'
           "
           href="/tracking/"
-          class="text-body-secondary btn btn-outline-dark w-90 mx-2 mb-3"
+          class="text-body-secondary btn btn-outline-dark w-90 mx-2 mb-2"
           >Tracking</a
         >
+        <button
+          *ngIf="
+            showCancel &&
+            getStatus(order) !== 'Canceled' &&
+            getStatus(order) !== 'Delivered'
+          "
+          (click)="cancelOrder()"
+          href="/tracking/"
+          class="text-body-secondary btn btn-outline-dark w-90 mx-2"
+        >
+          Cancel order
+        </button>
+      </div>
+    </div>
+    <div class="row p-3" *ngIf="extraInfo" @fade>
+      <div class="col-lg-6 col-sm-12 col-md-6">
+        <h4>Billing Information</h4>
+        <p class="mb-0">
+          <strong>Contact Name:</strong>
+          {{ order.billing.billingName + " " + order.billing.billingSurname }}
+        </p>
+        <p class="mb-0">
+          <strong>Address:</strong>
+          {{
+            order.billing.billingAddress +
+              "
+          " +
+              order.billing.billingAddress2 +
+              " " +
+              order.billing.billingCity +
+              " " +
+              order.billing.billingState +
+              " " +
+              order.billing.billingZip +
+              " " +
+              order.billing.billingCountry
+          }}
+        </p>
+        <p class="mb-0">
+          <strong>Email:</strong>
+          {{ order.billing.billingEmail }}
+        </p>
+        <p class="mb-0">
+          <strong>Phone:</strong>
+          {{ order.billing.billingPhone }}
+        </p>
+      </div>
+      <div class="col-lg-6 col-sm-12 col-md-6">
+        <h4>Shipping Information</h4>
+        <p class="mb-0">
+          <strong>Contact Name:</strong>
+          {{
+            order.shipping.shippingName + " " + order.shipping.shippingSurname
+          }}
+        </p>
+        <p class="mb-0">
+          <strong>Address:</strong>
+          {{
+            order.shipping.shippingAddress +
+              "
+          " +
+              order.shipping.shippingAddress2 +
+              " " +
+              order.shipping.shippingCity +
+              " " +
+              order.shipping.shippingState +
+              " " +
+              order.shipping.shippingZip +
+              " " +
+              order.shipping.shippingCountry
+          }}
+        </p>
+        <p class="mb-0" *ngIf="order.trackingNumber">
+          <strong>Tracking Number:</strong>
+          {{ order.trackingNumber }}
+        </p>
+        <p class="mb-0" *ngIf="order.shippingCompany">
+          <strong>Shipping Company:</strong>
+          {{ order.shippingCompany }}
+        </p>
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@ import {
 } from 'src/app/share/services/product-manage.service';
 import { CategorySubstrPipe } from '../../pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from '../../pipes/spacesDelete.pipe';
-import { urls } from '../../services/apiurl';
+import { urls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-full-carrousel',
@@ -55,11 +55,11 @@ export class FullCarrouselComponent implements OnInit, OnChanges {
       '/products/' +
       data.parentRef +
       '/' +
-      data.sets.replaceAll('+', '%2B') +
+      data.sets +
       '/' +
       data.color +
       '/';
-    this.url = this.url.replaceAll(' ', '%20');
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.products.getProductImages(data).forEach((x: any) => {
       this.fullPicture = this.url + x[0];
@@ -68,9 +68,11 @@ export class FullCarrouselComponent implements OnInit, OnChanges {
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   updatePicture(picture: any, img: number): void {
-    const src = picture.target.style.backgroundImage.substr(
-      5,
-      picture.target.style.backgroundImage.length - 7
+    const src = decodeURI(
+      picture.target.style.backgroundImage.substr(
+        5,
+        picture.target.style.backgroundImage.length - 7
+      )
     );
     for (const img in this.image) {
       this.image[img] = false;
@@ -83,5 +85,8 @@ export class FullCarrouselComponent implements OnInit, OnChanges {
   }
   spaceDelete(text: string): string {
     return this.spacesPipe.transform(text);
+  }
+  encodeURI(link: string) {
+    return encodeURI(link);
   }
 }

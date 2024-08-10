@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TokenManage } from 'src/app/share/services/token-manage.service';
 import { product } from 'src/app/share/services/product-manage.service';
-import { urls } from 'src/app/share/services/apiurl';
+import { urls } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -131,6 +131,7 @@ export interface order {
   oceanic?: string;
   finale?: string;
   roadshow?: string;
+  shippingCompany: string;
   trackingNumber?: string;
   date?: string;
   orderId?: string;

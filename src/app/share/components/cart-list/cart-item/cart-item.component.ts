@@ -3,7 +3,7 @@ import { Checkout } from 'src/app/share/services/checkout.service';
 import { product } from 'src/app/share/services/product-manage.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
-import { urls } from 'src/app/share/services/apiurl';
+import { urls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart-item',
@@ -29,10 +29,10 @@ export class CartItemComponent implements OnInit {
       '/products/' +
       this.product.parentRef +
       '/' +
-      this.product.sets.replaceAll('+', '%2B') +
+      this.product.sets +
       '/' +
       this.product.color +
-      '/1.jpg';
+      '/1.webp';
     this.background = this.background.replaceAll(' ', '%20');
   }
   numberCount(count: number): void {

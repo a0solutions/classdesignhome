@@ -21,12 +21,12 @@
 }
 .filter-container {
   transition: all 0.5s !important;
+  overflow: hidden;
 }
 .col-0 {
   width: 0% !important;
 }
 .t-160 {
-  top: 160px;
   height: 80vh;
-  overflow: auto;
+  overflow-y: auto;
 }

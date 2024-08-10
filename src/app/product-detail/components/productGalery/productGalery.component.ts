@@ -13,8 +13,8 @@ import {
   fadeUp2,
   fadeUp3,
 } from 'src/app/share/services/animations';
-import { urls } from 'src/app/share/services/apiurl';
 import { SeoService } from 'src/app/share/services/seo.service';
+import { urls } from 'src/environments/environment';
 interface images {
   url: string;
   state: boolean;
@@ -35,8 +35,6 @@ export class ProductGaleryComponent implements OnChanges {
 
   constructor(
     private products: ProductManage,
-    private substrPipe: CategorySubstrPipe,
-    private spacesPipe: SpacesDeletePipe,
     private carousel: CarouselService,
     private seo: SeoService
   ) {}
@@ -73,7 +71,6 @@ export class ProductGaleryComponent implements OnChanges {
 
     this.products.getProductImages(data).subscribe((x: any) => {
       this.allImages = [];
-      console.log(this.allImages);
       for (let i = 0; i < x.length; i++) {
         this.allImages.push({ url: encodeURI(this.url + x[i]), state: false });
       }
@@ -94,12 +91,7 @@ export class ProductGaleryComponent implements OnChanges {
     this.allImages[index].state = true;
     this.fullPicture = src;
   }
-  substrByCategory(product: product): string {
-    return this.substrPipe.transform(product);
-  }
-  spaceDelete(text: string): string {
-    return this.spacesPipe.transform(text);
-  }
+
   shareProduct(event: Event, arg1: string, arg2: string) {
     const url =
       'whatsapp://send?text=Look at this awesome thing I found!: ' +
@@ -107,7 +99,7 @@ export class ProductGaleryComponent implements OnChanges {
       'product/' +
       arg1 +
       '/' +
-      arg2.replaceAll(' ', '_');
+      arg2;
     event.preventDefault();
     event.stopPropagation();
     location.assign(url);

@@ -39,7 +39,7 @@ select option {
 }
 /******************** NAV **************/
 .side-nav-link {
-  font-family: "Helvetica-bold", sans-serif;
+  font-family: "Roboto Condensed", sans-serif !important ;
   border-top: var(--bs-border-width) var(--bs-border-style)
     var(--bs-border-color) !important;
   font-weight: bold;

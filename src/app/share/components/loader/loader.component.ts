@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LoaderService } from './services/loader.service';
-import { urls } from '../../services/apiurl';
 import { fade } from '../../services/animations';
+import { urls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-loader',

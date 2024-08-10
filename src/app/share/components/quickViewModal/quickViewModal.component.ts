@@ -37,6 +37,6 @@ export class QuickViewModalComponent implements OnInit {
   }
   navigate(id: string, name: string) {
     this.closeAlert();
-    window.open('product/' + id + '/' + name.replaceAll(' ', '_'), '_blank');
+    window.open('product/' + id + '/' + name, '_blank');
   }
 }

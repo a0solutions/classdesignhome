@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalAskManage } from './services/modalAskManage.service';
-import { fade, fadeUp } from '../../services/animations';
+import { fade, fadeUp, fadeUp2 } from '../../services/animations';
 
 @Component({
   selector: 'app-modal-ask',
   templateUrl: './modal-ask.component.html',
   styleUrls: ['./modal-ask.component.css'],
-  animations: [fadeUp, fade],
+  animations: [fadeUp2, fadeUp, fade],
 })
 export class ModalAskComponent implements OnInit {
   title = '';

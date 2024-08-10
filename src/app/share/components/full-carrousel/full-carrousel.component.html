@@ -18,7 +18,7 @@
       <div class="col-12 mb-3 position-relative px-0">
         <div
           class="lightbox2"
-          [style]="'background-image:url(' + fullPicture + ')'"
+          [style]="'background-image:url(' + encodeURI(fullPicture) + ')'"
         ></div>
       </div>
       <div
@@ -28,7 +28,7 @@
           class="carrousel-image-datail"
           *ngFor="let thisImage of allImages; index as i"
           [ngClass]="{ imageActive: image[i] }"
-          [style]="'background-image:url(' + url + thisImage + ')'"
+          [style]="'background-image:url(' + encodeURI(url + thisImage) + ')'"
           (click)="updatePicture($event, i)"
         ></div>
       </div>

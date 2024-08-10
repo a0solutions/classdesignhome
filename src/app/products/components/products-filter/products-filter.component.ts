@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable @angular-eslint/use-lifecycle-interface */
-import { Component, Input, OnInit, SimpleChange } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChange,
+} from '@angular/core';
 import {
   CategoriesService,
   categories,
@@ -14,8 +20,9 @@ import {
   ProductManage,
   product,
 } from '../../../share/services/product-manage.service';
-import { urls } from 'src/app/share/services/apiurl';
 import { take } from 'rxjs';
+import { urls } from 'src/environments/environment';
+import { Route, Router } from '@angular/router';
 
 interface sizes {
   category: string;
@@ -28,7 +35,7 @@ interface sizes {
   templateUrl: './products-filter.component.html',
   styleUrls: ['./products-filter.component.css'],
 })
-export class ProductsFilterComponent implements OnInit {
+export class ProductsFilterComponent implements OnInit, OnChanges {
   @Input() categorySelected = '';
   @Input() subcategorySelected = '';
   url = urls.url;
@@ -46,14 +53,11 @@ export class ProductsFilterComponent implements OnInit {
   constructor(
     private categories: CategoriesService,
     private filter: FilterManage,
-    private product: ProductManage
+    private product: ProductManage,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
-    this.getProducts();
-    this.priceFilter = 30000;
-  }
-  getProducts() {
     this.categories
       .getCategories()
       .pipe(take(1))
@@ -61,15 +65,25 @@ export class ProductsFilterComponent implements OnInit {
         next: this.getCategories.bind(this),
         error: console.log.bind(this),
       });
-    //getting subcategory filter
-    this.subcategoriesFilter = [this.subcategorySelected];
-    this.filter.allFilters.value.subcategory = this.subcategoriesFilter;
-    this.updateAllFilter();
     //subscribing to filter changes and updating the data
     this.filter.allFilters.subscribe({
       next: this.getFiltersByCategories.bind(this),
       error: console.log.bind(this),
     });
+    this.getProducts();
+    this.priceFilter = 30000;
+  }
+  //Listening main category changes
+  ngOnChanges(changes: { [key: string]: SimpleChange }): void {
+    if (changes.hasOwnProperty('categorySelected')) {
+      this.filter.resetFilters();
+      this.filter.allFilters.value.category = this.categorySelected;
+      this.filter.allFilters.value.subcategory = [this.subcategorySelected];
+      this.updateAllFilter();
+    }
+  }
+  getProducts() {
+    // this.updateAllFilter();
     this.product.showedProducts.pipe(take(1)).subscribe((x) => {
       this.showedProducts = x;
     });
@@ -106,14 +120,6 @@ export class ProductsFilterComponent implements OnInit {
   //Getting categories
   getCategories(categories: object): void {
     this.allCategories = <categories[]>categories;
-  }
-  //Listening main category changes
-  ngOnChanges(changes: { [key: string]: SimpleChange }): void {
-    if (changes.hasOwnProperty('categorySelected')) {
-      this.filter.resetFilters();
-      this.filter.allFilters.value.category = this.categorySelected;
-      this.updateAllFilter();
-    }
   }
 
   setUrl(category: string): void {
@@ -167,13 +173,6 @@ export class ProductsFilterComponent implements OnInit {
     this.filter.cardSize.next(cardSize);
   }
   clearAllFilters() {
-    this.updateFilterPrice('30000');
-    this.sizeSelected = [];
-    this.filter.allFilters.value.size = '';
-    this.colors.splice(0, this.colors.length);
-    this.filter.allFilters.value.color = [];
-    this.allColorFilters = [];
-    this.resetColor = true;
-    this.getProducts();
+    this.route.navigate(['/products/' + this.categorySelected]);
   }
 }

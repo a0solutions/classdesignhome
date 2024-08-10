@@ -18,12 +18,11 @@
   height: 40px;
   position: relative;
   z-index: 99;
-  font-size: 21px;
+  font-size: 18px;
   text-align: center;
 }
 .zoom-button .bi::before {
-  margin-left: -3px;
-  font-size: 21px;
+  font-size: 18px;
 }
 .carrousel-image-datail {
   flex: 0 0 auto;

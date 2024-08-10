@@ -57,8 +57,8 @@
   ></app-filter-menu>
 </div>
 <article class="container mt-5 row mx-auto">
-  <div class="filter-container" [class]="open ? 'col-3' : 'col-0'">
-    <div class="sticky-top t-160" *ngIf="open">
+  <div class="filter-container p-0" [class]="open ? 'col-3' : 'col-0'">
+    <div class="sticky-top t-160" style="width: 300px">
       <app-products-filter
         [categorySelected]="category"
         [subcategorySelected]="subcategory"
@@ -68,6 +68,7 @@
 
   <app-product-list
     [class]="open ? 'col-9' : 'col-12'"
+    class="ms-auto"
     [category]="category"
   ></app-product-list>
 </article>

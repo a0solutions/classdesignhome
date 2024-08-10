@@ -103,18 +103,6 @@
           [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
         />
       </button>
-      <p
-        *ngIf="isLogged"
-        class="mb-0 mt-3 cursor-pointer"
-        (click)="likesFilter()"
-      >
-        <ng-container *ngIf="!like; else liked">
-          <i class="bi bi-suit-heart hb mb-0"></i>
-        </ng-container>
-        <ng-template #liked>
-          <i class="bi bi-suit-heart-fill hb mb-0 gold"></i
-        ></ng-template>
-      </p>
       <button
         [ngClass]="{ 'text-dark': dark, gold: !dark }"
         class="btn mt-1 border-0 rounded-0 p10"

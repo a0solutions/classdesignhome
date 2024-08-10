@@ -48,8 +48,8 @@ export class OffersComponent implements OnChanges, OnInit {
       this.items = [];
       for (let i = 1; i <= Math.ceil(this.allProducts.length / 4); i++) {
         this.items.push(i);
-        this.loader.show.next(false);
       }
+      this.loader.show.next(false);
     });
   }
 }

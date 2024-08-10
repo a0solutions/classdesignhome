@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { urls } from 'src/app/share/services/apiurl';
+import { urls } from 'src/environments/environment';
 @Component({
   selector: 'app-color-select',
   templateUrl: './color-select.component.html',

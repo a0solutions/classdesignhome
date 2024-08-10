@@ -10,13 +10,14 @@
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modalAskLabel">{{ title }}</h1>
-        </div>
         <div class="modal-body">
-          <p>{{ text }}</p>
+          <h1 class="modal-title fs-5 text-center" id="modalAskLabel">
+            {{ title }}
+          </h1>
+          <div class="separador-centrado mb-3 mt-3" @fadeUp2></div>
+          <p class="text-center">{{ text }}</p>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer border-0">
           <div class="w-100 d-flex">
             <button
               (click)="answer(1)"

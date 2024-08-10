@@ -1,64 +1,67 @@
 <div class="row align-items-start">
   <div
-    class="nav col-12 nav-pills me-3 text-start justify-content-center p-4"
+    class="nav col-12 nav-pills me-3 text-start overflow-scroll p-4"
     id="v-pills-tab"
     role="tablist"
     aria-orientation="vertical"
   >
-    <button
-      class="px-3 active mx-2 border-2 btn btn-outline-dark rounded-3"
-      id="v-pills-home-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#v-pills-home"
-      type="button"
-      role="tab"
-      aria-controls="v-pills-home"
-      aria-selected="true"
-    >
-      <span class="title-pc"
-        ><i class="bi bi-file-person mt-1"></i> Personal information</span
+    <div class="content_button justify-content-lg-center">
+      <button
+        class="px-3 active mx-2 border-2 btn btn-outline-dark rounded-3"
+        id="v-pills-home-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#v-pills-home"
+        type="button"
+        role="tab"
+        aria-controls="v-pills-home"
+        aria-selected="true"
       >
-    </button>
-    <button
-      class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
-      id="v-pills-profile-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#v-pills-profile"
-      type="button"
-      role="tab"
-      aria-controls="v-pills-profile"
-      aria-selected="false"
-    >
-      <span class="title-pc">
-        <i class="bi bi-box-seam mt-1"></i> Purchase history</span
+        <span class="title-pc"
+          ><i class="bi bi-file-person mt-1"></i> Personal information</span
+        >
+      </button>
+      <button
+        class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
+        id="v-pills-profile-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#v-pills-profile"
+        type="button"
+        role="tab"
+        aria-controls="v-pills-profile"
+        aria-selected="false"
       >
-    </button>
-    <button
-      class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
-      id="v-pills-profile-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#v-pills-profile"
-      type="button"
-      role="tab"
-      aria-controls="v-pills-profile"
-      aria-selected="false"
-    >
-      <span class="title-pc"
-        ><i class="bi bi-gear mt-1"></i> Password settings</span
+        <span class="title-pc">
+          <i class="bi bi-box-seam mt-1"></i> Purchase history</span
+        >
+      </button>
+      <button
+        class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
+        id="v-pills-profile-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#v-pills-profile"
+        type="button"
+        role="tab"
+        aria-controls="v-pills-profile"
+        aria-selected="false"
       >
-    </button>
-    <button
-      class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
-      id="v-pills-profile-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#v-pills-profile"
-      type="button"
-      role="tab"
-      aria-controls="v-pills-profile"
-      aria-selected="false"
-    >
-      <span class="title-pc"><i class="bi bi-person mt-1"></i> Sign Out</span>
-    </button>
+        <span class="title-pc"
+          ><i class="bi bi-gear mt-1"></i> Password settings</span
+        >
+      </button>
+      <button
+        (click)="signOut()"
+        class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
+        id="v-pills-profile-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#v-pills-profile"
+        type="button"
+        role="tab"
+        aria-controls="v-pills-profile"
+        aria-selected="false"
+      >
+        <span class="title-pc"><i class="bi bi-person mt-1"></i> Sign Out</span>
+      </button>
+    </div>
   </div>
   <div class="tab-content col-12 p-4" id="v-pills-tabContent">
     <div
@@ -83,7 +86,7 @@
             <i class="bi bi-1-square-fill me-3"></i> Buying history
           </div>
         </div>
-        <div class="p-4">
+        <div class="p-lg-4">
           <div class="overflow-y-auto overflow-x-hidden p-1">
             <div class="row">
               <ng-container *ngIf="allOrders | async; else noOrders">

@@ -9,6 +9,7 @@ import {
 } from '../../../share/services/filterManage.service';
 import { fadeUp } from 'src/app/share/services/animations';
 import { Subscription } from 'rxjs';
+import { SortService } from 'src/app/share/services/sort-service.service';
 
 @Component({
   selector: 'app-product-list',
@@ -28,7 +29,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   cardSizeSubscription: Subscription;
   constructor(
     private allProducts: ProductManage,
-    private filters: FilterManage
+    private filters: FilterManage,
+    private sortService: SortService
   ) {}
   ngOnDestroy(): void {
     this.cardSizeSubscription.unsubscribe();
@@ -44,6 +46,27 @@ export class ProductListComponent implements OnInit, OnDestroy {
     });
   }
 
+  sortProducts(): void {
+    this.sortService.sortList.subscribe((x) => {
+      if (x === 'priceasc') {
+        this.products = this.sortService.sortPriceAsc(this.products);
+      } else if (x === 'pricedesc') {
+        this.products = this.sortService.sortPriceDesc(this.products);
+      } else if (x === 'stock') {
+        this.products = this.sortService.sortStock(this.products);
+      } else if (x === 'new') {
+        this.products = this.sortService.sortNew(this.products);
+      } else if (x === 'deals') {
+        this.products = this.sortService.sortDeals(this.products);
+      } else if (x === 'liked') {
+        this.products = this.sortService.sortLiked(this.products);
+      } else if (x === '') {
+        this.products = this.sortService.sortName(this.products);
+      }
+      this.paginate();
+    });
+  }
+
   filterProducts(filters: filter): void {
     this.itemNumber = this.paginateNumber;
     this.products = [];
@@ -53,7 +76,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.parents.push(x.parentRef);
         this.products.push(x);
         this.allProducts.filterProducts.next(this.products.length);
-        this.paginate();
+        this.sortProducts();
       }
     });
   }

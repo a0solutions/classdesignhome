@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { headerManage } from './popous/popups';
-import { urls } from '../../services/apiurl';
+import { urls } from 'src/environments/environment';
 @Component({
   selector: 'app-headers',
   templateUrl: './headers.component.html',

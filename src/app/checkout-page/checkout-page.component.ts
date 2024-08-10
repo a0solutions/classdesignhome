@@ -13,7 +13,6 @@ import { AlertManage } from '../share/components/alerts/services/alertManage.ser
 import { ModalAskManage } from '../share/components/modal-ask/services/modalAskManage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { urls } from '../share/services/apiurl';
 import { ProductManage } from '../share/services/product-manage.service';
 import {
   fadeLeft,
@@ -24,6 +23,7 @@ import {
   fadeUp4,
 } from '../share/services/animations';
 import { SeoService } from '../share/services/seo.service';
+import { urls } from 'src/environments/environment';
 @Component({
   selector: 'app-checkout-page',
   templateUrl: './checkout-page.component.html',

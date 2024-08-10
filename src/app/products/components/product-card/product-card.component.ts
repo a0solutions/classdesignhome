@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   ProductManage,
   colorId,
@@ -6,11 +6,11 @@ import {
 } from '../../../share/services/product-manage.service';
 import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
-import { urls } from 'src/app/share/services/apiurl';
 import { fadeButtonCard } from 'src/app/share/services/animations';
 import { TokenManage } from 'src/app/share/services/token-manage.service';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import { QuickViewService } from 'src/app/share/components/quickViewModal/service/quickView.service';
+import { urls } from 'src/environments/environment';
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',

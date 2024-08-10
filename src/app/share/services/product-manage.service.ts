@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { urls } from 'src/app/share/services/apiurl';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { TokenManage } from './token-manage.service';
+import { urls } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -235,7 +235,7 @@ export interface product {
   upholsteryMaterial?: string;
   upholsteryFillMaterial?: string;
   price: number;
-  oldprice: number;
+  promoPrice: number;
   minimunOrder: number;
   size: string;
   sets: string;
@@ -262,8 +262,8 @@ export interface product {
   warrantyDetails?: string;
   headboardHeight?: string;
   stock: number;
-  new?: number;
-  offer?: number;
+  new: number;
+  offer: number;
   membersOnly?: number;
   counterTopIncluded?: string;
   counterMaterial?: string;

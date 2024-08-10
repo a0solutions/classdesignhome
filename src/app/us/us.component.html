@@ -10,7 +10,7 @@
     <div class="separador-centrado mb-5 mt-3" @fadeUp2></div>
   </div>
   <div class="overflow-hidden mobile-out" @fadeUp3>
-    <app-headers [headerName]="'aboutus'"></app-headers>
+    <app-headers [headerName]="'all'"></app-headers>
   </div>
   <div class="row mt-5">
     <div class="title col-lg-6 col-md-6 col-sm-12 text-content">
@@ -116,17 +116,28 @@
 </article>
 <article class="container">
   <div class="row mt-5 text-center">
-    <div class="col-lg-6 col-md-6 col-sm-12 mx-auto">
+    <div class="col-lg-10 col-md-10 col-sm-12 mx-auto">
       <div class="title p-lg-5 p-md-4 p-sm-3">
         <p class="mb-0">Our story</p>
-        <h2 class="fw-bolder">How it all started</h2>
+        <h2 class="fw-bolder">How It Started</h2>
         <div class="separador-centrado mb-5 mt-3"></div>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus
-          eget enim eget tincidunt. In finibus nisi ex, eu interdum urna euismod
-          sit amet. Morbi sollicitudin in magna sed tristique. Nulla pharetra
-          sapien eros, sit amet bibendum nibh consectetur quis. Curabitur tortor
-          dolor, fringilla eu fringilla id, dignissim in urna.
+          Class Design's story began over 40 years ago in the picturesque region
+          of Andalucia, Spain, rooted in the bathroom manufacturing industry.
+          With a passion for bringing exceptional European design and quality
+          into every home, we expanded our reach to the United States over 12
+          years ago. The inspiration behind Class Design stems from a
+          deep-seated belief in creating furniture that becomes the heart of a
+          family home, weaving warmth and togetherness into every piece.<br /><br />
+          Our journey was not without its challenges. Translating the love and
+          craftsmanship of our dedicated team into products that resonate
+          globally required perseverance and dedication. Every milestone, from
+          making our first client happy to reaching customers in far-off places
+          like Hawaii and the Seychelles, has shaped Class Design into the
+          beloved brand it is today. Our partnerships with talented developers
+          and artists have further enriched our offerings, allowing us to
+          continuously bring the best European designs to homes around the
+          world.
         </p>
       </div>
     </div>
@@ -138,25 +149,64 @@
     <div class="row mt-5">
       <div class="col-lg-6 col-md-6 col-sm-12 mx-auto">
         <div class="p-lg-5 p-md-4 mt-5">
-          <h3 class="fw-bolder">About the founder</h3>
+          <h3 class="fw-bolder">Our Craftsmen and Craftswomen</h3>
           <div class="separador-start mb-5 mt-3"></div>
           <p>
-            Proin nec ante eu sem luctus bibendum. Sed ut fringilla dolor. Morbi
-            suscipit a nunc eu finibus. Nam rutrum mattis velit eget volutpat.
-            Fusce egestas mi urna, id pulvinar ipsum dictum eget. Mauris in
-            dolor velit. Vestibulum finibus felis non massa commodo molestie at
-            id justo. Quisque sollicitudin elit sit amet facilisis euismod.
-            Fusce at arcu sed libero lacinia dignissim id bibendum metus.<br /><br />
-            Nam rutrum mattis velit eget volutpat. Fusce egestas mi urna, id
-            pulvinar ipsum dictum eget.
+            At the heart of Class Design are our skilled craftsmen and
+            craftswomen, whose passion and expertise bring each piece of
+            furniture to life.
+          </p>
+
+          <ul>
+            <li>
+              <strong>Mari Carmen:</strong> A 61-year-old artisan whose
+              meticulous hand-painting of gold leaf details adds a touch of
+              elegance to our beds and other intricate furniture pieces.
+            </li>
+            <li>
+              <strong>Louisa:</strong> A 55-year-old expert who carefully
+              selects the finest pieces of leather to upholster chairs and
+              sofas, ensuring perfection in every stitch.
+            </li>
+          </ul>
+
+          <p>
+            Our craftsmanship philosophy is defined by the people behind each
+            product. Skills are passed down from generation to generation,
+            preserving traditional techniques while embracing innovative
+            approaches. Our craftsmen and craftswomen contribute to the
+            innovation and quality of our products through a meticulous process
+            that involves several stages of manufacturing, with little to no use
+            of mass production techniques. Each piece is quality-checked
+            multiple times and hand-painted to ensure excellence. Class Design’s
+            commitment to quality and durability is evident in our careful
+            selection of materials and the rigorous crafting process. The
+            personal stories and achievements of our artisans embody the values
+            and mission of Class Design, reflecting the love, dedication, and
+            integrity that go into every piece of furniture. Our craftsmen and
+            craftswomen are not just creators; they are the heart and soul of
+            Class Design, ensuring that every piece we produce is a work of art
+            meant to be cherished for generations. Welcome to Class Design Home,
+            where each piece of furniture is crafted with love and precision,
+            bringing warmth and elegance to your home.
           </p>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 mx-auto">
-        <div class="p-lg-5 p-md-4 p-sm-3">
+        <div class="p-lg-5 p-md-4 p-sm-3 position-relative">
+          <app-popup
+            [data]="{
+            top: '%',
+            left: '50%',
+            reference: '11130705060350320903',
+          }"
+          ></app-popup>
           <img
             alt="Member pictures"
-            [src]="url + 'classapi/images/aboutus/home/about-02.jpg'"
+            [src]="
+              url +
+              'classapi/images/Living%20Room/products/Cricket%20S106/Armchair%20+%20Puff/Grey/1.webp'
+            "
             class="us-member"
             width="100%"
           />

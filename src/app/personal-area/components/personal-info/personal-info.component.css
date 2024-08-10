@@ -15,3 +15,12 @@ button {
   text-transform: uppercase;
   font-weight: 700;
 }
+.content_button {
+  width: 1800px;
+  display: flex;
+  justify-content: start;
+}
+.content_button button {
+  width: 180px;
+  text-align: center;
+}

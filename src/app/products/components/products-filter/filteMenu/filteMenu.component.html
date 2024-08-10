@@ -2,15 +2,15 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <div class="bg-white">
   <div class="row">
-    <div class="col-lg-10 col-6 p-3 mobile-out">
+    <div class="col-lg-3 col-5 p-3 mobile-out">
       <h4 class="mb-0 cursor-pointer hover-gold" (click)="showHideFilters()">
         <i class="bi bi-sliders2 mb-2"></i>
         {{ !open ? "Show Filters" : "Hide Filters" }}
       </h4>
     </div>
-    <div class="col-lg-10 col-6 p-3 pc-out">
+    <div class="col-lg-3 col-6 p-3 pc-out">
       <h4
-        class="mb-0 cursor-pointer hover-gold"
+        class="mb-0 hb cursor-pointer hover-gold"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasFilters"
         aria-controls="offcanvasFilters"
@@ -19,14 +19,22 @@
         Show Filters
       </h4>
     </div>
+    <div class="col-lg-7 mobile-out p-3"></div>
     <div class="col-lg-2 col-6 p-3">
       <select
-        [(ngModel)]="categorySelected"
-        #categories
-        class="form-select rounded-pill border-black mb-0 form-select-sm selectCategoryFilter"
+        ngModel
+        #sortSelected="ngModel"
+        class="form-select rounded-pill border-black mb-0 form-select-sm selectCategoryFilter hb"
         name="category"
+        (change)="sortProductList(sortSelected.value)"
       >
-        <option class="rounded-0" value="all">Best Selling</option>
+        <option class="rounded-0" value="">Best Selling</option>
+        <option class="rounded-0" value="priceasc">Price (High to Low)</option>
+        <option class="rounded-0" value="pricedesc">Price (Low to High)</option>
+        <option class="rounded-0" value="stock">In Stock</option>
+        <option class="rounded-0" value="liked">Top Liked</option>
+        <option class="rounded-0" value="deals">Deals</option>
+        <option class="rounded-0" value="new">New Arrivals</option>
       </select>
     </div>
   </div>

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Route, Router } from '@angular/router';
-import { urls } from 'src/app/share/services/apiurl';
+import { Router } from '@angular/router';
 import { product } from 'src/app/share/services/product-manage.service';
+import { urls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-showroom-card',
@@ -16,7 +16,7 @@ export class ShowroomCardComponent implements OnInit {
   constructor(private http: Router) {}
   ngOnInit(): void {
     this.background =
-      urls.url +
+      this.url +
       'classapi/images/' +
       this.product.category +
       '/products/' +
@@ -26,7 +26,6 @@ export class ShowroomCardComponent implements OnInit {
       '/' +
       this.product.color +
       '/1.webp';
-    this.background = this.background.replaceAll(' ', '%20');
   }
   close() {
     this.active.emit(false);
@@ -36,5 +35,8 @@ export class ShowroomCardComponent implements OnInit {
   }
   navigateCollection(category: string, subcategory: string): void {
     this.http.navigate(['/products/' + category + '/' + subcategory]);
+  }
+  encodeURI(background: string) {
+    return encodeURI(background);
   }
 }
