@@ -36,12 +36,12 @@
       </button>
       <button
         class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
-        id="v-pills-profile-tab"
+        id="v-pills-pass-tab"
         data-bs-toggle="pill"
-        data-bs-target="#v-pills-profile"
+        data-bs-target="#v-pills-pass"
         type="button"
         role="tab"
-        aria-controls="v-pills-profile"
+        aria-controls="v-pills-pass"
         aria-selected="false"
       >
         <span class="title-pc"
@@ -83,7 +83,7 @@
       <div class="tab-personal-item border bg-white">
         <div class="tab-personal-item-header d-flex p-4 border-bottom">
           <div class="hb">
-            <i class="bi bi-1-square-fill me-3"></i> Buying history
+            <i class="bi bi-1-square-fill me-3"></i> Purchase History
           </div>
         </div>
         <div class="p-lg-4">
@@ -102,6 +102,26 @@
                 </div>
               </ng-template>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="tab-pane fade p-0"
+      id="v-pills-pass"
+      role="tabpanel"
+      aria-labelledby="v-pills-pass-tab"
+      tabindex="0"
+    >
+      <div class="tab-personal-item border bg-white">
+        <div class="tab-personal-item-header d-flex p-4 border-bottom">
+          <div class="hb">
+            <i class="bi bi-1-square-fill me-3"></i> Password Manage
+          </div>
+        </div>
+        <div class="p-lg-4">
+          <div class="overflow-y-auto overflow-x-hidden p-1">
+            <app-password></app-password>
           </div>
         </div>
       </div>

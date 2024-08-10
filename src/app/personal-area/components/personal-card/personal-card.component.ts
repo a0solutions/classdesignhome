@@ -35,7 +35,6 @@ export class PersonalCardComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.mathTime();
-    console.log(this.order);
   }
   getImageUrl(product: product): string {
     const background =

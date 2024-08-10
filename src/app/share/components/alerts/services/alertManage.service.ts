@@ -78,6 +78,19 @@ export class AlertManage {
         "Sign in to your account to personalize yout shopping experience and add this item to your favorites list!.<br><br><a href='/signin' class='btn btn-dark px-5' >Sign In / Register</a>"
       );
       this.title.next("We're glad you like it");
+    } else if (code == 'passwordNotMatch') {
+      this.message.next(
+        "Hi there, it seems the passwords don't match. Please use the 'Show Password' button to make the process easier."
+      );
+      this.title.next("Password don't match");
+    } else if (code == 'passwordSuccess') {
+      this.message.next('Your password has been updated successfuly.');
+      this.title.next('Password changed');
+    } else if (code == 'passwordFeil') {
+      this.message.next(
+        'There was an issue with updating your password due to authorization. Please try again or contact us for assistance.'
+      );
+      this.title.next('Password changed Feil');
     } else {
       this.message.next(
         'An unexpected error occurred. Please try again later, and thank you for your patience.'
