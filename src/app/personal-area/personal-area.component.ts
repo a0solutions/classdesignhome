@@ -20,7 +20,6 @@ export class PersonalAreaComponent implements OnInit {
   ngOnInit() {
     this.seo.setSeo();
     this.nav.dark.next(true);
-    this.loader.show.next(false);
     this.setName();
   }
   setName() {

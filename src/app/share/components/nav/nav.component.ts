@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs';
 import { TokenManage } from 'src/app/share/services/token-manage.service';
 import { UserManage } from 'src/app/share/services/user-manage.service';
 import { Router } from '@angular/router';
-import { ProductManage } from '../../services/product-manage.service';
 import { urls } from 'src/environments/environment';
 @Component({
   selector: 'app-nav',
@@ -27,8 +26,7 @@ export class NavComponent implements OnInit {
     private modal: ModalAskManage,
     private token: TokenManage,
     private auth: UserManage,
-    private route: Router,
-    private productManage: ProductManage
+    private route: Router
   ) {}
   ngOnInit(): void {
     this.token.isLogged.subscribe((x) => {
@@ -80,5 +78,8 @@ export class NavComponent implements OnInit {
   }
   logOut(): void {
     this.auth.signOut(this.route.url);
+  }
+  click() {
+    return false;
   }
 }

@@ -9,7 +9,6 @@ import { CounterComponent } from '../components/counter/counter.component';
 import { FormsModule } from '@angular/forms';
 import { CategoriesService } from '../services/categories.service';
 import { ShareModule } from './share.module';
-import { AlertsComponent } from '../components/alerts/alerts.component';
 import { AlertManage } from '../components/alerts/services/alertManage.service';
 import { RouterModule } from '@angular/router';
 import { ModalAskComponent } from '../components/modal-ask/modal-ask.component';
@@ -25,7 +24,14 @@ import { SeoService } from '../services/seo.service';
 import { PasswordComponent } from 'src/app/personal-area/components/password/password.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, PipesModule, ShareModule, RouterModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    PipesModule,
+    ShareModule,
+    RouterModule,
+    RouterModule,
+  ],
   declarations: [
     NavComponent,
     CartListComponent,

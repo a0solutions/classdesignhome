@@ -27,3 +27,19 @@
 .p10 {
   font-size: 10px;
 }
+.dropdown-menu.show {
+  top: 144% !important;
+  left: -90px !important;
+}
+.navbar li {
+  text-transform: none;
+}
+.dropdown-icon {
+  position: absolute;
+  top: -40px;
+  left: 54%;
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: var(--bg-gray) !important;
+}

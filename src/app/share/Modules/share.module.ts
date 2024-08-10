@@ -19,13 +19,11 @@ import { SpacesDeletePipe } from '../pipes/spacesDelete.pipe';
 import { FullCarrouselComponent } from '../components/full-carrousel/full-carrousel.component';
 import { CarouselService } from '../components/full-carrousel/service/carousel.service';
 import { ProductGaleryComponent } from 'src/app/product-detail/components/productGalery/productGalery.component';
-import {
-  BrowserAnimationsModule,
-  NoopAnimationsModule,
-} from '@angular/platform-browser/animations';
+
 import { ProductDescriptionComponent } from 'src/app/product-detail/components/productDescription/productDescription.component';
 import { QuickViewService } from '../components/quickViewModal/service/quickView.service';
 import { AlertsComponent } from '../components/alerts/alerts.component';
+import { QuickViewModalComponent } from '../components/quickViewModal/quickViewModal.component';
 @NgModule({
   imports: [CommonModule, FormsModule, PipesModule, RouterModule],
   declarations: [
@@ -42,6 +40,8 @@ import { AlertsComponent } from '../components/alerts/alerts.component';
     ProductGaleryComponent,
     ProductDescriptionComponent,
     AlertsComponent,
+
+    QuickViewModalComponent,
   ],
   providers: [
     AlertManage,
@@ -66,6 +66,7 @@ import { AlertsComponent } from '../components/alerts/alerts.component';
     RouterModule,
     FormsModule,
     AlertsComponent,
+    QuickViewModalComponent,
   ],
 })
 export class ShareModule {}

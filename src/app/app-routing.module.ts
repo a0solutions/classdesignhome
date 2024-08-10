@@ -28,6 +28,11 @@ const routes: Routes = [
   { path: 'contact', component: ContactPageComponent },
   { path: 'checkout', component: CheckoutPageComponent },
   {
+    path: 'personal/:branch',
+    component: PersonalAreaComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'personal',
     component: PersonalAreaComponent,
     canActivate: [AuthGuard],

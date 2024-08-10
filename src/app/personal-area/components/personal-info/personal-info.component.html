@@ -7,20 +7,21 @@
   >
     <div class="content_button justify-content-lg-center">
       <button
-        class="px-3 active mx-2 border-2 btn btn-outline-dark rounded-3"
+        [class]="branch === '' ? 'active' : null"
+        class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
         id="v-pills-home-tab"
         data-bs-toggle="pill"
         data-bs-target="#v-pills-home"
         type="button"
         role="tab"
         aria-controls="v-pills-home"
-        aria-selected="true"
       >
         <span class="title-pc"
           ><i class="bi bi-file-person mt-1"></i> Personal information</span
         >
       </button>
       <button
+        [class]="branch === 'purchase' ? 'active' : null"
         class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
         id="v-pills-profile-tab"
         data-bs-toggle="pill"
@@ -28,13 +29,27 @@
         type="button"
         role="tab"
         aria-controls="v-pills-profile"
-        aria-selected="false"
       >
         <span class="title-pc">
           <i class="bi bi-box-seam mt-1"></i> Purchase history</span
         >
       </button>
       <button
+        [class]="branch === 'liked' ? 'active' : null"
+        class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
+        id="v-pills-liked-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#v-pills-liked"
+        type="button"
+        role="tab"
+        aria-controls="v-pills-liked"
+      >
+        <span class="title-pc">
+          <i class="bi bi-heart mt-1"></i> Liked Products</span
+        >
+      </button>
+      <button
+        [class]="branch === 'password' ? 'active' : null"
         class="px-3 mx-2 border-2 btn btn-outline-dark rounded-3"
         id="v-pills-pass-tab"
         data-bs-toggle="pill"
@@ -42,7 +57,6 @@
         type="button"
         role="tab"
         aria-controls="v-pills-pass"
-        aria-selected="false"
       >
         <span class="title-pc"
           ><i class="bi bi-gear mt-1"></i> Password settings</span
@@ -57,7 +71,6 @@
         type="button"
         role="tab"
         aria-controls="v-pills-profile"
-        aria-selected="false"
       >
         <span class="title-pc"><i class="bi bi-person mt-1"></i> Sign Out</span>
       </button>
@@ -65,7 +78,8 @@
   </div>
   <div class="tab-content col-12 p-4" id="v-pills-tabContent">
     <div
-      class="tab-pane fade show active p-0"
+      [class]="branch === '' ? 'show active ' : null"
+      class="tab-pane fade p-0"
       id="v-pills-home"
       role="tabpanel"
       aria-labelledby="v-pills-home-tab"
@@ -74,6 +88,7 @@
       <app-personal-form></app-personal-form>
     </div>
     <div
+      [class]="branch === 'purchase' ? 'show active ' : null"
       class="tab-pane fade p-0"
       id="v-pills-profile"
       role="tabpanel"
@@ -107,6 +122,51 @@
       </div>
     </div>
     <div
+      [class]="branch === 'liked' ? 'show active ' : null"
+      class="tab-pane fade p-0"
+      id="v-pills-liked"
+      role="tabpanel"
+      aria-labelledby="v-pills-liked-tab"
+      tabindex="0"
+    >
+      <div class="tab-personal-item border bg-white">
+        <div class="tab-personal-item-header d-flex p-4 border-bottom">
+          <div class="hb">
+            <i class="bi bi-1-square-fill me-3"></i> Liked Products
+          </div>
+        </div>
+        <div class="p-lg-4">
+          <div class="overflow-y-auto overflow-x-hidden p-1">
+            <div class="row">
+              <ng-container *ngIf="allProducts; else noProducts">
+                <ng-container *ngFor="let product of allProducts">
+                  <div @fadeUp [ngClass]="'col-sm-12 col-md-6 col-lg-4 mb-4'">
+                    <app-product-card
+                      class="col-sm-12 col-md-6 col-lg-4 mb-4"
+                      [product]="product"
+                    ></app-product-card>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <ng-template #noProducts>
+                <div class="text-center">
+                  <h4>You have no Liked Products</h4>
+                  <p>
+                    These section will display all your future favorite
+                    products.
+                  </p>
+                  <a routerLink="/products/all" class="btn btn-dark"
+                    >See the Products</a
+                  >
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      [class]="branch === 'password' ? 'show active ' : null"
       class="tab-pane fade p-0"
       id="v-pills-pass"
       role="tabpanel"
@@ -128,8 +188,3 @@
     </div>
   </div>
 </div>
-<article class="container mt-5">
-  <h2 class="fw-bold over-offer">Complete your home</h2>
-  <div class="separador-start"></div>
-  <app-offers [category]="'products'"></app-offers>
-</article>

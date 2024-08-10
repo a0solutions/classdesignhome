@@ -75,43 +75,68 @@
     <div
       class="col-lg-3 col-md-4 col-6 d-flex justify-content-end icons text-end p-1 pe-3"
     >
-      <!-- <button
-        [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
-        class="btn mt-1 border-0 mx-lg-2 mx-md-2 mx-sm-2 rounded-0"
-        type="submit"
-      >
-        <i class="bi bi-search h-5"></i>
-      </button> -->
-
-      <button routerLink="personal" class="btn border-0 rounded-0">
-        <img
-          #userNav
-          alt="User Icon"
-          [src]="
-            dark
-              ? 'assets/icons/user_Icon.svg'
-              : 'assets/icons/user_Icon-white.svg'
-          "
-          (mouseover)="userNav.src = 'assets/icons/user_Icon-gold.svg'"
-          (mouseout)="
-            dark
-              ? (userNav.src = 'assets/icons/user_Icon.svg')
-              : (userNav.src = 'assets/icons/user_Icon-white.svg')
-          "
-          height="13px"
-          class="cursor-pointer"
-          [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
-        />
-      </button>
-      <button
-        [ngClass]="{ 'text-dark': dark, gold: !dark }"
-        class="btn mt-1 border-0 rounded-0 p10"
-        type="button"
-        (click)="logOut()"
-        *ngIf="isLogged"
-      >
-        Logout
-      </button>
+      <div class="dropdown">
+        <button
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          class="btn border-0 rounded-0 mt-lg-2 mt-1"
+        >
+          <img
+            #userNav
+            alt="User Icon"
+            [src]="
+              dark
+                ? 'assets/icons/user_Icon.svg'
+                : 'assets/icons/user_Icon-white.svg'
+            "
+            (mouseover)="userNav.src = 'assets/icons/user_Icon-gold.svg'"
+            (mouseout)="
+              dark
+                ? (userNav.src = 'assets/icons/user_Icon.svg')
+                : (userNav.src = 'assets/icons/user_Icon-white.svg')
+            "
+            height="13px"
+            class="cursor-pointer"
+            [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+          />
+        </button>
+        <ul class="dropdown-menu border-0 bg-gray">
+          <img
+            alt="icon"
+            [src]="url + 'classapi/images/app/custom-icons/point-dropdown.png'"
+            width="40px"
+            class="dropdown-icon"
+          />
+          <li (keydown)="click()">
+            <a class="dropdown-item" routerLink="personal"
+              >Account Information</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="personal/purchase"
+              >Purchase History</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="personal/password"
+              >Password Setting</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="personal/liked"
+              >Liked Products</a
+            >
+          </li>
+          <li>
+            <ng-container *ngIf="isLogged; else signin">
+              <a class="dropdown-item" (click)="logOut()">Sign Out</a>
+            </ng-container>
+            <ng-template #signin>
+              <a class="dropdown-item" routerLink="signin">Sign In</a>
+            </ng-template>
+          </li>
+        </ul>
+      </div>
       <button
         type="button"
         [ngClass]="{ animate__shakeX: cheick }"

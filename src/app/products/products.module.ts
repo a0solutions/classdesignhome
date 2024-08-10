@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CategorySubstrPipe } from '../share/pipes/categorySubstr.pipe';
 import { FilterMenuComponent } from './components/products-filter/filteMenu/filteMenu.component';
-import { QuickViewModalComponent } from '../share/components/quickViewModal/quickViewModal.component';
 import { QuickViewService } from '../share/components/quickViewModal/service/quickView.service';
 
 @NgModule({
@@ -22,7 +21,6 @@ import { QuickViewService } from '../share/components/quickViewModal/service/qui
     ProductListComponent,
     ProductsFilterComponent,
     FilterMenuComponent,
-    QuickViewModalComponent,
   ],
   providers: [
     FilterManage,
