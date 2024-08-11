@@ -1,0 +1,22 @@
+.promo-carousel {
+  height: 25px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 999;
+  overflow: hidden;
+}
+.bg-dark {
+  background-color: #000 !important;
+}
+.promo-carousel-item {
+  height: 25px;
+}
+.promo-carousel-allitems {
+  position: relative;
+  top: 0px;
+  transition: all 0.5s;
+}
+.thin {
+  font-weight: 300 !important;
+}

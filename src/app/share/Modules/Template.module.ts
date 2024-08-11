@@ -22,6 +22,7 @@ import { GoUpComponent } from '../components/goUp/goUp.component';
 import { PoliciesComponent } from '../components/policies/policies.component';
 import { SeoService } from '../services/seo.service';
 import { PasswordComponent } from 'src/app/personal-area/components/password/password.component';
+import { OffersTopComponent } from '../components/nav/components/offers-top/offers-top.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { PasswordComponent } from 'src/app/personal-area/components/password/pas
   ],
   declarations: [
     NavComponent,
+    OffersTopComponent,
     CartListComponent,
     FooterComponent,
     ModalAskComponent,
@@ -64,6 +66,7 @@ import { PasswordComponent } from 'src/app/personal-area/components/password/pas
     GoUpComponent,
     PoliciesComponent,
     PasswordComponent,
+    OffersTopComponent,
   ],
 })
 export class TemplateModule {}

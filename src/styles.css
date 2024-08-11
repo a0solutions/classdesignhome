@@ -42,7 +42,9 @@ td {
   opacity: 0;
   transition: all 0.5s !important;
 }
-
+.small-fixed-button {
+  height: 31px !important;
+}
 .bg-gray {
   background: var(--bg-gray) !important;
 }
@@ -230,7 +232,7 @@ footer i:hover {
   height: 7vh;
 }
 .separador-menu {
-  height: 9vh;
+  height: 11.5vh;
 }
 .separador-centrado {
   width: 60px;
@@ -632,8 +634,8 @@ input[type="checkbox"] {
     font-size: 55px;
   }
   .us-member {
-    margin-top: -133px;
-    transform: scale(1.7);
+    margin-top: -50px;
+    transform: scale(1.4);
     mix-blend-mode: multiply;
   }
   .pe-5-mobile {
@@ -763,7 +765,6 @@ input[type="checkbox"] {
 @media (min-width: 1281px) {
   .filter-table {
     position: sticky;
-    top: 80px;
     z-index: 1020;
   }
 

@@ -50,6 +50,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
   like = false;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   urls: any;
+  dealType: string;
   constructor(
     private products: ProductManage,
     private checkout: Checkout,
@@ -69,6 +70,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
   ngOnChanges(): void {
     this.colors = <colorId[]>[];
     this.setAllParameters();
+    this.dealType = this.products.getDeal(this.product);
   }
 
   setAllParameters(): void {

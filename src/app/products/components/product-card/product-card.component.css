@@ -42,3 +42,10 @@
 .bi-suit-heart:hover {
   color: var(--secondary-color);
 }
+.color-select {
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: all 0.8s;
+}

@@ -17,9 +17,20 @@
             <strong>{{ product.name }}</strong>
           </p>
           <p class="card-secondary mb-0">{{ product.reference }}</p>
-          <p class="card-secondary mb-0">
-            {{ product.price | currency : "USD" }}
-          </p>
+          <ng-container *ngIf="product.promoPrice == 0; else promoPrice">
+            <p class="card-secondary mb-0">
+              {{ product.price | currency : "USD" }}
+            </p> </ng-container
+          ><ng-template #promoPrice>
+            <p class="card-secondary mb-0">
+              <span class="hb"
+                >{{ product.promoPrice | currency : "USD" }}
+              </span>
+              <span class="text-muted text-decoration-line-through">
+                {{ product.price | currency : "USD" }}</span
+              >
+            </p></ng-template
+          >
         </div>
 
         <ng-template class="w-100" #sizeData>
@@ -28,7 +39,20 @@
             <p class="card-secondary mb-2">{{ product.reference }}</p>
             <p class="card-secondary mb-0">{{ product.dimentions }}</p>
             <h5 *ngIf="!counter" class="mb-0">Qty: {{ itemCount }}</h5>
-            <h6 class="card-title">{{ product.price | currency : "USD" }}</h6>
+            <ng-container *ngIf="product.promoPrice == 0; else promoPrice">
+              <h6 class="card-secondary mb-0">
+                {{ product.price | currency : "USD" }}
+              </h6> </ng-container
+            ><ng-template #promoPrice>
+              <h6 class="card-secondary mb-0">
+                <span class="hb"
+                  >{{ product.promoPrice | currency : "USD" }}
+                </span>
+                <span class="text-muted text-decoration-line-through">
+                  {{ product.price | currency : "USD" }}</span
+                >
+              </h6></ng-template
+            >
           </div>
         </ng-template>
         <app-counter

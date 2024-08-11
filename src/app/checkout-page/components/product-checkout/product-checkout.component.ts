@@ -38,7 +38,11 @@ export class ProductCheckoutComponent implements OnInit {
     this.cartItems.emit(allItems);
     allItems.forEach((y) => {
       this.list = this.list + y.count;
-      this.subtotal = this.subtotal + y.product.price * y.count;
+      let price: number;
+      y.product.promoPrice == 0
+        ? (price = y.product.price)
+        : (price = y.product.promoPrice);
+      this.subtotal = this.subtotal + price * y.count;
       this.amount.emit(this.subtotal);
       this.items.emit(this.list);
     });

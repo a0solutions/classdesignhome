@@ -45,7 +45,11 @@ export class ListedComponent implements OnInit {
   countPrices() {
     this.subtotal = 0;
     this.printList.forEach((x) => {
-      this.subtotal = this.subtotal + x.product.price * x.count;
+      let price: number;
+      x.product.promoPrice == 0
+        ? (price = x.product.price)
+        : (price = x.product.promoPrice);
+      this.subtotal = this.subtotal + price * x.count;
       this.UpdateCalcAll();
     });
   }

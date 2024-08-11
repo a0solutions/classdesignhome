@@ -23,6 +23,8 @@ export class ProductCardComponent implements OnInit {
   background = '';
   hover = false;
   like = false;
+  dealType: string;
+  url = urls.url;
   constructor(
     private products: ProductManage,
     private substrPipe: CategorySubstrPipe,
@@ -56,6 +58,7 @@ export class ProductCardComponent implements OnInit {
     this.products.allLikes.subscribe((x) => {
       this.like = this.products.isLike(this.product.parentRef);
     });
+    this.dealType = this.products.getDeal(this.product);
   }
   changeBackgound(InOut: number): void {
     let url =
@@ -124,5 +127,8 @@ export class ProductCardComponent implements OnInit {
     } else {
       this.alert.setAlertMessage('isLogOut');
     }
+  }
+  urlImage(color: string): string {
+    return this.url + 'classapi/images/app/colors/' + color + '.png';
   }
 }

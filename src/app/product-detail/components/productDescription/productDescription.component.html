@@ -17,19 +17,37 @@
   <div class="mobile-out" @fadeUp1>
     <div class="d-flex">
       <h1 class="bold mb-0 h5">{{ product.name }} - {{ product.size }}</h1>
-      <p
-        (click)="shareProduct($event, product.id, product.name)"
-        class="badge p p-1 buttonShare px-3 rounded-pill rounded-0 btn shadow-sm ms-2 text-bg-light"
+      <a
+        (click)="shareProduct($event, product.reference, product.name)"
+        class="btn hb btn-white rounded-pill shadow-sm ms-3 btn-sm small-fixed-button"
         data-action="share/whatsapp/share"
         title="Share with friends"
       >
         Share!
+      </a>
+      <p
+        *ngIf="product.promoPrice != 0"
+        class="btn hb btn-dark rounded-pill shadow-sm btn-sm mb-0 ms-2 small-fixed-button"
+        [title]="dealType"
+      >
+        {{ dealType }}
       </p>
     </div>
   </div>
-  <h3 class="mt-2 mb-0 h3 color-gold mobile-out" @fadeUp2>
-    {{ product.price | currency : "USD" }}<br />
-  </h3>
+  <ng-container *ngIf="product.promoPrice == 0; else promoPrice">
+    <h3 class="mt-2 mb-0 h3 color-gold mobile-out" @fadeUp2>
+      {{ product.price | currency : "USD" }}<br />
+    </h3>
+  </ng-container>
+  <ng-template #promoPrice>
+    <p class="text-decoration-line-through text-muted mb-0" @fadeUp2>
+      {{ product.price | currency : "USD" }}
+    </p>
+    <h3 class="mb-0 h3 color-gold mobile-out" @fadeUp2>
+      {{ product.promoPrice | currency : "USD" }}<br />
+    </h3>
+  </ng-template>
+
   <ng-container *ngIf="product.materialDetail">
     <p @fadeUp2 class="mb-0 mobile-out">
       Material Detail: {{ product.materialDetail }}

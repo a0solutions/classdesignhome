@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ export class ModalAskManage {
   show: BehaviorSubject<boolean> = new BehaviorSubject(false);
   title = '';
   text = '';
-  answer: BehaviorSubject<number> = new BehaviorSubject(0);
+  answer: Subject<number> = new Subject();
 
   closeModalAsk(): void {
     this.show.next(false);
@@ -31,6 +31,10 @@ export class ModalAskManage {
       this.title = 'Cancelation';
       this.text =
         'Your cancelation has been made. An email with all the details has been sent. Would you like to continue exploring our collections?';
+    } else if (code == 'badPayment') {
+      this.title = 'Payment Gateway Error';
+      this.text =
+        'We encountered an issue when processing your payment. Please attempt again, and should the problem persist, contact our support team for assistance. Would you like to try again?';
     }
     this.show.next(true);
   }

@@ -1,30 +1,34 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  Component,
-  HostListener,
-  Input,
-  OnChanges,
-  OnInit,
-} from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import {
   ProductManage,
   product,
 } from '../../../share/services/product-manage.service';
 import { LoaderService } from 'src/app/share/components/loader/services/loader.service';
+import { urls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-offers',
   templateUrl: './offers.component.html',
   styleUrls: ['./offers.component.css'],
 })
-export class OffersComponent implements OnChanges, OnInit {
+export class OffersComponent implements OnInit {
   allProducts: product[] = [];
   items: number[] = [];
   cardsNum = 4;
+  url = urls.url;
   constructor(private products: ProductManage, private loader: LoaderService) {}
   @Input() category = '';
 
   ngOnInit(): void {
+    this.products.getAllProducts().subscribe((x) => {
+      this.allProducts = x.filter((y) => y.promoPrice != 0);
+      for (let i = 0; i <= this.allProducts.length / this.cardsNum; i++) {
+        this.items.push(i);
+      }
+      this.loader.show.next(false);
+    });
+
     this.compareNumber(window.innerWidth);
   }
   @HostListener('window:resize', ['$event'])
@@ -40,16 +44,5 @@ export class OffersComponent implements OnChanges, OnInit {
     } else if (width <= 640) {
       this.cardsNum = 1;
     }
-  }
-  ngOnChanges(): void {
-    this.allProducts = [];
-    this.products.getOfferProduct(this.category).then((x) => {
-      this.allProducts = x;
-      this.items = [];
-      for (let i = 1; i <= Math.ceil(this.allProducts.length / 4); i++) {
-        this.items.push(i);
-      }
-      this.loader.show.next(false);
-    });
   }
 }

@@ -64,8 +64,18 @@ export class CheckoutPageComponent implements OnInit {
       x.get('response') == 'ok'
         ? this.completeOrder()
         : x.get('response') == 'ko'
-        ? this.alert.setAlertMessage('badPayment')
+        ? this.badPayment()
         : null;
+      this.loader.show.next(false);
+    });
+  }
+  badPayment() {
+    this.modal.showModalMessage('badPayment');
+    this.loader.show.next(false);
+    this.modal.answer.subscribe((answer) => {
+      answer == 1
+        ? this.route.navigate(['products/all'])
+        : this.route.navigate(['checkout']);
     });
   }
   insertUser(user: string): void {
@@ -80,9 +90,10 @@ export class CheckoutPageComponent implements OnInit {
     this.order.member = form.member;
   }
   insertAmount(amount: number): void {
-    this.order.amount = amount;
     this.checkout.typeTax.subscribe((x) => {
       this.order.taxes = amount * (x / 100);
+      this.order.amount =
+        Math.round((amount + this.order.taxes + Number.EPSILON) * 100) / 100;
     });
   }
   insertItemNumber(items: number): void {
@@ -95,6 +106,7 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   createSession(): void {
+    console.log(this.order.amount);
     this.processingPayment = true;
     this.client.post(urls.urlStripe, this.order).subscribe(
       (x: any) => {
@@ -122,7 +134,7 @@ export class CheckoutPageComponent implements OnInit {
   killOrder(answer: number) {
     this.modal.closeModalAsk();
     let route = '';
-    answer == 1 ? (route = '/') : 'products/products/';
+    answer == 1 ? (route = '/') : 'products/all/';
     this.route.navigate([route]);
   }
   simplifyOrder(): void {

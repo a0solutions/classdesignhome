@@ -1,0 +1,12 @@
+.h5 {
+  font-size: 0.8rem;
+}
+.card-background {
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  mix-blend-mode: multiply;
+}
+.min-height {
+  min-height: 35px;
+}

@@ -1,0 +1,69 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/mouse-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/eqeqeq -->
+<div
+  class="card bg-gray rounded-4 border-0 mx-auto cursor-pointer mb-5"
+  style="width: 100%"
+>
+  <div class="m-3 d-flex z-3">
+    <a
+      (click)="shareProduct($event, product.reference, product.name)"
+      class="btn hb btn-white rounded-pill shadow-sm btn-sm small-fixed-button"
+      data-action="share/whatsapp/share"
+      title="Share with friends"
+    >
+      Share!
+    </a>
+    <p
+      *ngIf="product.new == 1"
+      class="btn hb btn-white rounded-pill shadow-sm btn-sm mb-0 ms-2 small-fixed-button"
+      title="New product"
+    >
+      New
+    </p>
+    <p
+      *ngIf="product.promoPrice != 0"
+      class="btn hb btn-dark rounded-pill shadow-sm btn-sm mb-0 ms-auto small-fixed-button"
+      [title]="dealType"
+    >
+      {{ dealType }}
+    </p>
+  </div>
+  <div
+    class="w-100 card-background position-relative"
+    [style]="
+      'background-image:url(' + background + '); height:200px;width:200px;'
+    "
+  ></div>
+
+  <div class="card-body p-0 text-center">
+    <h2 class="card-title h5 fw-bolder card-title-name min-height">
+      {{ product.name }}
+    </h2>
+    <div class="d-flex align-items-center mb-3">
+      <p
+        class="mb-0 mx-3 cursor-pointer"
+        (click)="addProductLikes(product.parentRef)"
+      >
+        <ng-container *ngIf="!like; else liked">
+          <i class="bi bi-suit-heart h4 hb mb-0"></i>
+        </ng-container>
+        <ng-template #liked>
+          <i class="bi bi-suit-heart-fill h4 hb mb-0 gold"></i
+        ></ng-template>
+      </p>
+      <div class="w-100">
+        <p class="ms-auto hb gold mt-2 mb-0">
+          {{ product.promoPrice | currency : "USD" }}
+        </p>
+        <p class="ms-auto text-muted text-decoration-line-through mb-0">
+          {{ product.price | currency : "USD" }}
+        </p>
+      </div>
+      <p class="mb-0 mx-3 cursor-pointer" (click)="navigate(product)">
+        <i class="bi bi-eye h4 hb mb-0 mt-3"></i>
+      </p>
+    </div>
+  </div>
+</div>

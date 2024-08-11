@@ -19,11 +19,11 @@ import { SpacesDeletePipe } from '../pipes/spacesDelete.pipe';
 import { FullCarrouselComponent } from '../components/full-carrousel/full-carrousel.component';
 import { CarouselService } from '../components/full-carrousel/service/carousel.service';
 import { ProductGaleryComponent } from 'src/app/product-detail/components/productGalery/productGalery.component';
-
 import { ProductDescriptionComponent } from 'src/app/product-detail/components/productDescription/productDescription.component';
 import { QuickViewService } from '../components/quickViewModal/service/quickView.service';
 import { AlertsComponent } from '../components/alerts/alerts.component';
 import { QuickViewModalComponent } from '../components/quickViewModal/quickViewModal.component';
+import { OfferCardComponent } from 'src/app/products/components/offers/offer-card/offer-card.component';
 @NgModule({
   imports: [CommonModule, FormsModule, PipesModule, RouterModule],
   declarations: [
@@ -31,6 +31,7 @@ import { QuickViewModalComponent } from '../components/quickViewModal/quickViewM
     ListedComponent,
     CounterComponent,
     OffersComponent,
+    OfferCardComponent,
     HeadersComponent,
     PopupComponent,
     ShowroomCardComponent,
@@ -56,6 +57,7 @@ import { QuickViewModalComponent } from '../components/quickViewModal/quickViewM
     ListedComponent,
     CounterComponent,
     OffersComponent,
+    OfferCardComponent,
     HeadersComponent,
     PopupComponent,
     ProductCardComponent,

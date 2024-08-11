@@ -1,11 +1,16 @@
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/mouse-events-have-key-events -->
+<app-offers-top
+  *ngIf="allProducts.length !== 0"
+  [allProducts]="allProducts"
+></app-offers-top>
 <nav
   [ngClass]="{
     'bg-gradient-light border-bottom': dark,
     'bg-gradient-dark': !dark
   }"
+  [style]="allProducts.length !== 0 ? 'top:25px' : 'top:0px'"
   class="navbar"
 >
   <div class="row w-100">
@@ -45,7 +50,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-5 col-md-4 col-6 logo d-flex">
+    <div class="col-lg-4 col-md-4 col-6 logo d-flex">
       <div class="pc-out mx-3">
         <a
           [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
@@ -73,7 +78,7 @@
       </div>
     </div>
     <div
-      class="col-lg-3 col-md-4 col-6 d-flex justify-content-end icons text-end p-1 pe-3"
+      class="col-lg-4 col-md-4 col-6 d-flex justify-content-end icons text-end p-1 pe-3"
     >
       <div class="dropdown">
         <button
@@ -118,18 +123,21 @@
             >
           </li>
           <li>
+            <a class="dropdown-item" routerLink="personal/liked"
+              >My Favorites</a
+            >
+          </li>
+          <li>
             <a class="dropdown-item" routerLink="personal/password"
               >Password Setting</a
             >
           </li>
-          <li>
-            <a class="dropdown-item" routerLink="personal/liked"
-              >Liked Products</a
-            >
-          </li>
+
           <li>
             <ng-container *ngIf="isLogged; else signin">
-              <a class="dropdown-item" (click)="logOut()">Sign Out</a>
+              <a class="dropdown-item cursor-pointer" (click)="logOut()"
+                >Sign Out</a
+              >
             </ng-container>
             <ng-template #signin>
               <a class="dropdown-item" routerLink="signin">Sign In</a>

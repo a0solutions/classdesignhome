@@ -10,10 +10,10 @@
   (mouseleave)="changeBackgound(0)"
   (mouseleave)="hover = false"
 >
-  <div class="m-3 d-flex z-3 w-100">
+  <div class="m-3 d-flex z-3">
     <a
       (click)="shareProduct($event, product.reference, product.name)"
-      class="btn hb btn-white rounded-pill shadow-sm btn-sm"
+      class="btn hb btn-white rounded-pill shadow-sm btn-sm small-fixed-button"
       data-action="share/whatsapp/share"
       title="Share with friends"
     >
@@ -21,11 +21,12 @@
     </a>
     <p
       *ngIf="product.new == 1"
-      class="btn hb btn-white rounded-pill shadow-sm btn-sm mb-0 ms-2"
+      class="btn hb btn-white rounded-pill shadow-sm btn-sm mb-0 ms-2 small-fixed-button"
       title="New product"
     >
       New
     </p>
+
     <p
       class="mb-0 mx-3 cursor-pointer"
       (click)="addProductLikes(product.parentRef)"
@@ -36,6 +37,13 @@
       <ng-template #liked>
         <i class="bi bi-suit-heart-fill h4 hb mb-0 gold"></i
       ></ng-template>
+    </p>
+    <p
+      *ngIf="product.promoPrice != 0"
+      class="btn hb btn-dark rounded-pill shadow-sm btn-sm mb-0 ms-2 ms-auto small-fixed-button"
+      title="New product"
+    >
+      {{ dealType }}
     </p>
   </div>
   <div
@@ -65,11 +73,18 @@
 
     <p class="ms-auto my-2">{{ product.price | currency : "USD" }}</p>
     <div class="d-flex w-100 my-3 justify-content-center">
-      <app-color-select
-        class="mx-1"
-        *ngFor="let color of colors"
-        [background]="color.color"
-      ></app-color-select>
+      <ng-container *ngFor="let color of colors">
+        <div
+          class="color-select rounded-pill shadow-sm mb-2 mx-1"
+          [style]="
+            'background:' +
+            background +
+            ';background-image: url(' +
+            urlImage(color.color) +
+            ') !important'
+          "
+        ></div>
+      </ng-container>
     </div>
   </div>
 </div>

@@ -50,7 +50,11 @@
     ></app-headers>
   </div>
 </article>
-<div class="bg-white container border-bottom filter-table" @fadeUp1>
+<div
+  class="bg-white container border-bottom filter-table"
+  @fadeUp1
+  [style]="allOffers.length === 0 ? 'top:0px' : 'top:105px'"
+>
   <app-filter-menu
     [categorySelected]="category"
     [subcategorySelected]="subcategory"

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NavManage } from '../share/components/nav/services/navManage.service';
-import { ProductManage } from '../share/services/product-manage.service';
+import {
+  product,
+  ProductManage,
+} from '../share/services/product-manage.service';
 import { LoaderService } from '../share/components/loader/services/loader.service';
 import {
   fade,
@@ -29,6 +32,7 @@ export class ProductsComponent implements OnInit {
   categoryText: string;
   urlsWeb: string = urls.url;
   open = false;
+  allOffers: product[] = [];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   allCategories: any[] = [];
   constructor(
@@ -66,6 +70,10 @@ export class ProductsComponent implements OnInit {
   }
   getCategory(param: ParamMap): void {
     this.allProducts.setAllProducts().then(() => {
+      this.allOffers = this.allProducts.allProducts.filter(
+        (x) => x.promoPrice != 0
+      );
+
       this.category = <string>param.get('category');
       this.subcategory = <string>param.get('subcategory');
       this.category == 'all' || this.category == 'like'

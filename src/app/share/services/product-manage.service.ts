@@ -103,15 +103,6 @@ export class ProductManage {
     return this.products.value.filter((x) => x.parentRef == parent);
   }
 
-  getOfferProduct(category: string): Promise<product[]> {
-    return this.setAllProducts().then(() => {
-      if (category != 'all')
-        return this.allProducts.filter(
-          (x) => x.category == category && x.offer
-        );
-      return this.allProducts.filter((x) => x.offer);
-    });
-  }
   getProduct(reference: string): Observable<product> {
     this.setAllProducts();
     return this.http.get<product>(this.url + '?reference=' + reference);
@@ -169,7 +160,14 @@ export class ProductManage {
       .set('subfolder', data.color);
     return this.http.get(this.urlImage, { params });
   }
-
+  getDeal(product: product) {
+    let dealType;
+    const porcent: number = (product.promoPrice * 100) / product.price;
+    100 - Math.round(porcent) > 20
+      ? (dealType = 'Super Deal -' + (100 - Math.round(porcent)) + '%')
+      : (dealType = 'Deal -' + (100 - Math.round(porcent)) + '%');
+    return dealType;
+  }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   simplifyOrderProduct(order: any): any {
     const ssimplifyObject = order;

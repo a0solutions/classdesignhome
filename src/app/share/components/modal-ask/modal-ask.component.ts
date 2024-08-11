@@ -23,5 +23,6 @@ export class ModalAskComponent implements OnInit {
   }
   answer(answer: number): void {
     this.modal.answer.next(answer);
+    this.modal.show.next(false);
   }
 }

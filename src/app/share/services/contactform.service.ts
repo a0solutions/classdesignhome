@@ -10,7 +10,7 @@ export class Contactform {
   url = urls.urlContact;
   constructor(private http: HttpClient) {}
 
-  postContact(data: FormData): Observable<string> {
-    return this.http.post<string>(this.url, data);
+  postContact(data: FormData): Observable<object> {
+    return this.http.post<object>(this.url, data);
   }
 }
