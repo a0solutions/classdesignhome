@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { fadeUp2, fadeUp3 } from 'src/app/share/services/animations';
 import { urls } from 'src/environments/environment';
+import { collection } from '../../catalog-page.component';
 
 @Component({
   selector: 'app-catalog-card',
@@ -10,4 +11,5 @@ import { urls } from 'src/environments/environment';
 })
 export class CatalogCardComponent {
   url: string = urls.url;
+  @Input() collection: collection;
 }

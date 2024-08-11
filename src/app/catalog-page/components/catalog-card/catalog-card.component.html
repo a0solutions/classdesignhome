@@ -1,72 +1,34 @@
-<div class="row">
-  <div
-    @fadeUp2
-    class="card col-lg-6 col-md-g col-sm-12 position-relative rounded-0 mb-4 border-0 mx-auto"
+<div
+  @fadeUp2
+  class="card col-12 col-md-g position-relative rounded-4 mb-4 border-0 mx-auto bg-gray p-3"
+>
+  <a
+    [href]="url + 'classapi/images/collections/file/' + collection.urlDocument"
+    target="_blank"
+    class="text-dark"
   >
-    <a href="#" target="_blank" class="text-dark">
-      <div class="catallog-image position-relative">
+    <div class="catallog-image position-relative">
+      <img
+        [src]="
+          url + 'classapi/images/collections/banner/' + collection.urlBanner
+        "
+        class="card-img-top"
+        alt="Savage Collection"
+        height="100%"
+      />
+      <div class="position-absolute logo-collection bg-gray">
         <img
-          [src]="
-            url + 'classapi/images/collections/banner/background-savage.png'
-          "
+          [src]="url + 'classapi/images/collections/logo/' + collection.urlLogo"
           class="card-img-top rounded-0"
-          alt="Savage Collection"
-          height="100%"
+          alt="Savage"
         />
-        <div class="position-absolute logo-collection">
-          <img
-            [src]="url + 'classapi/images/collections/logo/savage.png'"
-            class="card-img-top rounded-0"
-            alt="Savage"
-          />
-        </div>
       </div>
-      <div class="card-body">
-        <h2 class="card-title fw-bolder mb-0 h3 mb-3">Collection</h2>
-        <p class="card-text mb-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          commodo vulputate volutpat. Suspendisse quis eleifend eros,
-          condimentum ultrices dolor. Quisque dolor libero, mollis sit amet eros
-          eu, iaculis molestie quam. Duis est nisi, rhoncus vitae felis quis,
-          hendrerit luctus libero. Duis quis nisi tincidunt, porttitor massa in,
-          vehicula leo. Ut nec facilisis justo.
-        </p>
-      </div></a
-    >
-  </div>
-  <div
-    @fadeUp3
-    class="card col-lg-6 col-md-g col-sm-12 position-relative rounded-0 mb-4 border-0 mx-auto"
+    </div>
+    <div class="card-body">
+      <h2 class="card-title fw-bolder mb-0 h3 mb-3">{{ collection.name }}</h2>
+      <p class="card-text mb-2">
+        {{ collection.description }}
+      </p>
+    </div></a
   >
-    <a href="#" target="_blank" class="text-dark"
-      ><div class="catallog-image position-relative">
-        <img
-          [src]="
-            url + 'classapi/images/collections/banner/background-savage.png'
-          "
-          class="card-img-top rounded-0"
-          alt="Savage Collection"
-          height="100%"
-        />
-        <div class="position-absolute logo-collection">
-          <img
-            [src]="url + 'classapi/images/collections/logo/savage.png'"
-            class="card-img-top rounded-0"
-            alt="Savage"
-          />
-        </div>
-      </div>
-      <div class="card-body">
-        <h2 class="card-title fw-bolder mb-0 h3 mb-3">Collection</h2>
-        <p class="card-text mb-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          commodo vulputate volutpat. Suspendisse quis eleifend eros,
-          condimentum ultrices dolor. Quisque dolor libero, mollis sit amet eros
-          eu, iaculis molestie quam. Duis est nisi, rhoncus vitae felis quis,
-          hendrerit luctus libero. Duis quis nisi tincidunt, porttitor massa in,
-          vehicula leo. Ut nec facilisis justo.
-        </p>
-      </div></a
-    >
-  </div>
 </div>

@@ -14,5 +14,12 @@
 </article>
 <div class="my-5"></div>
 <article class="container mt-5">
-  <app-catalog-card></app-catalog-card>
+  <div class="row">
+    <ng-container *ngFor="let collection of $allCollections | async">
+      <app-catalog-card
+        class="col-lg-6 col-12 p-3"
+        [collection]="collection"
+      ></app-catalog-card>
+    </ng-container>
+  </div>
 </article>
