@@ -35,7 +35,7 @@ export class OffersTopComponent implements OnInit {
     }, 3000);
   }
   stopCarousel() {
-    console.log('no');
+    clearInterval(this.movement);
   }
   getDeal(product: product) {
     return this.productsService.getDeal(product);

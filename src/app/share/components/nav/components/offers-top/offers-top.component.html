@@ -1,3 +1,4 @@
+<!-- eslint-disable @angular-eslint/template/mouse-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 
@@ -5,6 +6,8 @@
   <div
     class="promo-carousel-allitems w-100 text-center"
     #allitems
+    (mouseover)="stopCarousel()"
+    (mouseout)="moveCarousel()"
     [style]="{ top: top + 'px' }"
   >
     <div class="promo-carousel-item text-center">
