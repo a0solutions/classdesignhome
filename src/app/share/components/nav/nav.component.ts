@@ -42,7 +42,7 @@ export class NavComponent implements OnInit {
     });
     this.productsService.setAllProducts().then(() => {
       this.productsService.products.subscribe((x) => {
-        this.allProducts = x.filter((y) => y.promoPrice != 0);
+        this.allProducts = x.filter((y) => y.offer != 0);
       });
     });
     this.nav.dark.subscribe({ next: this.darkChange.bind(this) });

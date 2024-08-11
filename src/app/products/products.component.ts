@@ -70,9 +70,7 @@ export class ProductsComponent implements OnInit {
   }
   getCategory(param: ParamMap): void {
     this.allProducts.setAllProducts().then(() => {
-      this.allOffers = this.allProducts.allProducts.filter(
-        (x) => x.promoPrice != 0
-      );
+      this.allOffers = this.allProducts.allProducts.filter((x) => x.offer != 0);
 
       this.category = <string>param.get('category');
       this.subcategory = <string>param.get('subcategory');

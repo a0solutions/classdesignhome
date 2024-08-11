@@ -22,7 +22,7 @@ export class OffersComponent implements OnInit {
 
   ngOnInit(): void {
     this.products.getAllProducts().subscribe((x) => {
-      this.allProducts = x.filter((y) => y.promoPrice != 0);
+      this.allProducts = x.filter((y) => y.offer != 0);
       for (let i = 0; i <= this.allProducts.length / this.cardsNum; i++) {
         this.items.push(i);
       }
