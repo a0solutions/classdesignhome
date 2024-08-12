@@ -21,7 +21,7 @@
 </article>
 <article class="container">
   <div class="row mt-3">
-    <div class="text-start col-sm-12 col-lg-4 col-md-4 p-3">
+    <div class="text-start col-sm-12 col-lg-4 col-md-12 p-3">
       <div class="sticky-lg-top category-name pe-lg-5 pt-lg-5">
         <p class="mb-0" @fadeUp>
           <a routerLink="/" class="text-dark">Home</a> /
@@ -53,7 +53,9 @@
 <div
   class="bg-white container border-bottom filter-table"
   @fadeUp1
-  [style]="allOffers.length === 0 ? 'top:0px' : 'top:105px'"
+  [style]="
+    allOffers.length === 0 ? 'top:80px' : width > '650' ? 'top:105px' : null
+  "
 >
   <app-filter-menu
     [categorySelected]="category"

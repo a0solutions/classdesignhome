@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NavManage } from '../share/components/nav/services/navManage.service';
 import {
@@ -35,6 +37,8 @@ export class ProductsComponent implements OnInit {
   allOffers: product[] = [];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   allCategories: any[] = [];
+  width: any;
+
   constructor(
     private url: ActivatedRoute,
     private nav: NavManage,
@@ -46,6 +50,7 @@ export class ProductsComponent implements OnInit {
     private quick: QuickViewService
   ) {}
   ngOnInit(): void {
+    this.width = window.innerWidth;
     this.quick.show$.next(false);
     this.url.paramMap.subscribe({
       next: this.getCategory.bind(this),
@@ -67,6 +72,11 @@ export class ProductsComponent implements OnInit {
       });
     });
     this.nav.dark.next(true);
+  }
+  @HostListener('window:resize', ['$event'])
+  handleKeyDown(event: any): void {
+    this.width = event.target.innerWidth;
+    console.log(this.width);
   }
   getCategory(param: ParamMap): void {
     this.allProducts.setAllProducts().then(() => {

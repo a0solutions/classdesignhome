@@ -42,3 +42,11 @@
 .dropdown-item:active {
   background-color: var(--bg-gray) !important;
 }
+app-sidebar {
+  z-index: 9999;
+  position: relative;
+}
+app-cart-list {
+  z-index: 9999;
+  position: relative;
+}
