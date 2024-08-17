@@ -1,3 +1,14 @@
 .border-right-gold {
   border-left: 1px solid var(--secondary-color);
 }
+
+@media (min-width: 480px) {
+  .modal-dialog {
+    max-width: 100% !important;
+  }
+}
+@media (min-width: 1025px) {
+  .modal-dialog {
+    max-width: 90% !important;
+  }
+}

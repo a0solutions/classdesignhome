@@ -104,7 +104,9 @@
         <div class="p-lg-4">
           <div class="overflow-y-auto overflow-x-hidden p-1">
             <div class="row">
-              <ng-container *ngIf="allOrders | async; else noOrders">
+              <ng-container
+                *ngIf="(allOrders | async)?.length !== 0; else noOrders"
+              >
                 <ng-container *ngFor="let order of allOrders | async">
                   <app-personal-card [order]="order"></app-personal-card>
                 </ng-container>
@@ -138,7 +140,7 @@
         <div class="p-lg-4">
           <div class="overflow-y-auto overflow-x-hidden p-1">
             <div class="row">
-              <ng-container *ngIf="allProducts; else noProducts">
+              <ng-container *ngIf="allProducts.length !== 0; else noProducts">
                 <ng-container *ngFor="let product of allProducts">
                   <div @fadeUp [ngClass]="'col-sm-12 col-md-6 col-lg-4 mb-4'">
                     <app-product-card

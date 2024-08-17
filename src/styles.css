@@ -593,9 +593,7 @@ input[type="checkbox"] {
     top: 80px;
     z-index: 1020;
   }
-  .modal-dialog {
-    max-width: 100% !important;
-  }
+
   .carousel-control-next {
     right: -100px;
   }
@@ -743,6 +741,9 @@ input[type="checkbox"] {
     position: sticky;
     top: 80px;
     z-index: 1020;
+  }
+  .separador-menu {
+    height: 11.5vh;
   }
   .tablet-out {
     display: block;

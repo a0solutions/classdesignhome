@@ -2,7 +2,7 @@
   z-index: 0;
 }
 .category-name {
-  top: 130px;
+  top: 130px !important;
   z-index: 0;
 }
 .active {
@@ -21,7 +21,6 @@
 }
 .filter-container {
   transition: all 0.5s !important;
-  overflow: hidden;
 }
 .col-0 {
   width: 0% !important;
@@ -31,5 +30,9 @@
   overflow-y: auto;
 }
 .filter-table {
-  z-index: 9999;
+  z-index: 999;
+}
+.filter-container-elements {
+  top: 185px;
+  z-index: -1;
 }

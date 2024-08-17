@@ -63,8 +63,13 @@
   ></app-filter-menu>
 </div>
 <article class="container mt-5 row mx-auto">
-  <div class="filter-container p-0" [class]="open ? 'col-3' : 'col-0'">
-    <div class="sticky-top t-160" style="width: 300px">
+  <div
+    @fadeLeft
+    *ngIf="open"
+    class="p-0 filter-container position-relative"
+    [class]="open ? 'col-3' : 'col-0'"
+  >
+    <div class="filter-container-elements sticky-top t-160" style="width: 20vw">
       <app-products-filter
         [categorySelected]="category"
         [subcategorySelected]="subcategory"

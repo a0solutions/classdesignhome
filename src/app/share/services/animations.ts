@@ -52,7 +52,7 @@ export const fadeUp8 = trigger('fadeUp8', [
 ]);
 
 export const fadeLeft = trigger('fadeLeft', [
-  state('void', style({ opacity: 0, transform: 'translate(80px)' })),
+  state('void', style({ opacity: 0, transform: 'translate(-80px)' })),
   transition('void => *', [animate('1.4s 0.5s cubic-bezier(.14,.44,.5,.9)')]),
 ]);
 export const modalFade = trigger('modalFade', [

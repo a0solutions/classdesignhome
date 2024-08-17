@@ -33,9 +33,6 @@ export class PersonalInfoComponent implements OnInit {
     this.routerActive.paramMap.subscribe((x) => {
       x.get('branch') ? (this.branch = x.get('branch')) : (this.branch = '');
       this.loader.show.next(false);
-      this.loader.show.subscribe((x) => {
-        console.log(this.loader.show.value);
-      });
     });
 
     this.allOrders = this.orders.getUserOrders();
@@ -46,6 +43,7 @@ export class PersonalInfoComponent implements OnInit {
             this.productService.getProductByParent(y)[0]
           );
         });
+        console.log(this.allProducts);
       });
     });
   }
