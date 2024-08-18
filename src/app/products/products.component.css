@@ -30,7 +30,7 @@
   overflow-y: auto;
 }
 .filter-table {
-  z-index: 999;
+  z-index: 6;
 }
 .filter-container-elements {
   top: 185px;

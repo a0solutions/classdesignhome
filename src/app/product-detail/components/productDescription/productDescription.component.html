@@ -152,7 +152,7 @@
     </ng-template>
     <p
       class="mb-0 mx-3 cursor-pointer"
-      (click)="addProductLikes(product.parentRef)"
+      (click)="addProductLikes(product.reference)"
     >
       <ng-container *ngIf="!like; else liked">
         <i class="bi bi-suit-heart h3 hb mb-0"></i>

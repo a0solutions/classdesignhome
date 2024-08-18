@@ -38,12 +38,12 @@ export class PersonalInfoComponent implements OnInit {
     this.allOrders = this.orders.getUserOrders();
     this.productService.setAllProducts().then((z) => {
       this.productService.allLikes.subscribe((x) => {
+        this.allProducts = [];
         x.forEach((y) => {
-          this.allProducts = this.allProducts.concat(
-            this.productService.getProductByParent(y)[0]
-          );
+          this.productService.products.subscribe((z) => {
+            this.allProducts.push(this.productService.findProductReference(y));
+          });
         });
-        console.log(this.allProducts);
       });
     });
   }

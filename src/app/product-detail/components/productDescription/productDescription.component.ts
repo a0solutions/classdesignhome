@@ -64,7 +64,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
       this.isLogged = x;
     });
     this.products.allLikes.subscribe((x) => {
-      this.like = this.products.isLike(this.product.parentRef);
+      this.like = this.products.isLike(this.product.reference);
     });
   }
   ngOnChanges(): void {
@@ -180,6 +180,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
       this.products.postLikes(ref).subscribe((x: any) => {
         this.like = !this.like;
         this.products.allLikes.next(x);
+        console.log(x);
       });
     } else {
       this.alert.setAlertMessage('isLogOut');

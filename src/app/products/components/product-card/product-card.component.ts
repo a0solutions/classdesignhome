@@ -19,6 +19,7 @@ import { urls } from 'src/environments/environment';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: product;
+  @Input() favorites = false;
   colors: colorId[] = [];
   background = '';
   hover = false;
@@ -56,7 +57,7 @@ export class ProductCardComponent implements OnInit {
       '/1.webp';
     this.background = encodeURI(this.background);
     this.products.allLikes.subscribe((x) => {
-      this.like = this.products.isLike(this.product.parentRef);
+      this.like = this.products.isLike(this.product.reference);
     });
     this.dealType = this.products.getDeal(this.product);
   }
@@ -88,9 +89,11 @@ export class ProductCardComponent implements OnInit {
       tempColor.color = y.color;
       tempColor.id = y.id;
       tempColor.name = y.name;
-      this.colors.some((x) => x.color === y.color)
-        ? null
-        : this.colors.push(tempColor);
+      if (!this.favorites) {
+        this.colors.some((x) => x.color === y.color)
+          ? null
+          : this.colors.push(tempColor);
+      }
     });
   }
   navigateModal(id: string): void {
@@ -122,7 +125,7 @@ export class ProductCardComponent implements OnInit {
     if (this.token.isLogged.value) {
       this.products.postLikes(ref).subscribe((x) => {
         this.like = !this.like;
-        console.log(x);
+        this.products.getAllLikes();
       });
     } else {
       this.alert.setAlertMessage('isLogOut');

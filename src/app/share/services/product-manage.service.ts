@@ -111,7 +111,9 @@ export class ProductManage {
   findProduct(id: string): product {
     return <product>this.products.value.find((x) => x.id == id);
   }
-
+  findProductReference(reference: string): product {
+    return <product>this.products.value.find((x) => x.reference == reference);
+  }
   getCategory(name: string): product | undefined {
     return this.allProducts.find((x: product) => {
       if (x.name == name) return <string>x.category;
