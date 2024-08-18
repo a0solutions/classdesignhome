@@ -44,7 +44,7 @@
     <div class="d-flex align-items-center mb-3">
       <p
         class="mb-0 mx-3 cursor-pointer"
-        (click)="addProductLikes(product.parentRef)"
+        (click)="addProductLikes(product.reference)"
       >
         <ng-container *ngIf="!like; else liked">
           <i class="bi bi-suit-heart h4 hb mb-0"></i>

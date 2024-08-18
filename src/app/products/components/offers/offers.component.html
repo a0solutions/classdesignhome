@@ -1,47 +1,52 @@
-<div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner h-400 mb-5">
-    <ng-container *ngFor="let item of items; index as i">
-      <div class="carousel-item" [ngClass]="{ active: i === 0 }">
-        <div class="row px-2">
-          <ng-container
-            *ngFor="
-              let product of allProducts.slice(
-                i * cardsNum,
-                i * cardsNum + cardsNum
-              )
-            "
-          >
-            <div
-              class="p-2"
-              [ngClass]="
-                cardsNum === 4 ? 'col-3' : cardsNum === 2 ? 'col-6' : 'col-12'
+<div *ngIf="allProducts.length !== 0">
+  <div class="border-bottom mb-5"></div>
+  <h2 class="fw-bold over-offer">Our Deals</h2>
+  <div class="separador-start mb-3"></div>
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner h-400 mb-5">
+      <ng-container *ngFor="let item of items; index as i">
+        <div class="carousel-item" [ngClass]="{ active: i === 0 }">
+          <div class="row px-2">
+            <ng-container
+              *ngFor="
+                let product of allProducts.slice(
+                  i * cardsNum,
+                  i * cardsNum + cardsNum
+                )
               "
             >
-              <app-offer-card [product]="product"></app-offer-card>
-            </div>
-          </ng-container>
+              <div
+                class="p-2"
+                [ngClass]="
+                  cardsNum === 4 ? 'col-3' : cardsNum === 2 ? 'col-6' : 'col-12'
+                "
+              >
+                <app-offer-card [product]="product"></app-offer-card>
+              </div>
+            </ng-container>
+          </div>
         </div>
-      </div>
-    </ng-container>
+      </ng-container>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="prev"
+    >
+      <span class="text-dark offer-arrow bg-white p-2 wh-40 shadow rounded-pill"
+        ><i class="bi bi-arrow-left-short"></i
+      ></span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="next"
+    >
+      <span class="text-dark offer-arrow bg-white p-2 wh-40 shadow rounded-pill"
+        ><i class="bi bi-arrow-right-short"></i
+      ></span>
+    </button>
   </div>
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-bs-target="#carouselExample"
-    data-bs-slide="prev"
-  >
-    <span class="text-dark offer-arrow bg-white p-2 wh-40 shadow rounded-pill"
-      ><i class="bi bi-arrow-left-short"></i
-    ></span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-bs-target="#carouselExample"
-    data-bs-slide="next"
-  >
-    <span class="text-dark offer-arrow bg-white p-2 wh-40 shadow rounded-pill"
-      ><i class="bi bi-arrow-right-short"></i
-    ></span>
-  </button>
 </div>

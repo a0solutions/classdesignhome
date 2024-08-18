@@ -59,3 +59,8 @@
   transition: all 0.5s;
   overflow: hidden;
 }
+@media (max-width: 768px) {
+  .popup-container {
+    display: none;
+  }
+}

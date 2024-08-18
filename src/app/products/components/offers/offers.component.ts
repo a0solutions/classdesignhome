@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnChanges,
+  OnInit,
+} from '@angular/core';
 import {
   ProductManage,
   product,
@@ -12,7 +18,7 @@ import { urls } from 'src/environments/environment';
   templateUrl: './offers.component.html',
   styleUrls: ['./offers.component.css'],
 })
-export class OffersComponent implements OnInit {
+export class OffersComponent implements OnChanges {
   allProducts: product[] = [];
   items: number[] = [];
   cardsNum = 4;
@@ -20,9 +26,15 @@ export class OffersComponent implements OnInit {
   constructor(private products: ProductManage, private loader: LoaderService) {}
   @Input() category = '';
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.products.getAllProducts().subscribe((x) => {
-      this.allProducts = x.filter((y) => y.offer != 0);
+      if (this.category === 'all') {
+        this.allProducts = x.filter((y) => y.offer != 0);
+      } else {
+        this.allProducts = x.filter(
+          (y) => y.offer != 0 && y.category == this.category
+        );
+      }
       for (let i = 0; i <= this.allProducts.length / this.cardsNum; i++) {
         this.items.push(i);
       }

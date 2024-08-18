@@ -56,7 +56,6 @@ export class OfferCardComponent implements OnInit {
     if (this.token.isLogged.value) {
       this.products.postLikes(ref).subscribe((x) => {
         this.like = !this.like;
-        console.log(x);
       });
     } else {
       this.alert.setAlertMessage('isLogOut');

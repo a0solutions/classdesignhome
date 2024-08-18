@@ -132,6 +132,6 @@ export class ProductCardComponent implements OnInit {
     }
   }
   urlImage(color: string): string {
-    return this.url + 'classapi/images/app/colors/' + color + '.png';
+    return encodeURI(this.url + 'classapi/images/app/colors/' + color + '.png');
   }
 }
