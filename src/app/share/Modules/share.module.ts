@@ -24,6 +24,8 @@ import { QuickViewService } from '../components/quickViewModal/service/quickView
 import { AlertsComponent } from '../components/alerts/alerts.component';
 import { QuickViewModalComponent } from '../components/quickViewModal/quickViewModal.component';
 import { OfferCardComponent } from 'src/app/products/components/offers/offer-card/offer-card.component';
+import { RelatedCardComponent } from 'src/app/products/components/related/related-card/related-card.component';
+import { RelatedComponent } from 'src/app/products/components/related/related.component';
 @NgModule({
   imports: [CommonModule, FormsModule, PipesModule, RouterModule],
   declarations: [
@@ -32,6 +34,8 @@ import { OfferCardComponent } from 'src/app/products/components/offers/offer-car
     CounterComponent,
     OffersComponent,
     OfferCardComponent,
+    RelatedCardComponent,
+    RelatedComponent,
     HeadersComponent,
     PopupComponent,
     ShowroomCardComponent,
@@ -58,6 +62,8 @@ import { OfferCardComponent } from 'src/app/products/components/offers/offer-car
     CounterComponent,
     OffersComponent,
     OfferCardComponent,
+    RelatedCardComponent,
+    RelatedComponent,
     HeadersComponent,
     PopupComponent,
     ProductCardComponent,

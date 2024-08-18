@@ -22,4 +22,10 @@
 <article class="container mt-5">
   <app-offers [category]="'all'"></app-offers>
 </article>
+<article class="container mt-5">
+  <app-related
+    [category]="product.category"
+    [subcategory]="product.subcategory"
+  ></app-related>
+</article>
 <app-full-carrousel [product]="product"></app-full-carrousel>
