@@ -16,6 +16,7 @@ export type filter = {
   category: string;
   color: string[];
   subcategory: string[];
+  sets: string[];
   price: number;
   size: string;
 };

@@ -175,4 +175,30 @@ export class ProductsFilterComponent implements OnInit, OnChanges {
   clearAllFilters() {
     this.route.navigate(['/products/' + this.categorySelected]);
   }
+  getAllSets(category: string): string[] {
+    const products = this.product.getProductByCategory(category);
+    const sets: string[] = [];
+    products.forEach((x) => {
+      if (!sets.includes(x.sets)) {
+        sets.push(x.sets);
+      }
+    });
+    return sets;
+  }
+  updateFilterSets(event: any): void {
+    if (!this.filter.allFilters.value.sets) {
+      console.log('si');
+      this.filter.allFilters.value.sets = [];
+    }
+    if (this.filter.allFilters.value.sets.includes(event.target.value)) {
+      this.filter.allFilters.value.sets.splice(
+        this.filter.allFilters.value.sets.indexOf(event.target.value),
+        1
+      );
+    } else {
+      this.filter.allFilters.value.sets.push(event.target.value);
+    }
+
+    this.updateAllFilter();
+  }
 }

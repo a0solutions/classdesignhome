@@ -83,6 +83,70 @@
           class="accordion-button rouned-0 collapsed py-3"
           type="button"
           data-bs-toggle="collapse"
+          data-bs-target="#collapseZeroOne"
+          aria-expanded="true"
+          aria-controls="collapseZeroOne"
+        >
+          Sets
+        </button>
+      </h3>
+      <div
+        id="collapseZeroOne"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body row">
+          <div *ngFor="let category of allCategories">
+            <div *ngIf="categorySelected !== 'all'; else allcategories">
+              <div *ngIf="categorySelected === category.category">
+                <div
+                  class="form-check"
+                  *ngFor="let subcategory of category.subcategories; index as i"
+                >
+                  <label class="form-check-label">
+                    <input
+                      class="form-check-input checked focus-ring-dark"
+                      type="checkbox"
+                      [value]="subcategory"
+                      [id]="subcategory.replaceAll(' ', '') | lowercase"
+                      [checked]="subcategorySelected === subcategory"
+                      (change)="updateFilterSub($event)"
+                    />
+
+                    {{ subcategory | capitalize }}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <ng-template #allcategories>
+              <p class="my-2">{{ category.category | uppercase }}</p>
+              <div
+                class="form-check"
+                *ngFor="let sets of getAllSets(category.category)"
+              >
+                <label class="form-check-label">
+                  <input
+                    class="form-check-input checked focus-ring-dark"
+                    type="checkbox"
+                    [value]="sets"
+                    [id]="sets.replaceAll(' ', '') | lowercase"
+                    (change)="updateFilterSets($event)"
+                  />
+
+                  {{ sets | capitalize }}
+                </label>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item border-0 rounded-0">
+      <h3 class="accordion-header border-top rounded-0">
+        <button
+          class="accordion-button rouned-0 collapsed py-3"
+          type="button"
+          data-bs-toggle="collapse"
           data-bs-target="#collapseOne"
           aria-expanded="true"
           aria-controls="collapseOne"
