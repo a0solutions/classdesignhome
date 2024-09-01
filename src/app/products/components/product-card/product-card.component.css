@@ -2,7 +2,7 @@
   font-size: 12px;
 }
 .button-quick {
-  height: 50px;
+  transition: all 0.5s;
 }
 .button-quick button {
   font-size: 12px;
@@ -36,7 +36,7 @@
   transition: all 0.5s !important;
 }
 .card-title-name {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   height: 45px;
 }
 .bi-suit-heart:hover {

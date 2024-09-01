@@ -22,7 +22,7 @@ import {
 } from '../../../share/services/product-manage.service';
 import { take } from 'rxjs';
 import { urls } from 'src/environments/environment';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 interface sizes {
   category: string;

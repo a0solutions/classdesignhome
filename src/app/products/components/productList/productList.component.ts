@@ -22,15 +22,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
   products: product[] = [];
   printProduct: product[] = [];
   itemNumber: number;
-  paginateNumber = 21;
+  paginateNumber = 24;
   more = false;
   parents: string[] = [];
   cardSize = 'col-lg-4';
   cardSizeSubscription: Subscription;
+  open = false;
   constructor(
     private allProducts: ProductManage,
     private filters: FilterManage,
-    private sortService: SortService
+    private sortService: SortService,
+    private filter: FilterManage
   ) {}
   ngOnDestroy(): void {
     this.cardSizeSubscription.unsubscribe();
@@ -43,6 +45,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
     });
     this.cardSizeSubscription = this.filters.cardSize.subscribe((x) => {
       this.cardSize = x;
+    });
+
+    this.filter.isInFilter.subscribe((x) => {
+      x ? (this.open = true) : (this.open = false);
     });
   }
 

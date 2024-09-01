@@ -9,6 +9,40 @@
 .btn {
   font-size: 14px !important;
 }
+.carousel-inner > .item {
+  opacity: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  display: block !important;
+  position: absolute !important;
+  z-index: 0 !important;
+  transition: none !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+.carousel-inner:first-of-type {
+  position: relative;
+}
+.carousel-inner > .active {
+  opacity: 1 !important;
+  z-index: 3 !important;
+}
+
+.carousel-inner > .next.left,
+.carousel-inner > .prev.right {
+  transition: opacity 0.6s ease-in-out;
+  opacity: 1;
+  left: 0 !important;
+  z-index: 2 !important;
+}
+.carousel-inner > .active.left,
+.carousel-inner > .active.right {
+  z-index: 1 !important;
+}
+
+.carousel-control {
+  z-index: 4;
+}
 :root {
   --secondary-color: #ae7204;
   --bg-gray: #f1f2f2;

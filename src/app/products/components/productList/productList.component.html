@@ -6,7 +6,14 @@
   </ng-container>
   <ng-template #productlist>
     <ng-container *ngFor="let product of printProduct">
-      <div @fadeUp [ngClass]="'col-sm-12 col-md-6 col-lg-4 mb-4'">
+      <div
+        @fadeUp
+        [ngClass]="
+          open
+            ? 'col-sm-12 col-md-6 col-lg-4 mb-4'
+            : 'col-sm-12 col-md-6 col-lg-3 mb-4'
+        "
+      >
         <app-product-card [product]="product"></app-product-card>
       </div>
     </ng-container>

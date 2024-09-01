@@ -4,8 +4,6 @@ import {
   colorId,
   product,
 } from '../../../share/services/product-manage.service';
-import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
-import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
 import { fadeButtonCard } from 'src/app/share/services/animations';
 import { TokenManage } from 'src/app/share/services/token-manage.service';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
@@ -28,8 +26,6 @@ export class ProductCardComponent implements OnInit {
   url = urls.url;
   constructor(
     private products: ProductManage,
-    private substrPipe: CategorySubstrPipe,
-    private spacesPipe: SpacesDeletePipe,
     private token: TokenManage,
     private alert: AlertManage,
     private quickView: QuickViewService
@@ -103,12 +99,7 @@ export class ProductCardComponent implements OnInit {
   navigate(id: string, name: string) {
     window.open('product/' + id + '/' + name.replaceAll(' ', '_'), '_blank');
   }
-  substrByCategory(product: product): string {
-    return this.substrPipe.transform(product);
-  }
-  spaceDatele(text: string): string {
-    return this.spacesPipe.transform(text);
-  }
+
   shareProduct(event: Event, arg1: string, arg2: string) {
     const url =
       'whatsapp://send?text=Look at this awesome thing I found!: ' +

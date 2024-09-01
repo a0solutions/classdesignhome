@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TokenManage {
   token = '';
-  isLogged: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  isLogged: BehaviorSubject<boolean> = new BehaviorSubject(false);
   verify = new JwtHelperService();
   constructor() {
     this.token = <string>localStorage.getItem('CDHtoken');
