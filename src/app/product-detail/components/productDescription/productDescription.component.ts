@@ -115,7 +115,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     product.color == y.color &&
     product.size == y.size
       ? this.sets.some((x) => {
-          x === y.sets;
+          x == y.sets;
         })
         ? null
         : this.sets.push(y.sets)

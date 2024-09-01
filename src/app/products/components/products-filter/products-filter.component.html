@@ -101,19 +101,18 @@
               <div *ngIf="categorySelected === category.category">
                 <div
                   class="form-check"
-                  *ngFor="let subcategory of category.subcategories; index as i"
+                  *ngFor="let sets of getAllSets(category.category); index as i"
                 >
                   <label class="form-check-label">
                     <input
                       class="form-check-input checked focus-ring-dark"
                       type="checkbox"
-                      [value]="subcategory"
-                      [id]="subcategory.replaceAll(' ', '') | lowercase"
-                      [checked]="subcategorySelected === subcategory"
-                      (change)="updateFilterSub($event)"
+                      [value]="sets"
+                      [id]="sets.replaceAll(' ', '') | lowercase"
+                      (change)="updateFilterSets($event)"
                     />
 
-                    {{ subcategory | capitalize }}
+                    {{ sets | capitalize }}
                   </label>
                 </div>
               </div>

@@ -108,7 +108,7 @@
         <button
           *ngFor="let set of sets; index as i"
           [ngClass]="{
-            'border-gold text-white': set === product.sets,
+            'border-gold text-white': set == product.sets,
             'bg-light': set !== product.sets
           }"
           [title]="set"

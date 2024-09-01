@@ -138,6 +138,7 @@ export interface order {
   canceled: string;
   delivered: string;
   taxes: number;
+  paymentMethod: string;
 }
 export interface billing {
   billingName: string;

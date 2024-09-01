@@ -21,6 +21,7 @@ import {
   fadeUp2,
   fadeUp3,
   fadeUp4,
+  fadeUp5,
 } from '../share/services/animations';
 import { SeoService } from '../share/services/seo.service';
 import { urls } from 'src/environments/environment';
@@ -28,7 +29,7 @@ import { urls } from 'src/environments/environment';
   selector: 'app-checkout-page',
   templateUrl: './checkout-page.component.html',
   styleUrls: ['./checkout-page.component.css'],
-  animations: [fadeLeft, fadeUp, fadeUp1, fadeUp2, fadeUp3, fadeUp4],
+  animations: [fadeLeft, fadeUp, fadeUp1, fadeUp2, fadeUp3, fadeUp4, fadeUp5],
 })
 export class CheckoutPageComponent implements OnInit {
   order: order = <order>{
@@ -40,9 +41,11 @@ export class CheckoutPageComponent implements OnInit {
     shipping: <shipping>{},
   };
   processingPayment = false;
+  processingPaymentAffirm = false;
   show = false;
   member = '';
   stripe: any;
+  url = urls.url;
   constructor(
     private nav: NavManage,
     private loader: LoaderService,
@@ -104,14 +107,34 @@ export class CheckoutPageComponent implements OnInit {
       ? this.alert.setAlertMessage('dataCartList')
       : this.createSession();
   }
-
+  sendOrderAffirm(): void {
+    !this.validateData()
+      ? this.alert.setAlertMessage('dataCartList')
+      : this.createSessionAffirm();
+  }
   createSession(): void {
-    console.log(this.order.amount);
     this.processingPayment = true;
+    this.order.paymentMethod = 'stripe';
     this.client.post(urls.urlStripe, this.order).subscribe(
       (x: any) => {
         this.order.order = x.description;
         this.checkout.saveTempOrder(this.order);
+        this.processingPayment = false;
+        window.open(<string>x.url, '_self');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  createSessionAffirm(): void {
+    this.processingPaymentAffirm = true;
+    this.order.paymentMethod = 'affirm';
+    this.client.post(urls.urlAffirm, this.order).subscribe(
+      (x: any) => {
+        this.order.order = x.description;
+        this.checkout.saveTempOrder(this.order);
+        this.processingPaymentAffirm = false;
         window.open(<string>x.url, '_self');
       },
       (error) => {

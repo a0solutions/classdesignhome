@@ -28,6 +28,26 @@
             ></div>
             Go to pay
           </button>
+          <button
+            @fadeUp5
+            (click)="sendOrderAffirm()"
+            class="btn btn-affirm w-100 mt-3"
+            *ngIf="order.cartProducts.length !== 0 && order.amount < 29999"
+          >
+            <div
+              *ngIf="processingPaymentAffirm"
+              class="spinner-border spinner-border-sm mx-3"
+              role="status"
+            ></div>
+
+            <img
+              alt="affirm logo"
+              [src]="url + '/classapi/images/app/affirm.png'"
+              width="40px"
+              style="vertical-align: middle"
+            />
+            Pay over time
+          </button>
         </div>
       </div>
     </div>
