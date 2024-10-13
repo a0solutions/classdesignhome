@@ -138,7 +138,30 @@ export class ProductManage {
     if (productsNo[0] != undefined) return productsNo.length;
     return 0;
   }
-  getDetailFilter(
+  getDetailFilterSets(
+    color: string,
+    sets: string,
+    parentRef: string,
+    size?: string
+  ): product {
+    if (size)
+      return <product>(
+        this.allProducts.find(
+          (x) =>
+            x.color == color &&
+            x.size == size &&
+            x.sets == sets &&
+            x.parentRef == parentRef
+        )
+      );
+    return <product>(
+      this.allProducts.find(
+        (x) => x.color == color && x.sets == sets && x.parentRef == parentRef
+      )
+    );
+  }
+
+  getDetailFilterSize(
     color: string,
     size: string,
     sets: string,
@@ -154,6 +177,7 @@ export class ProductManage {
       )
     );
   }
+
   getProductImages(data: imagedata) {
     const params = new HttpParams()
       .set('category', data.category)
@@ -271,4 +295,5 @@ export interface product {
   counterMaterial?: string;
   sinkIncluded?: string;
   sinkType?: number;
+  delivery: string;
 }

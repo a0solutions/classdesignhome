@@ -67,7 +67,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       } else if (x === 'liked') {
         this.products = this.sortService.sortLiked(this.products);
       } else if (x === '') {
-        this.products = this.sortService.sortName(this.products);
+        this.products = this.sortService.sortPriceDesc(this.products);
       }
       this.paginate();
     });
@@ -77,14 +77,16 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.itemNumber = this.paginateNumber;
     this.products = [];
     this.parents = [];
-    this.allProducts.getFilterProducts(filters).map((x) => {
-      if (!this.parents.includes(x.parentRef)) {
-        this.parents.push(x.parentRef);
-        this.products.push(x);
-        this.allProducts.filterProducts.next(this.products.length);
-        this.sortProducts();
-      }
-    });
+    this.sortService
+      .sortPriceDesc(this.allProducts.getFilterProducts(filters))
+      .map((x) => {
+        if (!this.parents.includes(x.parentRef)) {
+          this.parents.push(x.parentRef);
+          this.products.push(x);
+          this.allProducts.filterProducts.next(this.products.length);
+          this.sortProducts();
+        }
+      });
   }
   paginate(): void {
     this.printProduct = this.products.slice(0, this.itemNumber);

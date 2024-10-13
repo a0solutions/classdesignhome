@@ -49,7 +49,7 @@
   <div
     #cardImage
     (click)="navigate(product.reference, product.name)"
-    class="w-100 card-background cursor-pointer"
+    class="w-100 card-background cursor-pointer position-relative"
     [style]="
       'background-image:url(' +
       background +
@@ -58,11 +58,7 @@
       'px'
     "
   ></div>
-
-  <div
-    class="button-quick text-center my-2"
-    [style]="hover ? 'height:45px' : 'height:0px'"
-  >
+  <div class="button-quick text-center my-2 position-absolute bottom-25">
     <button
       @fadeButtonCard
       *ngIf="hover"

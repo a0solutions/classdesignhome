@@ -23,7 +23,7 @@ import { PoliciesComponent } from '../components/policies/policies.component';
 import { SeoService } from '../services/seo.service';
 import { PasswordComponent } from 'src/app/personal-area/components/password/password.component';
 import { OffersTopComponent } from '../components/nav/components/offers-top/offers-top.component';
-
+import { ShowroomsService } from '../services/showrooms.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -54,6 +54,7 @@ import { OffersTopComponent } from '../components/nav/components/offers-top/offe
     LoaderService,
     UserManage,
     SeoService,
+    ShowroomsService,
   ],
   exports: [
     NavComponent,

@@ -10,7 +10,7 @@
     <div class="separador-centrado mb-5 mt-3" @fadeUp2></div>
   </div>
   <div class="overflow-hidden mobile-out" @fadeUp3>
-    <app-headers [headerName]="'all'"></app-headers>
+    <app-headers></app-headers>
   </div>
   <div class="row mt-5">
     <div class="title col-lg-6 col-md-6 col-sm-12 text-content">
@@ -196,8 +196,8 @@
         <div class="p-lg-5 p-md-4 p-sm-3 position-relative">
           <app-popup
             [data]="{
-            top: '%',
-            left: '50%',
+            top: 50,
+            left: 50,
             reference: 'DOR 52-BHQG2N',
           }"
           ></app-popup>
@@ -207,7 +207,7 @@
               url +
               'classapi/images/Bedroom/products/DOR%2038/Bed%20+%20Nightstand/Bone/1.webp'
             "
-            class="us-member"
+            class="us-member z-0 position-relative"
             width="100%"
           />
         </div>

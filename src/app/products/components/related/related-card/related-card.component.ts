@@ -21,6 +21,7 @@ export class RelatedCardComponent implements OnInit {
   dealType: string;
   colors: colorId[] = [];
   allParentProducts: product[] = [];
+  url = urls.url;
   constructor(
     private products: ProductManage,
     private token: TokenManage,
@@ -81,5 +82,8 @@ export class RelatedCardComponent implements OnInit {
   }
   navigate(product: product) {
     this.route.navigate(['/product/' + product.reference + '/' + product.name]);
+  }
+  urlImage(color: string): string {
+    return encodeURI(this.url + 'classapi/images/app/colors/' + color + '.png');
   }
 }

@@ -1,9 +1,9 @@
 .popup {
-  min-width: 212px;
   height: 176px;
   z-index: 9;
   background: transparent !important;
   border-radius: 15px;
+  transition: all 0.5;
 }
 .card {
   min-height: 176px !important;
@@ -22,7 +22,7 @@
   position: absolute;
   z-index: 9;
   min-height: 176px;
-  width: 210px;
+  transition: all 0.5;
 }
 .image-showroom-hotspot:hover {
   outline: 20px solid rgba(255, 255, 255, 0.5);
@@ -44,7 +44,10 @@
   animation: mymove 2s;
   animation-iteration-count: infinite;
 }
-
+.showroom-container {
+  position: absolute;
+  z-index: 999;
+}
 @keyframes mymove {
   from {
     outline: 2px solid white;
@@ -60,7 +63,8 @@
   overflow: hidden;
 }
 @media (max-width: 768px) {
-  .popup-container {
+  .image-showroom-hotspot,
+  .showroom-container {
     display: none;
   }
 }

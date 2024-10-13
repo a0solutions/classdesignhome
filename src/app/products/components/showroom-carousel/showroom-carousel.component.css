@@ -1,0 +1,33 @@
+/************carousel showrooms*************/
+.carousel-control-next,
+.carousel-control-prev {
+  z-index: 10;
+  opacity: 1 !important;
+  transition: all 0.5s;
+}
+.carousel {
+  transition: all 0.5s;
+}
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.offer-arrow {
+  font-size: 27px;
+}
+.carousel-control-next:hover i,
+.carousel-control-prev:hover i {
+  color: #cba135 !important;
+}
+i::before {
+  margin-bottom: 12px;
+  margin-top: -3px;
+}
+.carousel-control-next,
+.carousel-control-prev {
+  width: 0% !important;
+}
+.h-400 {
+  height: 400px;
+}

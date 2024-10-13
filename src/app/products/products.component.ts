@@ -20,6 +20,7 @@ import { CategoriesService } from '../share/services/categories.service';
 import { FilterManage } from '../share/services/filterManage.service';
 import { QuickViewService } from '../share/components/quickViewModal/service/quickView.service';
 import { urls } from 'src/environments/environment';
+import { ShowroomsService } from '../share/services/showrooms.service';
 
 @Component({
   selector: 'app-products',
@@ -38,7 +39,7 @@ export class ProductsComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   allCategories: any[] = [];
   width: any;
-
+  showrooms: any;
   constructor(
     private url: ActivatedRoute,
     private nav: NavManage,
@@ -47,7 +48,8 @@ export class ProductsComponent implements OnInit {
     private seo: SeoService,
     private categories: CategoriesService,
     private filter: FilterManage,
-    private quick: QuickViewService
+    private quick: QuickViewService,
+    private showrommsService: ShowroomsService
   ) {}
   ngOnInit(): void {
     this.width = window.innerWidth;
@@ -76,12 +78,10 @@ export class ProductsComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   handleKeyDown(event: any): void {
     this.width = event.target.innerWidth;
-    console.log(this.width);
   }
   getCategory(param: ParamMap): void {
     this.allProducts.setAllProducts().then(() => {
       this.allOffers = this.allProducts.allProducts.filter((x) => x.offer != 0);
-
       this.category = <string>param.get('category');
       this.subcategory = <string>param.get('subcategory');
       this.category == 'all' || this.category == 'like'
@@ -101,6 +101,10 @@ export class ProductsComponent implements OnInit {
           '-1.png'
       );
       this.loader.show.next(false);
+      this.showrommsService.getShowrooms(this.category).subscribe((x) => {
+        this.showrooms = x;
+        console.log(this.category);
+      });
     });
   }
   getText(category: string): string {

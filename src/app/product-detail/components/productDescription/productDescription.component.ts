@@ -48,6 +48,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
   sizes: string[] = [];
   sets: string[] = [];
   like = false;
+  isSecondClass = false;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   urls: any;
   dealType: string;
@@ -87,6 +88,9 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     this.sizes = [];
     this.sets = [];
     products.forEach((y) => {
+      y.category == 'Living Room' || y.category == 'Outdoor'
+        ? (this.isSecondClass = true)
+        : null;
       this.filterSizeAndSets(x, y);
       const tempColor: colorId = <colorId>{};
       tempColor.color = y.color;
@@ -109,18 +113,30 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
         ? null
         : this.sizes.push(y.size)
       : null;
-
-    this.product.parentRef == y.parentRef &&
-    this.substrByCategory(product) == this.substrByCategory(y) &&
-    product.color == y.color &&
-    product.size == y.size
-      ? this.sets.some((x) => {
-          x == y.sets;
-        })
-        ? null
-        : this.sets.push(y.sets)
-      : null;
+    if (this.isSecondClass) {
+      this.product.parentRef == y.parentRef &&
+      this.substrByCategory(product) == this.substrByCategory(y) &&
+      product.color == y.color
+        ? this.sets.some((x) => {
+            x == y.sets;
+          })
+          ? null
+          : this.sets.push(y.sets)
+        : null;
+    } else {
+      this.product.parentRef == y.parentRef &&
+      this.substrByCategory(product) == this.substrByCategory(y) &&
+      product.color == y.color &&
+      product.size == y.size
+        ? this.sets.some((x) => {
+            x == y.sets;
+          })
+          ? null
+          : this.sets.push(y.sets)
+        : null;
+    }
   }
+
   addCart(product: product): void {
     this.checkout.postLocalStorage(product, this.count);
   }
@@ -143,7 +159,7 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     });
   }
   selectSize(size: string) {
-    const product: product = this.products.getDetailFilter(
+    const product: product = this.products.getDetailFilterSize(
       this.product.color,
       size,
       this.product.sets,
@@ -152,12 +168,20 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     this.router.navigate(['/product', product.reference, product.name]);
   }
   selectSets(sets: string) {
-    const product: product = this.products.getDetailFilter(
-      this.product.color,
-      this.product.size,
-      sets,
-      this.product.parentRef
-    );
+    let product;
+    this.isSecondClass
+      ? (product = this.products.getDetailFilterSets(
+          this.product.color,
+          sets,
+          this.product.parentRef
+        ))
+      : (product = this.products.getDetailFilterSets(
+          this.product.color,
+          sets,
+          this.product.parentRef,
+          this.product.size
+        ));
+    console.log(this.isSecondClass);
     this.router.navigate(['/product', product.reference, product.name]);
   }
   substrByCategory(product: product): string {
@@ -180,7 +204,6 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
       this.products.postLikes(ref).subscribe((x: any) => {
         this.like = !this.like;
         this.products.allLikes.next(x);
-        console.log(x);
       });
     } else {
       this.alert.setAlertMessage('isLogOut');

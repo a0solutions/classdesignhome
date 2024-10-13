@@ -7,6 +7,7 @@ import {
   fadeUp3,
   fadeUp4,
 } from 'src/app/share/services/animations';
+import { AlertManage } from '../../alerts/services/alertManage.service';
 
 @Component({
   selector: 'app-listed',
@@ -24,7 +25,7 @@ export class ListedComponent implements OnInit {
   total: number = this.shipping + this.subtotal + this.taxes;
 
   @Input() size = false;
-  constructor(private checkout: Checkout) {}
+  constructor(private checkout: Checkout, private alerts: AlertManage) {}
 
   ngOnInit(): void {
     this.checkout.checkCartList() ? (this.show = true) : null;
@@ -60,5 +61,8 @@ export class ListedComponent implements OnInit {
   deleteAll(): void {
     this.subtotal = 0;
     this.checkout.deleteAll();
+  }
+  alertMessage(message: string): void {
+    this.alerts.setAlertMessage(message);
   }
 }

@@ -1,25 +1,10 @@
 <div class="main-container">
   <div class="header" #header id="header">
-    <!-- (mousedown)="draggableSet()"-->
     <div class="item header-image">
-      <img
-        [alt]="headerNameUrl"
-        [src]="
-          url +
-          'classapi/images/showrooms/products/showroom-' +
-          headerNameUrl +
-          '-1.png'
-        "
-      />
+      <img alt="Showroom" [src]="img" />
       <div class="header-allhostsports">
         <app-popup *ngFor="let popup of popups" [data]="popup"></app-popup>
       </div>
-      <!-- <div class="header-overlay"></div> -->
     </div>
   </div>
-  <!-- <div class="header-tool">
-    <button class="btn btn-white shadow rounded-pill mx-4 mt-4 mb-2">
-      <i class="bi bi-fullscreen p-2 m-0"></i>
-    </button>
-  </div> -->
 </div>

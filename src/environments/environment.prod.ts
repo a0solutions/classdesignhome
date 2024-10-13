@@ -16,4 +16,5 @@ export const urls = {
   urlCollections: url + 'classapi/api/apiCollections.php',
   urlBlog: url + 'classapi/api/apiBlog.php',
   urllikes: url + 'classapi/api/apiLikes.php',
+  urlShowrooms: url + 'classapi/api/apiShowrooms.php',
 };

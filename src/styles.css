@@ -50,7 +50,7 @@
 }
 * {
   font-family: "Roboto Condensed", sans-serif;
-  font-weight: 600 !important;
+  font-weight: 600;
 }
 .hb {
   font-family: "Roboto Condensed", sans-serif !important ;
@@ -109,13 +109,13 @@ td {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--bs-light);
+  background: var(--bs-dark);
   /* border-radius: 4px; */
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--bs-light);
+  background: var(--secondary-color);
 }
 p {
   font-weight: 400 !important;
@@ -183,7 +183,10 @@ h5 {
   width: 100vh;
   height: 100vh;
 }
-
+.bottom-25 {
+  bottom: 145px;
+  width: 90%;
+}
 .image-showroom-buttons {
   margin-top: -210px;
   position: relative;
@@ -282,7 +285,7 @@ footer i:hover {
 .bi::before {
   line-height: unset !important;
   vertical-align: middle !important;
-  margin-top: 6px;
+  margin-top: 2px;
 }
 .wh-40 {
   width: 40px;

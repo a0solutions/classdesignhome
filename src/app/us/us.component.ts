@@ -10,6 +10,7 @@ import {
 } from '../share/services/animations';
 import { SeoService } from '../share/services/seo.service';
 import { urls } from 'src/environments/environment';
+import { ShowroomsService } from '../share/services/showrooms.service';
 
 @Component({
   selector: 'app-us',
@@ -21,12 +22,14 @@ export class UsComponent implements OnInit {
   constructor(
     private loader: LoaderService,
     private nav: NavManage,
-    private seo: SeoService
+    private seo: SeoService,
+    private showroomService: ShowroomsService
   ) {}
   url: string = urls.url;
   ngOnInit() {
     this.seo.setSeo();
     this.loader.show.next(false);
     this.nav.dark.next(true);
+    this.showroomService.categoryActive.next('all');
   }
 }

@@ -1,18 +1,22 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+
 <div
-  [ngClass]="{ 'backdrop-filter-blur': popup_active }"
-  class="popup-container popup"
-  [ngStyle]="{ top: data.top, left: data.left }"
+  #pointAnimted
+  class="image-showroom-hotspot"
+  (click)="popup_active = !popup_active"
+  [ngStyle]="{ top: data.top + '%', left: data.left + '%' }"
+></div>
+<div
+  *ngIf="popup_active"
+  @fade
+  class="showroom-container"
+  [style]="
+    'top:calc(' + data.top + '% - 120px);left: calc(' + data.left + '% + 30px)'
+  "
 >
-  <div
-    class="image-showroom-hotspot"
-    (click)="popup_active = !popup_active"
-  ></div>
-  <div *ngIf="popup_active" @fade class="showroom-container">
-    <app-showroom-card
-      [product]="product"
-      (active)="desactive($event)"
-    ></app-showroom-card>
-  </div>
+  <app-showroom-card
+    [product]="product"
+    (active)="desactive($event)"
+  ></app-showroom-card>
 </div>

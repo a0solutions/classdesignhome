@@ -2,10 +2,7 @@
   <app-nav></app-nav>
 </header>
 <section id="main-content" #mainContent>
-  <router-outlet
-    #outlet
-    (activate)="onActivate($event, outlet)"
-  ></router-outlet>
+  <router-outlet #outlet></router-outlet>
 </section>
 <app-footer class="mt-5"></app-footer>
 <app-loader></app-loader>

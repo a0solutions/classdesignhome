@@ -96,6 +96,11 @@ export class AlertManage {
         'An email has been sent to you to confirm the change of your password.'
       );
       this.title.next('Email confirmation');
+    } else if (code == 'freeshipping') {
+      this.message.next(
+        'The general delivery time is 6-8 weeks. If you have selected a product with a different delivery timeframe, you will see an alert on the product card.'
+      );
+      this.title.next('Notice');
     } else {
       this.message.next(
         'An unexpected error occurred. Please try again later, and thank you for your patience.'

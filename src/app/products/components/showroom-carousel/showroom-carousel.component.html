@@ -1,0 +1,29 @@
+<div id="carouselHeader" class="carousel slide">
+  <div class="carousel-inner rounded-4">
+    <ng-container *ngFor="let showroom of showrooms; let isFirst = first">
+      <div class="carousel-item" [class]="isFirst ? 'active' : null">
+        <app-headers [showroom]="showroom"></app-headers>
+      </div>
+    </ng-container>
+  </div>
+  <button
+    class="carousel-control-prev z-3"
+    type="button"
+    data-bs-target="#carouselHeader"
+    data-bs-slide="prev"
+  >
+    <span class="text-dark offer-arrow bg-white p-2 wh-40 shadow rounded-pill"
+      ><i class="bi bi-arrow-left-short"></i
+    ></span>
+  </button>
+  <button
+    class="carousel-control-next z-3"
+    type="button"
+    data-bs-target="#carouselHeader"
+    data-bs-slide="next"
+  >
+    <span class="text-dark offer-arrow bg-white p-2 wh-40 shadow rounded-pill"
+      ><i class="bi bi-arrow-right-short"></i
+    ></span>
+  </button>
+</div>

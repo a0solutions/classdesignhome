@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { product } from 'src/app/share/services/product-manage.service';
 
 @Component({
@@ -6,17 +6,18 @@ import { product } from 'src/app/share/services/product-manage.service';
   templateUrl: './descripption-accordion.component.html',
   styleUrls: ['./descripption-accordion.component.css'],
 })
-export class DescripptionAccordionComponent {
-  @Input() product: product = <product>{};
-
-  getBullets(product: string): Array<string[]> {
-    if (product != undefined) {
-      try {
-        return JSON.parse(<string>product);
-      } catch {
-        return [product.split(';')];
+export class DescripptionAccordionComponent implements OnChanges {
+  @Input() product: product;
+  bullets: string[] = [];
+  ngOnChanges() {
+    try {
+      this.bullets = JSON.parse(<string>this.product.featureBullet);
+    } catch {
+      if (this.product.featureBullet !== undefined) {
+        this.product.featureBullet.split(';').forEach((x) => {
+          x != '' ? this.bullets.push(x) : null;
+        });
       }
     }
-    return [];
   }
 }

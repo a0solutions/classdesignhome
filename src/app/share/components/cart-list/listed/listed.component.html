@@ -1,3 +1,5 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <div class="cart-items py-3" @fadeUp2>
   <ng-container *ngFor="let product of printList">
     <app-cart-item
@@ -10,7 +12,14 @@
 <div class="cart-checkout" @fadeUp3 *ngIf="total !== 0; else emptyCart">
   <div class="border-top py-4">
     <div class="w-100 d-flex mb-3 border-bottom">
-      <div class="me-auto">Shipping 6-8 weeks</div>
+      <div class="me-auto">
+        Free delivery
+
+        <i
+          class="bi bi-exclamation-square hover-gold cursor-pointer"
+          (click)="alertMessage('freeshipping')"
+        ></i>
+      </div>
       <ng-container *ngIf="!size; else showFreeShipping">
         <div class="ms-auto">Calculated at Checkcout</div>
       </ng-container>

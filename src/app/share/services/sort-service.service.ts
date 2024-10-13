@@ -25,10 +25,10 @@ export class SortService {
     });
   }
   sortPriceAsc(allProducts: product[]): product[] {
-    return allProducts.sort((a, b) => b.price - a.price);
+    return allProducts.sort((a, b) => a.price - b.price);
   }
   sortPriceDesc(allProducts: product[]): product[] {
-    return allProducts.sort((a, b) => a.price - b.price);
+    return allProducts.sort((a, b) => b.price - a.price);
   }
   sortNew(allProducts: product[]): product[] {
     return allProducts.sort((a, b) => b.new - a.new);

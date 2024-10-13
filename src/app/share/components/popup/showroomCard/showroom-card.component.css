@@ -14,8 +14,8 @@
 .card {
   min-height: 90px;
   background: white;
-  backdrop-filter: blur(15px);
   border-radius: 15px;
+  width: 195px !important;
 }
 .card img {
   mix-blend-mode: multiply;

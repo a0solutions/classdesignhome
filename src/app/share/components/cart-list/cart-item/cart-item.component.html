@@ -2,7 +2,7 @@
 <!-- eslint-disable @angular-eslint/template/mouse-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <div
-  class="card mb-3 border-0 shadow-sm rounded-0"
+  class="card mb-3 border-0 shadow-sm rounded-0 p-3"
   style="border-left: 3px solid var(--bs-dark)"
 >
   <div class="row g-0">
@@ -16,7 +16,7 @@
           <p class="card-title mb-0">
             <strong>{{ product.name }}</strong>
           </p>
-          <p class="card-secondary mb-0">{{ product.reference }}</p>
+          <!-- <p class="card-secondary mb-0">{{ product.reference }}</p> -->
           <ng-container *ngIf="product.promoPrice == 0; else promoPrice">
             <p class="card-secondary mb-0">
               {{ product.price | currency : "USD" }}
@@ -31,12 +31,26 @@
               >
             </p></ng-template
           >
+          <h6
+            class="card-secondary gold mt-2"
+            *ngIf="
+              product.delivery != null && product.delivery != '';
+              else standardShipping
+            "
+          >
+            <strong>{{ product.delivery }}</strong>
+          </h6>
+          <ng-template #standardShipping>
+            <h6 class="card-secondary mt-2">
+              <strong>Shipping in 6-8 weeks</strong>
+            </h6>
+          </ng-template>
         </div>
 
         <ng-template class="w-100" #sizeData>
           <div>
             <h5 class="mb-0">{{ product.name }}</h5>
-            <p class="card-secondary mb-2">{{ product.reference }}</p>
+            <!-- <p class="card-secondary mb-2">{{ product.reference }}</p> -->
             <p class="card-secondary mb-0">{{ product.dimentions }}</p>
             <h5 *ngIf="!counter" class="mb-0">Qty: {{ itemCount }}</h5>
             <ng-container *ngIf="product.promoPrice == 0; else promoPrice">
@@ -53,6 +67,20 @@
                 >
               </h6></ng-template
             >
+            <h6
+              class="card-secondary gold mt-2"
+              *ngIf="
+                product.delivery != null && product.delivery != '';
+                else standardShipping
+              "
+            >
+              <strong>{{ product.delivery }}</strong>
+            </h6>
+            <ng-template #standardShipping>
+              <h6 class="card-secondary mt-2">
+                <strong>Shipping in 6-8 weeks</strong>
+              </h6>
+            </ng-template>
           </div>
         </ng-template>
         <app-counter

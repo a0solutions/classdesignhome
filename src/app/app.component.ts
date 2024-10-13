@@ -21,11 +21,7 @@ export class AppComponent {
       if (event instanceof NavigationStart) {
         this.loader.show.next(true);
         this.token.isUserLogged();
-        window.scrollTo(0, 0);
       }
     });
-  }
-  onActivate(e: Event, outlet: HTMLElement) {
-    outlet.scrollTop = 0;
   }
 }

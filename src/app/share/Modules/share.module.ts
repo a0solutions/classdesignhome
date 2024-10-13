@@ -7,7 +7,6 @@ import { CounterComponent } from '../components/counter/counter.component';
 import { FormsModule } from '@angular/forms';
 import { OffersComponent } from 'src/app/products/components/offers/offers.component';
 import { HeadersComponent } from '../components/headers/headers.component';
-import { headerManage } from '../components/headers/popous/popups';
 import { PopupComponent } from '../components/popup/popup.component';
 import { ProductCardComponent } from 'src/app/products/components/product-card/product-card.component';
 import { PipesModule } from './pipes.module';
@@ -26,6 +25,7 @@ import { QuickViewModalComponent } from '../components/quickViewModal/quickViewM
 import { OfferCardComponent } from 'src/app/products/components/offers/offer-card/offer-card.component';
 import { RelatedCardComponent } from 'src/app/products/components/related/related-card/related-card.component';
 import { RelatedComponent } from 'src/app/products/components/related/related.component';
+import { ShowroomCarouselComponent } from 'src/app/products/components/showroom-carousel/showroom-carousel.component';
 @NgModule({
   imports: [CommonModule, FormsModule, PipesModule, RouterModule],
   declarations: [
@@ -45,12 +45,11 @@ import { RelatedComponent } from 'src/app/products/components/related/related.co
     ProductGaleryComponent,
     ProductDescriptionComponent,
     AlertsComponent,
-
+    ShowroomCarouselComponent,
     QuickViewModalComponent,
   ],
   providers: [
     AlertManage,
-    headerManage,
     CategorySubstrPipe,
     SpacesDeletePipe,
     CarouselService,
@@ -75,6 +74,7 @@ import { RelatedComponent } from 'src/app/products/components/related/related.co
     FormsModule,
     AlertsComponent,
     QuickViewModalComponent,
+    ShowroomCarouselComponent,
   ],
 })
 export class ShareModule {}

@@ -58,9 +58,11 @@
 
         <h6 class="hb">Features</h6>
         <ul class="descriptions-text">
-          <li *ngFor="let bullet of getBullets(product.featureBullet)">
-            {{ bullet }}
-          </li>
+          <ng-container *ngFor="let bullet of bullets">
+            <li>
+              {{ bullet }}
+            </li>
+          </ng-container>
         </ul>
       </div>
     </div>
