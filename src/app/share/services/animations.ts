@@ -9,6 +9,7 @@ export const fade = trigger('fade', [
   state('void', style({ opacity: 0 })),
   transition('void <=> *', [animate('0.5s')]),
 ]);
+
 export const fadeButtonCard = trigger('fadeButtonCard', [
   state('void', style({ opacity: 0 })),
   transition('void => *', [animate('0.5s')]),
