@@ -36,6 +36,7 @@ export class ProductsComponent implements OnInit {
   urlsWeb: string = urls.url;
   open = false;
   allOffers: product[] = [];
+  categoriesContainer = 510;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   allCategories: any[] = [];
   width: any;
@@ -81,7 +82,9 @@ export class ProductsComponent implements OnInit {
   }
   getCategory(param: ParamMap): void {
     this.allProducts.setAllProducts().then(() => {
+      console.log(this.width);
       this.allOffers = this.allProducts.allProducts.filter((x) => x.offer != 0);
+      console.log(this.allOffers.length);
       this.category = <string>param.get('category');
       this.subcategory = <string>param.get('subcategory');
       this.category == 'all' || this.category == 'like'

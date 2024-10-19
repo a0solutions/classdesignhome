@@ -31,3 +31,13 @@ i::before {
 .h-400 {
   height: 400px;
 }
+@media only screen and (max-width: 600px) {
+  .carousel-control-next,
+  .carousel-control-prev {
+    width: 5% !important;
+  }
+  i::before {
+    margin-bottom: 12px;
+    margin-top: -6px;
+  }
+}

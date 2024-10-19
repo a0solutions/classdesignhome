@@ -2,21 +2,23 @@
 <!--<app-offers class="my-3 mx-5" [category]="category"></app-offers>-->
 <div class="separador-menu"></div>
 <article class="container">
-  <div class="d-flex p-2 border-bottom">
-    <a
-      routerLink="/products/all"
-      class="hb pe-3 text-dark"
-      [class]="category === 'all' ? 'active' : null"
-      >All</a
-    >
-    <ng-container *ngFor="let thecategory of allCategories">
+  <div class="category-wrapper">
+    <div class="d-flex p-2 border-bottom">
       <a
-        [routerLink]="'/products/' + thecategory.category"
-        class="hb px-3 text-dark"
-        [class]="category === thecategory.category ? 'active' : null"
-        >{{ thecategory.category }}</a
+        routerLink="/products/all"
+        class="hb pe-3 text-dark category-menu"
+        [class]="category === 'all' ? 'active' : null"
+        >All</a
       >
-    </ng-container>
+      <ng-container *ngFor="let thecategory of allCategories">
+        <a
+          [routerLink]="'/products/' + thecategory.category"
+          class="hb px-3 text-dark category-menu"
+          [class]="category === thecategory.category ? 'active' : null"
+          >{{ thecategory.category }}</a
+        >
+      </ng-container>
+    </div>
   </div>
 </article>
 <article class="container">
@@ -47,7 +49,7 @@
     <!--SHOWROOMS CAROUSEL-->
     <app-showroom-carousel
       @fadeLeft
-      class="col-sm-12 col-lg-8 m-0 p-0"
+      class="col-sm-12 col-lg-8 m-0 p-sm-2 p-lg-0"
     ></app-showroom-carousel>
   </div>
 </article>
@@ -55,7 +57,11 @@
   class="bg-white container border-bottom filter-table"
   @fadeUp1
   [style]="
-    allOffers.length === 0 ? 'top:80px' : width > '650' ? 'top:105px' : null
+    allOffers.length == 0 && width > 700
+      ? 'top:80px'
+      : width > '650'
+      ? 'top:105px'
+      : null
   "
 >
   <app-filter-menu

@@ -42,6 +42,7 @@ export class CheckoutPageComponent implements OnInit {
   };
   processingPayment = false;
   processingPaymentAffirm = false;
+  processingPaymentPayPal = false;
   show = false;
   member = '';
   stripe: any;
@@ -112,6 +113,11 @@ export class CheckoutPageComponent implements OnInit {
       ? this.alert.setAlertMessage('dataCartList')
       : this.createSessionAffirm();
   }
+  sendOrderPayPal(): void {
+    !this.validateData()
+      ? this.alert.setAlertMessage('dataCartList')
+      : this.createSessionPayPal();
+  }
   createSession(): void {
     this.processingPayment = true;
     this.order.paymentMethod = 'stripe';
@@ -135,6 +141,23 @@ export class CheckoutPageComponent implements OnInit {
         this.order.order = x.description;
         this.checkout.saveTempOrder(this.order);
         this.processingPaymentAffirm = false;
+        window.open(<string>x.url, '_self');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  createSessionPayPal(): void {
+    this.processingPaymentPayPal = true;
+    this.order.paymentMethod = 'PayPal';
+    console.log(this.order);
+    this.client.post(urls.urlPayPal, this.order).subscribe(
+      (x: any) => {
+        console.log(x);
+        this.order.order = x.description;
+        this.checkout.saveTempOrder(this.order);
+        this.processingPaymentPayPal = false;
         window.open(<string>x.url, '_self');
       },
       (error) => {

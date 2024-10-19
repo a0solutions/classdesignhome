@@ -36,3 +36,18 @@
   top: 185px;
   z-index: -1;
 }
+.category-menu {
+  width: auto;
+  white-space: nowrap;
+}
+.category-wrapper {
+  overflow: auto;
+  width: 100%;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  scrollbar-width: none;
+}
+
+.category-wrapper::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}

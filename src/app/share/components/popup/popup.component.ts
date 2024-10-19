@@ -26,6 +26,7 @@ export class PopupComponent implements OnInit {
   };
   position: 0;
   product: product;
+  isPc = false;
   constructor(private products: ProductManage, private http: Router) {}
 
   ngOnInit(): void {

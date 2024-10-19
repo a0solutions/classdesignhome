@@ -13,6 +13,7 @@ export const urls = {
   urlImages: url + 'classapi/api/apiImages.php',
   urlStripe: url + 'classapi/core/stripe.php',
   urlAffirm: url + 'classapi/core/affirm.php',
+  urlPayPal: url + 'classapi/core/paypal.php',
   urlCollections: url + 'classapi/api/apiCollections.php',
   urlBlog: url + 'classapi/api/apiBlog.php',
   urllikes: url + 'classapi/api/apiLikes.php',

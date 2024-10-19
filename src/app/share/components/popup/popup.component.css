@@ -64,8 +64,8 @@
   overflow: hidden;
 }
 @media (max-width: 768px) {
-  .image-showroom-hotspot,
+  /* .image-showroom-hotspot,
   .showroom-container {
     display: none;
-  }
+  } */
 }

@@ -23,3 +23,12 @@ button {
   width: 180px;
   text-align: center;
 }
+.nav-pills {
+  overflow: auto;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  scrollbar-width: none;
+}
+.nav-pills::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}

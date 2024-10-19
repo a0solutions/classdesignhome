@@ -12,7 +12,17 @@
   @fade
   class="showroom-container"
   [style]="
-    'top:calc(' + data.top + '% - 120px);left: calc(' + data.left + '% + 30px)'
+    isPc
+      ? 'top:calc(' +
+        data.top +
+        '% - 120px);left: calc(' +
+        data.left +
+        '% + 30px)'
+      : 'top:calc(' +
+        data.top +
+        '% - 38px);left: calc(' +
+        data.left +
+        '% + 26px)'
   "
 >
   <app-showroom-card
