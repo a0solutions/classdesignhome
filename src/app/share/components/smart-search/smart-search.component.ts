@@ -22,7 +22,7 @@ export class SmartSearchComponent implements OnInit {
   show: boolean;
   url = urls.url;
   size = false;
-  searhList: string[] = [];
+  searchList: string[] = [];
   showSearchList = false;
   actualSearch: string;
   constructor(
@@ -65,7 +65,9 @@ export class SmartSearchComponent implements OnInit {
     });
   }
   getSearchList() {
-    this.showSearchList = true;
-    this.searhList = this.searchService.getSearchList();
+    this.searchList = this.searchService.getSearchList();
+    if (this.searchList.length != 0) {
+      this.showSearchList = true;
+    }
   }
 }

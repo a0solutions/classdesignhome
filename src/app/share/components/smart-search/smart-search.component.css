@@ -32,14 +32,16 @@
   height: 50vh;
 }
 .search-list-container {
-  height: 40vh;
+  max-height: 40vh;
   width: 98%;
   left: 0px;
   z-index: 99;
 }
-
+.d-content-none {
+  display: block;
+}
 @media (max-width: 728px) {
-  .d-sm-none {
+  .d-content-none {
     display: none;
   }
 }
