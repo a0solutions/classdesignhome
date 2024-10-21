@@ -82,9 +82,8 @@ export class ProductsComponent implements OnInit {
   }
   getCategory(param: ParamMap): void {
     this.allProducts.setAllProducts().then(() => {
-      console.log(this.width);
       this.allOffers = this.allProducts.allProducts.filter((x) => x.offer != 0);
-      console.log(this.allOffers.length);
+
       this.category = <string>param.get('category');
       this.subcategory = <string>param.get('subcategory');
       this.category == 'all' || this.category == 'like'
@@ -106,7 +105,6 @@ export class ProductsComponent implements OnInit {
       this.loader.show.next(false);
       this.showrommsService.getShowrooms(this.category).subscribe((x) => {
         this.showrooms = x;
-        console.log(this.category);
       });
     });
   }

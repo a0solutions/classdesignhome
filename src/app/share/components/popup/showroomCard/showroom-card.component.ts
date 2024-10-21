@@ -26,7 +26,6 @@ export class ShowroomCardComponent implements OnInit {
       '/' +
       this.product.color +
       '/1.webp';
-    console.log(this.product);
   }
   close() {
     this.active.emit(false);

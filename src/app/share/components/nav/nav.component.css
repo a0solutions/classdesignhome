@@ -28,7 +28,7 @@
 }
 .dropdown-menu.show {
   top: 144% !important;
-  left: -90px !important;
+  left: -50px !important;
 }
 .navbar li {
   text-transform: none;

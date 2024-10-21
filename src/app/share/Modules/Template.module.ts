@@ -24,6 +24,7 @@ import { SeoService } from '../services/seo.service';
 import { PasswordComponent } from 'src/app/personal-area/components/password/password.component';
 import { OffersTopComponent } from '../components/nav/components/offers-top/offers-top.component';
 import { ShowroomsService } from '../services/showrooms.service';
+import { SmartSearchComponent } from '../components/smart-search/smart-search.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -34,6 +35,7 @@ import { ShowroomsService } from '../services/showrooms.service';
     RouterModule,
   ],
   declarations: [
+    SmartSearchComponent,
     NavComponent,
     OffersTopComponent,
     CartListComponent,
@@ -57,6 +59,7 @@ import { ShowroomsService } from '../services/showrooms.service';
     ShowroomsService,
   ],
   exports: [
+    SmartSearchComponent,
     NavComponent,
     CartListComponent,
     FooterComponent,

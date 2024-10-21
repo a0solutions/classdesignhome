@@ -20,7 +20,6 @@ export class ShowroomCarouselComponent implements OnInit {
       this.category = <string>x.get('category');
       this.showroomService.getShowrooms(this.category).subscribe((x) => {
         this.showrooms = x;
-        console.log(this.category);
       });
     });
   }

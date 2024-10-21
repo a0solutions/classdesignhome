@@ -2,7 +2,7 @@ import {
   ProductManage,
   product,
 } from 'src/app/share/services/product-manage.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { fade } from '../../services/animations';
 
@@ -26,20 +26,24 @@ export class PopupComponent implements OnInit {
   };
   position: 0;
   product: product;
-  isPc = false;
+  isPc = true;
   constructor(private products: ProductManage, private http: Router) {}
 
   ngOnInit(): void {
-    // this.products.getProduct(this.data.reference).subscribe((x) => {
-    //   this.product = x;
-    // });
     this.products.products.subscribe((x) => {
       this.product = <product>(
         x.find((y) => y.reference === this.data.reference)
       );
     });
+    this.getWindowSize();
   }
-
+  @HostListener('window:resize', ['$event'])
+  handleKeyDown(event: any): void {
+    this.getWindowSize();
+  }
+  getWindowSize() {
+    window.innerWidth < 728 ? (this.isPc = false) : (this.isPc = true);
+  }
   navigate(id: string, name: string): void {
     this.http.navigate(['product/' + id + '/' + name]);
   }

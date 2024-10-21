@@ -8,6 +8,7 @@ import { UserManage } from 'src/app/share/services/user-manage.service';
 import { Router } from '@angular/router';
 import { urls } from 'src/environments/environment';
 import { product, ProductManage } from '../../services/product-manage.service';
+import { SearchService } from '../../services/search.service';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -29,7 +30,8 @@ export class NavComponent implements OnInit {
     private token: TokenManage,
     private auth: UserManage,
     private route: Router,
-    private productsService: ProductManage
+    private productsService: ProductManage,
+    private searchService: SearchService
   ) {}
   ngOnInit(): void {
     this.token.isLogged.subscribe((x) => {
@@ -46,6 +48,9 @@ export class NavComponent implements OnInit {
       });
     });
     this.nav.dark.subscribe({ next: this.darkChange.bind(this) });
+  }
+  openSearch() {
+    this.searchService.showSearch.next(true);
   }
   likesFilter() {
     this.like = !this.like;

@@ -780,7 +780,7 @@ input[type="checkbox"] {
     z-index: 1020;
   }
   .separador-menu {
-    height: 11.5vh;
+    height: 9vh;
   }
   .tablet-out {
     display: block;

@@ -1,0 +1,45 @@
+.smart-search-container {
+  position: fixed;
+  top: 0px;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(255, 255, 255, 0.746);
+  z-index: 999;
+  backdrop-filter: blur(10px);
+}
+.card-background {
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  mix-blend-mode: multiply;
+  transition: all 0.5s !important;
+}
+.card-search-product {
+  transition: all 0.5s;
+  background: var(--bg-gray);
+  border: 1px solid transparent;
+  max-width: 1000px;
+}
+.color-select {
+  width: 17px;
+  height: 17px;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: all 0.8s;
+  margin-top: 3px;
+}
+.search-card-container {
+  height: 50vh;
+}
+.search-list-container {
+  height: 40vh;
+  width: 98%;
+  left: 0px;
+  z-index: 99;
+}
+
+@media (max-width: 728px) {
+  .d-sm-none {
+    display: none;
+  }
+}

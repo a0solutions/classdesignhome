@@ -27,15 +27,17 @@
         ');background-size:auto 100%;'
       "
     ></div>
-    <div class="d-lg-flex mb-2 mx-auto justify-content-center">
+    <div
+      class="d-lg-flex mb-2 mx-auto showroom-card-buttons justify-content-center"
+    >
       <button
-        class="btn btn-sm btn-outline-dark w-85 d-sm-none"
+        class="btn btn-sm btn-outline-dark w-85"
         (click)="navigate(product.reference, product.name)"
       >
         View Product
       </button>
       <button
-        class="btn btn-sm btn-outline-dark w-85 d-sm-none"
+        class="btn btn-sm btn-outline-dark w-85"
         (click)="navigateCollection(product.category, product.subcategory)"
       >
         View Collection

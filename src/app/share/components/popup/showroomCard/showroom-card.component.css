@@ -42,17 +42,17 @@
   mix-blend-mode: multiply;
   transition: all 0.5s !important;
 }
+
 @media (max-width: 768px) {
-  .card-background {
-    display: none;
-  }
   .card {
-    min-height: 90px;
+    min-height: 60px;
     background: white;
-    border-radius: 15px;
+    border-radius: 6px;
     width: 130px !important;
   }
-  .d-sm-none {
+  .showroom-card-buttons,
+  .card-header,
+  .card-background {
     display: none;
   }
 }

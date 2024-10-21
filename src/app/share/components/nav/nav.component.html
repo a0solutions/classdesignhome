@@ -82,6 +82,29 @@
     >
       <div class="dropdown">
         <button
+          class="btn border-0 rounded-0 mt-lg-2 mt-md-3 mt-1"
+          (click)="openSearch()"
+        >
+          <img
+            #userSearch
+            alt="User Icon"
+            [src]="
+              dark
+                ? 'assets/icons/search_Icon.svg'
+                : 'assets/icons/search_Icon-white.svg'
+            "
+            (mouseover)="userSearch.src = 'assets/icons/search_Icon-gold.svg'"
+            (mouseout)="
+              dark
+                ? (userSearch.src = 'assets/icons/search_Icon.svg')
+                : (userSearch.src = 'assets/icons/search_Icon-white.svg')
+            "
+            height="13px"
+            class="cursor-pointer"
+            [ngClass]="{ 'text-dark': dark, 'text-white': !dark }"
+          />
+        </button>
+        <button
           data-bs-toggle="dropdown"
           aria-expanded="false"
           class="btn border-0 rounded-0 mt-lg-2 mt-md-3 mt-1"
