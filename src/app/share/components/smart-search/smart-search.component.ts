@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { product, ProductManage } from '../../services/product-manage.service';
+import { product } from '../../services/product-manage.service';
 import {
   fade,
   fadeLeft,
@@ -10,6 +10,7 @@ import {
 } from '../../services/animations';
 import { SearchService } from '../../services/search.service';
 import { urls } from 'src/environments/environment';
+import { LoaderService } from '../loader/services/loader.service';
 
 @Component({
   selector: 'app-smart-search',
@@ -25,10 +26,8 @@ export class SmartSearchComponent implements OnInit {
   searchList: string[] = [];
   showSearchList = false;
   actualSearch: string;
-  constructor(
-    private productService: ProductManage,
-    private searchService: SearchService
-  ) {}
+  loading = false;
+  constructor(private searchService: SearchService) {}
   ngOnInit() {
     this.searchService.showSearch.subscribe((x) => {
       this.show = x;
@@ -41,28 +40,13 @@ export class SmartSearchComponent implements OnInit {
     this.searchService.showSearch.next(false);
   }
   applySearch(value: string) {
-    this.actualSearch = value;
-    this.showSearchList = false;
-    this.searchService.storeSearch(value);
-    const splitValue = value.toLowerCase().split(' ');
-    splitValue.forEach((x: string) => {
-      this.allFinded = this.productService.products.value.filter(
-        (y) =>
-          y.name.toLowerCase().includes(x) ||
-          y.description?.toLowerCase().includes(x) ||
-          y.category?.toLowerCase().includes(x) ||
-          y.color?.toLowerCase().includes(x) ||
-          y.subcategory?.toLowerCase().includes(x) ||
-          y.sets?.toLowerCase().includes(x) ||
-          y.materialDetail?.toLowerCase().includes(x) ||
-          y.frameMaterial?.toLowerCase().includes(x) ||
-          y.counterMaterial?.toLowerCase().includes(x) ||
-          y.upholsteryMaterial?.toLowerCase().includes(x) ||
-          y.upholsteryFillMaterial?.toLowerCase().includes(x) ||
-          y.price?.toString().toLowerCase().includes(x) ||
-          y.featureBullet?.toLowerCase().includes(x)
-      );
-    });
+    if (value != '' && value != undefined) {
+      this.loading = true;
+      this.searchService.keyword.next(value);
+      this.showSearchList = false;
+      this.searchService.storeSearch(value);
+      this.closeSearch();
+    }
   }
   getSearchList() {
     this.searchList = this.searchService.getSearchList();

@@ -6,17 +6,24 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SearchService {
   showSearch: BehaviorSubject<boolean> = new BehaviorSubject(false);
-
+  keyword: BehaviorSubject<string> = new BehaviorSubject('');
   storeSearch(value: string) {
     const valueList: string[] = [];
     valueList.push(value);
     const storage = JSON.parse(<string>localStorage.getItem('searchList'));
     let allSearches: string[] = [];
     storage != null
-      ? (allSearches = valueList.concat(this.reduceList(storage)))
+      ? (allSearches = this.cleanAndConcat(valueList, storage))
       : (allSearches = valueList);
 
     localStorage.setItem('searchList', JSON.stringify(allSearches));
+  }
+  cleanAndConcat(valueList: string[], storage: any) {
+    const concat = valueList.concat(this.reduceList(storage));
+    const dataArr = new Set(concat);
+    const result = [...dataArr];
+    console.log(result);
+    return result;
   }
   getSearchList() {
     const storage = JSON.parse(<string>localStorage.getItem('searchList'));

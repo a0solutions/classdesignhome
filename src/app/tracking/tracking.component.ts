@@ -174,12 +174,14 @@ export class TrackingComponent implements OnInit {
     return (
       urls.url +
       'classapi/images/' +
-      product.category.replaceAll(' ', '_') +
+      product.category +
       '/products/' +
-      this.spaceDatele(product.parentRef) +
+      product.parentRef +
       '/' +
-      this.substrByCategory(product) +
-      '/1.jpg'
+      product.sets +
+      '/' +
+      product.color +
+      '/1.webp'
     );
   }
   substrByCategory(product: product): string {

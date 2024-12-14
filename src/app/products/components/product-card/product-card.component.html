@@ -20,14 +20,6 @@
       Share!
     </a>
     <p
-      *ngIf="product.new == 1"
-      class="btn hb btn-white rounded-pill shadow-sm btn-sm mb-0 ms-2 small-fixed-button"
-      title="New product"
-    >
-      New
-    </p>
-
-    <p
       class="mb-0 mx-3 cursor-pointer"
       (click)="addProductLikes(product.reference)"
     >
@@ -37,6 +29,13 @@
       <ng-template #liked>
         <i class="bi bi-suit-heart-fill h4 hb mb-0 gold"></i
       ></ng-template>
+    </p>
+    <p
+      *ngIf="product.new == 1"
+      class="btn hb bg-light-color rounded-pill text-white shadow-sm btn-sm mb-0 ms-2 ms-auto small-fixed-button"
+      title="New product"
+    >
+      New
     </p>
     <p
       *ngIf="product.offer != 0"

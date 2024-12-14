@@ -124,9 +124,8 @@ export class ProductsFilterComponent implements OnInit, OnChanges {
 
   setUrl(category: string): void {
     window.location.href = 'products/' + category;
-    //this.http.navigate(['products/' + category]);
   }
-  //updating filter object[subcategory]
+
   updateFilterSub(sub: any): void {
     const values = sub.target.value;
     sub.target.checked
@@ -138,7 +137,7 @@ export class ProductsFilterComponent implements OnInit, OnChanges {
     this.filter.allFilters.value.subcategory = this.subcategoriesFilter;
     this.updateAllFilter();
   }
-  //updating filter object[color]
+
   updateFilterColor(color: any): void {
     color.create
       ? this.allColorFilters.push(color.color)
@@ -149,7 +148,7 @@ export class ProductsFilterComponent implements OnInit, OnChanges {
     this.filter.allFilters.value.color = this.allColorFilters;
     this.updateAllFilter();
   }
-  //updating filter object[price]
+
   updateFilterPrice(price: string): void {
     this.filter.allFilters.value.price = parseInt(price);
     this.updateAllFilter();
@@ -161,7 +160,7 @@ export class ProductsFilterComponent implements OnInit, OnChanges {
     this.filter.allFilters.value.size = size;
     this.updateAllFilter();
   }
-  //updating filter observable in FilterServices
+
   updateAllFilter(): void {
     this.filter.allFilters.next(this.filter.allFilters.value);
     setTimeout(() => {

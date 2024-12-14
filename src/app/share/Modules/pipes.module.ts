@@ -4,6 +4,7 @@ import { StockPipe } from '../pipes/stock.pipe';
 import { SpacesPipe } from '../pipes/spaces.pipe';
 import { SpacesDeletePipe } from '../pipes/spacesDelete.pipe';
 import { CategorySubstrPipe } from '../pipes/categorySubstr.pipe';
+import { OnlyNumbersPipe } from '../pipes/only-numbers.pipe';
 
 @NgModule({
   imports: [],
@@ -13,6 +14,7 @@ import { CategorySubstrPipe } from '../pipes/categorySubstr.pipe';
     SpacesPipe,
     SpacesDeletePipe,
     CategorySubstrPipe,
+    OnlyNumbersPipe,
   ],
   providers: [],
   exports: [
@@ -21,6 +23,7 @@ import { CategorySubstrPipe } from '../pipes/categorySubstr.pipe';
     SpacesPipe,
     SpacesDeletePipe,
     CategorySubstrPipe,
+    OnlyNumbersPipe,
   ],
 })
 export class PipesModule {}

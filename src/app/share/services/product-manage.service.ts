@@ -27,7 +27,6 @@ export class ProductManage {
   }
 
   getAllProducts(): Observable<product[]> {
-    this.getAllLikes();
     return this.http.get<product[]>(this.url);
   }
   getAllLikes() {
@@ -144,29 +143,6 @@ export class ProductManage {
     parentRef: string,
     size?: string
   ): product {
-    if (size)
-      return <product>(
-        this.allProducts.find(
-          (x) =>
-            x.color == color &&
-            x.size == size &&
-            x.sets == sets &&
-            x.parentRef == parentRef
-        )
-      );
-    return <product>(
-      this.allProducts.find(
-        (x) => x.color == color && x.sets == sets && x.parentRef == parentRef
-      )
-    );
-  }
-
-  getDetailFilterSize(
-    color: string,
-    size: string,
-    sets: string,
-    parentRef: string
-  ): product {
     return <product>(
       this.allProducts.find(
         (x) =>
@@ -174,6 +150,14 @@ export class ProductManage {
           x.size == size &&
           x.sets == sets &&
           x.parentRef == parentRef
+      )
+    );
+  }
+
+  getDetailFilterSize(color: string, size: string, parentRef: string): product {
+    return <product>(
+      this.allProducts.find(
+        (x) => x.color == color && x.size == size && x.parentRef == parentRef
       )
     );
   }

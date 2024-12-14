@@ -109,10 +109,15 @@ export class ProductGaleryComponent implements OnChanges {
     for (let i = 0; i < this.allImages.length; i++) {
       if (this.allImages[i].state == true) {
         flag == 'next' ? (index = i + 1) : (index = i - 1);
-        index > this.allImages.length ? (index = this.allImages.length) : null;
+        i == this.allImages.length - 1 && flag == 'next'
+          ? (index = 0)
+          : i == 0 && flag != 'next'
+          ? (index = this.allImages.length - 1)
+          : null;
       }
       this.allImages[i].state = false;
     }
+
     this.allImages[index].state = true;
     this.fullPicture = this.allImages[index].url;
   }

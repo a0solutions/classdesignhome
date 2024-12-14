@@ -7,3 +7,20 @@
   color: white;
   background-color: #4a4af4;
 }
+.paypal-height {
+  height: 55px;
+  font-size: 19px !important;
+}
+.paypal-button.paypal-button-shape-rect {
+  border-radius: 7px !important;
+}
+ngx-paypal div {
+  margin-top: 1rem;
+}
+.btn-paypal {
+  background-color: #ffc439;
+}
+.container-button-paypal {
+  height: 55px;
+  overflow: hidden;
+}

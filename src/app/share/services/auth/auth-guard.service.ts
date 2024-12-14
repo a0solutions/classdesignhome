@@ -4,23 +4,19 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { TokenManage } from 'src/app/share/services/token-manage.service';
-import { UserManage } from 'src/app/share/services/user-manage.service';
+import { TokenManage } from '../token-manage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard {
-  constructor(
-    private auth: UserManage,
-    private router: Router,
-    private token: TokenManage
-  ) {}
+  constructor(private auth: TokenManage, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const activo: boolean = this.auth.isLogged();
+    const activo: boolean = this.auth.isLogged.value;
+    console.log(this.auth.isLogged.value);
     if (activo) return true;
-    this.auth.signOut();
+    this.auth.logOut();
     this.router.navigate(['/signin'], {
       queryParams: { returnTo: state.url },
     });

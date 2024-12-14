@@ -12,11 +12,7 @@ export class TokenManage {
   constructor() {
     this.token = <string>localStorage.getItem('CDHtoken');
   }
-  isUserLogged(): void {
-    this.getUserId(this.token) != ''
-      ? this.isLogged.next(true)
-      : this.isLogged.next(false);
-  }
+
   logOut(): void {
     localStorage.removeItem('CDHtoken');
     this.isLogged.next(false);

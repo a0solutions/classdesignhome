@@ -18,7 +18,7 @@
           <button
             @fadeUp4
             (click)="sendOrder()"
-            class="btn btn-dark w-100"
+            class="btn btn-dark w-100 paypal-height mb-3"
             *ngIf="order.cartProducts.length !== 0"
           >
             <div
@@ -26,12 +26,12 @@
               class="spinner-border spinner-border-sm mx-3"
               role="status"
             ></div>
-            Go to pay
+            Credit or Debit Card
           </button>
           <button
             @fadeUp5
             (click)="sendOrderAffirm()"
-            class="btn btn-affirm w-100 mt-3"
+            class="btn btn-affirm w-100 mb-3 paypal-height"
             *ngIf="order.cartProducts.length !== 0 && order.amount < 29999"
           >
             <div
@@ -43,31 +43,27 @@
             <img
               alt="affirm logo"
               [src]="url + '/classapi/images/app/affirm.png'"
-              width="40px"
+              width="60px"
               style="vertical-align: middle"
             />
             Pay over time
           </button>
-          <!-- <button
-            @fadeUp5
-            (click)="sendOrderPayPal()"
-            class="btn btn-affirm w-100 mt-3"
-            *ngIf="order.cartProducts.length !== 0 && order.amount < 29999"
+          <button
+            @fadeUp6
+            (click)="verifyPaypalData()"
+            class="btn btn-paypal w-100 paypal-height mb-3"
+            *ngIf="order.cartProducts.length !== 0 && !paypalVerified"
           >
             <div
-              *ngIf="processingPaymentPayPal"
+              *ngIf="processingPayment"
               class="spinner-border spinner-border-sm mx-3"
               role="status"
             ></div>
-
-            <img
-              alt="PayPal logo"
-              [src]="url + '/classapi/images/app/affirm.png'"
-              width="40px"
-              style="vertical-align: middle"
-            />
-            Pay with PayPal
-          </button> -->
+            <img src="assets/paypal.png" alt="paypal logo" height="25px" />
+          </button>
+          <div class="container-button-paypal" *ngIf="paypalVerified">
+            <ngx-paypal [config]="payPalConfig" class="mt-3"></ngx-paypal>
+          </div>
         </div>
       </div>
     </div>

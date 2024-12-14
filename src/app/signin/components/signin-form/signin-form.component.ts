@@ -43,12 +43,11 @@ export class SigninFormComponent implements OnInit {
   }
   openSession(response: string): void {
     const token = <string>response;
-    this.actionLoggin(token);
-  }
-  actionLoggin(token: string): void {
+    this.tokenManage.isLogged.next(true);
     this.tokenManage.setToken(token);
     this.route.navigate([this.goTo]);
   }
+
   setAlert(code: string): void {
     this.alert.setAlertMessage(code);
   }

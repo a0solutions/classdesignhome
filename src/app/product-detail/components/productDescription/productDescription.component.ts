@@ -88,7 +88,9 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     this.sizes = [];
     this.sets = [];
     products.forEach((y) => {
-      y.category == 'Living Room' || y.category == 'Outdoor'
+      y.category == 'Living Room' ||
+      y.category == 'Outdoor' ||
+      y.category == 'Dining Space'
         ? (this.isSecondClass = true)
         : null;
       this.filterSizeAndSets(x, y);
@@ -103,38 +105,23 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
   }
 
   filterSizeAndSets(product: product, y: product) {
+    /************* SIZES *************/
     this.product.parentRef == y.parentRef &&
     this.substrByCategory(product) == this.substrByCategory(y) &&
-    product.color == y.color &&
-    product.sets == y.sets
-      ? this.sizes.some((x) => {
-          x === y.size;
-        })
+    product.color == y.color
+      ? this.sizes.includes(y.size)
         ? null
         : this.sizes.push(y.size)
       : null;
-    if (this.isSecondClass) {
-      this.product.parentRef == y.parentRef &&
-      this.substrByCategory(product) == this.substrByCategory(y) &&
-      product.color == y.color
-        ? this.sets.some((x) => {
-            x == y.sets;
-          })
-          ? null
-          : this.sets.push(y.sets)
-        : null;
-    } else {
-      this.product.parentRef == y.parentRef &&
-      this.substrByCategory(product) == this.substrByCategory(y) &&
-      product.color == y.color &&
-      product.size == y.size
-        ? this.sets.some((x) => {
-            x == y.sets;
-          })
-          ? null
-          : this.sets.push(y.sets)
-        : null;
-    }
+
+    /************* SETS *************/
+    this.product.parentRef == y.parentRef &&
+    product.color == y.color &&
+    product.size == y.size
+      ? this.sets.includes(y.sets)
+        ? null
+        : this.sets.push(y.sets)
+      : null;
   }
 
   addCart(product: product): void {
@@ -159,28 +146,21 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     });
   }
   selectSize(size: string) {
-    const product: product = this.products.getDetailFilterSize(
+    const product = this.products.getDetailFilterSize(
       this.product.color,
       size,
-      this.product.sets,
       this.product.parentRef
     );
+    console.log(product.reference);
     this.router.navigate(['/product', product.reference, product.name]);
   }
   selectSets(sets: string) {
-    let product;
-    this.isSecondClass
-      ? (product = this.products.getDetailFilterSets(
-          this.product.color,
-          sets,
-          this.product.parentRef
-        ))
-      : (product = this.products.getDetailFilterSets(
-          this.product.color,
-          sets,
-          this.product.parentRef,
-          this.product.size
-        ));
+    const product = this.products.getDetailFilterSets(
+      this.product.color,
+      sets,
+      this.product.parentRef,
+      this.product.size
+    );
     console.log(this.isSecondClass);
     this.router.navigate(['/product', product.reference, product.name]);
   }

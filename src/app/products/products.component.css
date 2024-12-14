@@ -39,6 +39,7 @@
 .category-menu {
   width: auto;
   white-space: nowrap;
+  font-size: 16px !important;
 }
 .category-wrapper {
   overflow: auto;

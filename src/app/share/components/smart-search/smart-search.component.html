@@ -1,30 +1,28 @@
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <article class="smart-search-container" *ngIf="show" @fade>
-  <div class="p-3 text-end">
+  <div class="separador-menu"></div>
+  <div class="p-3 text-end mx-3">
     <button
       type="button"
-      class="btn-close btn-sm opacity-100"
+      class="btn-close btn-sm opacity-100 mx-3"
       data-bs-dismiss="modal"
       aria-label="Close"
       (click)="closeSearch()"
     ></button>
   </div>
   <div class="container">
-    <div class="title text-center text-content my-5">
+    <div class="title text-center text-content my-5 d">
       <!-- <p class="mb-0">Tracking area</p> -->
-      <h1 class="fw-bolder" @fadeUp>Smart Search</h1>
+      <h1 class="fw-bolder" @fadeUp>Search Our Catalog</h1>
       <div class="separador-centrado mb-5 mt-3" @fadeUp1></div>
     </div>
     <div class="row">
       <div class="col-lg-6 col-md-10 col-12 mx-auto position-relative">
         <form ngForm #trackingForm="ngForm">
-          <h5 class="text-center" @fadeUp2>
-            Enter your keyword for your search
-          </h5>
           <p class="text-center" @fadeUp3>
-            You can search for the products you need using keywords such as
-            category, materials, color, among other criteria
+            Search for the products you need using keywords such as beds,
+            vanities, materials, color, etc...
           </p>
           <div class="d-flex flex-column flex-sm-row w-100" @fadeLeft>
             <input
@@ -33,20 +31,20 @@
               type="text"
               name="search"
               class="form-control rounded-0 me-0"
-              placeholder="Write here"
+              placeholder="Find your furniture"
               (focus)="getSearchList()"
             />
 
             <button
-              class="btn px-5 btn-dark rounded-0 ms-0"
-              type="submit"
+              class="btn px-5 btn-dark rounded-0 ms-0 d-flex"
+              type="button"
               (click)="applySearch(search.value)"
             >
               Search
             </button>
           </div>
           <div
-            class="bg-white px-3 py-0 position-absolute me-4 text-end overflow-scroll search-list-container"
+            class="bg-white p-0 position-absolute text-end overflow-y-scroll search-list-container"
             *ngIf="showSearchList"
           >
             <button
@@ -67,115 +65,6 @@
           </div>
         </form>
       </div>
-    </div>
-    <div class="mt-5 mx-auto overflow-auto search-card-container">
-      <ng-container *ngFor="let product of allFinded">
-        <div class="mb-2 mx-auto card-search-product p-2">
-          <div class="row g-0">
-            <div
-              class="col-md-3 col-4 p-2 card-background"
-              [ngStyle]="{
-                backgroundImage:
-                  'url(' +
-                  convertURI(
-                    url +
-                      'classapi/images/' +
-                      product.category +
-                      '/products/' +
-                      product.parentRef +
-                      '/' +
-                      product.sets +
-                      '/' +
-                      product.color +
-                      '/1.webp'
-                  ) +
-                  ')'
-              }"
-            ></div>
-            <div class="col-sm-12 col-md-9 col-8 p-0">
-              <div class="card-body p-0 px-3">
-                <div class="w-100">
-                  <a
-                    class="text-dark mb-0"
-                    [href]="
-                      '/product/' + product.reference + '/' + product.name
-                    "
-                  >
-                    <p class="card-title mb-0">
-                      <strong>{{ product.name }}</strong>
-                    </p></a
-                  >
-                  <div class="d-md-flex flex-sm-row">
-                    <a class="gold me-2" [href]="'/' + product.category + '/'"
-                      >{{ product.category }}
-                    </a>
-
-                    <a
-                      class="gold mx-2"
-                      [href]="'/' + product.subcategory + '/'"
-                      >{{ product.subcategory }}
-                    </a>
-                    <a
-                      class="gold mx-2 d-content-none"
-                      [href]="
-                        '/product/' + product.reference + '/' + product.name
-                      "
-                      >{{ product.sets }}
-                    </a>
-
-                    <a
-                      class="gold mx-2 d-block"
-                      [href]="
-                        '/product/' + product.reference + '/' + product.name
-                      "
-                    >
-                      <div
-                        class="color-select rounded-pill shadow-sm mb-2 mx-2"
-                        [ngStyle]="{
-                          backgroundImage:
-                            'url(' +
-                            convertURI(
-                              url +
-                                'classapi/images/app/colors/' +
-                                product.color +
-                                '.png'
-                            ) +
-                            ')'
-                        }"
-                        [title]="product.color"
-                      ></div>
-                    </a>
-
-                    <div class="mx-2">
-                      <ng-container
-                        *ngIf="product.promoPrice == 0; else promoPrice"
-                      >
-                        <p class="card-secondary mb-0">
-                          {{ product.price | currency : "USD" }}
-                        </p> </ng-container
-                      ><ng-template #promoPrice>
-                        <p class="card-secondary mb-0">
-                          <span class="hb"
-                            >{{ product.promoPrice | currency : "USD" }}
-                          </span>
-                          <span class="text-muted text-decoration-line-through">
-                            {{ product.price | currency : "USD" }}</span
-                          >
-                        </p></ng-template
-                      >
-                    </div>
-                  </div>
-                  <p class="d-content-none">
-                    {{ product.description?.slice(0, 350) + "..." }}
-                  </p>
-
-                  <!-- <p class="card-secondary mb-0">{{ product.reference }}</p> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ng-container>
     </div>
   </div>
 </article>

@@ -17,14 +17,7 @@
   <div class="mobile-out" @fadeUp1>
     <div class="d-flex">
       <h1 class="bold mb-0 h5">{{ product.name }} - {{ product.size }}</h1>
-      <a
-        (click)="shareProduct($event, product.reference, product.name)"
-        class="btn hb btn-white rounded-pill shadow-sm ms-3 btn-sm small-fixed-button"
-        data-action="share/whatsapp/share"
-        title="Share with friends"
-      >
-        Share!
-      </a>
+
       <p
         *ngIf="product.promoPrice != 0"
         class="btn hb btn-dark rounded-pill shadow-sm btn-sm mb-0 ms-2 small-fixed-button"
@@ -91,9 +84,12 @@
           <img
             width="100%"
             class="p-0"
-            [alt]="product.name"
+            [alt]="size"
             [src]="
-              url + 'classapi/images/app/custom-icons/size/' + size + '.png'
+              url +
+              'classapi/images/app/custom-icons/size/' +
+              (size | onlyNumbers) +
+              '.png'
             "
           />
         </button>
@@ -117,13 +113,13 @@
         >
           <img
             width="100%"
-            class="p-0"
-            [alt]="product.name"
+            class="p-0 bg-white"
+            [alt]="set"
             [src]="
               url +
               'classapi/images/app/custom-icons/' +
               (set | spaces) +
-              '.png'
+              '.svg'
             "
           />
         </button>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { LoaderService } from './share/components/loader/services/loader.service';
-import { TokenManage } from './share/services/token-manage.service';
+import { UserManage } from './share/services/user-manage.service';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +15,12 @@ export class AppComponent {
   constructor(
     router: Router,
     private loader: LoaderService,
-    private token: TokenManage
+    private auth: UserManage
   ) {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         this.loader.show.next(true);
-        this.token.isUserLogged();
+        this.auth.isLogged();
       }
     });
   }

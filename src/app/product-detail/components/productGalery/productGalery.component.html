@@ -22,17 +22,6 @@
   <div class="pc-out" @fadeUp1>
     <div class="d-flex">
       <h1 class="bold mb-0 h5">{{ product.name }}</h1>
-
-      <p
-        (click)="shareProduct($event, product.id, product.name)"
-        data-action="share/whatsapp/share"
-        title="Share with friends"
-      >
-        <span
-          class="badge p p-1 px-3 rounded-pill rounded-0 btn shadow-sm ms-2 text-bg-light"
-          >Share!</span
-        >
-      </p>
     </div>
   </div>
   <h3 class="mt-2 mb-0 h3 color-gold pc-out" @fadeUp2>
@@ -40,11 +29,27 @@
   </h3>
   <p class="pc-out" @fadeUp3>Material Detail: {{ product.materialDetail }}</p>
   <div class="row shadow-5">
-    <div class="col-12 mb-3 position-relative px-0" @fadeUp>
-      <div class="position-absolute carrousel-buttons pc-out">
+    <div class="col-12 mb-3 p-3 position-relative" @fadeUp>
+      <div class="d-flex justify-content-end align-content-end">
+        <button
+          (click)="shareProduct($event, product.id, product.name)"
+          title="Share with friends"
+          data-action="share/whatsapp/share"
+          class="share-button p px-3 rounded-pill me-4 rounded-0 btn shadow-sm text-bg-light"
+        >
+          Share
+        </button>
+        <button
+          (click)="openFullCarousel()"
+          class="btn p-2 btn-light shadow-sm zoom-button rounded-pill mobile-out"
+        >
+          <i class="bi bi-zoom-in"></i>
+        </button>
+      </div>
+      <div class="position-relative w-100 carrousel-buttons">
         <div class="me-auto">
           <button
-            class="rounded-pill btn shadow-sm btn-light"
+            class="rounded-pill p-2 btn shadow-sm btn-light"
             (click)="changeImage('prev')"
           >
             <i class="bi bi-arrow-left"></i>
@@ -52,19 +57,14 @@
         </div>
         <div class="ms-auto">
           <button
-            class="rounded-pill btn shadow btn-light"
+            class="rounded-pill p-2 btn shadow-sm btn-light"
             (click)="changeImage('next')"
           >
             <i class="bi bi-arrow-right"></i>
           </button>
         </div>
       </div>
-      <button
-        (click)="openFullCarousel()"
-        class="col-1 btn p-2 btn-light position-absolute shadow-sm ms-auto zoom-button rounded-pill mobile-out"
-      >
-        <i class="bi bi-zoom-in"></i>
-      </button>
+
       <div
         class="lightbox"
         [style]="

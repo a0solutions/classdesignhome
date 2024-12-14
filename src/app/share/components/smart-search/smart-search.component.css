@@ -3,8 +3,8 @@
   top: 0px;
   width: 100vw !important;
   height: 100vh !important;
-  background-color: rgba(255, 255, 255, 0.746);
-  z-index: 999;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 99;
   backdrop-filter: blur(10px);
 }
 .card-background {
@@ -33,12 +33,16 @@
 }
 .search-list-container {
   max-height: 40vh;
-  width: 98%;
-  left: 0px;
+  width: 96%;
+  left: 13px;
   z-index: 99;
 }
 .d-content-none {
   display: block;
+}
+.spinner-border {
+  width: 1.3rem !important;
+  height: 1.3rem !important;
 }
 @media (max-width: 728px) {
   .d-content-none {

@@ -22,14 +22,25 @@ import {
   fadeUp3,
   fadeUp4,
   fadeUp5,
+  fadeUp6,
 } from '../share/services/animations';
 import { SeoService } from '../share/services/seo.service';
 import { urls } from 'src/environments/environment';
+import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 @Component({
   selector: 'app-checkout-page',
   templateUrl: './checkout-page.component.html',
   styleUrls: ['./checkout-page.component.css'],
-  animations: [fadeLeft, fadeUp, fadeUp1, fadeUp2, fadeUp3, fadeUp4, fadeUp5],
+  animations: [
+    fadeLeft,
+    fadeUp,
+    fadeUp1,
+    fadeUp2,
+    fadeUp3,
+    fadeUp4,
+    fadeUp5,
+    fadeUp6,
+  ],
 })
 export class CheckoutPageComponent implements OnInit {
   order: order = <order>{
@@ -46,7 +57,10 @@ export class CheckoutPageComponent implements OnInit {
   show = false;
   member = '';
   stripe: any;
+  paypalVerified = false;
   url = urls.url;
+  public payPalConfig?: IPayPalConfig;
+
   constructor(
     private nav: NavManage,
     private loader: LoaderService,
@@ -61,7 +75,7 @@ export class CheckoutPageComponent implements OnInit {
   ) {
     this.loader.show.next(true);
   }
-  async ngOnInit() {
+  ngOnInit() {
     this.seo.setSeo();
     this.nav.dark.next(true);
     this.activeRoute.queryParamMap.subscribe((x) => {
@@ -73,6 +87,88 @@ export class CheckoutPageComponent implements OnInit {
       this.loader.show.next(false);
     });
   }
+  verifyPaypalData() {
+    !this.validateData()
+      ? this.alert.setAlertMessage('dataCartList')
+      : (this.paypalVerified = true);
+    this.paypalVerified ? this.initConfig() : null;
+  }
+  initConfig(): void {
+    this.payPalConfig = {
+      currency: 'USD',
+      clientId:
+        'AUaZFEy4RkMMQphPcLwHikILllhU8BECCA31NMke6FHG9N1wkw7y-kVdK6yvOoGPH8neaRyRtC4hktDR',
+      createOrderOnClient: (data) =>
+        <ICreateOrderRequest>{
+          intent: 'CAPTURE',
+          purchase_units: [
+            {
+              amount: {
+                currency_code: 'USD',
+                value: this.order.amount.toString(),
+                breakdown: {
+                  item_total: {
+                    currency_code: 'USD',
+                    value: this.order.amount.toString(),
+                  },
+                },
+              },
+              items: [
+                {
+                  name: 'Class Design Home Products',
+                  quantity: '1',
+                  category: 'DIGITAL_GOODS',
+                  unit_amount: {
+                    currency_code: 'USD',
+                    value: this.order.amount.toString(),
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      advanced: {
+        commit: 'true',
+      },
+      style: {
+        label: 'paypal',
+        layout: 'vertical',
+      },
+      onApprove: (data, actions) => {
+        console.log(
+          'onApprove - transaction was approved, but not authorized',
+          data,
+          actions
+        );
+        actions.order.get().then((details: any) => {
+          console.log(
+            'onApprove - you can get full order details inside onApprove: ',
+            details
+          );
+        });
+      },
+      onClientAuthorization: (data) => {
+        this.order.order = data.id;
+        this.order.paymentMethod = 'paypal';
+        this.checkout.saveTempOrder(this.order);
+        this.route.navigate(['checkout'], {
+          queryParams: { response: 'ok' },
+        });
+      },
+      onCancel: (data, actions) => {
+        this.badPayment();
+      },
+      onError: (err) => {
+        this.badPayment();
+        console.log('OnError', err);
+      },
+      onClick: (data, actions) => {
+        console.log(data);
+        console.log(actions);
+      },
+    };
+  }
+
   badPayment() {
     this.modal.showModalMessage('badPayment');
     this.loader.show.next(false);
@@ -113,11 +209,7 @@ export class CheckoutPageComponent implements OnInit {
       ? this.alert.setAlertMessage('dataCartList')
       : this.createSessionAffirm();
   }
-  sendOrderPayPal(): void {
-    !this.validateData()
-      ? this.alert.setAlertMessage('dataCartList')
-      : this.createSessionPayPal();
-  }
+
   createSession(): void {
     this.processingPayment = true;
     this.order.paymentMethod = 'stripe';
@@ -148,34 +240,21 @@ export class CheckoutPageComponent implements OnInit {
       }
     );
   }
-  createSessionPayPal(): void {
-    this.processingPaymentPayPal = true;
-    this.order.paymentMethod = 'PayPal';
-    console.log(this.order);
-    this.client.post(urls.urlPayPal, this.order).subscribe(
-      (x: any) => {
-        console.log(x);
-        this.order.order = x.description;
-        this.checkout.saveTempOrder(this.order);
-        this.processingPaymentPayPal = false;
-        window.open(<string>x.url, '_self');
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+
   completeOrder(): void {
-    this.finalOrder = this.checkout.getTempData();
-    this.simplifyOrder();
-    this.checkout.sendOrder(this.finalOrder).subscribe(() => {
-      this.checkout.deleteAll();
-      this.modal.showModalMessage('shopSuccess');
-      this.modal.answer.subscribe((answer) => {
-        this.loader.show.next(false);
-        answer != 0 ? this.killOrder(answer) : null;
+    setTimeout(() => {
+      this.finalOrder = this.checkout.getTempData();
+      console.log(this.finalOrder);
+      this.simplifyOrder();
+      this.checkout.sendOrder(this.finalOrder).subscribe(() => {
+        this.checkout.deleteAll();
+        this.modal.showModalMessage('shopSuccess');
+        this.modal.answer.subscribe((answer) => {
+          this.loader.show.next(false);
+          answer != 0 ? this.killOrder(answer) : null;
+        });
       });
-    });
+    }, 1000);
   }
   killOrder(answer: number) {
     this.modal.closeModalAsk();

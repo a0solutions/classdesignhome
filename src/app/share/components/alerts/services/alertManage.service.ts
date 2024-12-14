@@ -75,7 +75,7 @@ export class AlertManage {
       this.title.next('Order Canceled');
     } else if (code == 'isLogOut') {
       this.message.next(
-        "Sign in to your account to personalize yout shopping experience and add this item to your favorites list!.<br><br><a href='/signin' class='btn btn-dark px-5' >Sign In / Register</a>"
+        "Sign in to your account to personalize yout shopping experience and add this item to your favorites list!<br><br><a href='/signin' class='btn btn-dark px-5' >Sign In / Register</a>"
       );
       this.title.next("We're glad you like it");
     } else if (code == 'passwordNotMatch') {

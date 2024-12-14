@@ -108,6 +108,7 @@ export class ProductsComponent implements OnInit {
       });
     });
   }
+
   getText(category: string): string {
     if (category == 'all' || category == 'like')
       return 'Discover the essence of luxury home furnishings with Class Design. Our eclectic selection—ranging from minimalist furniture to contemporary statement pieces—ensures that every home can find its perfect match. Explore our expertly crafted designs, perfect for enhancing modern living spaces with elegance and sophistication.';
@@ -119,6 +120,8 @@ export class ProductsComponent implements OnInit {
       return "Upgrade your bathroom with Class Design's elegant fixtures and vanities, where modern meets minimalism. Our bathroom collection blends functionality with luxury, perfect for those in search of contemporary designs that promise to turn daily routines into lavish experiences.";
     if (category == 'Outdoor')
       return "Class Design's outdoor furniture selection brings style and resilience to your exterior living spaces. From minimalist outdoor seating to contemporary dining sets, our durable and stylish pieces are tailored to enhance patios and gardens, providing an ideal solution for luxurious and functional outdoor living.";
+    if (category == 'Dining Space')
+      return 'Welcome to Class Design’s Dining Spaces, where crafting a perfectly coordinated dining room is both effortless and inspiring. Here, you’ll discover entire dining sets that reflect the natural beauty and timeless elegance of Mediterranean living. Every element, from the table to the chairs, is thoughtfully designed to create a cohesive and refined atmosphere, evoking the warmth of the ocean breeze and the enduring appeal of nature. Our collections are created with both style and family in mind, combining modern sophistication with organic textures and serene influences. Crafted by our talented designers and artisans, each piece is a testament to their expertise and passion for blending natural inspiration with innovative design.';
     return '';
   }
 }

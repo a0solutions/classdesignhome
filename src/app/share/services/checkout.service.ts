@@ -3,7 +3,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TokenManage } from 'src/app/share/services/token-manage.service';
-import { product } from 'src/app/share/services/product-manage.service';
+import {
+  product,
+  ProductManage,
+} from 'src/app/share/services/product-manage.service';
 import { urls } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
@@ -15,7 +18,11 @@ export class Checkout {
   typeTax: BehaviorSubject<number> = new BehaviorSubject(0);
   url: string = urls.urlOrders;
   localList: cartProduct[] = [];
-  constructor(private http: HttpClient, private token: TokenManage) {}
+  constructor(
+    private http: HttpClient,
+    private token: TokenManage,
+    private productService: ProductManage
+  ) {}
 
   checkCartList(): boolean {
     const time = JSON.parse(<string>localStorage.getItem('timeCartList'));
@@ -31,6 +38,12 @@ export class Checkout {
   }
   getLocalStorage(): cartProduct[] {
     this.localList = JSON.parse(<string>localStorage.getItem('cartlist'));
+    this.localList.forEach((x) => {
+      this.productService.getProduct(x.product.reference).subscribe((y) => {
+        x.product = y;
+      });
+    });
+
     this.items.next(this.localList);
     return this.localList;
   }
