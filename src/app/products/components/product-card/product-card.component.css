@@ -35,10 +35,7 @@
   mix-blend-mode: multiply;
   transition: all 0.5s !important;
 }
-.card-title-name {
-  font-size: 0.95rem;
-  height: 45px;
-}
+
 .bi-suit-heart:hover {
   color: var(--secondary-color);
 }
@@ -48,4 +45,35 @@
   border: 1px solid black;
   cursor: pointer;
   transition: all 0.8s;
+}
+.p-card {
+  padding: 1.2rem;
+}
+@media (min-width: 320px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  .color-select {
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: all 0.8s;
+  }
+  .card-title-name {
+    font-size: 0.7rem;
+    height: 45px;
+  }
+}
+@media (min-width: 600px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  .color-select {
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: all 0.8s;
+  }
+  .card-title-name {
+    font-size: 0.95rem;
+    height: 45px;
+  }
 }

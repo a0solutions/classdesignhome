@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LoaderService } from './services/loader.service';
-import { fade } from '../../services/animations';
+import { fadeLoader } from '../../services/animations';
 import { urls } from 'src/environments/environment';
 
 @Component({
   selector: 'app-loader',
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.css'],
-  animations: [fade],
+  animations: [fadeLoader],
 })
 export class LoaderComponent implements OnInit {
   @Input() show = true;

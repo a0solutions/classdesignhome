@@ -29,10 +29,13 @@
   </h3>
   <p class="pc-out" @fadeUp3>Material Detail: {{ product.materialDetail }}</p>
   <div class="row shadow-5">
-    <div class="col-12 mb-3 p-3 position-relative" @fadeUp>
-      <div class="d-flex justify-content-end align-content-end">
+    <div class="col-12 mb-0 p-3 position-relative" @fadeUp>
+      <div
+        class="d-flex justify-content-end align-content-end"
+        style="margin-bottom: -120px"
+      >
         <button
-          (click)="shareProduct($event, product.id, product.name)"
+          (click)="shareProduct($event, product.reference, product.name)"
           title="Share with friends"
           data-action="share/whatsapp/share"
           class="share-button p px-3 rounded-pill me-4 rounded-0 btn shadow-sm text-bg-light"
@@ -68,7 +71,9 @@
       <div
         class="lightbox"
         [style]="
-          'background-image:url(' + fullPicture + ');background-size:auto 100%'
+          'background-image:url(' +
+          fullPicture +
+          ');background-size:100%;background-position:center center'
         "
       ></div>
     </div>

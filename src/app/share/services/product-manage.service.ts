@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { TokenManage } from './token-manage.service';
 import { urls } from 'src/environments/environment';
-
+import { OnlyNumbersPipe } from 'src/app/share/pipes/only-numbers.pipe';
 @Injectable({
   providedIn: 'root',
 })
@@ -17,7 +17,11 @@ export class ProductManage {
   filterProducts: BehaviorSubject<number> = new BehaviorSubject(0);
   showedProducts: BehaviorSubject<number> = new BehaviorSubject(0);
   allLikes: BehaviorSubject<string[]> = new BehaviorSubject(this.likes);
-  constructor(private http: HttpClient, private token: TokenManage) {}
+  constructor(
+    private http: HttpClient,
+    private token: TokenManage,
+    private onlyNumber: OnlyNumbersPipe
+  ) {}
 
   setAllProducts(): Promise<void> {
     return this.getAllProducts().forEach((x) => {
@@ -59,7 +63,7 @@ export class ProductManage {
     this.products = new BehaviorSubject(this.allProducts);
     for (const prop in filters) {
       if (filters[prop] != 0 || filters[prop] != '') {
-        if (prop != 'price' && prop != 'category') {
+        if (prop != 'price' && prop != 'size' && prop != 'category') {
           this.products.next(
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             this.products.value.filter((x: any) =>
@@ -72,6 +76,20 @@ export class ProductManage {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               this.products.value.filter((x: any) =>
                 filters.category.includes(x.category)
+              )
+            );
+          }
+        } else if (prop == 'size') {
+          if (isNaN(parseInt(this.onlyNumber.transform(filters.size)))) {
+            this.products.next(
+              this.products.value.filter((x: any) => filters.size == x.size)
+            );
+          } else {
+            this.products.next(
+              this.products.value.filter(
+                (x: any) =>
+                  parseInt(filters.size) >=
+                  parseInt(this.onlyNumber.transform(x.size))
               )
             );
           }
@@ -280,4 +298,5 @@ export interface product {
   sinkIncluded?: string;
   sinkType?: number;
   delivery: string;
+  shipping: string;
 }

@@ -76,7 +76,7 @@
     class="p-0 filter-container position-relative"
     [class]="open ? 'col-3' : 'col-0'"
   >
-    <div class="filter-container-elements sticky-top t-160" style="width: 24vw">
+    <div class="filter-container-elements sticky-top t-160" style="width: 22vw">
       <app-products-filter
         [categorySelected]="category"
         [subcategorySelected]="subcategory"
@@ -86,7 +86,7 @@
 
   <app-product-list
     [class]="open ? 'col-9' : 'col-12'"
-    class="ms-auto"
+    class="ms-auto p-0"
     [category]="category"
   ></app-product-list>
 </article>

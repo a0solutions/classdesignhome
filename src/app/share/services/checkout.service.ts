@@ -1,7 +1,7 @@
 /* eslint-disable no-cond-assign */
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { TokenManage } from 'src/app/share/services/token-manage.service';
 import {
   product,
@@ -15,6 +15,7 @@ export class Checkout {
   items: BehaviorSubject<cartProduct[]> = new BehaviorSubject(
     <cartProduct[]>[]
   );
+  countryTax: Subject<string> = new Subject();
   typeTax: BehaviorSubject<number> = new BehaviorSubject(0);
   url: string = urls.urlOrders;
   localList: cartProduct[] = [];

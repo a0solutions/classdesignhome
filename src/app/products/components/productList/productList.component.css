@@ -7,3 +7,14 @@
 .card {
   background: #f1f2f2;
 }
+
+@media (min-width: 320px) {
+  .p-sm-1 {
+    padding: 0.35rem !important;
+  }
+}
+@media (min-width: 600px) {
+  .p-sm-1 {
+    padding: 0.7rem !important;
+  }
+}

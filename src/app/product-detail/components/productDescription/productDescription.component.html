@@ -55,7 +55,7 @@
         <strong class="hb"> {{ product.detailColor }}</strong></span
       >
     </p>
-    <div class="row col-6 mt-2">
+    <div class="row col-lg-6 col-md-6 mt-2">
       <div class="col-2" *ngFor="let color of colors">
         <app-color-select
           (click)="navigateParent(color.id, color.name)"
@@ -138,6 +138,9 @@
       (click)="addCart(product)"
       class="btn btn-dark w-50 ms-3"
       [disabled]="!product.stock"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight"
     >
       ADD TO CART
     </button>

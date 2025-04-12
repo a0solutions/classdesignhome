@@ -8,6 +8,7 @@ import {
   fadeUp4,
 } from '../share/services/animations';
 import { SeoService } from '../share/services/seo.service';
+import { TokenManage } from '../share/services/token-manage.service';
 
 @Component({
   selector: 'app-signin',

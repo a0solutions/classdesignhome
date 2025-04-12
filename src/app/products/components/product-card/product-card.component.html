@@ -3,24 +3,16 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/eqeqeq -->
 <div
-  class="card p-3 rounded-4 border-0 mx-auto cursor-pointer"
+  class="card p-card rounded-4 border-0 mx-auto cursor-pointer"
   style="width: 100%"
   (mouseover)="changeBackgound(1)"
   (mouseover)="hover = true"
   (mouseleave)="changeBackgound(0)"
   (mouseleave)="hover = false"
 >
-  <div class="m-3 d-flex z-3">
-    <a
-      (click)="shareProduct($event, product.reference, product.name)"
-      class="btn hb btn-white rounded-pill shadow-sm btn-sm small-fixed-button"
-      data-action="share/whatsapp/share"
-      title="Share with friends"
-    >
-      Share!
-    </a>
+  <div class="d-flex z-3">
     <p
-      class="mb-0 mx-3 cursor-pointer"
+      class="mb-0 me-auto cursor-pointer"
       (click)="addProductLikes(product.reference)"
     >
       <ng-container *ngIf="!like; else liked">
@@ -30,19 +22,14 @@
         <i class="bi bi-suit-heart-fill h4 hb mb-0 gold"></i
       ></ng-template>
     </p>
+
     <p
       *ngIf="product.new == 1"
       class="btn hb bg-light-color rounded-pill text-white shadow-sm btn-sm mb-0 ms-2 ms-auto small-fixed-button"
       title="New product"
+      style="border-radius: 0px 15px 0px 0px !important"
     >
       New
-    </p>
-    <p
-      *ngIf="product.offer != 0"
-      class="btn hb btn-dark rounded-pill shadow-sm btn-sm mb-0 ms-2 ms-auto small-fixed-button"
-      title="New product"
-    >
-      {{ dealType }}
     </p>
   </div>
   <div
@@ -57,7 +44,9 @@
       'px'
     "
   ></div>
-  <div class="button-quick text-center my-2 position-absolute bottom-25">
+  <div
+    class="button-quick text-center my-2 position-absolute bottom-25 mobile-out"
+  >
     <button
       @fadeButtonCard
       *ngIf="hover"
@@ -67,15 +56,16 @@
       Quick View
     </button>
   </div>
+
   <div class="card-body p-0 text-center">
     <h2 class="card-title h5 fw-bolder card-title-name">{{ product.name }}</h2>
 
     <p class="ms-auto my-2">{{ product.price | currency : "USD" }}</p>
-    <div class="d-flex w-100 my-1 justify-content-center">
+    <div class="d-flex flex-wrap w-100 my-1 justify-content-center">
       <ng-container *ngIf="!favorites; else oneColor">
         <ng-container *ngFor="let color of colors">
           <div
-            class="color-select rounded-pill shadow-sm mb-2 mx-1"
+            class="color-select rounded-pill shadow-sm mb-1 mx-1"
             [style]="
               'background:' +
               background +
@@ -89,7 +79,7 @@
       </ng-container>
       <ng-template #oneColor>
         <div
-          class="color-select rounded-pill shadow-sm mb-2 mx-1"
+          class="color-select rounded-pill shadow-sm mb-1 mx-1"
           [style]="
             'background:' +
             background +
@@ -99,6 +89,15 @@
           "
         ></div>
       </ng-template>
+    </div>
+    <div class="d-flex pc-out" *ngIf="product.promoPrice != 0">
+      <p
+        class="btn hb btn-dark rounded-0 btn-sm mb-0 me-auto small-fixed-button"
+        title="New product"
+        style="border-radius: 0px 0px 0px 15px !important"
+      >
+        {{ dealType }}
+      </p>
     </div>
   </div>
 </div>

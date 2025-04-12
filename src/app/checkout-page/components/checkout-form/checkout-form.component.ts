@@ -89,7 +89,6 @@ export class CheckoutFormComponent implements OnInit {
     this.billing.billingCity = x.billingCity;
     this.billing.billingState = x.billingState;
     this.billing.billingCountry = x.billingCountry;
-    this.getTaxes(x.billingState);
   }
   sameAddress(billing: billing): void {
     !this.sameAddressFlag
@@ -106,8 +105,17 @@ export class CheckoutFormComponent implements OnInit {
     this.shipping.shippingZip = billing.billingZip;
     this.shipping.shippingState = billing.billingState;
     this.shipping.shippingCountry = billing.billingCountry;
-    this.getTaxes(billing.billingState);
+    this.checkout.countryTax.next(this.shipping.shippingCountry);
+    this.countryCheck();
+
     this.sendOrder();
+  }
+  countryCheck() {
+    if (this.shipping.shippingCountry == 'United States') {
+      this.getTaxes(this.shipping.shippingState);
+    } else {
+      this.checkout.typeTax.next(0);
+    }
   }
   isNotSameAddress(): void {
     this.shipping = <shipping>{};

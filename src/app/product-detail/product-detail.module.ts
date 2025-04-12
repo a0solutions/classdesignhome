@@ -8,10 +8,16 @@ import { PipesModule } from '../share/Modules/pipes.module';
 import { RouterModule } from '@angular/router';
 import { CategorySubstrPipe } from '../share/pipes/categorySubstr.pipe';
 import { SpacesDeletePipe } from '../share/pipes/spacesDelete.pipe';
+import { OnlyNumbersPipe } from 'src/app/share/pipes/only-numbers.pipe';
 
 @NgModule({
   imports: [CommonModule, ShareModule, PipesModule, RouterModule],
   declarations: [ProductDetailComponent, DescripptionAccordionComponent],
-  providers: [ProductManage, CategorySubstrPipe, SpacesDeletePipe],
+  providers: [
+    ProductManage,
+    CategorySubstrPipe,
+    SpacesDeletePipe,
+    OnlyNumbersPipe,
+  ],
 })
 export class ProductDetailModule {}

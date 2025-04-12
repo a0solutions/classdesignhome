@@ -23,7 +23,7 @@ import {
 import { take } from 'rxjs';
 import { urls } from 'src/environments/environment';
 import { Router } from '@angular/router';
-
+import { OnlyNumbersPipe } from 'src/app/share/pipes/only-numbers.pipe';
 interface sizes {
   category: string;
   size: string;
@@ -50,11 +50,14 @@ export class ProductsFilterComponent implements OnInit, OnChanges {
   sizeSelected: boolean[] = [];
   showedProducts = 0;
   resetColor = false;
+  temporalCategories: string[] = [];
+  sizeRangeValue = 200;
   constructor(
     private categories: CategoriesService,
     private filter: FilterManage,
     private product: ProductManage,
-    private route: Router
+    private route: Router,
+    private onlyNumber: OnlyNumbersPipe
   ) {}
 
   ngOnInit(): void {
@@ -97,17 +100,22 @@ export class ProductsFilterComponent implements OnInit, OnChanges {
     this.sizesFilter = [];
     let index = 0;
     this.product.getProductByCategory(filters.category).forEach((y) => {
-      this.colors.includes(y.color) ? null : this.colors.push(y.color);
-      const sizes: sizes = <sizes>{};
-      sizes.category = y.category;
-      sizes.size = y.size;
-      sizes.index = index;
-      this.sizesFilter.find(
-        (x) => x.size === sizes.size && x.category === sizes.category
-      )
-        ? null
-        : this.sizesFilter.push(sizes);
-      index++;
+      if (isNaN(parseInt(this.onlyNumber.transform(y.size)))) {
+        this.colors.includes(y.color) ? null : this.colors.push(y.color);
+        const sizes: sizes = <sizes>{};
+        sizes.category = y.category;
+        sizes.size = y.size;
+        sizes.index = index;
+        this.sizesFilter.find(
+          (x) => x.size === sizes.size && x.category === sizes.category
+        )
+          ? null
+          : this.sizesFilter.push(sizes);
+        index++;
+        this.temporalCategories.includes(sizes.category)
+          ? null
+          : this.temporalCategories.push(sizes.category);
+      }
     });
   }
   findSizesFilter(category: string): boolean {
@@ -154,9 +162,12 @@ export class ProductsFilterComponent implements OnInit, OnChanges {
     this.updateAllFilter();
     this.priceFilter = parseInt(price);
   }
-  updateFilterSize(size: string, index: number): void {
+  updateFilterSize(size: string, index?: number): void {
     this.sizeSelected = [];
-    this.sizeSelected[index] = true;
+    if (index) {
+      this.sizeSelected[index] = true;
+      this.sizeRangeValue = 200;
+    }
     this.filter.allFilters.value.size = size;
     this.updateAllFilter();
   }

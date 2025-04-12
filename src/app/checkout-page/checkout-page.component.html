@@ -55,7 +55,7 @@
             *ngIf="order.cartProducts.length !== 0 && !paypalVerified"
           >
             <div
-              *ngIf="processingPayment"
+              *ngIf="processingPaymentPayPal"
               class="spinner-border spinner-border-sm mx-3"
               role="status"
             ></div>

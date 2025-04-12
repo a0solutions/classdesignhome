@@ -22,6 +22,8 @@ import {
 } from 'src/app/share/services/animations';
 import { AlertManage } from 'src/app/share/components/alerts/services/alertManage.service';
 import { urls } from 'src/environments/environment';
+import { QuickViewService } from 'src/app/share/components/quickViewModal/service/quickView.service';
+
 @Component({
   selector: 'app-product-description',
   templateUrl: './productDescription.component.html',
@@ -58,7 +60,8 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     private router: Router,
     private token: TokenManage,
     private substrPipe: CategorySubstrPipe,
-    private alert: AlertManage
+    private alert: AlertManage,
+    private quickView: QuickViewService
   ) {}
   ngOnInit(): void {
     this.token.isLogged.subscribe((x) => {
@@ -131,7 +134,11 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
     this.count = event;
   }
   navigateParent(id: string, name: string): void {
-    this.router.navigate(['product/', id, name]);
+    if (this.router.url.substr(0, 9) == '/product/') {
+      this.router.navigate(['product/', id, name]);
+    } else {
+      this.quickView.reference.next(id);
+    }
   }
   validToAdd(): boolean {
     if (this.product.membersOnly == 1 && this.isLogged) return true;
@@ -151,8 +158,12 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
       size,
       this.product.parentRef
     );
-    console.log(product.reference);
-    this.router.navigate(['/product', product.reference, product.name]);
+
+    if (this.router.url.substr(0, 9) == '/product/') {
+      this.router.navigate(['/product', product.reference, product.name]);
+    } else {
+      this.quickView.reference.next(product.reference);
+    }
   }
   selectSets(sets: string) {
     const product = this.products.getDetailFilterSets(
@@ -161,8 +172,11 @@ export class ProductDescriptionComponent implements OnChanges, OnInit {
       this.product.parentRef,
       this.product.size
     );
-    console.log(this.isSecondClass);
-    this.router.navigate(['/product', product.reference, product.name]);
+    if (this.router.url.substr(0, 9) == '/product/') {
+      this.router.navigate(['/product', product.reference, product.name]);
+    } else {
+      this.quickView.reference.next(product.reference);
+    }
   }
   substrByCategory(product: product): string {
     return this.substrPipe.transform(product);

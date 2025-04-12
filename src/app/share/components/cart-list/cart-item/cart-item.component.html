@@ -33,18 +33,21 @@
           >
           <h6
             class="card-secondary gold mt-2"
-            *ngIf="
-              product.delivery != null && product.delivery != '';
-              else standardShipping
-            "
+            *ngIf="product.stock >= itemCount"
           >
-            <strong>{{ product.delivery }}</strong>
+            <strong>{{ "(" + itemCount + ") " + product.delivery }}</strong>
           </h6>
-          <ng-template #standardShipping>
-            <h6 class="card-secondary mt-2">
-              <strong>Shipping in 6-8 weeks</strong>
-            </h6>
-          </ng-template>
+          <h6
+            class="card-secondary gold mt-2"
+            *ngIf="product.stock < itemCount && product.stock != 0"
+          >
+            <strong>{{ "(" + product.stock + ") " + product.delivery }}</strong>
+          </h6>
+          <h6 class="card-secondary mt-2" *ngIf="product.stock < itemCount">
+            <strong>{{
+              "(" + (itemCount - product.stock) + ") " + product.shipping
+            }}</strong>
+          </h6>
         </div>
 
         <ng-template class="w-100" #sizeData>
@@ -69,18 +72,23 @@
             >
             <h6
               class="card-secondary gold mt-2"
-              *ngIf="
-                product.delivery != null && product.delivery != '';
-                else standardShipping
-              "
+              *ngIf="product.stock >= itemCount"
             >
-              <strong>{{ product.delivery }}</strong>
+              <strong>{{ "(" + itemCount + ") " + product.delivery }}</strong>
             </h6>
-            <ng-template #standardShipping>
-              <h6 class="card-secondary mt-2">
-                <strong>Shipping in 6-8 weeks</strong>
-              </h6>
-            </ng-template>
+            <h6
+              class="card-secondary gold mt-2"
+              *ngIf="product.stock < itemCount && product.stock != 0"
+            >
+              <strong>{{
+                "(" + product.stock + ") " + product.delivery
+              }}</strong>
+            </h6>
+            <h6 class="card-secondary mt-2" *ngIf="product.stock < itemCount">
+              <strong>{{
+                "(" + (itemCount - product.stock) + ") " + product.shipping
+              }}</strong>
+            </h6>
           </div>
         </ng-template>
       </div>

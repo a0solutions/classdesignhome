@@ -1,12 +1,10 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import {
   ProductManage,
   imagedata,
   product,
 } from 'src/app/share/services/product-manage.service';
 import { CarouselService } from 'src/app/share/components/full-carrousel/service/carousel.service';
-import { CategorySubstrPipe } from 'src/app/share/pipes/categorySubstr.pipe';
-import { SpacesDeletePipe } from 'src/app/share/pipes/spacesDelete.pipe';
 import {
   fadeUp,
   fadeUp1,

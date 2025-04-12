@@ -13,13 +13,19 @@ export class AuthGuard {
   constructor(private auth: TokenManage, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const activo: boolean = this.auth.isLogged.value;
-    console.log(this.auth.isLogged.value);
-    if (activo) return true;
-    this.auth.logOut();
-    this.router.navigate(['/signin'], {
-      queryParams: { returnTo: state.url },
-    });
-    return false;
+    if (this.auth.getValidateToken() != null) {
+      this.auth.token = this.auth.getValidateToken();
+      if (!this.auth.tokenExpired()) {
+        this.auth.isLogged.next(true);
+        return true;
+      } else {
+        this.router.navigate(['/signin'], {
+          queryParams: { returnTo: state.url },
+        });
+        return false;
+      }
+    } else {
+      return false;
+    }
   }
 }

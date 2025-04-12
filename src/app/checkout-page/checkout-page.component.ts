@@ -243,8 +243,8 @@ export class CheckoutPageComponent implements OnInit {
 
   completeOrder(): void {
     setTimeout(() => {
+      console.log('SISISIS');
       this.finalOrder = this.checkout.getTempData();
-      console.log(this.finalOrder);
       this.simplifyOrder();
       this.checkout.sendOrder(this.finalOrder).subscribe(() => {
         this.checkout.deleteAll();
@@ -257,10 +257,11 @@ export class CheckoutPageComponent implements OnInit {
     }, 1000);
   }
   killOrder(answer: number) {
+    this.modal.answer.next(0);
     this.modal.closeModalAsk();
     let route = '';
-    answer == 1 ? (route = '/') : 'products/all/';
-    this.route.navigate([route]);
+    answer == 1 ? (route = '/') : (route = 'products/all/');
+    window.location.href = route;
   }
   simplifyOrder(): void {
     for (let i = 0; i < this.finalOrder.cartProducts.length; i++) {
@@ -271,6 +272,7 @@ export class CheckoutPageComponent implements OnInit {
     }
   }
   validateData(): boolean {
+    console.log(this.order);
     if (
       this.order.billing.billingName != undefined &&
       this.order.shipping.shippingName != undefined &&

@@ -223,74 +223,60 @@
           Size
         </button>
       </h3>
+
       <div
         id="collapseThree"
         class="accordion-collapse collapse"
         data-bs-parent="#accordionExample"
       >
         <div class="accordion-body">
-          <div *ngIf="categorySelected !== 'products'; else sizeFilter">
-            <p>
-              {{ categorySelected | capitalize }}
-            </p>
-            <div class="row">
-              <div
-                class="col-3 cursor-pointer mb-3"
-                *ngFor="let size of sizesFilter; index as i"
-                (click)="updateFilterSize(size.size, i)"
-              >
-                <img
-                  alt="size icon"
-                  [src]="
-                    url +
-                    'classapi/images/app/custom-icons/size/' +
-                    size.size +
-                    '.png'
-                  "
-                  [ngClass]="{ active: sizeSelected[i] }"
-                  class="p-0 m-0 border icon-filter-size"
-                  width="100%"
-                  [title]="size.size | capitalize"
-                />
-              </div>
-            </div>
+          <p>General sizes</p>
+          <input
+            #sizeRange
+            (ngModel)="(priceFilter)"
+            type="range"
+            class="form-range w-100"
+            min="1"
+            max="200"
+            step="1"
+            [value]="sizeRangeValue"
+            (change)="updateFilterSize(sizeRange.value)"
+          />
+          <div class="d-flex" style="margin-top: -14px">
+            <small class="me-auto">1"</small>
+            <small class="ms-auto">{{ sizeRange.value }}"</small>
           </div>
+        </div>
 
-          <ng-template #sizeFilter>
-            <ng-container *ngFor="let category of allCategories; index as c">
-              <ng-container *ngIf="findSizesFilter(category.category)">
-                <p class="col-12">
-                  {{ category.category | capitalize }}
-                </p>
-                <div class="row">
+        <div class="accordion-body">
+          <ng-container *ngFor="let category of temporalCategories">
+            <ng-container>
+              <p>{{ category }}</p>
+              <div class="row">
+                <ng-container *ngFor="let size of sizesFilter; index as i">
                   <div
                     class="col-3 cursor-pointer mb-3"
-                    *ngFor="
-                      let size of selectingFilterCategory(category.category);
-                      index as i
-                    "
-                    (click)="updateFilterSize(size.size, size.index)"
+                    *ngIf="size.category === category"
+                    (click)="updateFilterSize(size.size, i + 1)"
                   >
                     <img
-                      alt="sizes Icon"
+                      alt="size icon"
                       [src]="
                         url +
                         'classapi/images/app/custom-icons/size/' +
                         size.size +
                         '.png'
                       "
-                      [ngClass]="{
-                        active: sizeSelected[size.index]
-                      }"
+                      [ngClass]="{ active: sizeSelected[i + 1] }"
                       class="p-0 m-0 border icon-filter-size"
                       width="100%"
                       [title]="size.size | capitalize"
                     />
                   </div>
-                </div>
-              </ng-container>
+                </ng-container>
+              </div>
             </ng-container>
-          </ng-template>
+          </ng-container>
         </div>
       </div>
     </div>

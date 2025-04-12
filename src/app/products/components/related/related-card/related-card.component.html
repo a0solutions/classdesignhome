@@ -8,18 +8,20 @@
   style="width: 100%"
 >
   <div class="m-3 d-flex z-3">
-    <a
+    <!-- <a
       (click)="shareProduct($event, product.reference, product.name)"
       class="btn hb btn-white rounded-pill shadow-sm btn-sm small-fixed-button"
       data-action="share/whatsapp/share"
       title="Share with friends"
     >
       Share!
-    </a>
+    </a> -->
+
     <p
       *ngIf="product.new == 1"
-      class="btn hb btn-white rounded-pill shadow-sm btn-sm mb-0 ms-2 small-fixed-button"
+      class="btn hb bg-light-color rounded-pill text-white shadow-sm btn-sm mb-0 ms-2 ms-auto small-fixed-button"
       title="New product"
+      style="border-radius: 0px 15px 0px 0px !important"
     >
       New
     </p>
