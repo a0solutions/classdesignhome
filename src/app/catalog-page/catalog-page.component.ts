@@ -27,6 +27,7 @@ export interface collection {
 })
 export class CatalogPageComponent implements OnInit {
   url = urls.urlCollections;
+  imageUrl = urls.url;
   $allCollections: Observable<collection[]>;
   constructor(
     private nav: NavManage,

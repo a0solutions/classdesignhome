@@ -13,16 +13,82 @@
   </div>
 </article>
 <div class="my-5"></div>
-<article class="container mt-5">
-  <div class="row">
-    <ng-container *ngFor="let collection of $allCollections | async">
+<article class="mt-5">
+  <div class="row w-100">
+    <ng-container
+      *ngFor="let collection of $allCollections | async; index as i"
+    >
       <app-catalog-card
-        class="col-lg-6 col-12 p-3"
+        class="col-12"
         [collection]="collection"
+        [index]="i"
       ></app-catalog-card>
     </ng-container>
   </div>
 </article>
+<section class="p-lg-5 p-md-3 p-sm-2">
+  <article class="container mt-5">
+    <div class="row">
+      <div class="title text-center col-12">
+        <div
+          class="p-lg-5 p-md-4 p-sm-3 sticky-top"
+          style="z-index: 0; top: 60px"
+        >
+          <p class="mb-0" @fadeUp>What we offer</p>
+          <h2 class="fw-bolder" @fadeUp1>Our Advantages</h2>
+          <div class="separador-centrado mb-3 mt-3" @fadeUp2></div>
+        </div>
+      </div>
+      <div
+        class="col-lg-4 col-md-4 col-sm-12 text-center p-lg-5 p-md-4 p-sm-3 mb-4"
+      >
+        <img
+          [src]="imageUrl + 'classapi/images/collections/icons/inventory.png'"
+          alt="icon Inventory"
+          width="40%"
+          class="mb-3"
+        />
+        <h4>Large Inventory</h4>
+        <p>
+          An expansive US inventory is available year-round, allowing prompt
+          delivery and installation
+        </p>
+      </div>
+      <div
+        class="col-lg-4 col-md-4 col-sm-12 text-center p-lg-5 p-md-4 p-sm-3 mb-4"
+      >
+        <img
+          [src]="imageUrl + 'classapi/images/collections/icons/service.png'"
+          alt="icon Service"
+          width="40%"
+          class="mb-3"
+        />
+        <h4>Full-Service</h4>
+        <p>
+          Our staging experts create dream homes, complete with curated
+          accessories and collector’s art
+        </p>
+      </div>
+      <div
+        class="col-lg-4 col-md-4 col-sm-12 text-center p-lg-5 p-md-4 p-sm-3 mb-4"
+      >
+        <img
+          [src]="
+            imageUrl + 'classapi/images/collections/icons/collaboration.png'
+          "
+          alt="icon collaboration"
+          width="40%"
+          class="mb-3"
+        />
+        <h4>Collaborations</h4>
+        <p>
+          Our team commissions & collaborates with award-winning interior
+          designers to envision custom environments
+        </p>
+      </div>
+    </div>
+  </article>
+</section>
 <article class="container mt-5">
   <app-offers [category]="'all'"></app-offers>
 </article>

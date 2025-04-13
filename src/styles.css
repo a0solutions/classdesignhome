@@ -515,7 +515,7 @@ input[type="checkbox"] {
   }
   .catallog-image {
     overflow: hidden;
-    height: 21vh;
+    height: 263px;
   }
   .blocks-categories {
     width: 100vw;
@@ -702,7 +702,7 @@ input[type="checkbox"] {
   }
   .catallog-image {
     overflow: hidden;
-    height: 30vh;
+    height: 520px;
   }
   .tab-pane {
     padding: 3rem;

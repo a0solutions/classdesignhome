@@ -102,6 +102,11 @@ export class AlertManage {
         'The general delivery time is 6-8 weeks. If you have selected a product with a different delivery timeframe, you will see an alert on the product card.'
       );
       this.title.next('Notice');
+    } else if (code == 'signingRequired') {
+      this.message.next(
+        "Please sign in to download the catalog. This content is available exclusively to registered members.<br><br><a href='/signin' class='btn btn-dark px-5' >Sign In / Register</a>"
+      );
+      this.title.next('Members Only Download');
     } else {
       this.message.next(
         'An unexpected error occurred. Please try again later, and thank you for your patience.'

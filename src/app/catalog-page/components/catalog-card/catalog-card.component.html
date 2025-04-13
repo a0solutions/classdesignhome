@@ -1,21 +1,33 @@
-<div
-  @fadeUp2
-  class="card col-12 col-md-g position-relative rounded-4 mb-4 border-0 mx-auto bg-gray p-3"
->
-  <a
-    [href]="url + 'classapi/images/collections/file/' + collection.urlDocument"
-    target="_blank"
-    class="text-dark"
+<div class="row" *ngIf="!show; else opposite">
+  <div
+    class="col-lg-6 col-md-12 col-sm-12 d-grid align-items-center order-md-first order-sm-first order-last p-4"
+    @fadeUp2
   >
-    <div class="catallog-image position-relative">
-      <img
-        [src]="
-          url + 'classapi/images/collections/banner/' + collection.urlBanner
-        "
-        class="card-img-top"
-        alt="Savage Collection"
-        width="100%"
-      />
+    <div class="p-lg-5 p-md-4 p-sm-2">
+      <h2 class="card-title fw-bolder mb-0 h3 mb-3">{{ collection.name }}</h2>
+      <p class="card-text mb-2">
+        {{ collection.description }}
+      </p>
+      <button
+        class="btn btn-outline-dark px-5"
+        (click)="downloadCollection(collection.urlDocument)"
+      >
+        Download collection
+      </button>
+    </div>
+  </div>
+  <div
+    class="col-lg-6 col-md-12 col-sm-12 p-0 order-md-last order-sm-last order-first"
+    @fadeUp3
+  >
+    <div
+      class="catallog-image position-relative"
+      [ngStyle]="{
+        'background-image': 'url(' + imagePath + ')',
+        'background-size': 'cover',
+        'background-position': 'center'
+      }"
+    >
       <div class="position-absolute logo-collection bg-gray">
         <img
           [src]="url + 'classapi/images/collections/logo/' + collection.urlLogo"
@@ -24,11 +36,46 @@
         />
       </div>
     </div>
-    <div class="card-body">
-      <h2 class="card-title fw-bolder mb-0 h3 mb-3">{{ collection.name }}</h2>
-      <p class="card-text mb-2">
-        {{ collection.description }}
-      </p>
-    </div></a
-  >
+  </div>
 </div>
+<ng-template #opposite>
+  <div class="row">
+    <div class="col-lg-6 col-md-12 col-sm-12 p-0" @fadeUp3>
+      <div
+        class="catallog-image position-relative"
+        [ngStyle]="{
+          'background-image': 'url(' + imagePath + ')',
+          'background-size': 'cover',
+          'background-position': 'center'
+        }"
+      >
+        <div class="position-absolute logo-collection bg-gray">
+          <img
+            [src]="
+              url + 'classapi/images/collections/logo/' + collection.urlLogo
+            "
+            class="card-img-top rounded-0"
+            alt="Savage"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-lg-6 col-md-12 col-sm-12 d-grid align-items-center p-4"
+      @fadeUp2
+    >
+      <div class="p-lg-5 p-md-4 p-sm-2">
+        <h2 class="card-title fw-bolder mb-0 h3 mb-3">{{ collection.name }}</h2>
+        <p class="card-text mb-2">
+          {{ collection.description }}
+        </p>
+        <button
+          class="btn btn-outline-dark px-5"
+          (click)="downloadCollection(collection.urlDocument)"
+        >
+          Download collection
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -7,13 +7,13 @@
     >
       <div class="modal-content">
         <div class="modal-body p-0" id>
-          <div class="row w-100 p-0">
+          <div class="row mx-auto w-100 p-0">
             <div class="col-lg-8 col-md-8 col-sm-12 p-0">
               <img
                 [src]="url + 'classapi/images/popup/popup-1500x1042.png'"
                 alt="promo image"
                 width="100%"
-                class="rounded-start-3"
+                class="rounded-3"
               />
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
@@ -26,15 +26,18 @@
                   (click)="closeAlert()"
                 ></button>
               </div>
-              <div class="justify-content-center align-content-center mt-3">
-                <h2 class="modal-title fs-5 text-center">Get 15% off</h2>
-                <div class="separador-centrado mb-3 mt-3" @fadeUp2></div>
-                <p>
-                  Get 15% off in your next purchase by joining to our mail list.
-                </p>
-                <button class="btn btn-dark w-100" (click)="focusEmail()">
-                  Sign Up
-                </button>
+              <div class="d-grid align-items-center mt-3">
+                <div class="p-2">
+                  <h2 class="modal-title fs-5 text-center">Get 15% off</h2>
+                  <div class="separador-centrado mb-3 mt-3" @fadeUp2></div>
+                  <p>
+                    Get 15% off in your next purchase by joining to our mail
+                    list.
+                  </p>
+                  <button class="btn btn-dark w-100" (click)="focusEmail()">
+                    Sign Up
+                  </button>
+                </div>
               </div>
             </div>
           </div>
