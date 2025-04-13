@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Checkout, cartProduct } from 'src/app/share/services/checkout.service';
+import {
+  Checkout,
+  cartProduct,
+  discount,
+} from 'src/app/share/services/checkout.service';
 import {
   fadeUp,
   fadeUp1,
@@ -19,8 +23,10 @@ export class ListedComponent implements OnInit {
   printList: cartProduct[] = [];
   subtotal = 0;
   show = false;
+  showCoupon = false;
   shipping = 0;
   typeTax = 0;
+  coupon: discount;
   taxes: number = (this.shipping + this.subtotal) * (this.typeTax / 100);
   total: number = this.shipping + this.subtotal + this.taxes;
 
@@ -36,6 +42,13 @@ export class ListedComponent implements OnInit {
     this.checkout.typeTax.subscribe((x) => {
       this.typeTax = x;
       this.UpdateCalcAll();
+    });
+
+    this.checkout.coupon.subscribe((x) => {
+      this.coupon = x;
+      this.showCoupon = true;
+      console.log('SIIII');
+      this.countPrices();
     });
   }
   resetProperties(allItems: cartProduct[]): void {
@@ -57,6 +70,24 @@ export class ListedComponent implements OnInit {
   UpdateCalcAll(): void {
     this.taxes = (this.shipping + this.subtotal) * (this.typeTax / 100);
     this.total = this.shipping + this.subtotal + this.taxes;
+    if (this.coupon) {
+      this.calculateDiscount();
+    }
+    this.checkout.amount.next(Math.round(this.total * 100) / 100);
+    this.checkout.taxes.next(Math.round(this.taxes * 100) / 100);
+  }
+  calculateDiscount() {
+    this.taxes =
+      (this.subtotal - this.subtotal * this.coupon.discount + this.shipping) *
+      (this.typeTax / 100);
+    this.total =
+      this.subtotal -
+      this.subtotal * this.coupon.discount +
+      this.taxes +
+      this.shipping;
+    this.checkout.discountedAmount.next(
+      Math.round(this.subtotal * this.coupon.discount * 100) / 100
+    );
   }
   deleteAll(): void {
     this.subtotal = 0;

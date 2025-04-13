@@ -12,9 +12,21 @@
 <div class="cart-checkout" @fadeUp3 *ngIf="total !== 0; else emptyCart">
   <div class="border-top py-4">
     <div class="w-100 d-flex mb-3 border-bottom">
+      <div class="me-auto">Subtotal</div>
+      <div class="ms-auto">{{ subtotal | currency : "USD" }}</div>
+    </div>
+    <div
+      class="w-100 d-flex mb-3 border-bottom"
+      *ngIf="coupon.coupon !== undefined"
+    >
+      <div class="me-auto">Discount ({{ coupon.discount * 100 + "%" }})</div>
+      <div class="ms-auto gold">
+        -{{ subtotal * coupon.discount | currency : "USD" }}
+      </div>
+    </div>
+    <div class="w-100 d-flex mb-3 border-bottom">
       <div class="me-auto">
         Free delivery
-
         <i
           class="bi bi-exclamation-square hover-gold cursor-pointer"
           (click)="alertMessage('freeshipping')"
@@ -36,8 +48,9 @@
         <div class="ms-auto">{{ taxes | currency : "USD" }}</div>
       </ng-template>
     </div>
+
     <div class="w-100 d-flex">
-      <div class="me-auto hb h4">SUBTOTAL</div>
+      <div class="me-auto hb h4">TOTAL</div>
       <div class="ms-auto hb h4">{{ total | currency : "USD" }}</div>
     </div>
   </div>

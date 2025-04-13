@@ -6,6 +6,7 @@ import {
   Checkout,
   billing,
   cartProduct,
+  discount,
   order,
   shipping,
 } from '../share/services/checkout.service';
@@ -51,6 +52,7 @@ export class CheckoutPageComponent implements OnInit {
     billing: <billing>{},
     shipping: <shipping>{},
   };
+  coupon: discount;
   processingPayment = false;
   processingPaymentAffirm = false;
   processingPaymentPayPal = false;
@@ -59,6 +61,7 @@ export class CheckoutPageComponent implements OnInit {
   stripe: any;
   paypalVerified = false;
   url = urls.url;
+
   public payPalConfig?: IPayPalConfig;
 
   constructor(
@@ -85,6 +88,11 @@ export class CheckoutPageComponent implements OnInit {
         ? this.badPayment()
         : null;
       this.loader.show.next(false);
+    });
+    this.checkout.coupon.subscribe((x) => {
+      this.coupon = x;
+      this.order.discount = x.discount;
+      this.order.coupon = x.coupon;
     });
   }
   verifyPaypalData() {
@@ -190,10 +198,14 @@ export class CheckoutPageComponent implements OnInit {
     this.order.member = form.member;
   }
   insertAmount(amount: number): void {
-    this.checkout.typeTax.subscribe((x) => {
-      this.order.taxes = amount * (x / 100);
-      this.order.amount =
-        Math.round((amount + this.order.taxes + Number.EPSILON) * 100) / 100;
+    this.checkout.amount.subscribe((x) => {
+      this.order.amount = x;
+    });
+    this.checkout.taxes.subscribe((x) => {
+      this.order.taxes = x;
+    });
+    this.checkout.discountedAmount.subscribe((x) => {
+      this.order.discountAmount = x;
     });
   }
   insertItemNumber(items: number): void {
@@ -243,7 +255,6 @@ export class CheckoutPageComponent implements OnInit {
 
   completeOrder(): void {
     setTimeout(() => {
-      console.log('SISISIS');
       this.finalOrder = this.checkout.getTempData();
       this.simplifyOrder();
       this.checkout.sendOrder(this.finalOrder).subscribe(() => {

@@ -18,4 +18,5 @@ export const urls = {
   urlBlog: url + 'classapi/api/apiBlog.php',
   urllikes: url + 'classapi/api/apiLikes.php',
   urlShowrooms: url + 'classapi/api/apiShowrooms.php',
+  urlDiscount: url + 'classapi/api/apiDiscount.php',
 };

@@ -64,6 +64,7 @@
                   class="form-control rounded-0"
                   placeholder="Email*"
                   required
+                  (change)="updatedCouponUser(billingEmail)"
                 />
                 <p *ngIf="billingEmail.touched && billingEmail.invalid">
                   <i class="bi bi-exclamation-square"></i>

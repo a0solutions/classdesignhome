@@ -7,6 +7,7 @@ import { ProductCheckoutComponent } from './components/product-checkout/product-
 import { ShareModule } from '../share/Modules/share.module';
 import { RouterModule } from '@angular/router';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { CouponsInputComponent } from './components/coupons-input/coupons-input.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     CheckoutPageComponent,
     CheckoutFormComponent,
     ProductCheckoutComponent,
+    CouponsInputComponent,
   ],
   providers: [CheckoutModule],
 })

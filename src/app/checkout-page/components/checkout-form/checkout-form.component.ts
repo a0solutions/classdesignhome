@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 import {
   Checkout,
   billing,
@@ -45,6 +45,11 @@ export class CheckoutFormComponent implements OnInit {
     this.shipping.shippingCountry = '';
     this.shipping.shippingState = '';
   }
+  updatedCouponUser(user: NgModel) {
+    if (user.valid) {
+      this.checkout.couponUser.next(user.value);
+    }
+  }
   getDataTemp(): void {
     const order = this.checkout.getTempData();
     this.fillAllBills(order.billing);
@@ -76,6 +81,7 @@ export class CheckoutFormComponent implements OnInit {
       this.fillAllBills(x);
       this.isSameAddress(this.billing);
       this.modal.show.next(false);
+      this.checkout.couponUser.next(x.email);
     });
   }
   fillAllBills(x: any) {
@@ -89,6 +95,7 @@ export class CheckoutFormComponent implements OnInit {
     this.billing.billingCity = x.billingCity;
     this.billing.billingState = x.billingState;
     this.billing.billingCountry = x.billingCountry;
+    this.checkout.couponUser.next(x.billingEmail);
   }
   sameAddress(billing: billing): void {
     !this.sameAddressFlag

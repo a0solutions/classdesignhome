@@ -17,8 +17,18 @@ export class Checkout {
   );
   countryTax: Subject<string> = new Subject();
   typeTax: BehaviorSubject<number> = new BehaviorSubject(0);
+  coupon: BehaviorSubject<discount> = new BehaviorSubject(<discount>{});
   url: string = urls.urlOrders;
+  urlDiscount: string = urls.urlDiscount;
   localList: cartProduct[] = [];
+  couponUser: Subject<string> = new Subject();
+
+  /****************AMOUNTS*************************/
+
+  amount: BehaviorSubject<number> = new BehaviorSubject(0);
+  taxes: BehaviorSubject<number> = new BehaviorSubject(0);
+  discountedAmount: BehaviorSubject<number> = new BehaviorSubject(0);
+
   constructor(
     private http: HttpClient,
     private token: TokenManage,
@@ -98,6 +108,10 @@ export class Checkout {
     localStorage.removeItem('cartlist');
     localStorage.removeItem('timeCartList');
     localStorage.removeItem('TempOrder');
+    this.coupon.next(<discount>{});
+    this.amount.next(0);
+    this.taxes.next(0);
+    this.taxes.next(0);
   }
   sendOrder(data: order): Observable<object> {
     return this.http.post(this.url, data);
@@ -126,12 +140,32 @@ export class Checkout {
       .set('validate', token);
     return this.http.get<order[]>(this.url, { params });
   }
+  /*
+   *
+   *
+   *
+   *
+   *********************DISCOUNT AREA*************************/
+  getDiscountByCoupon(coupon: string): Observable<object> {
+    const params = new HttpParams().set('coupon', coupon);
+    return this.http.get<discount>(this.urlDiscount, { params });
+  }
 }
 
+export interface discount {
+  id: number;
+  coupon: string;
+  discount: number;
+  user: string;
+  used: number;
+  creationnDate: string;
+  usedDate: string;
+}
 export interface cartProduct {
   product: product;
   count: number;
 }
+
 export interface order {
   billing: billing;
   shipping: shipping;
@@ -153,6 +187,9 @@ export interface order {
   delivered: string;
   taxes: number;
   paymentMethod: string;
+  discount: number;
+  coupon: string;
+  discountAmount: number;
 }
 export interface billing {
   billingName: string;

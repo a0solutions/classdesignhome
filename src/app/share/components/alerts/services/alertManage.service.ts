@@ -107,6 +107,21 @@ export class AlertManage {
         "Please sign in to download the catalog. This content is available exclusively to registered members.<br><br><a href='/signin' class='btn btn-dark px-5' >Sign In / Register</a>"
       );
       this.title.next('Members Only Download');
+    } else if (code == 'couponNotUser') {
+      this.message.next(
+        'The billing email does not match the one that received the coupon. Please use the same email address where the coupon was originally sent.'
+      );
+      this.title.next('User not authorized');
+    } else if (code == 'couponUsed') {
+      this.message.next(
+        'This coupon has already been used. Please check your account or contact support if you need assistance.'
+      );
+      this.title.next('Used coupon');
+    } else if (code == 'couponInvalid') {
+      this.message.next(
+        'This coupon is invalid. Please check again or contact support if you need assistance.'
+      );
+      this.title.next('Invalid Coupon');
     } else {
       this.message.next(
         'An unexpected error occurred. Please try again later, and thank you for your patience.'
