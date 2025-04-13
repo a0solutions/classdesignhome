@@ -26,6 +26,7 @@ import { OfferCardComponent } from 'src/app/products/components/offers/offer-car
 import { RelatedCardComponent } from 'src/app/products/components/related/related-card/related-card.component';
 import { RelatedComponent } from 'src/app/products/components/related/related.component';
 import { ShowroomCarouselComponent } from 'src/app/products/components/showroom-carousel/showroom-carousel.component';
+import { AlertPopupComponent } from '../components/alertPopup/alertPopup.component';
 @NgModule({
   imports: [CommonModule, FormsModule, PipesModule, RouterModule],
   declarations: [
@@ -45,6 +46,7 @@ import { ShowroomCarouselComponent } from 'src/app/products/components/showroom-
     ProductGaleryComponent,
     ProductDescriptionComponent,
     AlertsComponent,
+    AlertPopupComponent,
     ShowroomCarouselComponent,
     QuickViewModalComponent,
   ],
@@ -73,6 +75,7 @@ import { ShowroomCarouselComponent } from 'src/app/products/components/showroom-
     RouterModule,
     FormsModule,
     AlertsComponent,
+    AlertPopupComponent,
     QuickViewModalComponent,
     ShowroomCarouselComponent,
   ],

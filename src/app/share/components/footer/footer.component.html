@@ -3,20 +3,6 @@
 <footer class="border-top">
   <div class="container footer-container mt-3">
     <div class="row">
-      <!-- <div @fadeUp class="col-lg-2 col-md-4 col-md-2 col-12 mb-5 center-mobile">
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2">
-            <a href="tel:+34643152892" class="btn btn-dark w-100">Call us</a>
-          </li>
-          <li class="nav-item mb-2">
-            <a
-              href="mailto:contact@classdesignhome.com"
-              class="btn btn-dark w-100"
-              >Write us</a
-            >
-          </li>
-        </ul>
-      </div> -->
       <div @fadeUp1 class="col-lg-8 col-md-8 col-12 mb-4 center-mobile">
         <div class="row w-100">
           <!-- MENU -->
@@ -59,14 +45,19 @@
           (submit)="sendNewsLetter(formNewsletter)"
         >
           <h5>Subscribe to our newsletter</h5>
-          <p>Monthly digest of what's new and exciting from us.</p>
+          <p>
+            Monthly digest of what's new and exciting from us.<br /><strong>
+              Sign up for our email list and get 15% off your first
+              purchase!</strong
+            >
+          </p>
           <div class="d-flex flex-column flex-sm-row w-100">
             <label for="newsletter1" class="visually-hidden"
               >Email address</label
             >
             <input
               ngModel
-              #newsletter="ngModel"
+              #newsletter
               type="email"
               email="true"
               name="email"

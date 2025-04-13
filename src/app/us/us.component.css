@@ -25,3 +25,10 @@ ul,
 li {
   font-weight: 400 !important;
 }
+.border-start-5 {
+  border-bottom: 4px solid black !important;
+}
+.border-start-5:hover {
+  transition: all 0.5s;
+  border-bottom: 4px solid var(--secondary-color) !important;
+}

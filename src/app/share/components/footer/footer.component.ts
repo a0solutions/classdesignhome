@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   CategoriesService,
   categories,
@@ -30,6 +30,13 @@ export class FooterComponent implements OnInit {
       next: this.setCategories.bind(this),
       error: console.log.bind(this),
     });
+    this.alert.focusOn.subscribe(() => {
+      this.focusInput();
+    });
+  }
+  @ViewChild('newsletter') inputElement!: ElementRef;
+  focusInput() {
+    this.inputElement.nativeElement.focus();
   }
   setCategories(arrCategories: object): void {
     this.allcategories = <categories[]>arrCategories;

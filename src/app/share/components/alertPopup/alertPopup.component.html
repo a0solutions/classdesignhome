@@ -1,0 +1,45 @@
+<ng-container *ngIf="show">
+  <div class="modal-backdrop" @fade></div>
+  <div class="modal show d-block">
+    <div
+      @fadeUp
+      class="modal-dialog modal-lg modal-dialog-centered text-center"
+    >
+      <div class="modal-content">
+        <div class="modal-body p-0" id>
+          <div class="row w-100 p-0">
+            <div class="col-lg-8 col-md-8 col-sm-12 p-0">
+              <img
+                [src]="url + 'classapi/images/popup/popup-1500x1042.png'"
+                alt="promo image"
+                width="100%"
+                class="rounded-start-3"
+              />
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <div class="text-end p-3 pe-0">
+                <button
+                  type="button"
+                  class="btn-close opacity-100"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  (click)="closeAlert()"
+                ></button>
+              </div>
+              <div class="justify-content-center align-content-center mt-3">
+                <h2 class="modal-title fs-5 text-center">Get 15% off</h2>
+                <div class="separador-centrado mb-3 mt-3" @fadeUp2></div>
+                <p>
+                  Get 15% off in your next purchase by joining to our mail list.
+                </p>
+                <button class="btn btn-dark w-100" (click)="focusEmail()">
+                  Sign Up
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

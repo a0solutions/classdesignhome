@@ -173,6 +173,7 @@ export class ProductsFilterComponent implements OnInit, OnChanges {
   }
 
   updateAllFilter(): void {
+    this.temporalCategories = [];
     this.filter.allFilters.next(this.filter.allFilters.value);
     setTimeout(() => {
       this.resetColor = false;

@@ -8,7 +8,8 @@ export class AlertManage {
   show: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   message: BehaviorSubject<string> = new BehaviorSubject<string>('');
   title: BehaviorSubject<string> = new BehaviorSubject<string>('');
-
+  showPopup: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  focusOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   setAlertMessage(code: string): void {
     this.selectMessage(code);
     this.show.next(true);

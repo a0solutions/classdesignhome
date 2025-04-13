@@ -17,10 +17,15 @@ export class ShowroomCarouselComponent implements OnInit {
 
   ngOnInit() {
     this.http.paramMap.subscribe((x) => {
-      this.category = <string>x.get('category');
-      this.showroomService.getShowrooms(this.category).subscribe((x) => {
-        this.showrooms = x;
-      });
+      x.get('category') != null
+        ? (this.category = <string>x.get('category'))
+        : (this.category = 'all');
+    });
+    this.trigger();
+  }
+  trigger() {
+    this.showroomService.getShowrooms(this.category).subscribe((x) => {
+      this.showrooms = x;
     });
   }
 }

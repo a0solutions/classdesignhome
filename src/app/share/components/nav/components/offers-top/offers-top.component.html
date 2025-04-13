@@ -3,26 +3,35 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 
 <div class="promo-carousel bg-dark text-white text-center cursor-pointer">
-  <div
-    class="promo-carousel-allitems w-100 text-center"
-    #allitems
-    (mouseover)="stopCarousel()"
-    (mouseout)="moveCarousel()"
-    [style]="{ top: top + 'px' }"
-  >
-    <div class="promo-carousel-item text-center">
-      <small>Check out our deals for today</small>
+  <div class="row">
+    <div
+      class="promo-carousel-allitems col-lg-6 col-md-6 col-sm-12 text-center"
+      #allitems
+      (mouseover)="stopCarousel()"
+      (mouseout)="moveCarousel()"
+      [style]="{ top: top + 'px' }"
+    >
+      <div class="promo-carousel-item text-center">
+        <small
+          ><a routerLink="/signing" class="text-white"
+            >Join to our mail list & save 15% today!</a
+          ></small
+        >
+      </div>
+      <ng-container *ngFor="let product of allProducts">
+        <a (click)="navigate(product)" class="text-white">
+          <div class="promo-carousel-item text-center">
+            <small> {{ product.name }} &nbsp;&nbsp;&nbsp;</small>
+            <small class="text-decoration-underline thin">{{
+              product.promoPrice | currency : "USD"
+            }}</small
+            ><small> &nbsp;&nbsp;&nbsp; {{ getDeal(product) }}</small>
+          </div></a
+        >
+      </ng-container>
     </div>
-    <ng-container *ngFor="let product of allProducts">
-      <a (click)="navigate(product)" class="text-white">
-        <div class="promo-carousel-item text-center">
-          <small> {{ product.name }} &nbsp;&nbsp;&nbsp;</small>
-          <small class="text-decoration-underline thin">{{
-            product.promoPrice | currency : "USD"
-          }}</small
-          ><small> &nbsp;&nbsp;&nbsp; {{ getDeal(product) }}</small>
-        </div></a
-      >
-    </ng-container>
+    <div class="col-6 mobile-out">
+      <p>Financing | Professional | Free Delivery Over $35</p>
+    </div>
   </div>
 </div>

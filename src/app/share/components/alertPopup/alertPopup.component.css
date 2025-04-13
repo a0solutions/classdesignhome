@@ -1,0 +1,11 @@
+.alert {
+  position: fixed;
+  top: 150px;
+  right: 40px;
+  border-left: 3px solid var(--bs-dark);
+  z-index: 999999;
+  max-width: 800px;
+}
+.modal-backdrop {
+  backdrop-filter: blur(10px);
+}

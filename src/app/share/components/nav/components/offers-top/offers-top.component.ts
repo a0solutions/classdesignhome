@@ -25,12 +25,13 @@ export class OffersTopComponent implements OnInit {
   }
   moveCarousel() {
     this.movement = setInterval(() => {
-      if (this.top <= (this.allProducts.length - 1) * -26) {
+      if (this.top <= this.allProducts.length * -25) {
         this.top = 0;
+      } else {
+        let y = this.top;
+        y = y - 25;
+        this.top = y;
       }
-      let y = this.top;
-      y = y - 26;
-      this.top = ++y;
       // this.allItems.style.top = '50px';
     }, 3000);
   }

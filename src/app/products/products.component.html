@@ -56,14 +56,10 @@
 <div
   class="bg-white container border-bottom filter-table"
   @fadeUp1
-  [style]="
-    allOffers.length == 0 && width > 700
-      ? 'top:80px'
-      : width > '650'
-      ? 'top:105px'
-      : null
-  "
+  [style]="width > 700 ? 'top:105px' : width > '650' ? 'top:105px' : null"
 >
+  <!--allOffers.length == 0 &&-->
+
   <app-filter-menu
     [categorySelected]="category"
     [subcategorySelected]="subcategory"

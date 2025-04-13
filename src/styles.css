@@ -449,7 +449,7 @@ input[type="checkbox"] {
     display: none;
   }
   .separador-menu {
-    height: 9.5vh;
+    height: 105px;
   }
   h5 {
     font-size: 1rem !important;
@@ -718,7 +718,7 @@ input[type="checkbox"] {
     z-index: 1020;
   }
   .separador-menu {
-    height: 9vh;
+    height: 105px;
   }
   .carousel-control-next {
     right: -100px;
@@ -848,7 +848,7 @@ input[type="checkbox"] {
     z-index: 1020;
   }
   .separador-menu {
-    height: 9vh;
+    height: 105px;
   }
   .tablet-out {
     display: block;
