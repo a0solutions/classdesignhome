@@ -30,7 +30,9 @@ export class PasswordComponent {
       this.tokenString === ''
         ? (this.tokenString = this.token.getValidateToken())
         : null;
+
       this.changePass.userId = this.token.getUserId(this.tokenString);
+      console.log(this.changePass.userId);
       this.user
         .changePassword(this.changePass, this.tokenString)
         .subscribe((x) => {

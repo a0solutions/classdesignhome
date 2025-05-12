@@ -30,6 +30,7 @@ export class SignupFormComponent {
       : this.setAlert('registered');
   }
   setAlert(code: string): void {
+    console.log(code);
     this.processingSignUp = false;
     code == 'registered' ? this.actualform.reset() : null;
     this.alert.setAlertMessage(code);

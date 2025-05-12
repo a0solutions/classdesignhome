@@ -29,8 +29,9 @@ export class ColorSelectComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.urlImage =
-      this.url + 'classapi/images/app/colors/' + this.background + '.png';
+    this.urlImage = encodeURI(
+      this.url + 'classapi/images/app/colors/' + this.background + '.png'
+    );
     this.activeColor
       ? (this.check = this.url + 'classapi/images/app/check.png')
       : (this.check = '');

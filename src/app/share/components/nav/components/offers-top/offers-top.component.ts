@@ -4,6 +4,7 @@ import {
   product,
   ProductManage,
 } from 'src/app/share/services/product-manage.service';
+import { AlertManage } from '../../../alerts/services/alertManage.service';
 
 @Component({
   selector: 'app-offers-top',
@@ -15,7 +16,11 @@ export class OffersTopComponent implements OnInit {
   movement: any;
   top = 0;
   @Input() allProducts: product[] = [];
-  constructor(private productsService: ProductManage, private router: Router) {}
+  constructor(
+    private productsService: ProductManage,
+    private router: Router,
+    private alert: AlertManage
+  ) {}
 
   ngOnInit() {
     this.moveCarousel();
@@ -40,5 +45,17 @@ export class OffersTopComponent implements OnInit {
   }
   getDeal(product: product) {
     return this.productsService.getDeal(product);
+  }
+  closeAlert(): void {
+    this.alert.showPopup.next(false);
+  }
+  focusEmail() {
+    this.closeAlert();
+    window.scroll({
+      top: 20000,
+      left: 0,
+      behavior: 'smooth',
+    });
+    this.alert.focusOn.next(true);
   }
 }

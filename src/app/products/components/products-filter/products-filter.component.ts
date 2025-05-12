@@ -100,8 +100,8 @@ export class ProductsFilterComponent implements OnInit, OnChanges {
     this.sizesFilter = [];
     let index = 0;
     this.product.getProductByCategory(filters.category).forEach((y) => {
+      this.colors.includes(y.color) ? null : this.colors.push(y.color);
       if (isNaN(parseInt(this.onlyNumber.transform(y.size)))) {
-        this.colors.includes(y.color) ? null : this.colors.push(y.color);
         const sizes: sizes = <sizes>{};
         sizes.category = y.category;
         sizes.size = y.size;

@@ -4,3 +4,6 @@
 .container-couponApplied {
   background-color: #f5e6cb;
 }
+input:focus {
+  border: 2px solid #a3947d !important;
+}

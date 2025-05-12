@@ -25,6 +25,7 @@ const routes: Routes = [
   },
   { path: 'collections', component: CatalogPageComponent },
   { path: 'signin', component: SigninComponent },
+  { path: 'signin/:register', component: SigninComponent },
   { path: 'contact', component: ContactPageComponent },
   { path: 'checkout', component: CheckoutPageComponent },
   {

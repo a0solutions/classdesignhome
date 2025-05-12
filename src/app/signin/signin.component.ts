@@ -8,7 +8,7 @@ import {
   fadeUp4,
 } from '../share/services/animations';
 import { SeoService } from '../share/services/seo.service';
-import { TokenManage } from '../share/services/token-manage.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -17,9 +17,16 @@ import { TokenManage } from '../share/services/token-manage.service';
   animations: [fadeUp, fadeUp1, fadeUp2, fadeUp3, fadeUp4],
 })
 export class SigninComponent implements OnInit {
-  constructor(private nav: NavManage, private seo: SeoService) {}
+  constructor(
+    private nav: NavManage,
+    private seo: SeoService,
+    private route: ActivatedRoute
+  ) {}
   moduleActive = true;
   ngOnInit(): void {
+    this.route.paramMap.subscribe((x) => {
+      x.get('register') == 'register' ? (this.moduleActive = false) : null;
+    });
     this.seo.setSeo();
     this.nav.dark.next(true);
   }

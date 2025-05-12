@@ -68,36 +68,6 @@
   <div class="row my-3" @fadeUp4>
     <div class="col-lg-6 col-md-12 col-sm-12">
       <p class="mb-2">
-        Sizes: <strong class="hb">{{ product.size }}</strong>
-      </p>
-      <div class="row mx-1">
-        <button
-          *ngFor="let size of sizes; index as i"
-          [ngClass]="{
-            'bg-gold border-gold text-white': size === product.size,
-            'bg-light': size !== product.size
-          }"
-          [title]="size"
-          class="btn rounded-0 p-0 size-icon col-4"
-          (click)="selectSize(size)"
-        >
-          <img
-            width="100%"
-            class="p-0"
-            [alt]="size"
-            [src]="
-              url +
-              'classapi/images/app/custom-icons/size/' +
-              (size | onlyNumbers) +
-              '.png'
-            "
-          />
-        </button>
-      </div>
-    </div>
-
-    <div class="col-lg-6 col-md-12 col-sm-12">
-      <p class="mb-2">
         Sets: <strong class="hb">{{ product.sets }}</strong>
       </p>
       <div class="row mx-1">
@@ -120,6 +90,35 @@
               'classapi/images/app/custom-icons/' +
               (set | spaces) +
               '.svg'
+            "
+          />
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <p class="mb-2">
+        Sizes: <strong class="hb">{{ product.size }}</strong>
+      </p>
+      <div class="row mx-1">
+        <button
+          *ngFor="let size of sizes; index as i"
+          [ngClass]="{
+            'bg-gold border-gold text-white': size === product.size,
+            'bg-light': size !== product.size
+          }"
+          [title]="size"
+          class="btn rounded-0 p-0 size-icon col-2 col-lg-3 col-md-3 col-sm-2"
+          (click)="selectSize(size)"
+        >
+          <img
+            width="100%"
+            class="p-0"
+            [alt]="size"
+            [src]="
+              url +
+              'classapi/images/app/custom-icons/size/' +
+              (size | onlyNumbers) +
+              '.png'
             "
           />
         </button>

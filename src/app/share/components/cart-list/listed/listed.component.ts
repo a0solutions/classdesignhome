@@ -37,7 +37,7 @@ export class ListedComponent implements OnInit {
     this.checkout.checkCartList() ? (this.show = true) : null;
     this.checkout.items.subscribe({
       next: this.resetProperties.bind(this),
-      error: console.log.bind(this),
+      error: this.alerts.setAlertMessage.bind(this),
     });
     this.checkout.typeTax.subscribe((x) => {
       this.typeTax = x;
@@ -45,9 +45,11 @@ export class ListedComponent implements OnInit {
     });
 
     this.checkout.coupon.subscribe((x) => {
+      if (Object.keys(x).length !== 0) {
+        this.showCoupon = true;
+      }
       this.coupon = x;
-      this.showCoupon = true;
-      console.log('SIIII');
+
       this.countPrices();
     });
   }
@@ -70,7 +72,7 @@ export class ListedComponent implements OnInit {
   UpdateCalcAll(): void {
     this.taxes = (this.shipping + this.subtotal) * (this.typeTax / 100);
     this.total = this.shipping + this.subtotal + this.taxes;
-    if (this.coupon) {
+    if (this.showCoupon === true) {
       this.calculateDiscount();
     }
     this.checkout.amount.next(Math.round(this.total * 100) / 100);

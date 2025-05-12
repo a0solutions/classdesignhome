@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
 };
-const url = 'https://testing.classdesign.us/';
+const url = 'https://classdesignhome.com/';
 
 export const urls = {
   url: url,

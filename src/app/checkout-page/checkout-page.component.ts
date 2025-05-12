@@ -233,6 +233,7 @@ export class CheckoutPageComponent implements OnInit {
         window.open(<string>x.url, '_self');
       },
       (error) => {
+        this.alert.setAlertMessage(error);
         console.log(error);
       }
     );
@@ -248,6 +249,7 @@ export class CheckoutPageComponent implements OnInit {
         window.open(<string>x.url, '_self');
       },
       (error) => {
+        this.alert.setAlertMessage(error);
         console.log(error);
       }
     );
@@ -283,7 +285,6 @@ export class CheckoutPageComponent implements OnInit {
     }
   }
   validateData(): boolean {
-    console.log(this.order);
     if (
       this.order.billing.billingName != undefined &&
       this.order.shipping.shippingName != undefined &&

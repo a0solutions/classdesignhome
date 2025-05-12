@@ -31,7 +31,7 @@ export class PersonalFormComponent implements OnInit {
     const id = this.token.getUserId(tokenString);
     this.users.getAllUserInfo(id).subscribe({
       next: this.getDataForm.bind(this),
-      error: this.setAlert.bind(''),
+      error: this.setAlert.bind(this),
     });
   }
   getDataForm(data: string): void {
